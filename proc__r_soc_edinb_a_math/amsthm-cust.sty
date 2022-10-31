@@ -1,0 +1,145 @@
+
+% Syntax:
+%\defnewtheorem{env-name}{style-name}{counter-spec}
+% env-name: name of the env. and the same will be the heading of the env
+% style-name: 
+% counter-spec: blank -- each env. will have its own individual counter  (Theorem 1...n,  Lemma 1...n, Remark 1...n, etc)
+%               thm -- each evn. will have a common counter throughout the document (Theorem 1,  Lemma 2, Remark 3, etc)
+%
+%               section -- each env. will have its own sectionwise counter
+%                          and individual counter renumbered after each section (Theorem 1.1...n,  Lemma 1.1...n, Remark 1.1...n, etc)
+%                                                                               (Theorem 2.1...n,  Lemma 2.1...n, Remark 2.1...n, etc)
+%               secthm -- each env. will have a sectionwise common counter (Theorem 1.1,  Lemma 1.2, Remark 1.3, etc)
+%                                                                          (Theorem 2.1,  Lemma 2.2, Remark 2.3, etc)
+% Examples:
+%\defnewtheorem{proposition}{headfive}{section}
+%\defnewtheorem{theorem}{headfive}{section}
+%\defnewtheorem{corollary}{headfive}{section}
+%\defnewtheorem{definition}{headfive}{section}
+%\defnewtheorem{remark}{headfive}{section}
+
+\def\opthmhead#1{\def\opthead{#1}}\opthmhead{}%% my change
+%\def\addedno#1{\gdef\@addedno{#1}\gdef\@currentlabel{\@addedno\csname p@thm\endcsname\csname thethm\endcsname}}
+\gdef\@addedno{}
+
+\def\leftbrack{}
+\def\rightbrack{}
+
+\usepackage{inicap}
+
+\newlength\enuntopskip
+\setlength\enuntopskip{10\p@ \@plus 2\p@ \@minus 2\p@}
+
+%%% Different Styles
+\newtheoremstyle{headfive}%
+  {\enuntopskip}%      Space above
+  {\enuntopskip}%      Space below
+  {\it}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {}% Thm head font
+  {.}%        Punctuation after thm head
+  {5pt}%     Space after thm head: " " = normal interword space;
+        %       \newline = linebreak
+  {\ifx\opthead\empty%
+     \thmname{{\sc #1}\thmnumber{\@ifnotempty{#1}{ }{#2}}}\thmnote{ {\the\thm@notefont {\leftbrack#3\rightbrack}}}%
+   \else%
+     \opthead%
+     \gdef\opthead{}%
+   \fi%
+  }%         Thm head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{headsix}%
+  {\enuntopskip}%      Space above
+  {\enuntopskip}%      Space below
+  {}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {}% Thm head font
+  {.}%        Punctuation after thm head
+  {5pt}%     Space after thm head: " " = normal interword space;
+        %       \newline = linebreak
+  {\ifx\opthead\empty%
+     \thmname{{\sc #1}\thmnumber{\@ifnotempty{#1}{ }{#2}}}\thmnote{ {\the\thm@notefont {\leftbrack#3\rightbrack}}}%
+   \else%
+     \opthead%
+     \gdef\opthead{}%
+   \fi%
+  }%         Thm head spec (can be left empty, meaning `normal')
+
+\def\beginthmtag{}
+\def\endthmtag{}
+\def\beginthmopttag{}
+\def\endthmopttag{}
+\def\beginthmtextag{}
+\def\endthmtextag{}
+\def\HCode#1{\relax}
+
+%\gdef\ligchecki{\inicap{definition}}
+
+\def\@begintheorem#1#2[#3]{%updated by Samy to allow title break
+  \deferred@thm@head{\the\thm@headfont \thm@indent
+    \@ifempty{#1}{\let\thmname\@gobble}{\let\thmname\@iden}%
+    \@ifempty{#2}{\let\thmnumber\@gobble}{\let\thmnumber\@iden}%
+    \@ifempty{#3}{\let\thmnote\@gobble}{\let\thmnote\@iden}%
+    \thm@swap\swappedhead\thmhead{#1}{#2}{#3}%
+    \the\thm@headpunct
+    \thmheadnl % possibly a newline.
+    \hskip\thm@headsep
+  }%
+  \ignorespaces}
+
+\newcounter{thm}
+\gdef\thmchk{thm}
+\gdef\secthmchk{secthm}
+
+\newcommand\defnewtheorem[3]{% differe type of headings [] text ()text
+\def\thmcnt{#3}
+\ifx\thmcnt\thmchk
+    \theoremstyle{#2}
+    \newtheorem{#1}[thm]{\inicap{#1}}
+    \newtheorem*{#1*}{\inicap{#1}}
+\else
+\ifx\thmcnt\secthmchk
+    \theoremstyle{#2}
+    \newtheorem{#1}[mythm]{\inicap{#1}}
+    \newtheorem*{#1*}{\inicap{#1}}
+\else
+    \theoremstyle{#2}
+    \newtheorem{#1}{\inicap{#1}}[#3]
+    \newtheorem*{#1*}{\inicap{#1}}
+\fi    
+\fi
+}
+
+\theoremstyle{headfive}
+
+\def\@endtheorem{\endtrivlist\@endpefalse\@endparenv}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Proof %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\qedsymbol}{\ensuremath{\square}}
+\renewenvironment{proof}[1][\proofname]{\par
+  \if@endproofbox\pushQED{\qed}\fi%
+  \normalfont
+  \topsep\enuntopskip
+  \labelsep=5pt\relax
+  \trivlist
+  \item[\hskip\labelsep\itshape\mathversion{bold}#1.]\ignorespaces
+}{%
+  \if@endproofbox\popQED\fi
+  \endtrivlist\@endpefalse
+}
+
+\def\enunchead#1{{\bfseries\mathversion{bold}#1.}}
+
+%% The below environment name has been changed to avoid the interruption with the numbered enunciation Hypothesis 1.1 %%
+
+\newenvironment{shypothesis}[1]{\begingroup\vskip\enuntopskip%
+\noindent\enunchead{#1}\ }{\par\vskip\enuntopskip\endgroup}%
+
+%% The below environment name has been changed to avoid the interruption with the numbered enunciation Problem 1.1 %%
+
+\newenvironment{sproblem}[1]{\begingroup\vskip\enuntopskip%
+\enunchead{#1}\hskip5pt}{\par\vskip\enuntopskip\endgroup}%
+
+\newcommand\theHmythm{\theHsection.\arabic{mythm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

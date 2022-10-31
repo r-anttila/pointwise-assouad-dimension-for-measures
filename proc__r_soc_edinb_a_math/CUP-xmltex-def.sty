@@ -1,0 +1,2509 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{isoent}
+             [2001/01/14
+                 Fonts and symbols needed for ISO character entities]
+
+\newif\iflistbold
+\DeclareOption{listbold}{\listboldtrue}
+\ProcessOptions
+
+
+%\RequirePackage[LY1]{fontenc}
+
+%\RequirePackage{txfonts} %times
+\RequirePackage{url}
+%\RequirePackage{color}
+\RequirePackage{xspace}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsbsy}
+\RequirePackage{amsmath}
+%\RequirePackage{latexsym}
+\RequirePackage{pifont}
+\RequirePackage[safe]{//techsetserver1/Miktex/xml-config/pagination/TandF/tipa}
+\RequirePackage{//techsetserver1/Miktex/xml-config/pagination/TandF/marvosym}
+\RequirePackage{textcomp}
+%\RequirePackage{wasysym}
+\RequirePackage{mathrsfs}
+\RequirePackage{//techsetserver1/Miktex/xml-config/pagination/TandF/stmaryrd}% needed for iso-9573-13, not iso-8879
+\usepackage{eurosym}
+
+
+\newskip\opskip
+\opskip=0pt
+%\opskip=1.5pt
+\font\tencyr=wncyr10
+\def\cyr{\tencyr\cyracc}
+\def\mgrk#1{{\beginmgreek #1 \endmgreek}}
+
+%%%% Updated by vinay on 19-9-14 for the usage of \sfrac command in rabf template%%%%
+%    \newcommand{\sfrac}[2]{\leavevmode\kern.1em
+%            \raise.5ex\hbox{\footnotesize #1}\kern-.1em
+%                    /\kern-.15em\lower.25ex\hbox{\footnotesize #2}}
+
+% isotech
+
+\def\sqangle{\mathord{\hbox{\vrule width .4pt height 1ex depth 0pt
+       \kern -.4pt \vrule width 1ex height .4pt depth 0pt}}}
+
+% isoamsr
+
+% the \backsim requires the amssymb package
+\def\backcong{{\mathrel{\raise -.3ex
+                        \hbox{$\displaystyle\backsim$}\atop
+                        \raise.3ex\hbox{$\displaystyle =$}}}}
+
+% isolat2
+
+\def\hstrok{\leavevmode\raise .7ex\rlap{-}h}
+\def\Hstrok{\leavevmode\raise .55ex\rlap{\kern .2ex --}H}
+\def\tstrok{\leavevmode\raise .25ex\rlap{\kern .1ex -}t}
+\def\Tstrok{\leavevmode\raise .25ex\rlap{\kern .22ex --}T}
+
+\def\midot#1{\leavevmode\raise .6ex\rlap{\kern .4ex .}#1}
+\def\lmidot{\midot{l}}
+\def\Lmidot{\midot{L}}
+
+% isopub
+
+\def\marker{\leavevmode\kern .5ex\vrule width .5ex height 1.2ex depth 0pt}
+\def\hybull{\leavevmode\vrule width 1ex height .8ex depth -.6ex}
+\def\nldr{{\hbox to 0.6em{\hfil.\hfil\hfil.\hfil}}}
+\def\mldr{{\hbox to 1em{\hfil.\hfil\hfil.\hfil\hfil.\hfil}}}
+
+\def\block{\leavevmode\vrule width 1ex height 1.2ex depth 0pt}
+\def\uhblk{\leavevmode\vrule width 1ex height 1.2ex depth -.6ex}
+\def\lhblk{\leavevmode\vrule width 1ex height .6ex depth 0pt}
+
+% cropping
+
+% \thinhrule used by crop symbols
+\def\thinhrule{\vrule width 10pt height 0.2 pt depth  0pt }
+
+\def\dlcrop{\leavevmode\thinhrule
+    \kern 2pt \vrule width .2pt  height -2pt depth 12pt}
+\def\drcrop{\leavevmode \vrule width .2pt
+height -2pt depth 12pt \kern 2pt \thinhrule }
+\def\ulcrop{\leavevmode\thinhrule \kern 2pt
+    \vrule width .2pt  height 12pt depth -2pt}
+\def\urcrop{\leavevmode \vrule width .2pt  height
+  12pt depth -2pt\kern 2pt \thinhrule}
+
+% end of localdef.tex
+
+
+% ......................................................................
+%\input{cyracc-stripped.tex}
+% identical to cyracc.def in plain tex version of amsfonts package
+
+%% @texfile{
+%%     filename="cyracc.def",
+%%     version="2.2",
+%%     date="4-JAN-1995",
+%%     filetype="TeX: option",
+%%     copyright="Copyright (C) American Mathematical Society,
+%%            all rights reserved.  Copying of this file is
+%%            authorized only if either:
+%%            (1) you make absolutely no changes to your copy
+%%                including name; OR
+%%            (2) if you do make changes, you first rename it to some
+%%                other name.",
+%%     author="American Mathematical Society",
+%%     keywords="amsfonts, tex, cyrillic",
+%%     abstract="This file contains definitions of accents and
+%%         special characters required for use of cyrillic fonts
+%%         arranged according to the AMS scheme.
+%%      The \font specification(s) should be made elsewhere, and should include
+%%              \newfam\cyrfam
+%%              \font\...cyr=wncyr...   (e.g. \font\tencyr=wncyr10 )
+%%      An appropriate definition for cyrillic, usable in math and text, is
+%%              \def\cyr{\fam\cyrfam\...cyr\cyracc}
+
+\chardef\tempcat=\the\catcode`\@
+\catcode`\@=11
+
+%  The first set of definitions is what will be in effect outside of cyrillic,
+%  i.e., in transliterated text.
+
+%  Definition of \cydot is not ideal; real dot should be in an accent font.
+\def\cydot{{\mathsurround=0pt$\cdot$}}
+
+%  \ubar is the definition of \b from PLAIN; it may not work in math mode.
+\def\ubar#1{\oalign{#1\crcr\hidewidth
+    \vbox to.2ex{\hbox{\char22}\vss}\hidewidth}}
+
+%  Soft and hard signs are represented in transliteration by prime and
+%  double prime respectively.
+\def\cprime{\/{\mathsurround=0pt$'$}}
+\def\Cprime{{\mathsurround=0pt$'$}}
+\def\cdprime{\/{\mathsurround=0pt$''$}}
+\def\Cdprime{{\mathsurround=0pt$\ubar{\hbox{$''$}}$}}
+
+\def\dbar{dj}           % make real barred d when accent font available
+\def\Dbar{Dj}           %  ""
+
+%  It would be nice to make these control sequences unnecessary; that will
+%  probably require d to become active.
+\def\dz{dz}
+\def\Dz{Dz}
+\def\dzh{dzh\cydot }
+\def\Dzh{Dzh\cydot }
+
+
+%  Stress marks are sometimes used in cyrillic text, mainly for pedagogic
+%  reasons.  These definitions support stress marks within {\cyr ...};
+%  in transliteration, they are suppressed.  Stress is indicated in
+%  input by \! preceding a letter on which a stress mark is to appear;
+%  an acute accent will appear in the output.  Since \! is also a plain
+%  command, for negative thin space in math mode, test for math mode and
+%  include the plain definition as appropriate.
+
+
+%%%%%%%%%%%%%%%%%%%%% Updated on 9-6-15 to get bold font for listing %%%%%%%%%%%%%%%%%%%%%%%%%
+\iflistbold\else\def\@gobble#1{}\fi
+%\def\@gobble#1{}
+%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%% 
+
+\def\@testgrave{\`}
+\def\@stressit{\futurelet\chartest\@stresschar }
+
+\def\@stresschar#1{%
+  \ifx #1y\def\result{\futurelet\chartest\@yligature}%
+  \else \ifx #1Y\def\result{\futurelet\chartest\@Yligature}%
+  \else \ifx\chartest\@testgrave \def\result{\accent"26 }%
+  \else \def\result{\accent"26 #1}%
+  \fi \fi \fi
+  \result }
+
+\def\@yligature{%
+  \ifx a\chartest \def\result{\accent"26 \char"1F \@gobble}%
+  \else \ifx u\chartest \def\result{\accent"26 \char"18 \@gobble}%
+  \else \def\result{\accent"26 y}%
+  \fi \fi
+  \result }
+
+\def\@Yligature{%
+  \ifx a\chartest \def\result{\accent"26 \char"17 \@gobble}%
+  \else \ifx A\chartest \def\result{\accent"26 \char"17 \@gobble}%
+  \else \ifx u\chartest \def\result{\accent"26 \char"10 \@gobble}%
+  \else \ifx U\chartest \def\result{\accent"26 \char"10 \@gobble}%
+  \else \def\result{\accent"26 Y}%
+  \fi \fi \fi \fi
+  \result }
+
+\def\!{\ifmmode \mskip-\thinmuskip \fi}
+
+
+%  These are the definitions that will produce cyrillic letters within
+%  {\cyr ...} for letters represented in input by control sequences and
+%  accented latin letters.
+
+\def\cyracc{%
+  \def\cydot{{\kern0pt}}%
+  \def\cprime{\char"7E }\def\Cprime{\char"5E }%
+  \def\cdprime{\char"7F }\def\Cdprime{\char"5F }%
+  \def\dbar{dj}\def\Dbar{Dj}%
+  \def\dz{\char"1E }\def\Dz{\char"16 }%
+  \def\dzh{\char"0A }\def\Dzh{\char"02 }%
+  \def\'##1{\if c##1\char"0F %
+    \else \if C##1\char"07 %
+    \else \accent"26 ##1\fi \fi }%
+  \def\`##1{\if e##1\char"0B %
+    \else \if E##1\char"03 %
+    \else \errmessage{accent \string\` not defined in cyrillic}%
+        ##1\fi \fi }%
+  \def\=##1{\if e##1\char"0D %
+    \else \if E##1\char"05 %
+    \else \if \i##1\char"0C %
+    \else \if I##1\char"04 %
+    \else \errmessage{accent \string\= not defined in cyrillic}%
+        ##1\fi \fi \fi \fi }%
+  \def\u##1{\if \i##1\accent"24 i%
+    \else \accent"24 ##1\fi }%
+  \def\"##1{\if \i##1\accent"20 \char"3D %
+    \else \if I##1\accent"20 \char"04 %
+    \else \accent"20 ##1\fi \fi }%
+  \def\!{\ifmmode \def\result{\mskip-\thinmuskip}%
+    \else \def\result{\@stressit}\fi \result}}
+
+
+%       If cyrillic strings are to be included in \mark's, the accents need
+%       to be kept in unexpanded form until the \mark's are interpreted.
+%       See note on \mark below for details.
+
+\def\keep@cyracc{\let\cyr=\relax \let\i=\relax
+        \let\ubar=\relax \let\cydot=\relax
+        \let\cprime=\relax \let\Cprime=\relax
+        \let\cdprime=\relax \let\Cdprime=\relax
+        \let\dbar=\relax \let\Dbar=\relax
+        \let\dz=\relax \let\Dz=\relax
+        \let\dzh=\relax \let\Dzh=\relax
+        \let\'=\relax \let\`=\relax \let\==\relax
+        \let\u=\relax \let\"=\relax \let\!=\relax }
+
+
+\catcode`\@=\tempcat
+%\endinput
+
+% end of cyracc-stripped.tex
+
+
+% ......................................................................
+%\input{rgreekmacros-hack.tex}
+% Almost identical to the rgreekmacros.tex provided with the rgreek fonts.
+% commented out line: /def/digamma
+
+% beginning of rgreekmacros-hack.tex
+
+% These macros initialize the modern greek fonts.
+% ftp://ftp.tex.ac.uk/tex-archive/fonts/greek/yannis/
+
+\def\lt{<}
+\def\gt{>}
+\newcount\fontnumber
+\fontnumber=0
+\newif\ifoneaccent\oneaccenttrue
+\def\ifnextchar#1#2#3{\let\tempe #1\def\tempa{#2}\def\tempb{#3}\futurelet
+  \tempc\ifnch}
+\def\ifnch{\ifx\tempc\tempe\let\tempd\tempa\else\let\tempd\tempb\fi\tempd}
+\def\gobble#1{}
+\def\greekmode{%
+\catcode`\<=13%
+\catcode`\>=13%
+\catcode`\'=11%
+\catcode`\`=13%
+\catcode`\~=11%
+\catcode`\"=13%
+\lccode`\<=`\<%
+\lccode`\>=`\>%
+\lccode`\'=`\'%
+\lccode`\~=`\~%
+\lccode`\"=`\"%
+\def\rg{\fontnumber=1\tengr}%
+\def\sl{\fontnumber=2\tengrsl}%
+\def\it{\fontnumber=3\tengrit}%
+\def\bf{\fontnumber=4\tengrbf}%
+\def\smc{\fontnumber=5\tengrsmc}%
+\def\I##1{\setbox0\hbox{##1}\ifdim\ht0=1ex\accent'174 ##1%
+  \else{\ooalign{\hidewidth\char'174\hidewidth\crcr\unhbox0}}\fi}}%
+\newcount\vwl
+\newcount\acct
+{
+  \greekmode
+  \gdef>{\ifnextchar ~{\expandafter\smoothcircumflex\gobble}{\char\lq\>}}
+  \gdef<{\ifnextchar ~{\expandafter\roughcircumflex\gobble}{\char\lq\<}}
+  \gdef\smoothcircumflex#1{\acct=\rq134 \vwl=\lq#1 \dobreathingcircumflex}
+  \gdef\roughcircumflex#1{\acct=\rq100 \vwl=\lq#1 \dobreathingcircumflex}
+  \gdef\dobreathingcircumflex{\ifnum\vwl\lt\rq140 %if uppercase
+    \char\the\acct\kern -.2em\char\the\vwl\else
+    \doaccent\fi}
+  \gdef\doaccent{\accent\the\acct \char\the\vwl\relax}
+  \gdef"{\ifnextchar '{\expandafter\diaeresisacute\gobble}{\accent\lq\"}}
+  \gdef\diaeresisacute#1{\accent\rq043 #1}
+  \gdef`{'}
+}
+
+\newif\ifgreek\greekfalse
+
+\def\begingreek{\bgroup\font\tengr=rgrrg10\font\tengrsl=rgrsl10%
+\font\tengrbf=rgrbf10\font\tengrit=rgrti10\font\tengrsmc=rgrsc10%
+\greektrue\greekmode\rg}
+\def\beginmgreek{\bgroup\font\tengr=mrgrrg10\font\tengrsl=mrgrsl10%
+\font\tengrbf=mrgrbf10\font\tengrit=mrgrti10\font\tengrsmc=rgrsc10%
+\greektrue\greekmode\rg}
+\def\endgreek{\egroup}
+\def\endmgreek{\egroup}
+\def\monotoniko{%
+\font\tengr=mrgrrg10\font\tengrsl=mrgrsl10%
+\font\tengrbf=mrgrbf10\font\tengrit=mrgrti10%
+\ifnum\fontnumber=5\smc%
+  \else\ifnum\fontnumber=4\bf%
+    \else\ifnum\fontnumber=3\it%
+      \else\ifnum\fontnumber=2\sl%
+        \else\rg%
+      \fi%
+    \fi%
+  \fi%
+\fi%
+}
+\def\polutoniko{%
+\font\tengr=rgrrg10\font\tengrsl=rgrsl10%
+\font\tengrbf=rgrbf10\font\tengrit=rgrti10%
+\ifnum\fontnumber=5\smc%
+  \else\ifnum\fontnumber=4\bf%
+    \else\ifnum\fontnumber=3\it%
+      \else\ifnum\fontnumber=2\sl%
+        \else\rg%
+      \fi%
+    \fi%
+  \fi%
+\fi%
+}
+\let\math=$%
+{\catcode`\$=13%
+\gdef\greekdelims{\catcode`\$=13%
+\def${\ifgreek\endgreek\else\begingreek\fi}
+\def\display{\math\math}\def\enddisplay{\math\math}}}
+%\def\grave#1{{\edef\next{\the\font}\smc\accent\rq001\next#1}}
+\def\roughgrave#1{{\edef\next{\the\font}\smc\accent\rq002\next#1}}
+\def\smoothgrave#1{{\edef\next{\the\font}\smc\accent\rq003\next#1}}
+\def\diaeresisgrave#1{{\edef\next{\the\font}\smc\accent\rq004\next#1}}
+\def\diaeresiscircumflex#1{{\edef\next{\the\font}\smc\accent\rq005\next#1}}
+%\def\breve#1{{\edef\next{\the\font}\smc\accent\rq006\next#1}}
+\def\macron#1{{\edef\next{\the\font}\smc\accent\rq007\next#1}}
+\def\rhorough{{\tengrsmc
+\ifnum\fontnumber=5\char\rq162
+  \else\ifnum\fontnumber=4\char\rq016
+    \else\ifnum\fontnumber=3\char\rq014
+      \else\ifnum\fontnumber=2\char\rq012
+        \else\char\rq010
+      \fi
+    \fi
+  \fi
+\fi
+}}
+\def\rhosmooth{{\tengrsmc
+\ifnum\fontnumber=5\char\rq162
+  \else\ifnum\fontnumber=4\char\rq017
+    \else\ifnum\fontnumber=3\char\rq015
+      \else\ifnum\fontnumber=2\char\rq013
+        \else\char\rq011
+      \fi
+    \fi
+  \fi
+\fi
+}}
+%\def\digamma{{\smc\char\rq135}}
+\def\smallDigamma{{\smc\char\rq140}}
+\def\Digamma{{\tengrsmc
+\ifnum\fontnumber=5\char\rq021
+  \else\ifnum\fontnumber=4\char\rq027
+    \else\ifnum\fontnumber=3\char\rq025
+      \else\ifnum\fontnumber=2\char\rq023
+        \else\char\rq021
+      \fi
+    \fi
+  \fi
+\fi
+}}
+\def\vardigamma{{\tengrsmc
+\ifnum\fontnumber=5\char\rq020
+  \else\ifnum\fontnumber=4\char\rq026
+    \else\ifnum\fontnumber=3\char\rq024
+      \else\ifnum\fontnumber=2\char\rq022
+        \else\char\rq020
+      \fi
+    \fi
+  \fi
+\fi
+}}
+\def\understroke{{\smc\char\rq046}}
+\def\overstroke{{\smc\char\rq044}}
+\def\sanpi{{\smc\char\rq136}}
+\def\Sanpi{{\smc\char\rq137}}
+\def\qoppa{{\smc\char\rq133}}
+\def\varqoppa{{\smc\char\rq134}}
+\def\Qoppa{{\smc\char\rq103}}
+\def\Tao{{\smc\char\rq177}}
+\def\ssh{\breve{s}}\def\SSH{\breve{S}}
+\def\dz{\breve{z}}\def\DZ{\breve{Z}}
+\def\psh{\breve{y}}\def\PSH{\breve{Y}}
+\def\ksh{\breve{x}}\def\KSH{\breve{X}}
+\def\inviota{{\smc\char\rq126}}
+\def\grMF{{\smc\char\rq030\char\rq031\char\rq032\char\rq033}\-{\smc%
+\char\rq034\char\rq036\char\rq037\char\rq032}}
+\def\MF{{\smc\char\rq030\char\rq031\char\rq032\char\rq033}\-{\smc%
+\char\rq040\char\rq036\char\rq037\char\rq032}}
+
+
+%%%% Customizing comands for LATEX Commands %%%%%
+
+
+\def\topbotatom#1{\hbox{\hbox to 0pt{$#1\bot$\hss}$#1\top$}}
+\newcommand*{\topbot}{\mathrel{\mathchoice{\topbotatom\displaystyle}
+{\topbotatom\textstyle}
+{\topbotatom\scriptstyle}
+{\topbotatom\scriptscriptstyle}}}
+
+\newcommand{\xmlintrosection}[1]{\section{#1}
+\setcounter{section}{1}}
+\let\xmlsection\section
+\newcommand{\xmlsectionnum}[1]{}
+
+\let\xmlsubsection\subsection
+\newcommand{\xmlsubsectionnum}[1]{}
+
+\let\xmlsubsubsection\subsubsection
+\newcommand{\xmlsubsubsectionnum}[1]{}
+
+\let\xmlparagraph\paragraph
+\newcommand{\xmlparagraphnum}[1]{}
+\let\xmlsubparagraph\subparagraph
+\newcommand{\xmlsubparagraphnum}[1]{}
+
+\newcommand{\xmltextvisiblespace}{\ }
+
+\def\xmlfigurenum#1{}
+\def\xmltablenum#1{}
+
+\def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+
+\def\mkb{}
+
+%%%% ISO ENTITIES %%%%%
+
+%%%%%%%%% 1. ISOamsa.ent (ISOamsamap.xsl)
+
+\newcommand{\xmlangzarr}{\ifmmode\rangledownzigzagarrow\else$\rangledownzigzagarrow$\fi}
+\newcommand{\xmlcirmid}{\ifmmode\cirmid\else$\cirmid$\fi}
+\newcommand{\xmlcudarrl}{\ifmmode\cwrightarcarrow\else$\cwrightarcarrow$\fi}
+\newcommand{\xmlcudarrr}{\ifmmode\curvearrowright\else$\curvearrowright$\fi}
+\newcommand{\xmlcularr}{\ifmmode\curvearrowleft\else$\curvearrowleft$\fi}
+\newcommand{\xmlcularrp}{\ifmmode\curvearrowleftplus\else$\curvearrowleftplus$\fi}
+\newcommand{\xmlcurarr}{\ifmmode\curvearrowright\else$\curvearrowright$\fi}
+\newcommand{\xmlcurarrm}{\ifmmode\curvearrowrightminus\else$\curvearrowrightminus$\fi}
+\newcommand{\xmldArr}{\ifmmode\Downarrow\else$\Downarrow$\fi}
+\newcommand{\xmlDarr}{\ifmmode\twoheaddownarrow\else$\twoheaddownarrow$\fi}
+\newcommand{\xmlddarr}{\ifmmode\downdownarrows\else$\downdownarrows$\fi}
+\newcommand{\xmlDDotrahd}{\ifmmode\rightdotarrow\else$\rightdotarrow$\fi}
+\newcommand{\xmldfisht}{\ifmmode\downfishtail\else$\downfishtail$\fi}
+\newcommand{\xmldHar}{\ifmmode\downharpoonsleftright\else$\downharpoonsleftright$\fi}
+\newcommand{\xmldharl}{\ifmmode\downharpoonleft\else$\downharpoonleft$\fi}
+\newcommand{\xmldharr}{\ifmmode\downharpoonright\else$\downharpoonright$\fi}
+\newcommand{\xmlduarr}{\ifmmode\downuparrows\else$\downuparrows$\fi}
+\newcommand{\xmlduhar}{\ifmmode\downupharpoonsleftright\else$\downupharpoonsleftright$\fi}
+\newcommand{\xmldzigrarr}{\ifmmode \else \fi}
+\newcommand{\xmlerarr}{\ifmmode\equalrightarrow\else$\equalrightarrow$\fi}
+\newcommand{\xmlharr}{\ifmmode\leftrightarrow\else$\leftrightarrow$\fi}
+\newcommand{\xmlhArr}{\ifmmode\Leftrightarrow\else$\Leftrightarrow$\fi}
+\newcommand{\xmlharrcir}{\ifmmode\leftrightarrowcircle\else$\leftrightarrowcircle$\fi}
+\newcommand{\xmlharrw}{\ifmmode\leftrightsquigarrow\else$\leftrightsquigarrow$\fi}
+\newcommand{\xmlhoarr}{\ifmmode\leftrightarrowtriangle\else$\leftrightarrowtriangle$\fi}
+\newcommand{\xmlimof}{\ifmmode\imageof\else$\imageof$\fi}
+\newcommand{\xmllAarr}{\ifmmode\Lleftarrow\else$\Lleftarrow$\fi}
+\newcommand{\xmlLarr}{\ifmmode\twoheadleftarrow\else$\twoheadleftarrow$\fi}
+\newcommand{\xmllarrbfs}{\ifmmode\diamondleftarrowbar\else$\diamondleftarrowbar$\fi}
+\newcommand{\xmllarrfs}{\ifmmode\diamondleftarrow\else$\diamondleftarrow$\fi}
+\newcommand{\xmllarrhk}{\ifmmode\hookleftarrow\else$\hookleftarrow$\fi}
+\newcommand{\xmllarrlp}{\ifmmode\looparrowleft\else$\looparrowleft$\fi}
+\newcommand{\xmllarrpl}{\ifmmode\leftarrowplus\else$\leftarrowplus$\fi}
+\newcommand{\xmllarrsim}{\ifmmode\leftarrowsimilar\else$\leftarrowsimilar$\fi}
+\newcommand{\xmllarrtl}{\ifmmode\leftarrowtail\else$\leftarrowtail$\fi}
+\newcommand{\xmllatail}{\ifmmode\lefttail\else$\lefttail$\fi}
+\newcommand{\xmllAtail}{\ifmmode\leftdbltail\else$\leftdbltail$\fi}
+\newcommand{\xmllbarr}{\ifmmode\leftbkarrow\else$\leftbkarrow$\fi}
+\newcommand{\xmllBarr}{\ifmmode\leftdbkarrow\else$\leftdbkarrow$\fi}
+\newcommand{\xmlldca}{\ifmmode\leftdowncurvedarrow\else$\leftdowncurvedarrow$\fi}
+\newcommand{\xmlldrdhar}{\ifmmode\leftrightharpoonsdown\else$\leftrightharpoonsdown$\fi}
+\newcommand{\xmlldrushar}{\ifmmode\leftrightharpoondownup\else$\leftrightharpoondownup$\fi}
+\newcommand{\xmlldsh}{\ifmmode\Ldsh\else$\Ldsh$\fi}
+\newcommand{\xmllfisht}{\ifmmode\leftfishtail\else$\leftfishtail$\fi}
+\newcommand{\xmllHar}{\ifmmode\leftharpoonsupdown\else$\leftharpoonsupdown$\fi}
+\newcommand{\xmllhard}{\ifmmode\leftharpoondown\else$\leftharpoondown$\fi}
+\newcommand{\xmllharu}{\ifmmode\leftharpoonup\else$\leftharpoonup$\fi}
+\newcommand{\xmllharul}{\ifmmode\leftharpoonupdash\else$\leftharpoonupdash$\fi}
+\newcommand{\xmlllarr}{\ifmmode\leftleftarrows\else$\leftleftarrows$\fi}
+\newcommand{\xmlllhard}{\ifmmode\dashleftharpoondown\else$\dashleftharpoondown$\fi}
+\newcommand{\xmlloarr}{\ifmmode\leftarrowtriangle\else$\leftarrowtriangle$\fi}
+\newcommand{\xmllrarr}{\ifmmode\leftrightarrows\else$\leftrightarrows$\fi}
+\newcommand{\xmllrhar}{\ifmmode\leftrightharpoons\else$\leftrightharpoons$\fi}
+\newcommand{\xmllrhard}{\ifmmode\dashrightharpoondown\else$\dashrightharpoondown$\fi}
+\newcommand{\xmllsh}{\ifmmode\Lsh\else$\Lsh$\fi}
+\newcommand{\xmllurdshar}{\ifmmode\leftrightharpoonupdown\else$\leftrightharpoonupdown$\fi}
+\newcommand{\xmlluruhar}{\ifmmode\leftrightharpoonsup\else$\leftrightharpoonsup$\fi}
+\newcommand{\xmlmap}{\ifmmode\mapsto\else{\mathsurround=\opskip$\mapsto$}\fi}
+\newcommand{\xmlMap}{\ifmmode\twoheadmapsto\else$\twoheadmapsto$\fi}
+\newcommand{\xmlmidcir}{\ifmmode\midcir\else$\midcir$\fi}
+\newcommand{\xmlmumap}{\ifmmode\multimap\else$\multimap$\fi}
+\newcommand{\xmlnearhk}{\ifmmode\hknearrow\else$\hknearrow$\fi}
+\newcommand{\xmlnearr}{\ifmmode\nearrow\else$\nearrow$\fi}
+\newcommand{\xmlneArr}{\ifmmode\Nearrow\else$\Nearrow$\fi}
+\newcommand{\xmlnesear}{\ifmmode\toea\else$\toea$\fi}
+\newcommand{\xmlnharr}{\ifmmode\nleftrightarrow\else$\nleftrightarrow$\fi}
+\newcommand{\xmlnhArr}{\ifmmode\nLeftrightarrow\else$\nLeftrightarrow$\fi}
+\newcommand{\xmlnlarr}{\ifmmode\nleftarrow\else$\nleftarrow$\fi}
+\newcommand{\xmlnlArr}{\ifmmode\nLeftarrow\else$\nLeftarrow$\fi}
+\newcommand{\xmlnrarr}{\ifmmode\nrightarrow\else$\nrightarrow$\fi}
+\newcommand{\xmlnrArr}{\ifmmode\nRightarrow\else$\nRightarrow$\fi}
+\newcommand{\xmlnvHarr}{\ifmmode\nvLeftrightarrow\else$\nvLeftrightarrow$\fi}
+\newcommand{\xmlnvlArr}{\ifmmode\nvLeftarrow\else$\nvLeftarrow$\fi}
+\newcommand{\xmlnvrArr}{\ifmmode\nvRightarrow\else$\nvRightarrow$\fi}
+\newcommand{\xmlnwarhk}{\ifmmode\hknwarrow\else$\hknwarrow$\fi}
+\newcommand{\xmlnwarr}{\ifmmode\nwarrow\else$\nwarrow$\fi}
+\newcommand{\xmlnwArr}{\ifmmode\Nwarrow\else$\Nwarrow$\fi}
+\newcommand{\xmlnwnear}{\ifmmode\tona\else$\tona$\fi}
+\newcommand{\xmlolarr}{\ifmmode\acwcirclearrow\else$\acwcirclearrow$\fi}
+\newcommand{\xmlorarr}{\ifmmode\cwcirclearrow\else$\cwcirclearrow$\fi}
+\newcommand{\xmlorigof}{\ifmmode\origof\else$\origof$\fi}
+\newcommand{\xmlrAarr}{\ifmmode\Rrightarrow\else$\Rrightarrow$\fi}
+\newcommand{\xmlRarr}{\ifmmode\twoheadrightarrow\else$\twoheadrightarrow$\fi}
+\newcommand{\xmlrarrap}{\ifmmode\rightarrowapprox\else$\rightarrowapprox$\fi}
+\newcommand{\xmlrarrbfs}{\ifmmode\barrightarrowdiamond\else$\barrightarrowdiamond$\fi}
+\newcommand{\xmlrarrc}{\ifmmode\rightcurvedarrow\else$\rightcurvedarrow$\fi}
+\newcommand{\xmlrarrfs}{\ifmmode\rightarrowdiamond\else$\rightarrowdiamond$\fi}
+\newcommand{\xmlrarrhk}{\ifmmode\hookrightarrow\else$\hookrightarrow$\fi}
+\newcommand{\xmlrarrlp}{\ifmmode\looparrowright\else$\looparrowright$\fi}
+\newcommand{\xmlrarrpl}{\ifmmode\rightarrowplus\else$\rightarrowplus$\fi}
+\newcommand{\xmlrarrsim}{\ifmmode\rightarrowsimilar\else$\rightarrowsimilar$\fi}
+\newcommand{\xmlrarrtl}{\ifmmode\rightarrowtail\else$\rightarrowtail$\fi}
+\newcommand{\xmlRarrtl}{\ifmmode\twoheadrightarrowtail\else$\twoheadrightarrowtail$\fi}
+\newcommand{\xmlrarrw}{\ifmmode\rightsquigarrow\else$\rightsquigarrow$\fi}
+\newcommand{\xmlratail}{\ifmmode\righttail\else$\righttail$\fi}
+\newcommand{\xmlrAtail}{\ifmmode\rightdbltail\else$\rightdbltail$\fi}
+\newcommand{\xmlrbarr}{\ifmmode\rightbkarrow\else$\rightbkarrow$\fi}
+\newcommand{\xmlrBarr}{\ifmmode\rightdbkarrow\else$\rightdbkarrow$\fi}
+\newcommand{\xmlRBarr}{\ifmmode\drbkarow\else$\drbkarow$\fi}
+\newcommand{\xmlrdca}{\ifmmode\rightdowncurvedarrow\else$\rightdowncurvedarrow$\fi}
+\newcommand{\xmlrdldhar}{\ifmmode\rightleftharpoonsdown\else$\rightleftharpoonsdown$\fi}
+\newcommand{\xmlrdsh}{\ifmmode\Rdsh\else$\Rdsh$\fi}
+\newcommand{\xmlrfisht}{\ifmmode\rightfishtail\else$\rightfishtail$\fi}
+\newcommand{\xmlrHar}{\ifmmode\rightharpoonsupdown\else$\rightharpoonsupdown$\fi}
+\newcommand{\xmlrhard}{\ifmmode\rightharpoondown\else$\rightharpoondown$\fi}
+\newcommand{\xmlrharu}{\ifmmode\rightharpoonup\else$\rightharpoonup$\fi}
+\newcommand{\xmlrharul}{\ifmmode\rightharpoonupdash\else$\rightharpoonupdash$\fi}
+\newcommand{\xmlrlarr}{\ifmmode\rightleftarrows\else$\rightleftarrows$\fi}
+\newcommand{\xmlrlhar}{\ifmmode\rightleftharpoons\else$\rightleftharpoons$\fi}
+\newcommand{\xmlroarr}{\ifmmode\rightarrowtriangle\else$\rightarrowtriangle$\fi}
+\newcommand{\xmlrrarr}{\ifmmode\rightrightarrows\else$\rightrightarrows$\fi}
+\newcommand{\xmlrsh}{\ifmmode\Rsh\else$\Rsh$\fi}
+\newcommand{\xmlruluhar}{\ifmmode\rightleftharpoonsup\else$\rightleftharpoonsup$\fi}
+\newcommand{\xmlsearhk}{\ifmmode\hksearow\else$\hksearow$\fi}
+\newcommand{\xmlsearr}{\ifmmode\searrow\else$\searrow$\fi}
+\newcommand{\xmlseArr}{\ifmmode\Searrow\else$\Searrow$\fi}
+\newcommand{\xmlseswar}{\ifmmode\tosa\else$\tosa$\fi}
+\newcommand{\xmlsimrarr}{\ifmmode\similarrightarrow\else$\similarrightarrow$\fi}
+\newcommand{\xmlslarr}{\ifmmode\shortleftarrow\else{\mathsurround=\opskip$\leftarrow$}\fi}
+\newcommand{\xmlsrarr}{\ifmmode\rightarrow\else{\mathsurround=\opskip$\rightarrow$}\fi}
+\newcommand{\xmlswarhk}{\ifmmode\hkswarow\else$\hkswarow$\fi}
+\newcommand{\xmlswarr}{\ifmmode\swarrow\else$\swarrow$\fi}
+\newcommand{\xmlswArr}{\ifmmode\Swarrow\else$\Swarrow$\fi}
+\newcommand{\xmlswnwar}{\ifmmode\towa\else$\towa$\fi}
+\newcommand{\xmluArr}{\ifmmode\Uparrow\else$\Uparrow$\fi}
+\newcommand{\xmlUarr}{\ifmmode\twoheaduparrow\else$\twoheaduparrow$\fi}
+\newcommand{\xmlUarrocir}{\ifmmode\twoheaduparrowcircle\else$\twoheaduparrowcircle$\fi}
+\newcommand{\xmludarr}{\ifmmode\updownarrow\else$\updownarrow$\fi}
+\newcommand{\xmludhar}{\ifmmode\updownharpoonsleftright\else$\updownharpoonsleftright$\fi}
+\newcommand{\xmlufisht}{\ifmmode\uparrowtail\else$\uparrowtail$\fi}
+\newcommand{\xmluHar}{\ifmmode\upharpoonleft\!\upharpoonright\else$\upharpoonleft\!\upharpoonright$\fi}
+\newcommand{\xmluharl}{\ifmmode\upharpoonleft\else$\upharpoonleft$\fi}
+\newcommand{\xmluharr}{\ifmmode\upharpoonright\else$\upharpoonright$\fi}
+\newcommand{\xmluuarr}{\ifmmode\upuparrows\else$\upuparrows$\fi}
+\newcommand{\xmlvarr}{\ifmmode\updownarrow\else$\updownarrow$\fi}
+\newcommand{\xmlvArr}{\ifmmode\Updownarrow\else$\Updownarrow$\fi}
+\newcommand{\xmlxharr}{\ifmmode\longleftrightarrow\else$\longleftrightarrow$\fi}
+\newcommand{\xmlxhArr}{\ifmmode\Longleftrightarrow\else$\Longleftrightarrow$\fi}
+\newcommand{\xmlxlarr}{\ifmmode\longleftarrow\else$\longleftarrow$\fi}
+\newcommand{\xmlxlArr}{\ifmmode\Longleftarrow\else$\Longleftarrow$\fi}
+\newcommand{\xmlxmap}{\ifmmode\longmapsto\else$\longmapsto$\fi}
+\newcommand{\xmlxrarr}{\ifmmode\longrightarrow\else$\longrightarrow$\fi}
+\newcommand{\xmlxrArr}{\ifmmode\Longrightarrow\else$\Longrightarrow$\fi}
+\newcommand{\xmlzigrarr}{\ifmmode\rightsquigarrow\else$\rightsquigarrow$\fi}
+
+
+
+%%%%%%%%% 2. ISOamsb.ent (ISOamsbmap.xsl)
+
+\newcommand{\xmlac}{\ifmmode\ac\else$\ac$\fi}
+\newcommand{\xmlamalg}{\ifmmode\amalg\else$\amalg$\fi}
+\newcommand{\xmlbarvee}{\ifmmode\barvee\else$\barvee$\fi}
+\newcommand{\xmlbarwed}{\ifmmode\barwedge\else$\barwedge$\fi}
+\newcommand{\xmlBarwed}{\ifmmode\doublebarwedge\else$\doublebarwedge$\fi}
+\newcommand{\xmlbsolb}{\ifmmode\boxbslash\else$\boxbslash$\fi}
+\newcommand{\xmlCap}{\ifmmode\Cap\else$\Cap$\fi}
+\newcommand{\xmlcapand}{\ifmmode\capwedge\else$\capwedge$\fi}
+\newcommand{\xmlcapbrcup}{\ifmmode\capbarcup\else$\capbarcup$\fi}
+\newcommand{\xmlcapcap}{\ifmmode\twocaps\else$\twocaps$\fi}
+\newcommand{\xmlcapcup}{\ifmmode\capovercup\else$\capovercup$\fi}
+\newcommand{\xmlcapdot}{\ifmmode\capdot\else$\capdot$\fi}
+\newcommand{\xmlccaps}{\ifmmode\closedvarcap\else$\closedvarcap$\fi}
+\newcommand{\xmlccups}{\ifmmode\closedvarcup\else$\closedvarcup$\fi}
+\newcommand{\xmlccupssm}{\ifmmode\closedvarcupsmashprod\else$\closedvarcupsmashprod$\fi}
+\newcommand{\xmlcoprod}{\ifmmode\coprod\else$\coprod$\fi}
+\newcommand{\xmlCup}{\ifmmode\Cup\else$\Cup$\fi}
+\newcommand{\xmlcupbrcap}{\ifmmode\cupbarcap\else$\cupbarcap$\fi}
+\newcommand{\xmlcupcap}{\ifmmode\cupovercap\else$\cupovercap$\fi}
+\newcommand{\xmlcupcup}{\ifmmode\twocups\else$\twocups$\fi}
+\newcommand{\xmlcupdot}{\ifmmode\cupdot\else$\cupdot$\fi}
+\newcommand{\xmlcupor}{\ifmmode\cupvee\else$\cupvee$\fi}
+\newcommand{\xmlcuvee}{\ifmmode\curlyvee\else$\curlyvee$\fi}
+\newcommand{\xmlcuwed}{\ifmmode\curlywedge\else$\curlywedge$\fi}
+\newcommand{\xmldagger}{\ifmmode\dagger\else$^\dagger$\fi}
+\newcommand{\xmlDagger}{\ifmmode\ddagger\else$^\ddagger$\fi}
+\newcommand{\xmldiam}{\ifmmode\diamond\else$\diamond$\fi}
+\newcommand{\xmldivonx}{\ifmmode\divideontimes\else$\divideontimes$\fi}
+\newcommand{\xmleplus}{\ifmmode\eqqplus\else$\eqqplus$\fi}
+\newcommand{\xmlhercon}{\ifmmode\hermitmatrix\else$\hermitmatrix$\fi}
+\newcommand{\xmlintcal}{\ifmmode\intercal\else$\intercal$\fi}
+\newcommand{\xmliprod}{\ifmmode\intprod\else$\intprod$\fi}
+\newcommand{\xmlloplus}{\ifmmode\opluslhrim\else$\opluslhrim$\fi}
+\newcommand{\xmllotimes}{\ifmmode\otimeslhrim\else$\otimeslhrim$\fi}
+\newcommand{\xmllthree}{\ifmmode\leftthreetimes\else$\leftthreetimes$\fi}
+\newcommand{\xmlltimes}{\ifmmode\ltimes\else$\ltimes$\fi}
+\newcommand{\xmlmidast}{\ifmmode\,\ast\,\else$\,\ast\,$\fi}
+\newcommand{\xmlminusb}{\ifmmode\boxminus\else$\boxminus$\fi}
+\newcommand{\xmlminusd}{\ifmmode\dotminus\else$\dotminus$\fi}
+\newcommand{\xmlminusdu}{\ifmmode\minusdot\else$\minusdot$\fi}
+\newcommand{\xmlncap}{\ifmmode\barcap\else$\barcap$\fi}
+\newcommand{\xmlncup}{\ifmmode\barcup\else$\barcup$\fi}
+\newcommand{\xmloast}{\ifmmode\circledast\else$\circledast$\fi}
+\newcommand{\xmlocir}{\ifmmode\circledcirc\else$\circledcirc$\fi}
+\newcommand{\xmlodash}{\ifmmode\circleddash\else$\circleddash$\fi}
+\newcommand{\xmlodiv}{\ifmmode\odiv\else$\odiv$\fi}
+\newcommand{\xmlodot}{\ifmmode\odot\else$\odot$\fi}
+\newcommand{\xmlodsold}{\ifmmode\odotslashdot\else$\odotslashdot$\fi}
+\newcommand{\xmlofcir}{\ifmmode\circledbullet\else$\circledbullet$\fi}
+\newcommand{\xmlogt}{\ifmmode\ogreaterthan\else$\ogreaterthan$\fi}
+\newcommand{\xmlohbar}{\ifmmode\circlehbar\else$\circlehbar$\fi}
+\newcommand{\xmlolcir}{\ifmmode\circledwhitebullet\else$\circledwhitebullet$\fi}
+\newcommand{\xmlolt}{\ifmmode\olessthan\else$\olessthan$\fi}
+\newcommand{\xmlomid}{\ifmmode\circledvert\else$\circledvert$\fi}
+\newcommand{\xmlominus}{\ifmmode\ominus\else$\ominus$\fi}
+\newcommand{\xmlopar}{\ifmmode\circledparallel\else$\circledparallel$\fi}
+\newcommand{\xmloperp}{\ifmmode\operp\else$\operp$\fi}
+\newcommand{\xmloplus}{\ifmmode\oplus\else$\oplus$\fi}
+\newcommand{\xmlosol}{\ifmmode\oslash\else$\oslash$\fi}
+\newcommand{\xmlotimes}{\ifmmode\otimes\else$\otimes$\fi}
+\newcommand{\xmlOtimes}{\ifmmode\Otimes\else$\Otimes$\fi}
+\newcommand{\xmlotimesas}{\ifmmode\otimeshat\else$\otimeshat$\fi}
+\newcommand{\xmlovbar}{\ifmmode\obar\else$\obar$\fi}
+\newcommand{\xmlplusacir}{\ifmmode\plushat\else$\plushat$\fi}
+\newcommand{\xmlplusb}{\ifmmode\boxplus\else$\boxplus$\fi}
+\newcommand{\xmlpluscir}{\ifmmode\ringplus\else$\ringplus$\fi}
+\newcommand{\xmlplusdo}{\ifmmode\dotplus\else$\dotplus$\fi}
+\newcommand{\xmlplusdu}{\ifmmode\plusdot\else$\plusdot$\fi}
+\newcommand{\xmlpluse}{\ifmmode\pluseqq\else$\pluseqq$\fi}
+\newcommand{\xmlplussim}{\ifmmode\plussim\else$\plussim$\fi}
+\newcommand{\xmlplustwo}{\ifmmode\plussubtwo\else$\plussubtwo$\fi}
+\newcommand{\xmlprod}{\ifmmode\prod\else$\prod$\fi}
+\newcommand{\xmlrace}{\ifmmode\race\else$\race$\fi}
+\newcommand{\xmlroplus}{\ifmmode\oplusrhrim\else$\oplusrhrim$\fi}
+\newcommand{\xmlrotimes}{\ifmmode\otimesrhrim\else$\otimesrhrim$\fi}
+\newcommand{\xmlrthree}{\ifmmode\rightthreetimes\else$\rightthreetimes$\fi}
+\newcommand{\xmlrtimes}{\ifmmode\rtimes\else$\rtimes$\fi}
+\newcommand{\xmlsdot}{\ifmmode\cdot\else{\mathsurround=\opskip$\cdot$}\fi}
+\newcommand{\xmlsdotb}{\ifmmode\boxdot\else$\boxdot$\fi}
+\newcommand{\xmlsetmn}{\ifmmode\setminus\else$\setminus$\fi}
+\newcommand{\xmlsimplus}{\ifmmode\simplus\else$\simplus$\fi}
+\newcommand{\xmlsmashp}{\ifmmode\smashtimes\else$\smashtimes$\fi}
+\newcommand{\xmlsolb}{\ifmmode\boxdiag\else$\boxdiag$\fi}
+\newcommand{\xmlsqcap}{\ifmmode\sqcap\else$\sqcap$\fi}
+\newcommand{\xmlsqcup}{\ifmmode\sqcup\else$\sqcup$\fi}
+\newcommand{\xmlssetmn}{\ifmmode\smallsetminus\else$\smallsetminus$\fi}
+\newcommand{\xmlsstarf}{\ifmmode\star\else$\star$\fi}
+\newcommand{\xmlsubdot}{\ifmmode\subsetdot\else$\subsetdot$\fi}
+\newcommand{\xmlsum}{\ifmmode\sum\else$\sum$\fi}
+\newcommand{\xmlsupdot}{\ifmmode\supsetdot\else$\supsetdot$\fi}
+\newcommand{\xmltimesb}{\ifmmode\boxtimes\else$\boxtimes$\fi}
+\newcommand{\xmltimesbar}{\ifmmode\timesbar\else$\timesbar$\fi}
+\newcommand{\xmltimesd}{\ifmmode\dottimes\else$\dottimes$\fi}
+\newcommand{\xmltridot}{\ifmmode\trianglecdot\else$\trianglecdot$\fi}
+\newcommand{\xmltriminus}{\ifmmode\triangleminus\else$\triangleminus$\fi}
+\newcommand{\xmltriplus}{\ifmmode\triangleplus\else$\triangleplus$\fi}
+\newcommand{\xmltrisb}{\ifmmode\triangleserifs\else$\triangleserifs$\fi}
+\newcommand{\xmltritime}{\ifmmode\triangletimes\else$\triangletimes$\fi}
+\newcommand{\xmluplus}{\ifmmode\uplus\else$\uplus$\fi}
+\newcommand{\xmlveebar}{\ifmmode\veebar\else$\veebar$\fi}
+\newcommand{\xmlwedbar}{\ifmmode\wedgebar\else$\wedgebar$\fi}
+\newcommand{\xmlwreath}{\ifmmode\wr\else$\wr$\fi}
+\newcommand{\xmlxcap}{\ifmmode\bigcap\else$\bigcap$\fi}
+\newcommand{\xmlxcirc}{\ifmmode\bigcirc\else$\bigcirc$\fi}
+\newcommand{\xmlxcup}{\ifmmode\bigcup\else$\bigcup$\fi}
+\newcommand{\xmlxdtri}{\ifmmode\bigtriangledown\else$\bigtriangledown$\fi}
+\newcommand{\xmlxodot}{\ifmmode\bigodot\else$\bigodot$\fi}
+\newcommand{\xmlxoplus}{\ifmmode\bigoplus\else$\bigoplus$\fi}
+\newcommand{\xmlxotime}{\ifmmode\bigotimes\else$\bigotimes$\fi}
+\newcommand{\xmlxsqcup}{\ifmmode\bigsqcup\else$\bigsqcup$\fi}
+\newcommand{\xmlxuplus}{\ifmmode\biguplus\else$\biguplus$\fi}
+\newcommand{\xmlxutri}{\ifmmode\bigtriangleup\else$\bigtriangleup$\fi}
+\newcommand{\xmlxvee}{\ifmmode\bigvee\else$\bigvee$\fi}
+\newcommand{\xmlxwedge}{\ifmmode\bigwedge\else$\bigwedge$\fi}
+
+%%%%%%%%% 3. ISOamsc.ent (ISOamscmap.xsl)
+
+\newcommand{\xmldlcorn}{\ifmmode\llcorner\else$\llcorner$\fi}
+\newcommand{\xmldrcorn}{\ifmmode\lrcorner\else$\lrcorner$\fi}
+\newcommand{\xmlgtlPar}{\ifmmode\Lparengtr\else$\Lparengtr$\fi}
+\newcommand{\xmllangd}{\ifmmode\langledot\else$\langledot$\fi}
+\newcommand{\xmllbrke}{\ifmmode\lbrackubar\else$\lbrackubar$\fi}
+\newcommand{\xmllbrksld}{\ifmmode\lbracklltick\else$\lbracklltick$\fi}
+\newcommand{\xmllbrkslu}{\ifmmode\lbrackultick\else$\lbrackultick$\fi}
+\newcommand{\xmllceil}{\ifmmode\lceil\else$\lceil$\fi}
+\newcommand{\xmllfloor}{\ifmmode\lfloor\else$\lfloor$\fi}
+\newcommand{\xmllmoust}{\ifmmode\lmoustache\else$\lmoustache$\fi}
+\newcommand{\xmllparlt}{\ifmmode\lparenless\else$\lparenless$\fi}
+\newcommand{\xmlltrPar}{\ifmmode\Rparenless\else$\Rparenless$\fi}
+\newcommand{\xmlrangd}{\ifmmode\rangledot\else$\rangledot$\fi}
+\newcommand{\xmlrbrke}{\ifmmode\rbrackubar\else$\rbrackubar$\fi}
+\newcommand{\xmlrbrksld}{\ifmmode\rbracklrtick\else$\rbracklrtick$\fi}
+\newcommand{\xmlrbrkslu}{\ifmmode\rbrackurtick\else$\rbrackurtick$\fi}
+\newcommand{\xmlrceil}{\ifmmode\rceil\else$\rceil$\fi}
+\newcommand{\xmlrfloor}{\ifmmode\rfloor\else$\rfloor$\fi}
+\newcommand{\xmlrmoust}{\ifmmode\rmoustache\else$\rmoustache$\fi}
+\newcommand{\xmlrpargt}{\ifmmode\rparengtr\else$\rparengtr$\fi}
+\newcommand{\xmlulcorn}{\ifmmode\ulcorner\else$\ulcorner$\fi}
+\newcommand{\xmlurcorn}{\ifmmode\urcorner\else$\urcorner$\fi}
+
+
+%%%%%%%%% 4. ISOamsn.ent (ISOamsnmap.xsl)
+
+\newcommand{\xmlgnap}{\ifmmode\gnapprox\else$\gnapprox$\fi}
+\newcommand{\xmlgne}{\ifmmode\gneq\else$\gneq$\fi}
+\newcommand{\xmlgnE}{\ifmmode\gneqq\else$\gneqq$\fi}
+\newcommand{\xmlgnsim}{\ifmmode\gnsim\else$\gnsim$\fi}
+%gvnE
+\newcommand{\xmllnap}{\ifmmode\lnapprox\else$\lnapprox$\fi}
+\newcommand{\xmllne}{\ifmmode\lneq\else$\lneq$\fi}
+\newcommand{\xmllnE}{\ifmmode\lneqq\else$\lneqq$\fi}
+\newcommand{\xmllnsim}{\ifmmode\lnsim\else$\lnsim$\fi}
+%lvnE
+\newcommand{\xmlnap}{\ifmmode\napprox\else$\napprox$\fi}
+%napE
+%napid
+\newcommand{\xmlncong}{\ifmmode\ncong\else$\ncong$\fi}
+%ncongdot
+\newcommand{\xmlnequiv}{\ifmmode\nequiv\else$\nequiv$\fi}
+\newcommand{\xmlnge}{\ifmmode\ngeq\else$\ngeq$\fi}
+%ngE
+%nges
+%nGg
+\newcommand{\xmlngsim}{\ifmmode\ngtrsim\else$\ngtrsim$\fi}
+\newcommand{\xmlngt}{\ifmmode\ngtr\else$\ngtr$\fi}
+%nGt
+%nGtv
+\newcommand{\xmlnle}{\ifmmode\nleq\else$\nleq$\fi}
+%nlE
+%nles
+%nLl
+\newcommand{\xmlnlsim}{\ifmmode\nlesssim\else$\nlesssim$\fi}
+\newcommand{\xmlnlt}{\ifmmode\nless\else$\nless$\fi}
+%nLt
+\newcommand{\xmlnltri}{\ifmmode\ntriangleleft\else$\ntriangleleft$\fi}
+\newcommand{\xmlnltrie}{\ifmmode\ntrianglelefteq\else$\ntrianglelefteq$\fi}
+%nLtv
+\newcommand{\xmlnmid}{\ifmmode\nmid\else$\nmid$\fi}
+\newcommand{\xmlnpar}{\ifmmode\nparallel\else$\nparallel$\fi}
+\newcommand{\xmlnpr}{\ifmmode\nprec\else$\nprec$\fi}
+\newcommand{\xmlnprcue}{\ifmmode\npreccurlyeq\else$\npreccurlyeq$\fi}
+%npre
+\newcommand{\xmlnrtri}{\ifmmode\ntriangleright\else$\ntriangleright$\fi}
+\newcommand{\xmlnrtrie}{\ifmmode\ntrianglerighteq\else$\ntrianglerighteq$\fi}
+\newcommand{\xmlnsc}{\ifmmode\nsucc\else$\nsucc$\fi}
+\newcommand{\xmlnsccue}{\ifmmode\nsucccurlyeq\else$\nsucccurlyeq$\fi}
+%nsce
+\newcommand{\xmlnsim}{\ifmmode\nsim\else$\nsim$\fi}
+\newcommand{\xmlnsime}{\ifmmode\nsime\else$\nsime$\fi}
+\newcommand{\xmlnsmid}{\ifmmode\nshortmid\else$\nshortmid$\fi}
+\newcommand{\xmlnspar}{\ifmmode\nshortparallel\else$\nshortparallel$\fi}
+\newcommand{\xmlnsqsube}{\ifmmode\nsqsubseteq\else$\nsqsubseteq$\fi}
+\newcommand{\xmlnsqsupe}{\ifmmode\nsqsupseteq\else$\nsqsupseteq$\fi}
+\newcommand{\xmlnsub}{\ifmmode\nsubset\else$\nsubset$\fi}
+\newcommand{\xmlnsube}{\ifmmode\nsubseteq\else$\nsubseteq$\fi}
+%nsubE
+\newcommand{\xmlnsup}{\ifmmode\nsupset\else$\nsupset$\fi}
+\newcommand{\xmlnsupe}{\ifmmode\nsupseteq\else$\nsupseteq$\fi}
+%nsupE
+\newcommand{\xmlntgl}{\ifmmode\ngtrless\else$\ngtrless$\fi}
+\newcommand{\xmlntlg}{\ifmmode\nlessgtr\else$\nlessgtr$\fi}
+%nvap
+\newcommand{\xmlnvdash}{\ifmmode\nvdash\else$\nvdash$\fi}
+\newcommand{\xmlnvDash}{\ifmmode\nvDash\else$\nvDash$\fi}
+\newcommand{\xmlnVdash}{\ifmmode\nVdash\else$\nVdash$\fi}
+\newcommand{\xmlnVDash}{\ifmmode\nVDash\else$\nVDash$\fi}
+%nvge
+%nvgt
+%nvle
+%nvlt
+%nvltrie
+%nvrtrie
+%nvsim
+\newcommand{\xmlparsim}{\ifmmode\parsim\else$\parsim$\fi}
+\newcommand{\xmlprnap}{\ifmmode\precnapprox\else$\precnapprox$\fi}
+\newcommand{\xmlprnE}{\ifmmode\precneqq\else$\precneqq$\fi}
+\newcommand{\xmlprnsim}{\ifmmode\precnsim\else$\precnsim$\fi}
+\newcommand{\xmlrnmid}{\ifmmode\revnmid\else$\revnmid$\fi}
+\newcommand{\xmlscnap}{\ifmmode\succnapprox\else$\succnapprox$\fi}
+\newcommand{\xmlscnE}{\ifmmode\succneqq\else$\succneqq$\fi}
+\newcommand{\xmlscnsim}{\ifmmode\succnsim\else$\succnsim$\fi}
+\newcommand{\xmlsimne}{\ifmmode\simneqq\else$\simneqq$\fi}
+\newcommand{\xmlsolbar}{\ifmmode\APLnotslash\else$\APLnotslash$\fi}
+\newcommand{\xmlsubne}{\ifmmode\subsetneq\else$\subsetneq$\fi}
+\newcommand{\xmlsubnE}{\ifmmode\subsetneqq\else$\subsetneqq$\fi}
+\newcommand{\xmlsupne}{\ifmmode\supsetneq\else$\supsetneq$\fi}
+\newcommand{\xmlsupnE}{\ifmmode\supsetneqq\else$\supsetneqq$\fi}
+%vnsub
+%vnsup
+%vsubne
+%vsubnE
+%vsupne
+%vsupnE
+
+%%%%%%%%% 5. ISOamso.ent (ISOamsomap.xsl)
+
+%\font\vin=mtsyn
+
+\newcommand{\xmlang}{\ifmmode\angle\else$\angle$\fi}
+\newcommand{\xmlange}{\ifmmode\angleubar\else$\angleubar$\fi}
+\newcommand{\xmlangmsd}{\ifmmode\measuredangle\else$\measuredangle$\fi}
+\newcommand{\xmlangmsdaa}{\ifmmode\measanglerutone\else$\measanglerutone$\fi}
+\newcommand{\xmlangmsdab}{\ifmmode\measanglelutonw\else$\measanglelutonw$\fi}
+\newcommand{\xmlangmsdac}{\ifmmode\measanglerdtose\else$\measanglerdtose$\fi}
+\newcommand{\xmlangmsdad}{\ifmmode\measangleldtosw\else$\measangleldtosw$\fi}
+\newcommand{\xmlangmsdae}{\ifmmode\measangleurtone\else$\measangleurtone$\fi}
+\newcommand{\xmlangmsdaf}{\ifmmode\measangleultonw\else$\measangleultonw$\fi}
+\newcommand{\xmlangmsdag}{\ifmmode\measangledrtose\else$\measangledrtose$\fi}
+\newcommand{\xmlangmsdah}{\ifmmode\measangledltosw\else$\measangledltosw$\fi}
+\newcommand{\xmlangrtvb}{\ifmmode\measuredrightangle\else$\measuredrightangle$\fi}
+\newcommand{\xmlangrtvbd}{\ifmmode\rightanglemdot\else$\rightanglemdot$\fi}
+\newcommand{\xmlbbrk}{\ifmmode\underbracket\else$\underbracket$\fi}
+\newcommand{\xmlbemptyv}{\ifmmode\revemptyset\else$\revemptyset$\fi}
+\newcommand{\xmlbeth}{\ifmmode\beth\else$\beth$\fi}
+\newcommand{\xmlboxbox}{\ifmmode\boxbox\else$\boxbox$\fi}
+\newcommand{\xmlbprime}{\ifmmode\text{\textbackprime}\else\textbackprime\fi}
+\newcommand{\xmlbsemi}{\ifmmode\text{\textsemicolonreversed}\else\textsemicolonreversed\fi}
+\newcommand{\xmlcemptyv}{\ifmmode\emptysetocirc\else$\emptysetocirc$\fi}
+\newcommand{\xmlcirE}{\ifmmode\cirE\else$\cirE$\fi}
+\newcommand{\xmlcirscir}{\ifmmode\cirscir\else$\cirscir$\fi}
+\newcommand{\xmlcomp}{\ifmmode\complement\else$\complement$\fi}
+\newcommand{\xmldaleth}{\ifmmode\daleth\else$\daleth$\fi}
+\newcommand{\xmldemptyv}{\ifmmode\emptysetobar\else$\emptysetobar$\fi}
+\newcommand{\xmlell}{\ifmmode\ell\else$\ell$\fi}
+%\newcommand{\xmlempty}{\ifmmode{\text{\vin\char'073}}\else${\text{\vin\char'073}}$\fi}
+\newcommand{\xmlempty}{\ifmmode\emptyset\else$\emptyset$\fi}
+\newcommand{\xmlemptyv}{\ifmmode\varnothing\else$\varnothing$\fi}
+\newcommand{\xmlgimel}{\ifmmode\gimel\else$\gimel$\fi}
+\newcommand{\xmliiota}{\ifmmode\turnediota\else$\turnediota$\fi}
+\newcommand{\xmlimage}{\ifmmode\Im\else$\Im$\fi}
+\newcommand{\xmlimath}{\ifmmode\i\else\i\fi}
+%jmath
+\newcommand{\xmllaemptyv}{\ifmmode\emptysetoarrl\else$\emptysetoarrl$\fi}
+\newcommand{\xmllltri}{\ifmmode\lltriangle\else$\lltriangle$\fi}
+\newcommand{\xmllrtri}{\ifmmode\lrtriangle\else$\lrtriangle$\fi}
+\newcommand{\xmlmho}{\ifmmode\mho\else$\mho$\fi}
+%nang
+\newcommand{\xmlnexist}{\ifmmode\nexists\else$\nexists$\fi}
+\newcommand{\xmloS}{\ifmmode\circledS\else$\circledS$\fi}
+\newcommand{\xmlplanck}{\ifmmode\hslash\else$\hslash$\fi}
+\newcommand{\xmlplankv}{\ifmmode\hslash\else$\hslash$\fi}
+\newcommand{\xmlraemptyv}{\ifmmode\emptysetoarr\else$\emptysetoarr$\fi}
+\newcommand{\xmlrange}{\ifmmode\revangleubar\else$\revangleubar$\fi}
+\newcommand{\xmlreal}{\ifmmode\Re\else$\Re$\fi}
+\newcommand{\xmltbrk}{\ifmmode\overbracket\else$\overbracket$\fi}
+\newcommand{\xmlultri}{\ifmmode\ultriangle\else$\ultriangle$\fi}
+\newcommand{\xmlurtri}{\ifmmode\urtriangle\else$\urtriangle$\fi}
+\newcommand{\xmlvzigzag}{\ifmmode\vzigzag\else$\vzigzag$\fi}
+\newcommand{\xmlweierp}{\ifmmode\wp\else$\wp$\fi}
+
+
+%\newcommand{\xmlbbrktbrk}{\ifmmode\bbrktbrk\else$\bbrktbrk$\fi}
+%\newcommand{\xmltrpezium}{\ifmmode\trapezium\else$\trapezium$\fi}
+
+
+%%%%%%%%% 6. ISOamsr.ent (ISOamsrmap.xsl)
+
+\newcommand{\xmlape}{\ifmmode\approxeq\else$\approxeq$\fi}
+\newcommand{\xmlapE}{\ifmmode\approxeqq\else$\approxeqq$\fi}
+\newcommand{\xmlapid}{\ifmmode\approxident\else$\approxident$\fi}
+\newcommand{\xmlasymp}{\ifmmode\asymp\else$\asymp$\fi}
+\newcommand{\xmlBarv}{\ifmmode\Barv\else$\Barv$\fi}
+\newcommand{\xmlbcong}{\ifmmode\backcong\else$\backcong$\fi}
+\newcommand{\xmlbepsi}{\ifmmode\upbackepsilon\else$\upbackepsilon$\fi}
+\newcommand{\xmlbowtie}{\ifmmode\bowtie\else$\bowtie$\fi}
+\newcommand{\xmlbsim}{\ifmmode\backsim\else$\backsim$\fi}
+\newcommand{\xmlbsime}{\ifmmode\backsimeq\else$\backsimeq$\fi}
+%bsolhsub
+\newcommand{\xmlbump}{\ifmmode\Bumpeq\else$\Bumpeq$\fi}
+\newcommand{\xmlbumpe}{\ifmmode\bumpeq\else$\bumpeq$\fi}
+\newcommand{\xmlbumpE}{\ifmmode\bumpeqq\else$\bumpeqq$\fi}
+\newcommand{\xmlcire}{\ifmmode\circeq\else$\circeq$\fi}
+\newcommand{\xmlColon}{\ifmmode\Colon\else$\Colon$\fi}
+\newcommand{\xmlcolone}{\ifmmode\coloneq\else$\coloneq$\fi}
+\newcommand{\xmlColone}{\ifmmode\Coloneq\else$\Coloneq$\fi}
+\newcommand{\xmlcongdot}{\ifmmode\congdot\else$\congdot$\fi}
+\newcommand{\xmlcsub}{\ifmmode\csub\else$\csub$\fi}
+\newcommand{\xmlcsube}{\ifmmode\csube\else$\csube$\fi}
+\newcommand{\xmlcsup}{\ifmmode\csup\else$\csup$\fi}
+\newcommand{\xmlcsupe}{\ifmmode\csupe\else$\csupe$\fi}
+\newcommand{\xmlcuepr}{\ifmmode\curlyeqprec\else$\curlyeqprec$\fi}
+\newcommand{\xmlcuesc}{\ifmmode\curlyeqsucc\else$\curlyeqsucc$\fi}
+\newcommand{\xmldashv}{\ifmmode\dashv\else$\dashv$\fi}
+\newcommand{\xmlDashv}{\ifmmode\Dashv\else$\Dashv$\fi}
+\newcommand{\xmleaster}{\ifmmode\asteq\else$\asteq$\fi}
+\newcommand{\xmlecir}{\ifmmode\eqcirc\else$\eqcirc$\fi}
+\newcommand{\xmlecolon}{\ifmmode\eqcolon\else$\eqcolon$\fi}
+\newcommand{\xmleDDot}{\ifmmode\ddotseq\else$\ddotseq$\fi}
+\newcommand{\xmleDot}{\ifmmode\Doteq\else$\Doteq$\fi}
+\newcommand{\xmlefDot}{\ifmmode\fallingdotseq\else$\fallingdotseq$\fi}
+\newcommand{\xmleg}{\ifmmode\eqgtr\else$\eqgtr$\fi}
+\newcommand{\xmlegs}{\ifmmode\eqslantgtr\else$\eqslantgtr$\fi}
+\newcommand{\xmlegsdot}{\ifmmode\egsdot\else$\egsdot$\fi}
+\newcommand{\xmlel}{\ifmmode\eqless\else$\eqless$\fi}
+\newcommand{\xmlels}{\ifmmode\eqslantless\else$\eqslantless$\fi}
+\newcommand{\xmlelsdot}{\ifmmode\elsdot\else$\elsdot$\fi}
+\newcommand{\xmlequest}{\ifmmode\questeq\else$\questeq$\fi}
+\newcommand{\xmlequivDD}{\ifmmode\equivDD\else$\equivDD$\fi}
+\newcommand{\xmlerDot}{\ifmmode\risingdotseq\else$\risingdotseq$\fi}
+\newcommand{\xmlesdot}{\ifmmode\doteq\else$\doteq$\fi}
+\newcommand{\xmlesim}{\ifmmode\eqsim\else$\eqsim$\fi}
+\newcommand{\xmlEsim}{\ifmmode\eqqsim\else$\eqqsim$\fi}
+\newcommand{\xmlfork}{\ifmmode\pitchfork\else$\pitchfork$\fi}
+\newcommand{\xmlforkv}{\ifmmode\forkv\else$\forkv$\fi}
+\newcommand{\xmlfrown}{\ifmmode\frown\else$\frown$\fi}
+\newcommand{\xmlgap}{\ifmmode\gtrapprox\else$\gtrapprox$\fi}
+\newcommand{\xmlgE}{\ifmmode\geq\else{\mathsurround=\opskip$\geq$}\fi}
+\newcommand{\xmlgel}{\ifmmode\gtreqless\else$\gtreqless$\fi}
+\newcommand{\xmlgEl}{\ifmmode\gtreqqless\else$\gtreqqless$\fi}
+\newcommand{\xmlges}{\ifmmode\geqslant\else$\geqslant$\fi}
+\newcommand{\xmlgescc}{\ifmmode\gescc\else$\gescc$\fi}
+\newcommand{\xmlgesdot}{\ifmmode\gesdot\else$\gesdot$\fi}
+\newcommand{\xmlgesdoto}{\ifmmode\gesdoto\else$\gesdoto$\fi}
+\newcommand{\xmlgesdotol}{\ifmmode\gesdotol\else$\gesdotol$\fi}
+%gesl
+\newcommand{\xmlgesles}{\ifmmode\gesles\else$\gesles$\fi}
+\newcommand{\xmlGg}{\ifmmode\ggg\else$\ggg$\fi}
+\newcommand{\xmlgl}{\ifmmode\gtrless\else$\gtrless$\fi}
+\newcommand{\xmlgla}{\ifmmode\gla\else$\gla$\fi}
+\newcommand{\xmlglE}{\ifmmode\glE\else$\glE$\fi}
+\newcommand{\xmlglj}{\ifmmode\glj\else$\glj$\fi}
+\newcommand{\xmlgsim}{\ifmmode\gtrsim\else$\gtrsim$\fi}
+\newcommand{\xmlgsime}{\ifmmode\gsime\else$\gsime$\fi}
+\newcommand{\xmlgsiml}{\ifmmode\gsiml\else$\gsiml$\fi}
+\newcommand{\xmlGt}{\ifmmode\gg\else$\gg$\fi}
+\newcommand{\xmlgtcc}{\ifmmode\gtcc\else$\gtcc$\fi}
+\newcommand{\xmlgtcir}{\ifmmode\gtcir\else$\gtcir$\fi}
+\newcommand{\xmlgtdot}{\ifmmode\gtrdot\else$\gtrdot$\fi}
+\newcommand{\xmlgtquest}{\ifmmode\gtquest\else$\gtquest$\fi}
+\newcommand{\xmlgtrarr}{\ifmmode\gtrarr\else$\gtrarr$\fi}
+\newcommand{\xmlhomtht}{\ifmmode\kernelcontraction\else$\kernelcontraction$\fi}
+\newcommand{\xmllap}{\ifmmode\lessapprox\else$\lessapprox$\fi}
+\newcommand{\xmllat}{\ifmmode\lat\else$\lat$\fi}
+\newcommand{\xmllate}{\ifmmode\late\else$\late$\fi}
+%lates
+\newcommand{\xmllE}{\ifmmode\leqq\else$\leqq$\fi}
+\newcommand{\xmlleg}{\ifmmode\lesseqgtr\else$\lesseqgtr$\fi}
+\newcommand{\xmllEg}{\ifmmode\lesseqqgtr\else$\lesseqqgtr$\fi}
+\newcommand{\xmlles}{\ifmmode\leqslant\else$\leqslant$\fi}
+\newcommand{\xmllescc}{\ifmmode\lescc\else$\lescc$\fi}
+\newcommand{\xmllesdot}{\ifmmode\lesdot\else$\lesdot$\fi}
+\newcommand{\xmllesdoto}{\ifmmode\lesdoto\else$\lesdoto$\fi}
+\newcommand{\xmllesdotor}{\ifmmode\lesdotor\else$\lesdotor$\fi}
+%lesg
+\newcommand{\xmllesges}{\ifmmode\lesges\else$\lesges$\fi}
+\newcommand{\xmllg}{\ifmmode\lessgtr\else$\lessgtr$\fi}
+\newcommand{\xmllgE}{\ifmmode\lgE\else$\lgE$\fi}
+\newcommand{\xmlLl}{\ifmmode\lll\else$\lll$\fi}
+\newcommand{\xmllsim}{\ifmmode\lesssim\else$\lesssim$\fi}
+\newcommand{\xmllsime}{\ifmmode\lsime\else$\lsime$\fi}
+\newcommand{\xmllsimg}{\ifmmode\lsimg\else$\lsimg$\fi}
+\newcommand{\xmlLt}{\ifmmode\ll\else{\mathsurround=\opskip$\ll$}\fi}%
+\newcommand{\xmlltcc}{\ifmmode\ltcc\else$\ltcc$\fi}
+\newcommand{\xmlltcir}{\ifmmode\ltcir\else$\ltcir$\fi}
+\newcommand{\xmlltdot}{\ifmmode\lessdot\else$\lessdot$\fi}
+\newcommand{\xmlltlarr}{\ifmmode\ltlarr\else$\ltlarr$\fi}
+\newcommand{\xmlltquest}{\ifmmode\ltquest\else$\ltquest$\fi}
+\newcommand{\xmlltrie}{\ifmmode\trianglelefteq\else$\trianglelefteq$\fi}
+\newcommand{\xmlmcomma}{\ifmmode\commaminus\else$\commaminus$\fi}
+\newcommand{\xmlmDDot}{\ifmmode\dotsminusdots\else$\dotsminusdots$\fi}
+\newcommand{\xmlmid}{\ifmmode\mid\else{\mathsurround=\opskip$\mid$}\fi}
+\newcommand{\xmlmlcp}{\ifmmode\mlcp\else$\mlcp$\fi}
+\newcommand{\xmlmodels}{\ifmmode\models\else$\models$\fi}
+\newcommand{\xmlmstpos}{\ifmmode\mostpos\else$\mostpos$\fi}
+\newcommand{\xmlpr}{\ifmmode\prec\else$\prec$\fi}
+\newcommand{\xmlPr}{\ifmmode\Prec\else$\Prec$\fi}
+\newcommand{\xmlprap}{\ifmmode\precapprox\else$\precapprox$\fi}
+\newcommand{\xmlprcue}{\ifmmode\preccurlyeq\else$\preccurlyeq$\fi}
+\newcommand{\xmlpre}{\ifmmode\preceq\else$\preceq$\fi}
+\newcommand{\xmlprE}{\ifmmode\preceqq\else$\preceqq$\fi}
+\newcommand{\xmlprsim}{\ifmmode\precsim\else$\precsim$\fi}
+\newcommand{\xmlprurel}{\ifmmode\prurel\else$\prurel$\fi}
+\newcommand{\xmlratio}{\ifmmode\colon\else$\colon$\fi}
+\newcommand{\xmlrtrie}{\ifmmode\trianglerighteq\else$\trianglerighteq$\fi}
+\newcommand{\xmlrtriltri}{\ifmmode\rtriltri\else$\rtriltri$\fi}
+\newcommand{\xmlsc}{\ifmmode\succ\else{\mathsurround=\opskip$\succ$}\fi}
+\newcommand{\xmlSc}{\ifmmode\Succ\else$\Succ$\fi}
+\newcommand{\xmlscap}{\ifmmode\succapprox\else$\succapprox$\fi}
+\newcommand{\xmlsccue}{\ifmmode\succcurlyeq\else{\mathsurround=\opskip$\succcurlyeq$}\fi}
+\newcommand{\xmlsce}{\ifmmode\succeq\else{\mathsurround=\opskip$\succeq$}\fi}
+\newcommand{\xmlscE}{\ifmmode\succeqq\else{\mathsurround=\opskip$\succeqq$}\fi}
+\newcommand{\xmlscsim}{\ifmmode\succsim\else{\mathsurround=\opskip$\succsim$}\fi}
+\newcommand{\xmlsdote}{\ifmmode\eqdot\else$\eqdot$\fi}
+\newcommand{\xmlsfrown}{\ifmmode\smallfrown\else$\smallfrown$\fi}
+\newcommand{\xmlsimg}{\ifmmode\simgtr\else$\simgtr$\fi}
+\newcommand{\xmlsimgE}{\ifmmode\simgE\else$\simgE$\fi}
+\newcommand{\xmlsiml}{\ifmmode\simless\else$\simless$\fi}
+\newcommand{\xmlsimlE}{\ifmmode\simlE\else$\simlE$\fi}
+\newcommand{\xmlsmid}{\ifmmode\shortmid\else{\mathsurround=\opskip$\shortmid$}\fi}
+\newcommand{\xmlsmile}{\ifmmode\smile\else$\smile$\fi}
+\newcommand{\xmlsmt}{\ifmmode\smt\else$\smt$\fi}
+\newcommand{\xmlsmte}{\ifmmode\smte\else$\smte$\fi}
+\newcommand{\xmlspar}{\ifmmode\shortparallel\else$\shortparallel$\fi}
+\newcommand{\xmlsqsub}{\ifmmode\sqsubset\else$\sqsubset$\fi}
+\newcommand{\xmlsqsube}{\ifmmode\sqsubseteq\else$\sqsubseteq$\fi}
+\newcommand{\xmlsqsup}{\ifmmode\sqsupset\else$\sqsupset$\fi}
+\newcommand{\xmlsqsupe}{\ifmmode\sqsupseteq\else$\sqsupseteq$\fi}
+\newcommand{\xmlssmile}{\ifmmode\smallsmile\else$\smallsmile$\fi}
+\newcommand{\xmlSub}{\ifmmode\Subset\else$\Subset$\fi}
+\newcommand{\xmlsubE}{\ifmmode\subseteqq\else{\mathsurround=\opskip$\subseteqq$}\fi}
+\newcommand{\xmlsubedot}{\ifmmode\subedot\else$\subedot$\fi}
+\newcommand{\xmlsubmult}{\ifmmode\submult\else$\submult$\fi}
+\newcommand{\xmlsubplus}{\ifmmode\subsetplus\else$\subsetplus$\fi}
+\newcommand{\xmlsubrarr}{\ifmmode\subrarr\else$\subrarr$\fi}
+\newcommand{\xmlsubsim}{\ifmmode\subsim\else$\subsim$\fi}
+\newcommand{\xmlsubsub}{\ifmmode\subsub\else$\subsub$\fi}
+\newcommand{\xmlsubsup}{\ifmmode\subsup\else$\subsup$\fi}
+\newcommand{\xmlSup}{\ifmmode\Supset\else$\Supset$\fi}
+\newcommand{\xmlsupdsub}{\ifmmode\supdsub\else$\supdsub$\fi}
+\newcommand{\xmlsupE}{\ifmmode\supseteqq\else$\supseteqq$\fi}
+\newcommand{\xmlsupedot}{\ifmmode\supedot\else$\supedot$\fi}
+\newcommand{\xmlsuphsub}{\ifmmode\suphsub\else$\suphsub$\fi}
+\newcommand{\xmlsuplarr}{\ifmmode\suplarr\else$\suplarr$\fi}
+\newcommand{\xmlsupmult}{\ifmmode\supmult\else$\supmult$\fi}
+\newcommand{\xmlsupplus}{\ifmmode\supsetplus\else$\supsetplus$\fi}
+\newcommand{\xmlsupsim}{\ifmmode\supsim\else$\supsim$\fi}
+\newcommand{\xmlsupsub}{\ifmmode\supsub\else$\supsub$\fi}
+\newcommand{\xmlsupsup}{\ifmmode\supsup\else$\supsup$\fi}
+\newcommand{\xmlthkap}{\ifmmode\thickapprox\else$\thickapprox$\fi}
+\newcommand{\xmlthksim}{\ifmmode\thicksim\else$\thicksim$\fi}
+\newcommand{\xmltopfork}{\ifmmode\topfork\else$\topfork$\fi}
+\newcommand{\xmltrie}{\ifmmode\triangleq\else$\triangleq$\fi}
+\newcommand{\xmltwixt}{\ifmmode\between\else$\between$\fi}
+\newcommand{\xmlvBar}{\ifmmode\vBar\else$\vBar$\fi}
+\newcommand{\xmlVbar}{\ifmmode\Vbar\else$\Vbar$\fi}
+\newcommand{\xmlvBarv}{\ifmmode\vBarv\else$\vBarv$\fi}
+\newcommand{\xmlvdash}{\ifmmode\vdash\else$\vdash$\fi}
+\newcommand{\xmlvDash}{\ifmmode\vDash\else$\vDash$\fi}
+\newcommand{\xmlVdash}{\ifmmode\Vdash\else$\Vdash$\fi}
+\newcommand{\xmlVDash}{\ifmmode\VDash\else$\VDash$\fi}
+\newcommand{\xmlVdashl}{\ifmmode\varVdash\else$\varVdash$\fi}
+\newcommand{\xmlvltri}{\ifmmode\vartriangleleft\else$\vartriangleleft$\fi}
+\newcommand{\xmlvprop}{\ifmmode\varpropto\else$\varpropto$\fi}
+\newcommand{\xmlvrtri}{\ifmmode\vartriangleright\else$\vartriangleright$\fi}
+\newcommand{\xmlVvdash}{\ifmmode\Vvdash\else$\Vvdash$\fi}
+
+
+
+%%%%%%%%% 7. ISObox.ent  (ISOboxmap.xsl )
+
+\newcommand{\xmlboxdl}{\ifmmode\boxdl\else\boxdl\fi}
+\newcommand{\xmlboxdL}{\ifmmode\boxdL\else\boxdL\fi}
+\newcommand{\xmlboxDl}{\ifmmode\boxDl\else\boxDl\fi}
+\newcommand{\xmlboxDL}{\ifmmode\boxDL\else\boxDL\fi}
+\newcommand{\xmlboxdr}{\ifmmode\boxdr\else\boxdr\fi}
+\newcommand{\xmlboxdR}{\ifmmode\boxdR\else\boxdR\fi}
+\newcommand{\xmlboxDr}{\ifmmode\boxDr\else\boxDr\fi}
+\newcommand{\xmlboxDR}{\ifmmode\boxDR\else\boxDR\fi}
+\newcommand{\xmlboxh}{\ifmmode\bond\else$\bond$\fi}
+\newcommand{\xmlboxH}{\ifmmode\dbond\else$\dbond$\fi}
+%\newcommand{\xmlboxh}{\ifmmode\boxh\else\boxh\fi}
+%\newcommand{\xmlboxH}{\ifmmode\boxH\else\boxH\fi}
+\newcommand{\xmlboxhd}{\ifmmode\boxhd\else\boxhd\fi}
+\newcommand{\xmlboxhD}{\ifmmode\boxhD\else\boxhD\fi}
+\newcommand{\xmlboxHd}{\ifmmode\boxHd\else\boxHd\fi}
+\newcommand{\xmlboxHD}{\ifmmode\boxHD\else\boxHD\fi}
+\newcommand{\xmlboxhu}{\ifmmode\boxhu\else\boxhu\fi}
+\newcommand{\xmlboxhU}{\ifmmode\boxhU\else\boxhU\fi}
+\newcommand{\xmlboxHu}{\ifmmode\boxHu\else\boxHu\fi}
+\newcommand{\xmlboxHU}{\ifmmode\boxHU\else\boxHU\fi}
+\newcommand{\xmlboxul}{\ifmmode\boxul\else\boxul\fi}
+\newcommand{\xmlboxuL}{\ifmmode\boxuL\else\boxuL\fi}
+\newcommand{\xmlboxUl}{\ifmmode\boxUl\else\boxUl\fi}
+\newcommand{\xmlboxUL}{\ifmmode\boxUL\else\boxUL\fi}
+\newcommand{\xmlboxur}{\ifmmode\boxur\else\boxur\fi}
+\newcommand{\xmlboxuR}{\ifmmode\boxuR\else\boxuR\fi}
+\newcommand{\xmlboxUr}{\ifmmode\boxUr\else\boxUr\fi}
+\newcommand{\xmlboxUR}{\ifmmode\boxUR\else\boxUR\fi}
+\newcommand{\xmlboxv}{\ifmmode\boxv\else\boxv\fi}
+\newcommand{\xmlboxV}{\ifmmode\boxV\else\boxV\fi}
+\newcommand{\xmlboxvh}{\ifmmode\boxvh\else\boxvh\fi}
+\newcommand{\xmlboxvH}{\ifmmode\boxvH\else\boxvH\fi}
+\newcommand{\xmlboxVh}{\ifmmode\boxVh\else\boxVh\fi}
+\newcommand{\xmlboxVH}{\ifmmode\boxVH\else$\boxVH$\fi}
+\newcommand{\xmlboxvl}{\ifmmode\boxvl\else\boxvl\fi}
+\newcommand{\xmlboxvL}{\ifmmode\boxvL\else\boxvL\fi}
+\newcommand{\xmlboxVl}{\ifmmode\boxVl\else\boxVl\fi}
+\newcommand{\xmlboxVL}{\ifmmode\boxVL\else\boxVL\fi}
+\newcommand{\xmlboxvr}{\ifmmode\boxvr\else\boxvr\fi}
+\newcommand{\xmlboxvR}{\ifmmode\boxvR\else\boxvR\fi}
+\newcommand{\xmlboxVr}{\ifmmode\boxVr\else\boxVr\fi}
+\newcommand{\xmlboxVR}{\ifmmode\boxVR\else\boxVR\fi}
+
+%%%%%%%%% 8. ISOcyr1.ent (ISOcyr1map.xsl)
+
+\font\cyrcharfont=wncyr10%
+
+\newcommand{\xmlacy}{\ifmmode    \else    \fi}
+\newcommand{\xmlAcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlbcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlBcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlchcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlCHcy}{\ifmmode    \else    \fi}
+\newcommand{\xmldcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlDcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlecy}{\ifmmode    \else    \fi}
+\newcommand{\xmlEcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlfcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlFcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlgcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlGcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlhardcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlHARDcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlicy}{\ifmmode    \else    \fi}
+\newcommand{\xmlIcy}{\ifmmode    \else    \fi}
+\newcommand{\xmliecy}{\ifmmode    \else    \fi}
+\newcommand{\xmlIEcy}{\ifmmode    \else    \fi}
+\newcommand{\xmliocy}{\ifmmode    \else    \fi}
+\newcommand{\xmlIOcy}{\ifmmode    \else    \fi}
+\newcommand{\xmljcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlJcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlkcy}{\ifmmode    \else    \fi}
+%\newcommand{\xmlKcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlKcy}{\hbox{\cyrcharfont K}}
+\newcommand{\xmlkhcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlKHcy}{\ifmmode    \else    \fi}
+\newcommand{\xmllcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlLcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlmcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlMcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlncy}{\ifmmode    \else    \fi}
+\newcommand{\xmlNcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlnumero}{\ifmmode    \else    \fi}
+\newcommand{\xmlocy}{\ifmmode    \else    \fi}
+\newcommand{\xmlOcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlpcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlPcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlrcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlRcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlscy}{\ifmmode    \else    \fi}
+\newcommand{\xmlScy}{\ifmmode    \else    \fi}
+\newcommand{\xmlshchcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlSHCHcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlshcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlSHcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlsoftcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlSOFTcy}{\ifmmode    \else    \fi}
+\newcommand{\xmltcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlTcy}{\ifmmode    \else    \fi}
+\newcommand{\xmltscy}{\ifmmode    \else    \fi}
+\newcommand{\xmlTScy}{\ifmmode    \else    \fi}
+\newcommand{\xmlucy}{\ifmmode    \else    \fi}
+\newcommand{\xmlUcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlvcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlVcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlyacy}{\ifmmode    \else    \fi}
+\newcommand{\xmlYAcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlycy}{\ifmmode    \else    \fi}
+\newcommand{\xmlYcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlyucy}{\ifmmode    \else    \fi}
+\newcommand{\xmlYUcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlzcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlZcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlzhcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlZHcy}{\ifmmode    \else    \fi}
+
+
+%%%%%%%%% 9. ISOcyr2.ent (ISOcyr2map.xsl)
+
+\newcommand{\xmldjcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlDJcy}{\ifmmode    \else    \fi}
+\newcommand{\xmldscy}{\ifmmode    \else    \fi}
+\newcommand{\xmlDScy}{\ifmmode    \else    \fi}
+\newcommand{\xmldzcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlDZcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlgjcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlGJcy}{\ifmmode    \else    \fi}
+\newcommand{\xmliukcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlIukcy}{\ifmmode    \else    \fi}
+\newcommand{\xmljsercy}{\ifmmode    \else    \fi}
+\newcommand{\xmlJsercy}{\ifmmode    \else    \fi}
+\newcommand{\xmljukcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlJukcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlkjcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlKJcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlljcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlLJcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlnjcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlNJcy}{\ifmmode    \else    \fi}
+\newcommand{\xmltshcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlTSHcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlubrcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlUbrcy}{\ifmmode    \else    \fi}
+\newcommand{\xmlyicy}{\ifmmode    \else    \fi}
+\newcommand{\xmlYIcy}{\ifmmode    \else    \fi}
+
+
+%%%%%%%%% 10. ISOdia.ent  (ISOdiamap.xsl )
+
+\newcommand{\xmlacute}{\ifmmode\acute{}\else\'{}\fi}
+\newcommand{\xmlbreve}[1]{\ifmmode\brave{#1}\else\u{#1}\fi}
+\newcommand{\xmlcaron}{\ifmmode\check{}\else\v{}\fi}
+\newcommand{\xmlcedil}[1]{\ifmmode\c{#1}\else\c{#1}\fi}
+\newcommand{\xmlcirc}{\ifmmode\hat{}\else\^{}\fi}
+\newcommand{\xmldblac}{\ifmmode\H{}\else\H{}\fi}
+\newcommand{\xmldie}{\ifmmode\ddot{}\else\"{}\fi}
+\newcommand{\xmldot}{\ifmmode\dot{}\else\.{}\fi}
+\newcommand{\xmlgrave}{\ifmmode\grave{}\else\`{}\fi}
+\newcommand{\xmlmacr}{\ifmmode\bar{}\else\={}\fi}
+\newcommand{\xmlogon}{\ifmmode\k{}\else\k{}\fi}
+\newcommand{\xmlring}{\ifmmode\mathring{}\else\r{}\fi}
+\newcommand{\xmltilde}{\ifmmode\tilde{}\else\~{}\fi}
+\newcommand{\xmluml}{\ifmmode\ddot{}\else\"{}\fi}
+
+
+%%%%%%%%% 11. ISOgrk1.ent (ISOgrk1map.xsl)
+
+\newcommand{\xmlagr}{\ifmmode\ralpha\else$\ralpha$\fi}
+\newcommand{\xmlAgr}{\ifmmode\mathsf{A}\else\textsf{A}\fi}
+\newcommand{\xmlbgr}{\ifmmode\beta\else$\beta$\fi}
+\newcommand{\xmlBgr}{\ifmmode\mathsf{B}\else\textsf{B}\fi}
+\newcommand{\xmlggr}{\ifmmode\gamma\else$\gamma$\fi}
+\newcommand{\xmlGgr}{\ifmmode\Gamma\else$\Gamma$\fi}
+\newcommand{\xmldgr}{\ifmmode\delta\else$\delta$\fi}
+\newcommand{\xmlDgr}{\ifmmode\Delta\else$\Delta$\fi}
+\newcommand{\xmlegr}{\ifmmode\epsilon\else$\epsilon$\fi}
+\newcommand{\xmlEgr}{\ifmmode\mathsf{E}\else\textsf{E}\fi}
+\newcommand{\xmlzgr}{\ifmmode\zeta\else$\zeta$\fi}
+\newcommand{\xmlZgr}{\ifmmode\mathsf{Z}\else$\Zeta$\fi}
+\newcommand{\xmleegr}{\ifmmode\eta\else$\eta$\fi}
+\newcommand{\xmlEEgr}{\ifmmode\mathsf{H}\else\textsf{H}\fi}
+\newcommand{\xmlthgr}{\ifmmode\theta\else$\theta$\fi}
+\newcommand{\xmlTHgr}{\ifmmode\Theta\else$\Theta$\fi}
+\newcommand{\xmligr}{\ifmmode\iota\else$\iota$\fi}
+\newcommand{\xmlIgr}{\ifmmode\mathsf{I}\else\textsf{I}\fi}
+\newcommand{\xmlkgr}{\ifmmode\kappa\else$\kappa$\fi}
+\newcommand{\xmlKgr}{\ifmmode\mathsf{K}\else\textsf{K}\fi}
+\newcommand{\xmllgr}{\ifmmode\lambda\else$\lambda$\fi}
+\newcommand{\xmlLgr}{\ifmmode\Lambda\else$\Lambda$\fi}
+\newcommand{\xmlmgr}{\ifmmode\mu\else$\mu$\fi}
+\newcommand{\xmlMgr}{\ifmmode\mathsf{M}\else\textsf{M}\fi}
+\newcommand{\xmlngr}{\ifmmode\nu\else$\nu$\fi}
+\newcommand{\xmlNgr}{\ifmmode\mathsf{N}\else\textsf{N}\fi}
+\newcommand{\xmlxgr}{\ifmmode\xi\else$\xi$\fi}
+\newcommand{\xmlXgr}{\ifmmode\Xi\else$\Xi$\fi}
+\newcommand{\xmlogr}{\ifmmode\mathsf{o}\else\textsf{o}\fi}
+\newcommand{\xmlOgr}{\ifmmode\mathsf{O}\else\textsf{O}\fi}
+\newcommand{\xmlpgr}{\ifmmode\pi\else$\pi$\fi}
+\newcommand{\xmlPgr}{\ifmmode\Pi\else$\Pi$\fi}
+\newcommand{\xmlrgr}{\ifmmode\rho\else$\rho$\fi}
+\newcommand{\xmlRgr}{\ifmmode\mathsf{P}\else\textsf{P}\fi}
+\newcommand{\xmlsgr}{\ifmmode\sigma\else$\sigma$\fi}
+\newcommand{\xmlSgr}{\ifmmode\Sigma\else$\Sigma$\fi}
+\newcommand{\xmlsfgr}{\ifmmode\sigma\else$\sigma$\fi}
+\newcommand{\xmltgr}{\ifmmode\tau\else$\tau$\fi}
+\newcommand{\xmlTgr}{\ifmmode\mathsf{T}\else\textsf{T}\fi}
+\newcommand{\xmlugr}{\ifmmode\upsilon\else$\upsilon$\fi}
+\newcommand{\xmlUgr}{\ifmmode\Upsilon\else$\Upsilon$\fi}
+\newcommand{\xmlphgr}{\ifmmode\phi\else$\phi$\fi}
+\newcommand{\xmlPHgr}{\ifmmode\Phi\else$\Phi$\fi}
+\newcommand{\xmlkhgr}{\ifmmode\chi\else$\chi$\fi}
+\newcommand{\xmlKHgr}{\ifmmode\mathsf{X}\else\textsf{X}\fi}
+\newcommand{\xmlpsgr}{\ifmmode\psi\else$\psi$\fi}
+\newcommand{\xmlPSgr}{\ifmmode\Psi\else$\Psi$\fi}
+\newcommand{\xmlohgr}{\ifmmode\omega\else$\omega$\fi}
+\newcommand{\xmlOHgr}{\ifmmode\Omega\else$\Omega$\fi}
+
+%%%%%%%%% 12. ISOgrk2.ent (ISOgrk2map.xsl)
+
+\newcommand{\xmlaacgr}{\ifmmode\acute{\alpha}\else$\acute{\alpha}$\fi}
+\newcommand{\xmlAacgr}{\ifmmode\acute{}A\else\'{}A\fi}
+\newcommand{\xmleacgr}{\ifmmode\acute{\epsilon}\else$\acute{\epsilon}$\fi}
+\newcommand{\xmlEacgr}{\ifmmode\acute{}E\else\'{}E\fi}
+\newcommand{\xmleeacgr}{\ifmmode\acute{\eta}\else$\acute{\eta}$\fi}
+\newcommand{\xmlEEacgr}{\ifmmode\acute{}H\else\'{}H\fi}
+\newcommand{\xmliacgr}{\ifmmode\acute{\iota}\else$\acute{\iota}$\fi}
+\newcommand{\xmlIacgr}{\ifmmode\acute{}I\else\'{}I\fi}
+\newcommand{\xmlidiagr}{\ifmmode\acute{\ddot{\iota}}\else$\acute{\ddot{\iota}}$\fi}
+\newcommand{\xmlidigr}{\ifmmode\ddot{\iota}\else$\ddot{\iota}$\fi}
+\newcommand{\xmlIdigr}{\ifmmode\ddot{I}\else\"{I}\fi}
+\newcommand{\xmloacgr}{\ifmmode\acute{\rm o}\else$\acute{\rm o}$\fi}
+\newcommand{\xmlOacgr}{\ifmmode\acute{}{\rm O}\else$\acute{}{\rm O}$\fi}
+\newcommand{\xmlohacgr}{\ifmmode\acute{\omega}\else$\acute{\omega}$\fi}
+\newcommand{\xmlOHacgr}{\ifmmode\acute{}\Omega\else$\acute{}\Omega$\fi}
+\newcommand{\xmluacgr}{\ifmmode\acute{\upsilon}\else$\acute{\upsilon}$\fi}
+\newcommand{\xmlUacgr}{\ifmmode\acute{}Y\else$\acute{}Y$\fi}
+\newcommand{\xmludiagr}{\ifmmode\acute{\ddot{\upsilon}}\else$\acute{\ddot{\upsilon}}$\fi}
+\newcommand{\xmludigr}{\ifmmode\ddot{u}\else$\ddot{u}$\fi}
+\newcommand{\xmlUdigr}{\ifmmode\ddot{\rm U}\else$\ddot{\rm U}$\fi}
+
+
+%%%%%%%%% 13. ISOgrk3.ent (ISOgrk3map.xsl)
+
+\newcommand{\xmlralpha}{\ifmmode\text{$\ralpha$}\else\text{$\ralpha$}\fi}
+\newcommand{\xmlrbeta}{\ifmmode\text{$\rbeta$}\else\text{$\rbeta$}\fi}
+\newcommand{\xmlrchi}{\ifmmode\text{$\rchi$}\else\text{$\rchi$}\fi}
+\newcommand{\xmlrdelta}{\ifmmode\text{$\rdelta$}\else\text{$\rdelta$}\fi}
+\newcommand{\xmlrDelta}{\ifmmode\text{$\rDelta$}\else\text{$\rDelta$}\fi}
+\newcommand{\xmlrepsi}{\ifmmode\text{$\repsilon$}\else\text{$\repsilon$}\fi}
+\newcommand{\xmlrepsiv}{\ifmmode\text{$\rvarepsilon$}\else\text{$\rvarepsilon$}\fi}
+\newcommand{\xmlreta}{\ifmmode\text{$\reta$}\else\text{$\reta$}\fi}
+\newcommand{\xmlrgamma}{\ifmmode\text{$\rgamma$}\else\text{$\rgamma$}\fi}
+\newcommand{\xmlrGamma}{\ifmmode\text{$\rGamma$}\else\text{$\rGamma$}\fi}
+\newcommand{\xmlrgammad}{\ifmmode\text{$\rdigamma$}\else\text{$\rdigamma$}\fi}
+\newcommand{\xmlrGammad}{\ifmmode\text{$\rDigamma$}\else\text{$\rDigamma$}\fi}
+\newcommand{\xmlriota}{\ifmmode\text{$\riota$}\else\text{$\riota$}\fi}
+\newcommand{\xmlrkappa}{\ifmmode\text{$\rkappa$}\else\text{$\rkappa$}\fi}
+\newcommand{\xmlrkappav}{\ifmmode\text{$\rvarkappa$}\else\text{$\rvarkappa$}\fi}
+\newcommand{\xmlrlambda}{\ifmmode\text{$\rlambda$}\else\text{$\rlambda$}\fi}
+\newcommand{\xmlrLambda}{\ifmmode\text{$\rLambda$}\else\text{$\rLambda$}\fi}
+\newcommand{\xmlrmu}{\ifmmode\text{$\rmu$}\else\text{$\rmu$}\fi}
+\newcommand{\xmlrnu}{\ifmmode\text{$\rnu$}\else\text{$\rnu$}\fi}
+\newcommand{\xmlromega}{\ifmmode\text{$\romega$}\else\text{$\romega$}\fi}
+\newcommand{\xmlrOmega}{\ifmmode\text{$\rOmega$}\else\text{$\rOmega$}\fi}
+\newcommand{\xmlrphi}{\ifmmode\text{$\rphi$}\else\text{$\rphi$}\fi}
+\newcommand{\xmlrPhi}{\ifmmode\text{$\rPhi$}\else\text{$\rPhi$}\fi}
+\newcommand{\xmlrphiv}{\ifmmode\text{$\rvarphi$}\else\text{$\rvarphi$}\fi}
+\newcommand{\xmlrpi}{\ifmmode\text{$\rpi$}\else\text{$\rpi$}\fi}
+\newcommand{\xmlrPi}{\ifmmode\text{$\rPi$}\else\text{$\rPi$}\fi}
+\newcommand{\xmlrpiv}{\ifmmode\text{$\rvarpi$}\else\text{$\rvarpi$}\fi}
+\newcommand{\xmlrpsi}{\ifmmode\text{$\rpsi$}\else\text{$\rpsi$}\fi}
+\newcommand{\xmlrPsi}{\ifmmode\text{$\rPsi$}\else\text{$\rPsi$}\fi}
+\newcommand{\xmlrrho}{\ifmmode\text{$\rrho$}\else\text{$\rrho$}\fi}
+\newcommand{\xmlrrhov}{\ifmmode\text{$\rvarrho$}\else\text{$\rvarrho$}\fi}
+\newcommand{\xmlrsigma}{\ifmmode\text{$\rsigma$}\else\text{$\rsigma$}\fi}
+\newcommand{\xmlrSigma}{\ifmmode\text{$\rSigma$}\else\text{$\rSigma$}\fi}
+\newcommand{\xmlrsigmav}{\ifmmode\text{$\rvarsigma$}\else\text{$\rvarsigma$}\fi}
+\newcommand{\xmlrtau}{\ifmmode\text{$\rtau$}\else\text{$\rtau$}\fi}
+\newcommand{\xmlrtheta}{\ifmmode\text{$\rtheta$}\else\text{$\rtheta$}\fi}
+\newcommand{\xmlrTheta}{\ifmmode\text{$\rTheta$}\else\text{$\rTheta$}\fi}
+\newcommand{\xmlrthetav}{\ifmmode\text{$\rvartheta$}\else\text{$\rvartheta$}\fi}
+\newcommand{\xmlrupsi}{\ifmmode\text{$\rupsilon$}\else\text{$\rupsilon$}\fi}
+\newcommand{\xmlrUpsi}{\ifmmode\text{$\rUpsilon$}\else\text{$\rUpsilon$}\fi}
+\newcommand{\xmlrxi}{\ifmmode\text{$\rxi$}\else\text{$\rxi$}\fi}
+\newcommand{\xmlrXi}{\ifmmode\text{$\rXi$}\else\text{$\rXi$}\fi}
+\newcommand{\xmlrzeta}{\ifmmode\text{$\rzeta$}\else\text{$\rzeta$}\fi}
+
+
+\newcommand{\xmlalpha}{\ifmmode\alpha\else$\alpha$\fi}
+\newcommand{\xmlbeta}{\ifmmode\beta\else$\beta$\fi}
+\newcommand{\xmlchi}{\ifmmode\chi\else$\chi$\fi}
+\newcommand{\xmldelta}{\ifmmode\delta\else$\delta$\fi}
+\newcommand{\xmlDelta}{\ifmmode\Delta\else$\Delta$\fi}
+\newcommand{\xmlvarDelta}{\ifmmode\varDelta\else$\varDelta$\fi}
+\newcommand{\xmlepsi}{\ifmmode\epsilon\else$\epsilon$\fi}
+\newcommand{\xmlepsiv}{\ifmmode\varepsilon\else$\varepsilon$\fi}
+\newcommand{\xmleta}{\ifmmode\eta\else$\eta$\fi}
+\newcommand{\xmlgamma}{\ifmmode\gamma\else$\gamma$\fi}
+\newcommand{\xmlGamma}{\ifmmode\Gamma\else$\Gamma$\fi}
+\newcommand{\xmlgammad}{\ifmmode\digamma\else$\digamma$\fi}
+\newcommand{\xmlGammad}{\ifmmode\Digamma\else$\Digamma$\fi}
+\newcommand{\xmliota}{\ifmmode\iota\else$\iota$\fi}
+\newcommand{\xmlkappa}{\ifmmode\kappa\else$\kappa$\fi}
+\newcommand{\xmlkappav}{\ifmmode\varkappa\else$\varkappa$\fi}
+\newcommand{\xmllambda}{\ifmmode\lambda\else$\lambda$\fi}
+\newcommand{\xmlLambda}{\ifmmode\Lambda\else$\Lambda$\fi}
+\newcommand{\xmlmu}{\ifmmode\mu\else$\mu$\fi}
+\newcommand{\xmlnu}{\ifmmode\nu\else$\nu$\fi}
+\newcommand{\xmlomega}{\ifmmode\omega\else$\omega$\fi}
+\newcommand{\xmlOmega}{\ifmmode\Omega\else$\Omega$\fi}
+\newcommand{\xmlphi}{\ifmmode\phi\else$\phi$\fi}
+\newcommand{\xmlPhi}{\ifmmode\Phi\else$\Phi$\fi}
+\newcommand{\xmlphiv}{\ifmmode\varphi\else$\varphi$\fi}
+\newcommand{\xmlpi}{\ifmmode\pi\else$\pi$\fi}
+\newcommand{\xmlPi}{\ifmmode\Pi\else$\Pi$\fi}
+\newcommand{\xmlpiv}{\ifmmode\varpi\else$\varpi$\fi}
+\newcommand{\xmlpsi}{\ifmmode\psi\else$\psi$\fi}
+\newcommand{\xmlPsi}{\ifmmode\Psi\else$\Psi$\fi}
+\newcommand{\xmlrho}{\ifmmode\rho\else$\rho$\fi}
+\newcommand{\xmlrhov}{\ifmmode\varrho\else$\varrho$\fi}
+\newcommand{\xmlsigma}{\ifmmode\sigma\else$\sigma$\fi}
+\newcommand{\xmlSigma}{\ifmmode\Sigma\else$\Sigma$\fi}
+\newcommand{\xmlsigmav}{\ifmmode\varsigma\else$\varsigma$\fi}
+\newcommand{\xmltau}{\ifmmode\tau\else$\tau$\fi}
+\newcommand{\xmltheta}{\ifmmode\theta\else$\theta$\fi}
+\newcommand{\xmlTheta}{\ifmmode\Theta\else$\Theta$\fi}
+\newcommand{\xmlthetav}{\ifmmode\vartheta\else$\vartheta$\fi}
+\newcommand{\xmlupsi}{\ifmmode\upsilon\else$\upsilon$\fi}
+\newcommand{\xmlUpsi}{\ifmmode\Upsilon\else$\Upsilon$\fi}
+\newcommand{\xmlxi}{\ifmmode\xi\else$\xi$\fi}
+\newcommand{\xmlXi}{\ifmmode\Xi\else$\Xi$\fi}
+\newcommand{\xmlzeta}{\ifmmode\zeta\else$\zeta$\fi}
+
+
+%%%%%%%%% 14. ISOgrk4.ent (ISOgrk4map.xsl)
+
+\newcommand{\xmlbfalpha}{\ifmmode\boldsymbol{\alpha}\else$\boldsymbol{\alpha}$\fi}
+\newcommand{\xmlbfbeta}{\ifmmode\boldsymbol{\beta}\else$\boldsymbol{\beta}$\fi}
+\newcommand{\xmlbfchi}{\ifmmode\boldsymbol{\chi}\else$\boldsymbol{\chi}$\fi}
+\newcommand{\xmlbfdelta}{\ifmmode\boldsymbol{\delta}\else$\boldsymbol{\delta}$\fi}
+\newcommand{\xmlbfDelta}{\ifmmode\boldsymbol{\Delta}\else$\boldsymbol{\Delta}$\fi}
+\newcommand{\xmlbfepsi}{\ifmmode\boldsymbol{\epsilon}\else$\boldsymbol{\epsilon}$\fi}
+\newcommand{\xmlbfepsiv}{\ifmmode\boldsymbol{\varepsilon}\else$\boldsymbol{\varepsilon}$\fi}
+\newcommand{\xmlbfeta}{\ifmmode\boldsymbol{\eta}\else$\boldsymbol{\eta}$\fi}
+\newcommand{\xmlbfgamma}{\ifmmode\boldsymbol{\gamma}\else$\boldsymbol{\gamma}$\fi}
+\newcommand{\xmlbfGamma}{\ifmmode\boldsymbol{\Gamma}\else$\boldsymbol{\Gamma}$\fi}
+\newcommand{\xmlbfgammad}{\ifmmode\boldsymbol{\digamma}\else$\boldsymbol{\digamma}$\fi}
+\newcommand{\xmlbfGammad}{\ifmmode\boldsymbol{\Digamma}\else$\boldsymbol{\Digamma}$\fi}
+\newcommand{\xmlbfiota}{\ifmmode\boldsymbol{\iota}\else$\boldsymbol{\iota}$\fi}
+\newcommand{\xmlbfkappa}{\ifmmode\boldsymbol{\kappa}\else$\boldsymbol{\kappa}$\fi}
+\newcommand{\xmlbfkappav}{\ifmmode\boldsymbol{\varkappa}\else$\boldsymbol{\varkappa}$\fi}
+\newcommand{\xmlbflambda}{\ifmmode\boldsymbol{\lambda}\else$\boldsymbol{\lambda}$\fi}
+\newcommand{\xmlbfLambda}{\ifmmode\boldsymbol{\Lambda}\else$\boldsymbol{\Lambda}$\fi}
+\newcommand{\xmlbfmu}{\ifmmode\boldsymbol{\mu}\else$\boldsymbol{\mu}$\fi}
+\newcommand{\xmlbfnu}{\ifmmode\boldsymbol{\nu}\else$\boldsymbol{\nu}$\fi}
+\newcommand{\xmlbfomega}{\ifmmode\boldsymbol{\omega}\else$\boldsymbol{\omega}$\fi}
+\newcommand{\xmlbfOmega}{\ifmmode\boldsymbol{\Omega}\else$\boldsymbol{\Omega}$\fi}
+\newcommand{\xmlbfphi}{\ifmmode\boldsymbol{\phi}\else$\boldsymbol{\phi}$\fi}
+\newcommand{\xmlbfPhi}{\ifmmode\boldsymbol{\Phi}\else$\boldsymbol{\Phi}$\fi}
+\newcommand{\xmlbfphiv}{\ifmmode\boldsymbol{\varphi}\else$\boldsymbol{\varphi}$\fi}
+\newcommand{\xmlbfpi}{\ifmmode\boldsymbol{\pi}\else$\boldsymbol{\pi}$\fi}
+\newcommand{\xmlbfPi}{\ifmmode\boldsymbol{\Pi}\else$\boldsymbol{\Pi}$\fi}
+\newcommand{\xmlbfpiv}{\ifmmode\boldsymbol{\varpi}\else$\boldsymbol{\varpi}$\fi}
+\newcommand{\xmlbfpsi}{\ifmmode\boldsymbol{\psi}\else$\boldsymbol{\psi}$\fi}
+\newcommand{\xmlbfPsi}{\ifmmode\boldsymbol{\Psi}\else$\boldsymbol{\Psi}$\fi}
+\newcommand{\xmlbfrho}{\ifmmode\boldsymbol{\rho}\else$\boldsymbol{\rho}$\fi}
+\newcommand{\xmlbfrhov}{\ifmmode\boldsymbol{\varrho}\else$\boldsymbol{\varrho}$\fi}
+\newcommand{\xmlbfsigma}{\ifmmode\boldsymbol{\sigma}\else$\boldsymbol{\sigma}$\fi}
+\newcommand{\xmlbfSigma}{\ifmmode\boldsymbol{\Sigma}\else$\boldsymbol{\Sigma}$\fi}
+\newcommand{\xmlbfsigmav}{\ifmmode\boldsymbol{\varsigma}\else$\boldsymbol{\varsigma}$\fi}
+\newcommand{\xmlbftau}{\ifmmode\boldsymbol{\tau}\else$\boldsymbol{\tau}$\fi}
+\newcommand{\xmlbfTheta}{\ifmmode\boldsymbol{\Theta}\else$\boldsymbol{\Theta}$\fi}
+\newcommand{\xmlbfthetas}{\ifmmode\boldsymbol{\theta}\else$\boldsymbol{\theta}$\fi}
+\newcommand{\xmlbfthetav}{\ifmmode\boldsymbol{\vartheta}\else$\boldsymbol{\vartheta}$\fi}
+\newcommand{\xmlbfupsi}{\ifmmode\boldsymbol{\upsilon}\else$\boldsymbol{\upsilon}$\fi}
+\newcommand{\xmlbfUpsi}{\ifmmode\boldsymbol{\Upsilon}\else$\boldsymbol{\Upsilon}$\fi}
+\newcommand{\xmlbfxi}{\ifmmode\boldsymbol{\xi}\else$\boldsymbol{\xi}$\fi}
+\newcommand{\xmlbfXi}{\ifmmode\boldsymbol{\Xi}\else$\boldsymbol{\Xi}$\fi}
+\newcommand{\xmlbfzeta}{\ifmmode\boldsymbol{\zeta}\else$\boldsymbol{\zeta}$\fi}
+
+
+%%%%%%%% 15. ISOlat1.ent (ISOlat1map.xsl)
+
+\newcommand{\xmlaacute}{\ifmmode\acute{a}\else\'{a}\fi}
+\newcommand{\xmlAacute}{\ifmmode\acute{A}\else\'{A}\fi}
+\newcommand{\xmlacirc}{\ifmmode\hat{a}\else\^{a}\fi}
+\newcommand{\xmlAcirc}{\ifmmode\hat{A}\else\^{A}\fi}
+\newcommand{\xmlaelig}{\ifmmode\ae\else\ae\fi}
+\newcommand{\xmlAElig}{\ifmmode\AE\else\AE\fi}
+\newcommand{\xmlagrave}{\ifmmode\grave{a}\else\`{a}\fi}
+\newcommand{\xmlAgrave}{\ifmmode\grave{A}\else\`{A}\fi}
+\newcommand{\xmlaring}{\ifmmode\circ{a}\else\aa\fi}
+\newcommand{\xmlAring}{\ifmmode\circ{A}\else\AA\fi}
+\newcommand{\xmlatilde}{\ifmmode\tilde{a}\else\~{a}\fi}
+\newcommand{\xmlAtilde}{\ifmmode\tilde{A}\else\~{A}\fi}
+\newcommand{\xmlauml}{\ifmmode\ddot{a}\else\"{a}\fi}
+\newcommand{\xmlAuml}{\ifmmode\ddot{A}\else\"{A}\fi}
+\newcommand{\xmlccedil}{\ifmmode\c{c}\else\c{c}\fi}
+\newcommand{\xmlCcedil}{\ifmmode\c{C}\else\c{C}\fi}
+\newcommand{\xmlecedil}{\ifmmode\c{e}\else\c{e}\fi}
+\newcommand{\xmlEcedil}{\ifmmode\c{E}\else\c{E}\fi}
+\newcommand{\xmleacute}{\ifmmode\acute{e}\else\'{e}\fi}
+\newcommand{\xmlEacute}{\ifmmode\acute{E}\else\'{E}\fi}
+\newcommand{\xmlecirc}{\ifmmode\hat{e}\else\^{e}\fi}
+\newcommand{\xmlEcirc}{\ifmmode\hat{E}\else\^{E}\fi}
+\newcommand{\xmlegrave}{\ifmmode\grave{e}\else\`{e}\fi}
+\newcommand{\xmlEgrave}{\ifmmode\grave{E}\else\`{E}\fi}
+\newcommand{\xmleth}{\ifmmode\dh\else\dh\fi}
+\newcommand{\xmlETH}{\ifmmode\DH\else\DH\fi}
+\newcommand{\xmleuml}{\ifmmode\ddot{e}\else\"{e}\fi}
+\newcommand{\xmlEuml}{\ifmmode\ddot{E}\else\"{E}\fi}
+\newcommand{\xmliacute}{\ifmmode\acute{\i}\else\'{\i}\fi}
+\newcommand{\xmlIacute}{\ifmmode\acute{I}\else\'{I}\fi}
+\newcommand{\xmlibreve}{\ifmmode\breve{\i}\else\u{\i}\fi}
+\newcommand{\xmlIbreve}{\ifmmode\breve{I}\else\u{I}\fi}
+\newcommand{\xmlicirc}{\ifmmode\hat{\i}\else\^{\i}\fi}
+\newcommand{\xmlIcirc}{\ifmmode\hat{I}\else\^{I}\fi}
+\newcommand{\xmligrave}{\ifmmode\grave{\i}\else\`{\i}\fi}
+\newcommand{\xmlIgrave}{\ifmmode\grave{I}\else\`{I}\fi}
+\newcommand{\xmliuml}{\ifmmode\ddot{\i}\else\"{\i}\fi}
+\newcommand{\xmlIuml}{\ifmmode\ddot{I}\else\"{I}\fi}
+\newcommand{\xmlntilde}{\ifmmode\tilde{n}\else\~{n}\fi}
+\newcommand{\xmlNtilde}{\ifmmode\tilde{N}\else\~{N}\fi}
+\newcommand{\xmloacute}{\ifmmode\acute{o}\else\'{o}\fi}
+\newcommand{\xmlOacute}{\ifmmode\acute{O}\else\'{O}\fi}
+\newcommand{\xmlocirc}{\ifmmode\hat{o}\else\^{o}\fi}
+\newcommand{\xmlOcirc}{\ifmmode\hat{O}\else\^{O}\fi}
+\newcommand{\xmlograve}{\ifmmode\grave{o}\else\`{o}\fi}
+\newcommand{\xmlOgrave}{\ifmmode\grave{O}\else\`{O}\fi}
+\newcommand{\xmloslash}{\ifmmode\o\else\o\fi}
+\newcommand{\xmlOslash}{\ifmmode\O\else\O\fi}
+\newcommand{\xmlotilde}{\ifmmode\tilde{o}\else\~{o}\fi}
+\newcommand{\xmlOtilde}{\ifmmode\tilde{O}\else\~{O}\fi}
+\newcommand{\xmlouml}{\ifmmode\ddot{o}\else\"{o}\fi}
+\newcommand{\xmlOuml}{\ifmmode\ddot{O}\else\"{O}\fi}
+\newcommand{\xmlszlig}{\ifmmode\ss\else\ss\fi}
+\newcommand{\xmlthorn}{\ifmmode\th\else\th\fi}
+\newcommand{\xmlTHORN}{\ifmmode\TH\else\TH\fi}
+\newcommand{\xmluacute}{\ifmmode\acute{u}\else\'{u}\fi}
+\newcommand{\xmlUacute}{\ifmmode\acute{U}\else\'{U}\fi}
+\newcommand{\xmlucirc}{\ifmmode\hat{u}\else\^{u}\fi}
+\newcommand{\xmlUcirc}{\ifmmode\hat{U}\else\^{U}\fi}
+\newcommand{\xmlugrave}{\ifmmode\grave{u}\else\`{u}\fi}
+\newcommand{\xmlUgrave}{\ifmmode\grave{U}\else\grave{U}\fi}
+\newcommand{\xmluuml}{\ifmmode\ddot{u}\else\"{u}\fi}
+\newcommand{\xmlUuml}{\ifmmode\ddot{U}\else\"{U}\fi}
+\newcommand{\xmlyacute}{\ifmmode\acute{y}\else\'{y}\fi}
+\newcommand{\xmlYacute}{\ifmmode\acute{Y}\else\'{Y}\fi}
+\newcommand{\xmlyuml}{\ifmmode\ddot{y}\else\"{y}\fi}
+\newcommand{\xmlygrave}{\ifmmode\grave{y}\else\`{y}\fi}
+\newcommand{\xmlYgrave}{\ifmmode\grave{Y}\else\grave{Y}\fi}
+
+
+%%%%%%%%% 16. ISOlat2.ent (ISOlat2map.xsl)
+
+\newcommand{\xmlabreve}{\ifmmode\breve{a}\else\u{a}\fi}
+\newcommand{\xmlAbreve}{\ifmmode\breve{A}\else\u{A}\fi}
+%\newcommand{\xmlamacr}{\ifmmode\bar{a}\else\={a}\fi}
+\newcommand{\xmlamacr}{\ifmmode\bar{a}\else$\bar{\rm a}$\fi}
+\newcommand{\xmlAmacr}{\ifmmode\bar{A}\else\={A}\fi}
+\newcommand{\xmlaogon}{\ifmmode\k{a}\else\k{a}\fi}
+\newcommand{\xmlAogon}{\ifmmode\k{A}\else\k{A}\fi}
+\newcommand{\xmlcacute}{\ifmmode\acute{c}\else\'{c}\fi}
+\newcommand{\xmlCacute}{\ifmmode\acute{C}\else\'{C}\fi}
+\newcommand{\xmlccaron}{\ifmmode\check{c}\else\v{c}\fi}
+\newcommand{\xmlCcaron}{\ifmmode\check{C}\else\v{C}\fi}
+\newcommand{\xmlccirc}{\ifmmode\circ{c}\else\^{c}\fi}
+\newcommand{\xmlCcirc}{\ifmmode\circ{C}\else\^{C}\fi}
+\newcommand{\xmlcdot}{\ifmmode\dot{c}\else\.{c}\fi}
+\newcommand{\xmlCdot}{\ifmmode\dot{C}\else\.{C}\fi}
+\newcommand{\xmldcaron}{\ifmmode\check{d}\else\v{d}\fi}
+\newcommand{\xmlDcaron}{\ifmmode\check{D}\else\v{D}\fi}
+\newcommand{\xmldstrok}{\ifmmode\dj\else\dj\fi}
+\newcommand{\xmlDstrok}{\ifmmode\DJ\else\DJ\fi}
+\newcommand{\xmlecaron}{\ifmmode\check{e}\else\v{e}\fi}
+\newcommand{\xmlEcaron}{\ifmmode\check{E}\else\v{E}\fi}
+\newcommand{\xmledot}{\ifmmode\dot{e}\else\.{e}\fi}
+\newcommand{\xmlEdot}{\ifmmode\dot{E}\else\.{e}\fi}
+\newcommand{\xmlemacr}{\ifmmode\bar{e}\else$\bar{e}$\fi}
+\newcommand{\xmlEmacr}{\ifmmode\bar{E}\else$\bar{E}$\fi}
+\newcommand{\xmleng}{\ifmmode\ng\else\ng\fi}
+\newcommand{\xmlENG}{\ifmmode\NG\else\NG\fi}
+\newcommand{\xmleogon}{\ifmmode\k{e}\else\k{e}\fi}
+\newcommand{\xmlEogon}{\ifmmode\k{E}\else\k{E}\fi}
+\newcommand{\xmlgacute}{\ifmmode\acute{g}\else\'{g}\fi}
+\newcommand{\xmlgbreve}{\ifmmode\breve{g}\else\u{g}\fi}
+\newcommand{\xmlGbreve}{\ifmmode\breve{G}\else\u{G}\fi}
+\newcommand{\xmlGcedil}{\ifmmode\c{G}\else\c{G}\fi}
+\newcommand{\xmlgcirc}{\ifmmode\circ{g}\else\^{g}\fi}
+\newcommand{\xmlGcirc}{\ifmmode\circ{G}\else\^{G}\fi}
+\newcommand{\xmlgdot}{\ifmmode\dot{g}\else\.{g}\fi}
+\newcommand{\xmlGdot}{\ifmmode\dot{G}\else\.{G}\fi}
+\newcommand{\xmlgcaron}{\ifmmode\check{g}\else\v{g}\fi}
+\newcommand{\xmlGcaron}{\ifmmode\check{G}\else\v{G}\fi}
+\newcommand{\xmlhcirc}{\ifmmode\circ{h}\else\^{h}\fi}
+\newcommand{\xmlHcirc}{\ifmmode\circ{H}\else\^{H}\fi}
+\newcommand{\xmlhstrok}{\ifmmode\hstrok\else\hstrok\fi}
+\newcommand{\xmlHstrok}{\ifmmode\Hstrok\else\Hstrok\fi}
+\newcommand{\xmlIdot}{\ifmmode\dot{I}\else\.{I}\fi}
+\newcommand{\xmlijlig}{\ifmmode i\kern-.15em j\elsei\kern-.15em j\fi}
+\newcommand{\xmlIJlig}{\ifmmode I\kern-.15em J\elseI\kern-.15em J\fi}
+\newcommand{\xmlimacr}{\ifmmode\bar{i}\else$\bar{i}$\fi}
+\newcommand{\xmlImacr}{\ifmmode\bar{I}\else$\bar{I}$\fi}
+\newcommand{\xmlinodot}{\ifmmode\i\else\i\fi}
+\newcommand{\xmliogon}{\ifmmode\k{\i}\else\k{\i}\fi}
+\newcommand{\xmlIogon}{\ifmmode\k{I}\else\k{I}\fi}
+\newcommand{\xmlitilde}{\ifmmode\tilde{\i}\else\~{\i}\fi}
+\newcommand{\xmlItilde}{\ifmmode\tilde{I}\else\~{I}\fi}
+\newcommand{\xmljcirc}{\ifmmode\circ{j}\else\^{j}\fi}
+\newcommand{\xmlJcirc}{\ifmmode\circ{J}\else\^{J}\fi}
+\newcommand{\xmlkcedil}{\ifmmode\c{k}\else\c{k}\fi}
+\newcommand{\xmlKcedil}{\ifmmode\c{K}\else\c{K}\fi}
+\newcommand{\xmlkgreen}{\ifmmode\text{\textsc{k}}\else\textsc{k}\fi}
+\newcommand{\xmllacute}{\ifmmode\acute{l}\else\'{l}\fi}
+\newcommand{\xmlLacute}{\ifmmode\acute{L}\else\'{L}\fi}
+\newcommand{\xmllcaron}{\ifmmode\check{l}\else\v{l}\fi}
+\newcommand{\xmlLcaron}{\ifmmode\check{L}\else\v{L}\fi}
+\newcommand{\xmllcedil}{\ifmmode\c{l}\else\c{l}\fi}
+\newcommand{\xmlLcedil}{\ifmmode\c{L}\else\c{L}\fi}
+\newcommand{\xmllmidot}{\ifmmode    \else    \fi}
+\newcommand{\xmlLmidot}{\ifmmode    \else    \fi}
+\newcommand{\xmllstrok}{\ifmmode\l\else\l\fi}
+\newcommand{\xmlLstrok}{\ifmmode\L\else\L\fi}
+\newcommand{\xmlnacute}{\ifmmode\acute{n}\else\'{n}\fi}
+\newcommand{\xmlNacute}{\ifmmode\acute{N}\else\'{N}\fi}
+\newcommand{\xmlnapos}{\ifmmode    \else    \fi}
+\newcommand{\xmlncaron}{\ifmmode\check{n}\else\v{n}\fi}
+\newcommand{\xmlNcaron}{\ifmmode\check{N}\else\v{N}\fi}
+\newcommand{\xmlncedil}{\ifmmode\c{n}\else\c{n}\fi}
+\newcommand{\xmlNcedil}{\ifmmode\c{N}\else\c{N}\fi}
+\newcommand{\xmlodblac}{\ifmmode\H{o}\else\H{o}\fi}
+\newcommand{\xmlOdblac}{\ifmmode\H{O}\else\H{O}\fi}
+\newcommand{\xmloelig}{\ifmmode\oe\else\oe\fi}
+\newcommand{\xmlOElig}{\ifmmode\OE\else\OE\fi}
+\newcommand{\xmlomacr}{\ifmmode\bar{o}\else\={o}\fi}
+\newcommand{\xmlOmacr}{\ifmmode\bar{O}\else\={O}\fi}
+\newcommand{\xmlracute}{\ifmmode\acute{r}\else\'{r}\fi}
+\newcommand{\xmlRacute}{\ifmmode\acute{R}\else\'{R}\fi}
+\newcommand{\xmlrcaron}{\ifmmode\check{r}\else\v{r}\fi}
+\newcommand{\xmlRcaron}{\ifmmode\check{R}\else\v{R}\fi}
+\newcommand{\xmlrcedil}{\ifmmode\c{r}\else\c{r}\fi}
+\newcommand{\xmlRcedil}{\ifmmode\c{R}\else\c{R}\fi}
+\newcommand{\xmlsacute}{\ifmmode\acute{s}\else\'{s}\fi}
+\newcommand{\xmlSacute}{\ifmmode\acute{S}\else\'{S}\fi}
+\newcommand{\xmlscaron}{\ifmmode\check{s}\else\v{s}\fi}
+\newcommand{\xmlScaron}{\ifmmode\check{S}\else\v{S}\fi}
+\newcommand{\xmlscedil}{\ifmmode\c{s}\else\c{s}\fi}
+\newcommand{\xmlScedil}{\ifmmode\c{S}\else\c{S}\fi}
+\newcommand{\xmlscirc}{\ifmmode\circ{s}\else\^{s}\fi}
+\newcommand{\xmlScirc}{\ifmmode\circ{S}\else\^{S}\fi}
+\newcommand{\xmltcaron}{\ifmmode\check{t}\else\v{t}\fi}
+\newcommand{\xmlTcaron}{\ifmmode\check{T}\else\v{T}\fi}
+\newcommand{\xmltcedil}{\ifmmode\c{t}\else\c{t}\fi}
+\newcommand{\xmlTcedil}{\ifmmode\c{T}\else\c{T}\fi}
+\newcommand{\xmltstrok}{\ifmmode    \else    \fi}
+\newcommand{\xmlTstrok}{\ifmmode    \else    \fi}
+\newcommand{\xmlubreve}{\ifmmode\breve{u}\else\u{u}\fi}
+\newcommand{\xmlUbreve}{\ifmmode\breve{U}\else\u{U}\fi}
+\newcommand{\xmludblac}{\ifmmode\H{u}\else\H{u}\fi}
+\newcommand{\xmlUdblac}{\ifmmode\H{U}\else\H{U}\fi}
+\newcommand{\xmlumacr}{\ifmmode\bar{u}\else\={u}\fi}
+\newcommand{\xmlUmacr}{\ifmmode\bar{U}\else\={U}\fi}
+\newcommand{\xmluogon}{\ifmmode\k{u}\else\k{u}\fi}
+\newcommand{\xmlUogon}{\ifmmode\k{U}\else\k{U}\fi}
+\newcommand{\xmluring}{\ifmmode\mathring{u}\else\r{u}\fi}
+\newcommand{\xmlUring}{\ifmmode\mathring{U}\else\r{u}\fi}
+\newcommand{\xmlutilde}{\ifmmode\tilde{u}\else\~{u}\fi}
+\newcommand{\xmlUtilde}{\ifmmode\tilde{U}\else\~{u}\fi}
+\newcommand{\xmlwcirc}{\ifmmode\circ{w}\else\^{w}\fi}
+\newcommand{\xmlWcirc}{\ifmmode\circ{W}\else\^{W}\fi}
+\newcommand{\xmlycirc}{\ifmmode\circ{y}\else\^{y}\fi}
+\newcommand{\xmlYcirc}{\ifmmode\circ{Y}\else\^{Y}\fi}
+\newcommand{\xmlYuml}{\ifmmode\ddot{Y}\else\"{Y}\fi}
+\newcommand{\xmlzacute}{\ifmmode\acute{z}\else\'{z}\fi}
+\newcommand{\xmlZacute}{\ifmmode\acute{Z}\else\'{Z}\fi}
+\newcommand{\xmlzcaron}{\ifmmode\check{z}\else\v{z}\fi}
+\newcommand{\xmlZcaron}{\ifmmode\check{Z}\else\v{Z}\fi}
+
+%%%%%%%%%%%%%%%
+%\newcommand{\xmlzdot}{\ifmmode\ddot{z}\else\"{z}\fi}
+%\newcommand{\xmlZdot}{\ifmmode\ddot{Z}\else\"{Z}\fi}
+%%%%%%%%%%%%%%%
+
+\newcommand{\xmlnuml}{\ifmmode\ddot{n}\else\"{n}\fi}
+\newcommand{\xmlzuml}{\ifmmode\ddot{z}\else\"{z}\fi}
+\newcommand{\xmlZuml}{\ifmmode\ddot{Z}\else\"{Z}\fi}
+\newcommand{\xmlzdot}{\ifmmode\dot{z}\else\.{z}\fi}
+\newcommand{\xmlZdot}{\ifmmode\dot{Z}\else\.{Z}\fi}
+\newcommand{\xmlydot}{\ifmmode\dot{y}\else\.{y}\fi}
+\newcommand{\xmlYdot}{\ifmmode\dot{Y}\else\.{Y}\fi}
+
+
+
+%%%%%%%%% 17. ISOmfrk.ent (ISOmfrkmap.xsl)
+
+\newcommand{\xmlafr}{\ifmmode\mathfrak{a}\else$\mathfrak{a}$\fi}
+\newcommand{\xmlAfr}{\ifmmode\mathfrak{A}\else$\mathfrak{A}$\fi}
+\newcommand{\xmlbfr}{\ifmmode\mathfrak{b}\else$\mathfrak{b}$\fi}
+\newcommand{\xmlBfr}{\ifmmode\mathfrak{B}\else$\mathfrak{B}$\fi}
+\newcommand{\xmlcfr}{\ifmmode\mathfrak{c}\else$\mathfrak{c}$\fi}
+\newcommand{\xmlCfr}{\ifmmode\mathfrak{C}\else$\mathfrak{C}$\fi}
+\newcommand{\xmldfr}{\ifmmode\mathfrak{d}\else$\mathfrak{d}$\fi}
+\newcommand{\xmlDfr}{\ifmmode\mathfrak{D}\else$\mathfrak{D}$\fi}
+\newcommand{\xmlefr}{\ifmmode\mathfrak{e}\else$\mathfrak{e}$\fi}
+\newcommand{\xmlEfr}{\ifmmode\mathfrak{E}\else$\mathfrak{E}$\fi}
+\newcommand{\xmlffr}{\ifmmode\mathfrak{f}\else$\mathfrak{f}$\fi}
+\newcommand{\xmlFfr}{\ifmmode\mathfrak{F}\else$\mathfrak{F}$\fi}
+\newcommand{\xmlgfr}{\ifmmode\mathfrak{g}\else$\mathfrak{g}$\fi}
+\newcommand{\xmlGfr}{\ifmmode\mathfrak{G}\else$\mathfrak{G}$\fi}
+\newcommand{\xmlhfr}{\ifmmode\mathfrak{h}\else$\mathfrak{h}$\fi}
+\newcommand{\xmlHfr}{\ifmmode\mathfrak{H}\else$\mathfrak{H}$\fi}
+\newcommand{\xmlifr}{\ifmmode\mathfrak{i}\else$\mathfrak{i}$\fi}
+\newcommand{\xmlIfr}{\ifmmode\Im\else$\Im$\fi}
+\newcommand{\xmljfr}{\ifmmode\mathfrak{j}\else$\mathfrak{j}$\fi}
+\newcommand{\xmlJfr}{\ifmmode\mathfrak{J}\else$\mathfrak{J}$\fi}
+\newcommand{\xmlkfr}{\ifmmode\mathfrak{k}\else$\mathfrak{k}$\fi}
+\newcommand{\xmlKfr}{\ifmmode\mathfrak{K}\else$\mathfrak{K}$\fi}
+\newcommand{\xmllfr}{\ifmmode\mathfrak{l}\else$\mathfrak{l}$\fi}
+\newcommand{\xmlLfr}{\ifmmode\mathfrak{L}\else$\mathfrak{L}$\fi}
+\newcommand{\xmlmfr}{\ifmmode\mathfrak{m}\else$\mathfrak{m}$\fi}
+\newcommand{\xmlMfr}{\ifmmode\mathfrak{M}\else$\mathfrak{M}$\fi}
+\newcommand{\xmlnfr}{\ifmmode\mathfrak{n}\else$\mathfrak{n}$\fi}
+\newcommand{\xmlNfr}{\ifmmode\mathfrak{N}\else$\mathfrak{N}$\fi}
+\newcommand{\xmlofr}{\ifmmode\mathfrak{o}\else$\mathfrak{o}$\fi}
+\newcommand{\xmlOfr}{\ifmmode\mathfrak{O}\else$\mathfrak{O}$\fi}
+\newcommand{\xmlpfr}{\ifmmode\mathfrak{p}\else$\mathfrak{p}$\fi}
+\newcommand{\xmlPfr}{\ifmmode\mathfrak{P}\else$\mathfrak{P}$\fi}
+\newcommand{\xmlqfr}{\ifmmode\mathfrak{q}\else$\mathfrak{q}$\fi}
+\newcommand{\xmlQfr}{\ifmmode\mathfrak{Q}\else$\mathfrak{Q}$\fi}
+\newcommand{\xmlrfr}{\ifmmode\mathfrak{r}\else$\mathfrak{r}$\fi}
+\newcommand{\xmlRfr}{\ifmmode\mathfrak{R}\else$\mathfrak{R}$\fi}
+\newcommand{\xmlsfr}{\ifmmode\mathfrak{s}\else$\mathfrak{s}$\fi}
+\newcommand{\xmlSfr}{\ifmmode\mathfrak{S}\else$\mathfrak{S}$\fi}
+\newcommand{\xmltfr}{\ifmmode\mathfrak{t}\else$\mathfrak{t}$\fi}
+\newcommand{\xmlTfr}{\ifmmode\mathfrak{T}\else$\mathfrak{T}$\fi}
+\newcommand{\xmlufr}{\ifmmode\mathfrak{u}\else$\mathfrak{u}$\fi}
+\newcommand{\xmlUfr}{\ifmmode\mathfrak{U}\else$\mathfrak{U}$\fi}
+\newcommand{\xmlvfr}{\ifmmode\mathfrak{v}\else$\mathfrak{v}$\fi}
+\newcommand{\xmlVfr}{\ifmmode\mathfrak{V}\else$\mathfrak{V}$\fi}
+\newcommand{\xmlwfr}{\ifmmode\mathfrak{w}\else$\mathfrak{w}$\fi}
+\newcommand{\xmlWfr}{\ifmmode\mathfrak{W}\else$\mathfrak{W}$\fi}
+\newcommand{\xmlxfr}{\ifmmode\mathfrak{x}\else$\mathfrak{x}$\fi}
+\newcommand{\xmlXfr}{\ifmmode\mathfrak{X}\else$\mathfrak{X}$\fi}
+\newcommand{\xmlyfr}{\ifmmode\mathfrak{y}\else$\mathfrak{y}$\fi}
+\newcommand{\xmlYfr}{\ifmmode\mathfrak{Y}\else$\mathfrak{Y}$\fi}
+\newcommand{\xmlzfr}{\ifmmode\mathfrak{z}\else$\mathfrak{z}$\fi}
+\newcommand{\xmlZfr}{\ifmmode\mathfrak{Z}\else$\mathfrak{Z}$\fi}
+
+%%%%%%%%% 18. ISOmopf.ent (ISOmopfmap.xsl)
+
+\newcommand{\xmlAopf}{\ifmmode\mathbb{A}\else$\mathbb{A}$\fi}
+\newcommand{\xmlBopf}{\ifmmode\mathbb{B}\else$\mathbb{B}$\fi}
+\newcommand{\xmlCopf}{\ifmmode\mathbb{C}\else$\mathbb{C}$\fi}
+\newcommand{\xmlDopf}{\ifmmode\mathbb{D}\else$\mathbb{D}$\fi}
+\newcommand{\xmlEopf}{\ifmmode\mathbb{E}\else$\mathbb{E}$\fi}
+\newcommand{\xmlFopf}{\ifmmode\mathbb{F}\else$\mathbb{F}$\fi}
+\newcommand{\xmlGopf}{\ifmmode\mathbb{G}\else$\mathbb{G}$\fi}
+\newcommand{\xmlHopf}{\ifmmode\mathbb{H}\else$\mathbb{H}$\fi}
+\newcommand{\xmlIopf}{\ifmmode\mathbb{I}\else$\mathbb{I}$\fi}
+\newcommand{\xmlJopf}{\ifmmode\mathbb{J}\else$\mathbb{J}$\fi}
+\newcommand{\xmlKopf}{\ifmmode\mathbb{K}\else$\mathbb{K}$\fi}
+\newcommand{\xmlLopf}{\ifmmode\mathbb{L}\else$\mathbb{L}$\fi}
+\newcommand{\xmlMopf}{\ifmmode\mathbb{M}\else$\mathbb{M}$\fi}
+\newcommand{\xmlNopf}{\ifmmode\mathbb{N}\else$\mathbb{N}$\fi}
+\newcommand{\xmlOopf}{\ifmmode\mathbb{O}\else$\mathbb{O}$\fi}
+\newcommand{\xmlPopf}{\ifmmode\mathbb{P}\else$\mathbb{P}$\fi}
+\newcommand{\xmlQopf}{\ifmmode\mathbb{Q}\else$\mathbb{Q}$\fi}
+\newcommand{\xmlRopf}{\ifmmode\mathbb{R}\else$\mathbb{R}$\fi}
+\newcommand{\xmlSopf}{\ifmmode\mathbb{S}\else$\mathbb{S}$\fi}
+\newcommand{\xmlTopf}{\ifmmode\mathbb{T}\else$\mathbb{T}$\fi}
+\newcommand{\xmlUopf}{\ifmmode\mathbb{U}\else$\mathbb{U}$\fi}
+\newcommand{\xmlVopf}{\ifmmode\mathbb{V}\else$\mathbb{V}$\fi}
+\newcommand{\xmlWopf}{\ifmmode\mathbb{W}\else$\mathbb{W}$\fi}
+\newcommand{\xmlXopf}{\ifmmode\mathbb{X}\else$\mathbb{X}$\fi}
+\newcommand{\xmlYopf}{\ifmmode\mathbb{Y}\else$\mathbb{Y}$\fi}
+\newcommand{\xmlZopf}{\ifmmode\mathbb{Z}\else$\mathbb{Z}$\fi}
+
+
+%%%%%%%%% 19. ISOmscr.ent (ISOmscrmap.xsl)
+
+\newcommand{\xmlascr}{\ifmmode\mathit{a}\else$\mathit{a}$\fi}
+\newcommand{\xmlAscr}{\ifmmode\mathscr{A}\else$\mathscr{A}$\fi}
+\newcommand{\xmlbscr}{\ifmmode\mathit{b}\else$\mathit{b}$\fi}
+\newcommand{\xmlBscr}{\ifmmode\mathscr{B}\else$\mathscr{B}$\fi}
+\newcommand{\xmlcscr}{\ifmmode\mathit{c}\else$\mathit{c}$\fi}
+\newcommand{\xmlCscr}{\ifmmode\mathscr{C}\else$\mathscr{C}$\fi}
+\newcommand{\xmldscr}{\ifmmode\mathit{d}\else$\mathit{d}$\fi}
+\newcommand{\xmlDscr}{\ifmmode\mathscr{D}\else$\mathscr{D}$\fi}
+\newcommand{\xmlescr}{\ifmmode\mathit{e}\else$\mathit{e}$\fi}
+\newcommand{\xmlEscr}{\ifmmode\mathscr{E}\else$\mathscr{E}$\fi}
+\newcommand{\xmlfscr}{\ifmmode\mathit{f}\else$\mathit{f}$\fi}
+\newcommand{\xmlFscr}{\ifmmode\mathscr{F}\else$\mathscr{F}$\fi}
+\newcommand{\xmlgscr}{\ifmmode\mathit{g}\else$\mathit{g}$\fi}
+\newcommand{\xmlGscr}{\ifmmode\mathscr{G}\else$\mathscr{G}$\fi}
+\newcommand{\xmlhscr}{\ifmmode\mathit{h}\else$\mathit{h}$\fi}
+\newcommand{\xmlHscr}{\ifmmode\mathscr{H}\else$\mathscr{H}$\fi}
+\newcommand{\xmliscr}{\ifmmode\mathit{i}\else$\mathit{i}$\fi}
+\newcommand{\xmlIscr}{\ifmmode\mathscr{I}\else$\mathscr{I}$\fi}
+\newcommand{\xmljscr}{\ifmmode\mathit{j}\else$\mathit{j}$\fi}
+\newcommand{\xmlJscr}{\ifmmode\mathscr{J}\else$\mathscr{J}$\fi}
+\newcommand{\xmlkscr}{\ifmmode\mathit{k}\else$\mathit{k}$\fi}
+\newcommand{\xmlKscr}{\ifmmode\mathscr{K}\else$\mathscr{K}$\fi}
+\newcommand{\xmllscr}{\ifmmode\mathit{l}\else$\mathit{l}$\fi}
+\newcommand{\xmlLscr}{\ifmmode\mathscr{L}\else$\mathscr{L}$\fi}
+\newcommand{\xmlmscr}{\ifmmode\mathit{m}\else$\mathit{m}$\fi}
+\newcommand{\xmlMscr}{\ifmmode\mathscr{M}\else$\mathscr{M}$\fi}
+\newcommand{\xmlnscr}{\ifmmode\mathit{n}\else$\mathit{n}$\fi}
+\newcommand{\xmlNscr}{\ifmmode\mathscr{N}\else$\mathscr{N}$\fi}
+\newcommand{\xmloscr}{\ifmmode\mathit{o}\else$\mathit{o}$\fi}
+\newcommand{\xmlOscr}{\ifmmode\mathscr{O}\else$\mathscr{O}$\fi}
+\newcommand{\xmlpscr}{\ifmmode\mathit{p}\else$\mathit{p}$\fi}
+\newcommand{\xmlPscr}{\ifmmode\mathscr{P}\else$\mathscr{P}$\fi}
+\newcommand{\xmlqscr}{\ifmmode\mathit{q}\else$\mathit{q}$\fi}
+\newcommand{\xmlQscr}{\ifmmode\mathscr{Q}\else$\mathscr{Q}$\fi}
+\newcommand{\xmlrscr}{\ifmmode\mathit{r}\else$\mathit{r}$\fi}
+\newcommand{\xmlRscr}{\ifmmode\mathscr{R}\else$\mathscr{R}$\fi}
+\newcommand{\xmlsscr}{\ifmmode\mathit{s}\else$\mathit{s}$\fi}
+\newcommand{\xmlSscr}{\ifmmode\mathscr{S}\else$\mathscr{S}$\fi}
+\newcommand{\xmltscr}{\ifmmode\mathit{t}\else$\mathit{t}$\fi}
+\newcommand{\xmlTscr}{\ifmmode\mathscr{T}\else$\mathscr{T}$\fi}
+\newcommand{\xmluscr}{\ifmmode\mathit{u}\else$\mathit{u}$\fi}
+\newcommand{\xmlUscr}{\ifmmode\mathscr{U}\else$\mathscr{U}$\fi}
+\newcommand{\xmlvscr}{\ifmmode\mathit{v}\else$\mathit{v}$\fi}
+\newcommand{\xmlVscr}{\ifmmode\mathscr{V}\else$\mathscr{V}$\fi}
+\newcommand{\xmlwscr}{\ifmmode\mathit{w}\else$\mathit{w}$\fi}
+\newcommand{\xmlWscr}{\ifmmode\mathscr{W}\else$\mathscr{W}$\fi}
+\newcommand{\xmlxscr}{\ifmmode\mathit{x}\else$\mathit{x}$\fi}
+\newcommand{\xmlXscr}{\ifmmode\mathscr{X}\else$\mathscr{X}$\fi}
+\newcommand{\xmlyscr}{\ifmmode\mathit{y}\else$\mathit{y}$\fi}
+\newcommand{\xmlYscr}{\ifmmode\mathscr{Y}\else$\mathscr{Y}$\fi}
+\newcommand{\xmlzscr}{\ifmmode\mathit{z}\else$\mathit{z}$\fi}
+\newcommand{\xmlZscr}{\ifmmode\mathscr{Z}\else$\mathscr{Z}$\fi}
+
+
+%%%%%%%%% 20. ISOnum.ent  (ISOnummap.xsl )
+
+\newcommand{\xmlamp      }{\ifmmode\&\else\&\fi}
+\newcommand{\xmlapos     }{\ifmmode{'}\else{'}\fi}
+\newcommand{\xmlast      }{\ifmmode\text{*}\else$\text{*}$\fi}
+%\newcommand{\xmlast      }{\ifmmode^{\ast}\else$^{\ast}$\fi}
+\newcommand{\xmlbrvbar   }{\ifmmode\text{\textbrokenbar}\else\textbrokenbar\fi}
+\newcommand{\xmlbsol     }{\ifmmode\backslash\else$\backslash$\fi}
+\newcommand{\xmlcent     }{\ifmmode\text{\textcent}\else\textcent\fi}
+\newcommand{\xmlcolon    }{:\xspace}
+\newcommand{\xmlcomma    }{,\xspace}
+\newcommand{\xmlcommat   }{@}
+\newcommand{\xmlcopy     }{\ifmmode\text{\textcopyright}\else\textcopyright\fi}
+\newcommand{\xmlcurren   }{\ifmmode\text{\textcurrency}\else\textcurrency\fi}
+\newcommand{\xmldarr     }{\ifmmode\downarrow\else$\downarrow$\fi}
+\newcommand{\xmldeg      }{\ifmmode\text{\textdegree}\else\textdegree\fi}
+\newcommand{\xmldivide   }{\ifmmode\div\else$\div$\fi}
+\newcommand{\xmldollar   }{\ifmmode\$\else\$\fi}
+\newcommand{\xmlequals   }{\ifmmode=\else{\mathsurround=\opskip$=$}\fi}
+\newcommand{\xmlexcl     }{\ifmmode!\else!\fi}
+\newcommand{\xmlfraci   }{\ifmmode\text{\textonequarter}\else\textonequarter\fi}
+\newcommand{\xmlfracii    }{\ifmmode\text{\textonehalf}\else\textonehalf\fi}
+\newcommand{\xmlfraciii   }{\ifmmode\text{\textthreequarters}\else\textthreequarters\fi}
+\newcommand{\xmlfraciv  }{\ifmmode\sfrac{1}{8}\else$\sfrac{1}{8}$\fi}
+\newcommand{\xmlfracv    }{\ifmmode\sfrac{3}{8}\else$\sfrac{3}{8}$\fi}
+\newcommand{\xmlfracvi   }{\ifmmode\sfrac{5}{8}\else$\sfrac{5}{8}$\fi}
+\newcommand{\xmlfracvii  }{\ifmmode\sfrac{7}{8}\else$\sfrac{7}{8}$\fi}
+\newcommand{\xmlgt       }{\ifmmode>\else{\mathsurround=\opskip$>$}\fi}
+\newcommand{\xmlhalf     }{\ifmmode\text{\textonehalf}\else\textonehalf\fi}
+\newcommand{\xmlhorbar   }{\ifmmode\text{---}\else---\fi}
+\newcommand{\xmlhyphen   }{\ifmmode\text{-}\else-\fi}
+\newcommand{\xmliexcl    }{\ifmmode\text{\textexclamdown}\else\textexclamdown\fi}
+\newcommand{\xmliquest   }{\ifmmode\text{\textquestiondown}\else\textquestiondown\fi}
+\newcommand{\xmllaquo    }{\ifmmode\text{\guillemotleft}\else\guillemotleft\fi}
+\newcommand{\xmllarr     }{\ifmmode\leftarrow\else$\leftarrow$\fi}
+\newcommand{\xmllcub     }{\ifmmode\lbrace\else$\lbrace$\fi}
+\newcommand{\xmlldquo    }{\ifmmode\text{\textquotedblleft}\else\textquotedblleft\fi}
+\newcommand{\xmllowbar   }{\ifmmode\text{\textunderscore}\else\textunderscore\fi}
+\newcommand{\xmllpar     }{\ifmmode(\else(\fi}
+\newcommand{\xmllsqb     }{\ifmmode\lbrack\else$\lbrack$\fi}
+\newcommand{\xmllsquo    }{\ifmmode\text{\lq}\else\lq\fi}
+\newcommand{\xmllt       }{\ifmmode<\else{\mathsurround=\opskip$<$}\fi}
+\newcommand{\xmlmicro    }{\ifmmode\text{\textmu}\else\textmu\fi}
+\newcommand{\xmlmiddot   }{\ifmmode\cdotp\else$\cdotp$\fi}
+\newcommand{\xmlnbsp     }{\ifmmode~\else~\fi}
+%\newcommand{\xmlnot      }{\ifmmode\neq\else$\neq$\fi} %%%%%%%%%%% MODIFIED ON 3rd May 2011 to replace \lnot command from \neq
+\newcommand{\xmlnot      }{\ifmmode\lnot\else$\lnot$\fi}
+\newcommand{\xmlnum      }{\ifmmode\#\else\#\fi}
+\newcommand{\xmlohm      }{\ifmmode\text{\textohm}\else\textohm\fi}
+\newcommand{\xmlordf     }{\ifmmode\text{\textordfeminine}\else\textordfeminine\fi}
+\newcommand{\xmlordm     }{\ifmmode\text{\textordmasculine}\else\textordmasculine\fi}
+\newcommand{\xmlpara     }{\ifmmode\P\else\P\fi}
+\newcommand{\xmlpercnt   }{\ifmmode\%\else\%\fi}
+\newcommand{\xmlperiod   }{\ifmmode.\else.\fi}
+\newcommand{\xmlplus     }{\ifmmode+\else{$+$}\fi}
+\newcommand{\xmlplusmn   }{\ifmmode\pm\else{$\pm$}\fi}
+\newcommand{\xmlpound    }{\ifmmode\text{\textsterling}\else\textsterling\fi}
+\newcommand{\xmlquest    }{\ifmmode?\else?\fi}
+\newcommand{\xmlquot     }{\ifmmode\text{\textquotedbl}\else\textquotedbl\fi}
+\newcommand{\xmlraquo    }{\ifmmode\text{\guillemotright}\else\guillemotright\fi}
+\newcommand{\xmlrarr     }{\ifmmode\rightarrow\else$\rightarrow$\fi}
+\newcommand{\xmlrcub     }{\ifmmode\rbrace\else$\rbrace$\fi}
+\newcommand{\xmlrdquo    }{\ifmmode\text{\textquotedblright}\else\textquotedblright\fi}
+\newcommand{\xmlreg      }{\ifmmode\text{\textregistered}\else\protect\textregistered\fi}
+\newcommand{\xmlrpar     }{\ifmmode)\else)\fi}
+\newcommand{\xmlrsqb     }{\ifmmode\rbrack\else$\rbrack$\fi}
+\newcommand{\xmlrsquo    }{\ifmmode\rq\else\rq\fi}
+\newcommand{\xmlsect     }{\ifmmode\S\else\S\fi}
+\newcommand{\xmlsemi     }{\ifmmode;\else;\fi}
+\newcommand{\xmlshy      }{\ifmmode\text{\-}\else\-\fi}
+\newcommand{\xmlsol      }{\ifmmode\text{/}\else/\fi}
+\newcommand{\xmlsung     }{\ifmmode\quarternote\else$\quarternote$\fi}
+\newcommand{\xmlsupi     }{\ifmmode\text{\textonesuperior}\else\textonesuperior\fi}
+\newcommand{\xmlsupii    }{\ifmmode\text{\texttwosuperior}\else\texttwosuperior\fi}
+\newcommand{\xmlsupiii   }{\ifmmode\text{\textthreesuperior}\else\textthreesuperior\fi}
+\newcommand{\xmltimes    }{\ifmmode\times\else{$\times$}\fi}
+\newcommand{\xmltrade    }{\ifmmode\text{\texttrademark}\else\texttrademark\fi}
+\newcommand{\xmluarr     }{\ifmmode\uparrow\else$\uparrow$\fi}
+\newcommand{\xmlverbar   }{\ifmmode\vert\else$\vert$\fi}
+\newcommand{\xmlyen      }{\ifmmode\yen\else$\yen$\fi}
+\newcommand{\xmleuro     }{\ifmmode\text{\euro}\else\euro\fi}
+
+
+%%%%%%%%% 21. ISOpub.ent  (ISOpubmap.xsl )
+
+\newcommand{\xmlblank}    {\ifmmode\text{\textvisiblespace}\else\textvisiblespace\fi}
+\newcommand{\xmlblki}     {\textcolor[gray]{.5}{\block}}
+\newcommand{\xmlblkii}    {\textcolor[gray]{.75}{\block}}
+\newcommand{\xmlblkiii}   {\textcolor[gray]{.25}{\block}}
+\newcommand{\xmlblock}    {\block}
+\newcommand{\xmlbull}     {\ifmmode\bullet\else\textbullet\fi}
+\newcommand{\xmlcaret}    {\ifmmode\mathchar"1356\else\ensuremath{\mathchar"1356}\fi}
+\newcommand{\xmlcheck}    {\ifmmode\checkmark\else$\checkmark$\fi}
+\newcommand{\xmlcir}      {\ifmmode\circ\else$\circ$\fi}
+\newcommand{\xmlclubs}    {\ifmmode\ding{168}\else\ding{168}\fi}
+\newcommand{\xmlcopysr}   {\ifmmode\text{\textcircledP}\else\textcircledP\fi}
+\newcommand{\xmlcross}    {\ifmmode\ding{55}\else\ding{55}\fi}
+%\newcommand{\xmldagger}      {\ifmmode\dag\else$\dag$\fi}   %% coming in ams
+%\newcommand{\xmlDagger}      {\ifmmode\ddag\else$\ddag$\fi} %% coming in ams
+\newcommand{\xmldash}     {\ifmmode\text{-}\else-\fi}
+\newcommand{\xmldiams}    {\ifmmode\ding{169}\else\ding{169}\fi}
+\newcommand{\xmldlcrop}   {\ifmmode\dlcrop\else$\dlcrop$\fi}
+\newcommand{\xmldrcrop}   {\ifmmode\drcrop\else$\drcrop$\fi}
+\newcommand{\xmldtri}     {\ifmmode\triangledown\else$\triangledown$\fi}
+\newcommand{\xmldtrif}    {\ifmmode\blacktriangledown\else$\blacktriangledown$\fi}
+\newcommand{\xmlemsp}     {\hspace{1em}}
+\newcommand{\xmlemspi}    {\,}
+\newcommand{\xmlemspii}   {\,}
+\newcommand{\xmlensp}     {\hspace{0.5em}}
+\newcommand{\xmlfemale}   {\ifmmode\female\else$\female$\fi}
+\newcommand{\xmlffilig}   {\ifmmode\text{fi}\else{ffi}\fi}
+\newcommand{\xmlfflig}    {\ifmmode\text{ff}\else{ff}\fi}
+\newcommand{\xmlffllig}   {\ifmmode\text{ffl}\else{ffl}\fi}
+\newcommand{\xmlfilig}    {\ifmmode\text{fi}\else{fi}\fi}
+\newcommand{\xmlflat}     {\ifmmode\flat\else$\flat$\fi}
+\newcommand{\xmlfllig}    {\ifmmode\text{fl}\else{fl}\fi}
+\newcommand{\xmlfracviii} {\ifmmode\sfrac{1}{3}\else$\sfrac{1}{3}$\fi}
+\newcommand{\xmlfracix}   {\ifmmode\sfrac{1}{5}\else$\sfrac{1}{5}$\fi}
+\newcommand{\xmlfracx}    {\ifmmode\sfrac{1}{6}\else$\sfrac{1}{6}$\fi}
+\newcommand{\xmlfracxi}   {\ifmmode\sfrac{2}{3}\else$\sfrac{2}{3}$\fi}
+\newcommand{\xmlfracxii}  {\ifmmode\sfrac{2}{5}\else$\sfrac{2}{5}$\fi}
+\newcommand{\xmlfracxiii} {\ifmmode\sfrac{3}{5}\else$\sfrac{3}{5}$\fi}
+\newcommand{\xmlfracxiv}  {\ifmmode\sfrac{4}{5}\else$\sfrac{4}{5}$\fi}
+\newcommand{\xmlfracxv}   {\ifmmode\sfrac{5}{6}\else$\sfrac{5}{6}$\fi}
+\newcommand{\xmlhairsp}   {\hspace{1pt}}
+\newcommand{\xmlhellip}   {\ifmmode\ldots\else\ldots\fi}
+\newcommand{\xmlhybull}   {\ifmmode\hybull\else$\hybull$\fi}
+\newcommand{\xmlincare}   {\ifmmode{^c\!/\!_o}\else\ensuremath{^c\!/\!_o}\fi}
+\newcommand{\xmlldquor}   {,}
+\newcommand{\xmllhblk}    {\lhblk}
+\newcommand{\xmlloz}      {\ifmmode\lozenge\else$\lozenge$\fi}
+\newcommand{\xmllozf}     {\ifmmode\blacklozenge\else$\blacklozenge$\fi}
+\newcommand{\xmllsquor}   {\ifmmode\text{`}\else`\fi}
+\newcommand{\xmlltri}     {\ifmmodetriangleleft\else$\triangleleft$\fi}
+\newcommand{\xmlltrif}    {\ifmmode\blacktriangleleft\else$\blacktriangleleft$\fi}
+\newcommand{\xmlmale}     {\ifmmode\male\else$\male$\fi}
+\newcommand{\xmlmalt}     {\ifmmode\maltese\else$\maltese$\fi}
+\newcommand{\xmlmarker}   {\ifmmode\marker\else$\marker$\fi}
+%\newcommand{\xmlmdash}    {\ifmmode\text{---}\else---\fi}
+\newcommand{\xmlmdash}    {\ifmmode\textemdash\else\textemdash\fi}
+\newcommand{\xmlmldr}     {\ifmmode\ldots\else$\,\ldots\,$\fi}
+\newcommand{\xmlnatur}    {\ifmmode\natural\else$\natural$\fi}
+%\newcommand{\xmlndash}    {\ifmmode\text{--}\else--\fi}
+\newcommand{\xmlndash}    {\ifmmode\textendash\else\textendash\fi}
+\newcommand{\xmlnldr}     {\ifmmode\nldr\else$\nldr$\fi}
+\newcommand{\xmlnumsp}    {\hphantom{0}}
+\newcommand{\xmlphone}    {\ifmmode\phone\else$\phone$\fi}
+\newcommand{\xmlpuncsp}   {\hphantom{,}}
+\newcommand{\xmlrdquor}   {\ifmmode\text{'}\else'\fi}
+\newcommand{\xmlrect}     {\fbox{~~}}
+\newcommand{\xmlrsquor}   {\ifmmode\text{'}\else'\fi}
+\newcommand{\xmlrtri}     {\ifmmode\triangleright\else$\triangleright$\fi}
+\newcommand{\xmlrtrif}    {\ifmmode\blacktriangleright\else$\blacktriangleright$\fi}
+\newcommand{\xmlrx}   {\ifmmode\text{\textrecipe}\else\textrecipe\fi}
+\newcommand{\xmlsext}     {\ifmmode\ding{86}\else\ding{86}\fi}
+\newcommand{\xmlsharp}    {\ifmmode\sharp\else$\sharp$\fi}
+\newcommand{\xmlspades}   {\ifmmode\ding{171}\else\ding{171}\fi}
+\newcommand{\xmlsqu}      {\ifmmode\square\else$\square$\fi}
+\newcommand{\xmlsquf}     {\ifmmode\blacksquare\else$\blacksquare$\fi}
+\newcommand{\xmlstar}     {\ifmmode\ding{73}\else\ding{73}\fi}
+\newcommand{\xmlstarf}    {\ifmmode\bigstar\else$\bigstar$\fi}
+\newcommand{\xmltarget}   {\ifmmode{\mathchar"2208}\else\ensuremath{\mathchar"2208}\fi}
+\newcommand{\xmltelrec}   {\ifmmode\recorder\else$\recorder$\fi}
+\newcommand{\xmlthinsp}   {\,}
+\newcommand{\xmluhblk }   {\uhblk}
+\newcommand{\xmlulcrop}   {\ifmmode\ulcrop\else$\ulcrop$\fi}
+\newcommand{\xmlurcrop}   {\ifmmode\urcrop\else$\urcrop$\fi}
+\newcommand{\xmlutri}     {\ifmmode\vartriangle\else$\vartriangle$\fi}
+\newcommand{\xmlutrif}    {\ifmmode\blacktriangle\else$\blacktriangle$\fi}
+\newcommand{\xmlvellip}   {\ifmmode\vdots\else$\vdots$\fi}
+
+
+%%%%%%%%%  22. ISOtech.ent (ISOtechmap.xsl)
+
+\newcommand{\xmlacd}{\ifmmode\AC\else$\AC$\fi}
+\newcommand{\xmlaleph}{\ifmmode\aleph\else$\aleph$\fi}
+\newcommand{\xmlwand}{\ifmmode\wedge\else$\wedge$\fi}
+\newcommand{\xmlAnd}{\ifmmode\bigwedge\else$\bigwedge$\fi}
+\newcommand{\xmlandand}{\ifmmode\wedgeonwedge\else$\wedgeonwedge$\fi}
+\newcommand{\xmlandd}{\ifmmode\barwedge\else$\barwedge$\fi}
+\newcommand{\xmlandslope}{\ifmmode\bigcurlywedge\else$\bigcurlywedge$\fi}
+\newcommand{\xmlandv}{\ifmmode\wedgemidvert\else$\wedgemidvert$\fi}
+\newcommand{\xmlangrt}{\ifmmode\rangle\else$\rangle$\fi}
+\newcommand{\xmlangsph}{\ifmmode\sphericalangle\else$\sphericalangle$\fi}
+\newcommand{\xmlangst}{\ifmmode\AA\else\AA\fi}
+%\newcommand{\xmlap}{\ifmmode\approx\else$\approx$\fi}%%%%%%%%%%%%%%%% MODIFIED ON 4/5/11 due to operator space on either side of approximate
+\newcommand{\xmlap}{\ifmmode\approx\else{\mathsurround=\opskip$\approx$}\fi}
+\newcommand{\xmlapacir}{\ifmmode\stackrel{\wedge}{\approx}\else$\stackrel{\wedge}{\approx}$\fi}
+\newcommand{\xmlawconint}{\ifmmode\ointctrclockwise\else$\ointctrclockwise$\fi}
+\newcommand{\xmlawint}{\ifmmode\awint\else$\awint$\fi}
+\newcommand{\xmlbecaus}{\ifmmode\because\else$\because$\fi}
+\newcommand{\xmlbernou}{\ifmmode\mathscr{B}\else$\mathscr{B}$\fi}
+%bne
+%bnequiv
+\newcommand{\xmlbnot}{\ifmmode\invnot\else$\invnot$\fi}
+\newcommand{\xmlbNot}{\ifmmode\bNot\else$\bNot$\fi}
+\newcommand{\xmlbottom}{\ifmmode\bot\else$\bot$\fi}
+\newcommand{\xmlcap}{\ifmmode\cap\else$\cap$\fi}
+\newcommand{\xmlCconint}{\ifmmode\oiiint\else$\oiiint$\fi}
+\newcommand{\xmlcirfnint}{\ifmmode\cirfnint\else$\cirfnint$\fi}
+\newcommand{\xmlcompfn}{\ifmmode\circ\else$\circ$\fi}
+\newcommand{\xmlcong}{\ifmmode\cong\else{\mathsurround=\opskip$\cong$}\fi}
+\newcommand{\xmlconint}{\ifmmode\oint\else$\oint$\fi}
+\newcommand{\xmlConint}{\ifmmode\oiint\else$\oiint$\fi}
+\newcommand{\xmlctdot}{\ifmmode\cdots\else$\cdots$\fi}
+\newcommand{\xmlcup}{\ifmmode\cup\else$\cup$\fi}
+\newcommand{\xmlcwconint}{\ifmmode\varointclockwise\else$\varointclockwise$\fi}
+\newcommand{\xmlcwint}{\ifmmode\intclockwise\else$\intclockwise$\fi}
+\newcommand{\xmlcylcty}{\ifmmode\cylcty\else$\cylcty$\fi}
+\newcommand{\xmldisin}{\ifmmode\disin\else$\disin$\fi}
+\newcommand{\xmlDot}{\ifmmode\ddot{}\else$\ddot{}$\fi}
+\newcommand{\xmlDotDot}{\ifmmode\ddddot{}\else$\ddddot{}$\fi}
+\newcommand{\xmldsol}{\ifmmode\dsol\else$\dsol$\fi}
+\newcommand{\xmldtdot}{\ifmmode\ddots\else$\ddots$\fi}
+\newcommand{\xmldwangle}{\ifmmode\wideangledown\else$\wideangledown$\fi}
+\newcommand{\xmlepar}{\ifmmode\equalparallel\else$\equalparallel$\fi}
+\newcommand{\xmleparsl}{\ifmmode\eparsl\else$\eparsl$\fi}
+\newcommand{\xmlequiv}{\ifmmode\equiv\else{\mathsurround=\opskip$\equiv$}\fi}
+\newcommand{\xmleqvparsl}{\ifmmode\eqvparsl\else$\eqvparsl$\fi}
+\newcommand{\xmlexist}{\ifmmode\exists\else$\exists$\fi}
+\newcommand{\xmlfnof}{\ifmmode f\else f\fi}
+\newcommand{\xmlforall}{\ifmmode\forall\else$\forall$\fi}
+\newcommand{\xmlfpartint}{\ifmmode\intbar\else$\intbar$\fi}
+\newcommand{\xmlge}{\ifmmode\geq\else{\mathsurround=\opskip$\geq$}\fi}
+\newcommand{\xmlhamilt}{\ifmmode\mathscr{H}\else$\mathscr{H}$\fi}
+\newcommand{\xmliff}{\ifmmode\iff{}\else$\iff{}$\fi}
+\newcommand{\xmliinfin}{\ifmmode\iinfin\else$\iinfin$\fi}
+\newcommand{\xmlimped}{\ifmmode\Zbar\else$\Zbar$\fi}
+\newcommand{\xmlinfin}{\ifmmode\infty\else$\infty$\fi}
+\newcommand{\xmlint}{\ifmmode\int\else$\int$\fi}
+\newcommand{\xmlInt}{\ifmmode\iint\else$\iint$\fi}
+\newcommand{\xmlintlarhk}{\ifmmode\intlarhk\else$\intlarhk$\fi}
+\newcommand{\xmlisin}{\ifmmode\in\else$\in$\fi}
+\newcommand{\xmlisindot}{\ifmmode\isindot\else$\isindot$\fi}
+\newcommand{\xmlisinE}{\ifmmode\isinE\else$\isinE$\fi}
+\newcommand{\xmlisins}{\ifmmode\isins\else$\isins$\fi}
+\newcommand{\xmlisinsv}{\ifmmode\varisins\else$\varisins$\fi}
+\newcommand{\xmlisinv}{\ifmmode\in\else{\mathsurround=\opskip$\in$}\fi}
+\newcommand{\xmllagran}{\ifmmode\mathscr{L}\else$\mathscr{L}$\fi}
+\newcommand{\xmllang}{\ifmmode\langle\else$\langle$\fi}
+\newcommand{\xmlLang}{\ifmmode\langle\!\langle\else$\langle\!\langle$\fi}
+\newcommand{\xmllArr}{\ifmmode\Leftarrow\else$\Leftarrow$\fi}
+\newcommand{\xmllbbrk}{\ifmmode\lbrbrak\else$\lbrbrak$\fi}
+\newcommand{\xmlle}{\ifmmode\leq\else{\mathsurround=\opskip$\leq$}\fi}
+\newcommand{\xmlloang}{\ifmmode\Lbrbrak\else$\Lbrbrak$\fi}
+\newcommand{\xmllobrk}{\ifmmode\lBrack\else$\lBrack$\fi}
+\newcommand{\xmllopar}{\ifmmode\lParen\else$\lParen$\fi}
+\newcommand{\xmllowast}{\ifmmode_{\ast}\else$_{\ast}$\fi}
+\newcommand{\xmlminus}{\ifmmode-\else{$-$}\fi}
+\newcommand{\xmlMinusPlus}{\ifmmode\mp\else{$\mp$}\fi}
+\newcommand{\xmlnabla}{\ifmmode\nabla\else$\nabla$\fi}
+\newcommand{\xmlne}{\ifmmode\ne\else{$\ne$}\fi}
+%nedot
+\newcommand{\xmlnhpar}{\ifmmode\nhpar\else$\nhpar$\fi}
+\newcommand{\xmlni}{\ifmmode\ni\else$\ni$\fi}
+\newcommand{\xmlnis}{\ifmmode\nis\else$\nis$\fi}
+\newcommand{\xmlnisd}{\ifmmode\nisd\else$\nisd$\fi}
+\newcommand{\xmlniv}{\ifmmode\ni\else$\ni$\fi}
+\newcommand{\xmlNot}{\ifmmode\Not\else$\Not$\fi}
+\newcommand{\xmlnotin}{\ifmmode\not\in\else$\not\in$\fi}
+%notindot
+\newcommand{\xmlnotinva}{\ifmmode\not\in\else$\not\in$\fi}
+\newcommand{\xmlnotinvb}{\ifmmode\isinobar\else$\isinobar$\fi}
+\newcommand{\xmlnotinvc}{\ifmmode\varisinobar\else$\varisinobar$\fi}
+\newcommand{\xmlnotni}{\ifmmode\nni\else$\nni$\fi}
+\newcommand{\xmlnotniva}{\ifmmode\nvni\else$\nvni$\fi}
+\newcommand{\xmlnotnivb}{\ifmmode\niobar\else$\niobar$\fi}
+\newcommand{\xmlnotnivc}{\ifmmode\varniobar\else$\varniobar$\fi}
+%nparsl
+%npart
+\newcommand{\xmlnpolint}{\ifmmode\npolint\else$\npolint$\fi}
+\newcommand{\xmlnvinfin}{\ifmmode\nvinfty\else$\nvinfty$\fi}
+\newcommand{\xmlolcross}{\ifmmode\olcross\else$\olcross$\fi}
+\newcommand{\xmlor}{\ifmmode\vee\else$\vee$\fi}
+\newcommand{\xmlOr}{\ifmmode\Vee\else$\Vee$\fi}
+\newcommand{\xmlord}{\ifmmode\midbarvee\else$\midbarvee$\fi}
+\newcommand{\xmlorder}{\ifmmode\mathit{o}\else$\mathit{o}$\fi}
+\newcommand{\xmloror}{\ifmmode\veeonvee\else$\veeonvee$\fi}
+\newcommand{\xmlorslope}{\ifmmode\bigslopedvee\else$\bigslopedvee$\fi}
+\newcommand{\xmlorv}{\ifmmode\veemidvert\else$\veemidvert$\fi}
+\newcommand{\xmlpar}{\ifmmode\parallel\else$\parallel$\fi}
+\newcommand{\xmlparsl}{\ifmmode\sslash\else$\sslash$\fi}
+\newcommand{\xmlpart}{\ifmmode\partial\else$\partial$\fi}
+\newcommand{\xmlpermil}{\ifmmode\hbox{\textperthousand}\else\textperthousand\fi}
+\newcommand{\xmlperp}{\ifmmode\perp\else$\perp$\fi}
+\newcommand{\xmlpertenk}{\ifmmode\text{\textpertenthousand}\else\textpertenthousand\fi}
+\newcommand{\xmlphmmat}{\ifmmode\mathscr{M}\else$\mathscr{M}$\fi}
+\newcommand{\xmlpointint}{\ifmmode\pointint\else$\pointint$\fi}
+\newcommand{\xmlprime}{\ifmmode^{\prime}\else$^{\prime}$\fi}
+\newcommand{\xmlPrime}{\ifmmode{\prime\prime}\else${\prime\prime}$\fi}
+\newcommand{\xmlprofalar}{\ifmmode\profalar\else$\profalar$\fi}
+\newcommand{\xmlprofline}{\ifmmode\profline\else$\profline$\fi}
+\newcommand{\xmlprofsurf}{\ifmmode\profsurf\else$\profsurf$\fi}
+\newcommand{\xmlprop}{\ifmmode\propto\else$\propto$\fi}
+\newcommand{\xmlqint}{\ifmmode\iiiint\else$\iiiint$\fi}
+\newcommand{\xmlqprime}{\ifmmode{\prime\prime\prime\prime}\else${\prime\prime\prime\prime}$\fi}
+\newcommand{\xmlquatint}{\ifmmode\sqint\else$\sqint$\fi}
+\newcommand{\xmlradic}{\ifmmode\surd\else$\surd$\fi}
+\newcommand{\xmlrang}{\ifmmode\rangle\else$\rangle$\fi}
+\newcommand{\xmlRang}{\ifmmode\rangle\!\rangle\else$\rangle\!\rangle$\fi}
+\newcommand{\xmlrArr}{\ifmmode\Rightarrow\else$\Rightarrow$\fi}
+\newcommand{\xmlrbbrk}{\ifmmode\rbrbrak\else$\rbrbrak$\fi}
+\newcommand{\xmlroang}{\ifmmode\Rbrbrak\else$\Rbrbrak$\fi}
+\newcommand{\xmlrobrk}{\ifmmode\rBrack\else$\rBrack$\fi}
+\newcommand{\xmlropar}{\ifmmode\rParen\else$\rParen$\fi}
+\newcommand{\xmlrppolint}{\ifmmode\rppolint\else$\rppolint$\fi}
+\newcommand{\xmlscpolint}{\ifmmode\scpolint\else$\scpolint$\fi}
+\newcommand{\xmlsim}{\ifmmode\sim\else{\mathsurround=\opskip$\sim$}\fi}
+\newcommand{\xmlsimdot}{\ifmmode\dotsim\else$\dotsim$\fi}
+\newcommand{\xmlsime}{\ifmmode\simeq\else{\mathsurround=\opskip$\simeq$}\fi}
+\newcommand{\xmlsmeparsl}{\ifmmode\smeparsl\else$\smeparsl$\fi}
+\newcommand{\xmlsquare}{\ifmmode\square\else$\square$\fi}
+\newcommand{\xmlsquarf}{\ifmmode\blacksquare\else$\blacksquare$\fi}
+\newcommand{\xmlsub}{\ifmmode\subset\else{\mathsurround=\opskip$\subset$}\fi}
+\newcommand{\xmlsube}{\ifmmode\subseteq\else{\mathsurround=\opskip$\subseteq$}\fi}
+\newcommand{\xmlsup}{\ifmmode\supset\else$\supset$\fi}
+\newcommand{\xmlsupe}{\ifmmode\supseteq\else$\supseteq$\fi}
+\newcommand{\xmltdot}{\ifmmode\dddot{}\else$\dddot{}$\fi}
+\newcommand{\xmltherefore}{\ifmmode\therefore\else$\therefore$\fi}
+\newcommand{\xmltint}{\ifmmode\iiint\else$\iiint$\fi}
+\newcommand{\xmltop}{\ifmmode\top\else$\top$\fi}
+\newcommand{\xmltopbot}{\ifmmode\topbot\else$\topbot$\fi}
+\newcommand{\xmltopcir}{\ifmmode\topcir\else$\topcir$\fi}
+\newcommand{\xmltprime}{\ifmmode{\prime\prime\prime}\else${\prime\prime\prime}$\fi}
+\newcommand{\xmlutdot}{\ifmmode\adots\else$\adots$\fi}
+\newcommand{\xmluwangle}{\ifmmode\wideangleup\else$\wideangleup$\fi}
+\newcommand{\xmlvangrt}{\ifmmode\rightanglesqr\else$\rightanglesqr$\fi}
+\newcommand{\xmlveeeq}{\ifmmode\stackrel{\vee}{=}\else$\stackrel{\vee}{=}$\fi}
+\newcommand{\xmlVerbar}{\ifmmode\Vert\else$\Vert$\fi}
+\newcommand{\xmlwedgeq}{\ifmmode\stackrel{\wedge}{=}\else$\stackrel{\wedge}{=}$\fi}
+\newcommand{\xmlxnis}{\ifmmode\varnis\else$\varnis$\fi}
+\newcommand{\xmltextperthousand}{\ifmmode\textperthousand\else\textperthousand\fi}
+
+
+%%% ROMAN VERSION
+
+\def\xmlrbeta{\ifmmode\rbeta\else$\rbeta$\fi}
+\def\llbracket{[\kern-1.7pt[}
+\def\rrbracket{]\kern-1.7pt]}
+
+\def\mkast#1{$\,#1\,$}
+
+
+
+%%% for bibliography
+
+%\newcommand{\xmlcomma}{,\xspace}
+\newcommand{\xmlsymband}{\xspace \&\xspace}
+\newcommand{\xmland}{\xspace and\xspace}
+\newcommand{\xmlcommawithland}{, and\xspace}
+\newcommand{\xmlfullstop}{.\xspace}
+%\newcommand{\xmlcolon}{:\xspace}
+ \newcommand{\xmlsemicolon}{;\xspace}
+\newcommand{\xmlopenpar}{(}
+\newcommand{\xmlclosepar}{)}
+\newcommand{\xmlpages}{pp.~}
+\newcommand{\xmlpage}{p.~}
+\newcommand{\xmlbookin}{in\xspace}
+\newcommand{\xmlinproc}{in\xspace}
+\newcommand{\xmleditioni}{st ed.}
+\newcommand{\xmleditionii}{nd ed.}
+\newcommand{\xmleditioniii}{rd ed.}
+\newcommand{\xmleditioniv}{th ed.}
+\newcommand{\xmleditor}{ed.}
+\newcommand{\xmleditors}{eds.}
+
+\def\xmlRectext{Final version received}
+\def\xmlrectext{final version received}
+
+%\EveryTableParBox={%
+%  \parindent=0pt
+%  \raggedright
+%  \rightskip=0pt plus 4em %   Provide more stretch
+%  \relax}
+
+\newcommand{\longtabhead}[2][\centering]{\parbox[b]{14\ColumnWidthUnit}{#1 #2}}
+\newcommand{\firstlongtabhead}[2][\centering]{\parbox[b]{20\ColumnWidthUnit}{#1 #2}}
+
+\newcommand{\raisetabhead}[2][-\baselineskip]{\smash{\raise #1\hbox{#2}}}
+
+\newenvironment{Romanlist}{
+\def\labelenumi{{\rm(\theenumi)}}
+\def\theenumi{\Roman{enumi}}
+\begin{enumerate}}{\end{enumerate}}
+
+\newenvironment{romanlist}{
+\def\labelenumi{{\rm(\theenumi)}}
+\def\theenumi{\roman{enumi}}
+\begin{enumerate}}{\end{enumerate}}
+
+
+\newenvironment{Alphalist}{
+\def\labelenumi{{\rm(\theenumi)}}
+\def\theenumi{\Alph{enumi}}
+\begin{enumerate}}{\end{enumerate}}
+
+\newenvironment{alphalist}{
+\def\labelenumi{{\rm(\theenumi)}}
+\def\theenumi{\alph{enumi}}
+\begin{enumerate}}{\end{enumerate}}
+
+
+\newenvironment{arabiclist}{
+\def\labelenumi{{\rm(\theenumi)}}
+\def\theenumi{\arabic{enumi}}
+\begin{enumerate}}{\end{enumerate}}
+
+\newdimen\bottomfigskip
+\newdimen\bottomtabskip
+
+\def\xmlhide#1{}
+
+\def\citeoption#1{\gdef\citetxt{#1}}\citeoption{}
+
+\def\xmlsp#1{\ensuremath{^{\kern-\mathsurround \mathrm{#1}\kern-\mathsurround}}}
+\def\xmlsb#1{\ensuremath{_{\kern-\mathsurround \mathrm{#1}\kern-\mathsurround}}}
+\def\xmlspit#1{\ensuremath{^{\kern-\mathsurround{#1}\kern-\mathsurround}}}
+\def\xmlsbit#1{\ensuremath{_{\kern-\mathsurround{#1}\kern-\mathsurround}}}
+\def\xmlmathv{\ifmmode\text{$v$}\else$v$\fi}
+\def\xmlmathw{\ifmmode\text{$w$}\else$w$\fi}
+\def\nosp{\kern-\mathsurround}
+
+\def\mulrow#1{\vbox to 0pt{\vskip-.6\baselineskip\hangindent=1em#1}}
+\def\mulhead#1#2{\parbox[b]{#1}{\centering #2}}
+\def\mulheadleft#1#2{\parbox[b]{#1}{\raggedright#2}}
+\def\mulbody#1#2{\parbox[t]{#1}{#2}}
+
+\def\mkonline#1{{%
+\def\textsuperscript{}%
+#1}}%
+
+\def\mkdash#1{---------}
+
+\def\track#1#2{\hbox spread #1{\nonfrenchspacing
+#2}}
+
+\newif\ifpfixword\pfixwordfalse
+\def\pfword{}
+\def\listno#1#2#3{%
+\ifnum \@enumdepth=1\def\theenumi{\csname #2\endcsname{enumi}}\def\labelenumi{\ifpfixword\pfword\fi#1\theenumi#3}\fi
+\ifnum \@enumdepth=2\def\theenumii{\csname #2\endcsname{enumii}}\def\labelenumii{\ifpfixword\pfword\fi#1\theenumii#3}\fi
+\ifnum \@enumdepth=3\def\theenumiii{\csname #2\endcsname{enumiii}}\def\labelenumiii{\ifpfixword\pfword\fi#1\theenumiii#3}\fi
+\ifnum \@enumdepth=4\def\theenumiv{\csname #2\endcsname{enumiv}}\def\labelenumiv{\ifpfixword\pfword\fi#1\theenumiv#3}\fi
+}
+
+\newcommand{\bibjournaltext}[9]{%
+\ifx#1\empty\else#1\ifx#2#3#4#5#6#7#8#9\empty\else,\fi\fi%
+\ifx#2\empty\else\ \textit{#2}\ifx#3#4#5#6#7#8#9\empty\else,\fi\fi%
+\ifx#3\empty\else\ #3\ifx#4#5#6#7#8#9\empty\else\fi\fi%
+\ifx#4\empty\else\ #4\ifx#5#6#7#8#9\empty\else\fi\fi%
+\ifx#5\empty\else(#5)\ifx#6#7#8#9\empty\else\fi\fi%
+\ifx#8\empty
+    \ifx#6\empty\else\ (#6)\ifx#7#8#9\empty\else,\fi\fi%
+\else\ #8\ifx#7#8#9\empty\else,\fi
+    \ifx#6\empty\else\ #6\ifx#7#8#9\empty\else,\fi\fi%
+\fi%
+\ifx#7\empty\else\ #7\ifx#8#9\empty\else,\fi\fi%
+\ifx#9\empty\else\ #9\fi.}%
+
+
+\newif\ifunnumapp
+
+%\def\@sect#1#2#3#4#5#6[#7]#8{%
+%  \ifnum #2>\c@secnumdepth
+%    \let\@svsec\@empty
+%  \else
+%    \refstepcounter{#1}%
+%    \protected@edef\@svsec{\@seccntformat{#1}\relax}%
+%  \fi
+%  \@tempskipa #5\relax
+%  \ifdim \@tempskipa>\z@
+%    \begingroup
+%      #6{%
+%        \ifunnumapp\else\@hangfrom{\hskip #3\relax\@svsec}\fi%
+%          \interlinepenalty \@M
+%% Modified to uppercase H1's and titlecase the rest
+%          \ifnum #2>1\relax
+%             {#8}%
+%          \else
+%            {#8}%
+%          \fi
+%        \@@par}%
+%    \endgroup
+%    \csname #1mark\endcsname{#7}%
+%    \addcontentsline{toc}{#1}{%
+%      \ifnum #2>\c@secnumdepth \else
+%        \protect\numberline{\csname the#1\endcsname}%
+%      \fi
+%      #7}%
+%  \else
+%    \def\@svsechd{%
+%      #6{\hskip #3\relax
+%      \@svsec #8}%
+%      \csname #1mark\endcsname{#7}%
+%      \addcontentsline{toc}{#1}{%
+%        \ifnum #2>\c@secnumdepth \else
+%          \protect\numberline{\csname the#1\endcsname}%
+%        \fi
+%        #7}}%
+%  \fi
+%  \@xsect{#5}}
+
+% ......................................................................
+%\input{boxdrawings.tex}
+
+% beginning of boxdrawings.tex
+% Abbrevated macros for box drawing symbols
+
+% Note: Problem with displaying the symbols in tablular environment
+
+%\expandafter\ifx\csname sgment.def\endcsname\relax \else\endinput\fi
+%\expandafter\edef\csname sgment.def\endcsname{%
+%       \catcode`\noexpand\@=\the\catcode`\@\space}
+
+\chardef\tempcat=\the\catcode`\@
+\catcode`\@=11
+
+\newcount\@tempcnta
+\newcount\@tempcntb
+\newcount\@tempcntc
+
+\newdimen\boxheight
+\newdimen\boxwidth
+\def\Boxwidth{.01em}
+\def\@box#1{\relax
+    \ifvmode \noindent\hbox{}\fi
+    \boxheight=.01\baselineskip
+    \boxwidth=.01\baselineskip
+    \setbox0\hbox to 100\boxwidth {#1\hss}\ht0=0pt
+    \raise.2\baselineskip\box0}
+
+%
+%  #1=horizontal offset #2=start #3=end (depth)
+%
+\def\@sgmlv(#1,#2,#3){\@tempcnta=#1
+    \rlap{%
+    \ifnum\@tempcnta=45
+       \hbox to 100\boxwidth {\kern 41\boxwidth
+                \vrule width 4\boxheight
+            height #2\boxheight depth #3\boxheight \hss }%
+    \else
+        \ifnum\@tempcnta=55
+            \hbox to 100\boxwidth {\kern 55\boxwidth
+                \vrule width 4\boxheight
+                height #2\boxheight depth #3\boxheight \hss }%
+        \else
+            \hbox to 100\boxwidth {\kern 48\boxwidth
+                \vrule width 4\boxheight
+                height #2\boxheight depth #3\boxheight \hss }%
+        \fi
+    \fi
+    }}
+\def\@sgmlh(#1,#2,#3){%
+    \@tempcnta=#2
+    \ifnum\@tempcnta <50
+        \advance \@tempcnta by 1 \fi
+    \ifnum\@tempcnta >50
+        \advance \@tempcnta by -1 \fi
+    \@tempcntb=#3
+    \advance\@tempcnta by -#1
+    \ifnum\@tempcntb=0
+        \@tempcntc=2 \@tempcntb=2
+    \else
+        \ifnum\@tempcntb=5
+            \@tempcntc=-4 \@tempcntb=8
+        \else
+            \ifnum\@tempcntb=-5
+                \@tempcntc=8 \@tempcntb=-4
+            \fi
+        \fi
+    \fi
+    \@tempdima=\@tempcntb\boxheight
+    \@tempdimb=\@tempcntc\boxheight
+    \rlap{%
+        \kern #1\boxwidth
+        \vrule width \@tempcnta\boxwidth height
+            \@tempdima depth \@tempdimb
+        }%
+    }
+\def\boxh  {\@box{\@sgmlh(0,100,0)}}
+\def\boxv  {\@box{\@sgmlv(50,50,50)}}
+\def\boxur {\@box{\@sgmlh(50,100,0)\@sgmlv(50,50,0)}}
+\def\boxul {\@box{\@sgmlv(50,50,0)\@sgmlh(0,50,0)}}
+\def\boxdl {\@box{\@sgmlv(50,0,50)\@sgmlh(0,50,0)}}
+\def\boxdr {\@box{\@sgmlv(50,0,50)\@sgmlh(50,100,0)}}
+\def\boxvr {\@box{\@sgmlv(50,50,50)\@sgmlh(50,100,0)}}
+\def\boxhu {\@box{\@sgmlv(50,50,0)\@sgmlh(0,100,0)}}
+\def\boxvl {\@box{\@sgmlv(50,50,50)\@sgmlh(0,50,0)}}
+\def\boxhd {\@box{\@sgmlv(50,0,50)\@sgmlh(0,100,0)}}
+\def\boxvh {\@box{\@sgmlv(50,50,50)\@sgmlh(0,100,0)}}
+\def\boxvR {\@box{\@sgmlh(50,100,5)\@sgmlh(50,100,5)%
+                         \@sgmlv(50,50,50)}}
+\def\boxhU {\@box{\@sgmlv(45,50,0)\@sgmlv(55,50,0)%
+                         \@sgmlh(0,100,0)}}
+\def\boxvL {\@box{\@sgmlh(0,50,5)\@sgmlh(0,50,-5)%
+                         \@sgmlv(50,50,50)}}
+\def\boxhD {\@box{\@sgmlv(45,0,50)\@sgmlv(55,0,50)%
+                         \@sgmlh(0,100,0)}}
+\def\boxvH {\@box{\@sgmlh(0,100,5)\@sgmlh(0,100,-5)%
+                    \@sgmlv(50,50,-5)\@sgmlv(50,-5,50)}}
+\def\boxH  {\@box{\@sgmlh(0,100,5)\@sgmlh(0,100,-5)}}
+\def\boxV  {\@box{\@sgmlv(45,50,50)\@sgmlv(55,50,50)}}
+\def\boxUR {\@box{\@sgmlh(45,100,-5)\@sgmlh(55,100,5)%
+                         \@sgmlv(45,50,5)\@sgmlv(55,50,-5)}}
+\def\boxUL {\@box{\@sgmlv(55,50,5)\@sgmlv(45,50,-5)%
+                         \@sgmlh(0,45,5)\@sgmlh(0,55,-5)}}
+\def\boxDL {\@box{\@sgmlh(0,55,5)\@sgmlh(0,45,-5)%
+                         \@sgmlv(45,-5,50)\@sgmlv(55,5,50)}}
+\def\boxDR {\@box{\@sgmlh(45,100,5)\@sgmlh(55,100,-5)%
+                         \@sgmlv(45,5,50)\@sgmlv(55,-5,50)}}
+\def\boxVR {\@box{\@sgmlh(55,100,5)\@sgmlh(55,100,-5)%
+        \@sgmlv(55,50,-5)\@sgmlv(55,-5,50)\@sgmlv(45,50,50)}}
+\def\boxHU {\@box{\@sgmlh(0,45,5)\@sgmlh(55,100,5)%
+        \@sgmlh(0,100,-5)\@sgmlv(45,50,-5)\@sgmlv(55,50,-5)}}
+\def\boxVL {\@box{\@sgmlh(0,45,5)\@sgmlh(0,45,-5)%
+        \@sgmlv(45,50,-5)\@sgmlv(45,-5,50)\@sgmlv(55,50,50)}}
+\def\boxHD {\@box{\@sgmlh(0,100,5)\@sgmlh(0,45,-5)%
+        \@sgmlh(55,100,-5)\@sgmlv(45,-5,50)\@sgmlv(55,-5,50)}}
+\def\boxVH {\@box{\@sgmlh(0,45,5)\@sgmlh(55,100,5)%
+        \@sgmlh(0,45,-5)\@sgmlh(55,100,-5)\@sgmlv(45,50,-5)%
+        \@sgmlv(45,-5,50)\@sgmlv(55,50,-5)\@sgmlv(55,-5,50)}}
+\def\boxVr {\@box{\@sgmlv(45,50,50)\@sgmlv(55,50,50)%
+                         \@sgmlh(55,100,0)}}
+\def\boxHu {\@box{\@sgmlh(0,100,5)\@sgmlh(0,100,-5)%
+                         \@sgmlv(50,50,-5)}}
+\def\boxVl {\@box{\@sgmlv(45,50,50)\@sgmlv(55,50,50)%
+                         \@sgmlh(0,45,0)}}
+\def\boxHd {\@box{\@sgmlh(0,100,5)\@sgmlh(0,100,-5)%
+                         \@sgmlv(50,-5,50)}}
+\def\boxVh {\@box{\@sgmlh(0,45,0)\@sgmlh(55,100,0)%
+                        \@sgmlv(45,50,50)\@sgmlv(55,50,50)}}
+\def\boxuR {\@box{\@sgmlh(50,100,5)\@sgmlh(50,100,-5)%
+                         \@sgmlv(50,50,5)}}
+\def\boxUl {\@box{\@sgmlv(45,50,0)\@sgmlv(55,50,0)%
+                         \@sgmlh(0,55,0)}}
+\def\boxdL {\@box{\@sgmlh(0,50,5)\@sgmlh(0,50,-5)%
+                         \@sgmlv(50,5,50)}}
+\def\boxDr {\@box{\@sgmlv(45,0,50)\@sgmlv(55,0,50)%
+                         \@sgmlh(45,100,0)}}
+\def\boxUr {\@box{\@sgmlv(45,50,0)\@sgmlv(55,50,0)%
+                         \@sgmlh(45,100,0)}}
+\def\boxuL {\@box{\@sgmlh(0,50,5)\@sgmlh(0,50,-5)%
+                         \@sgmlv(50,50,5)}}
+\def\boxDl {\@box{\@sgmlv(45,0,50)\@sgmlv(55,0,50)%
+                         \@sgmlh(0,55,0)}}
+\def\boxdR {\@box{\@sgmlh(50,100,5)\@sgmlh(50,100,-5)%
+                         \@sgmlv(50,5,50)}}
+
+\catcode`\@=\tempcat
+% end of boxdrawings.tex
+
+
+\def\tabprem{\begin{tabular}{@{}lp{25pc}@{}}}
+\def\endtabprem{\end{tabular}}
+\def\breaktable{\endtabprem
+\pagebreak
+\par
+\tabprem}
+
+\def\affilast{*}
+%\def\corrau{Corresponding author.}
+%\def\corradd{{\it Correspondence Address}}
+
+\def\removetoprule{\def\toprule{}}
+
+\def\removebotrule{\def\botrule{}}
+
+\def\resettoprule{\def\toprule{\noalign{\ifnum0=`}\fi
+  \hrule \@height 1\p@
+  \hrule \@height 5\p@ \@width \z@
+  \futurelet \@tempa\@xhline}}
+
+\def\resetbotrule{\def\botrule{\noalign{\ifnum0=`}\fi
+  \hrule \@height 3.6\p@ \@width \z@
+  \hrule \@height 1\p@
+  \futurelet \@tempa\@xhline}}
+
+\def\corrdlink#1{\hyperlink{corr1}{$^\dagger$}\footnotetext{\hypertarget{corr1}{#1}}}
+
+\usepackage{breakurl}
+\urlstyle{same}
+
+\def\tixmlecy{\text{\tencyr\char'013}}
+\let\xmlecy\tixmlecy
+
+%\let\textit\emph% commanded based on mail dated 27/05/16
+
+
+\endinput
+% end of isoent.sty

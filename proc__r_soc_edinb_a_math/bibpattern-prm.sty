@@ -1,0 +1,35 @@
+\newif\ifJournalBib%
+\JournalBibfalse%
+
+\newcommand\JRNL[1]{\JournalBibtrue#1\JournalBibfalse}
+\newcommand\BOOK[1]{#1}
+\newcommand\OTHER[1]{#1}
+\newcommand\PROC[1]{#1}
+\newcommand\EDBK[1]{#1}
+\newcommand\OTHERINFO[1]{#1}
+\newcommand\BKSERIES[1]{#1}
+\newcommand\AUGRP[1]{{{#1}}}
+\newcommand\AUTHOR[1]{#1}
+\newcommand\SNM[1]{#1}
+\newcommand\INITS[1]{#1}
+\newcommand\SEP[1]{#1\ignorespaces}
+\newcommand\ATITLE[1]{#1}
+\newcommand\JTITLE[1]{{\it #1}}
+\newcommand\VOLUME[1]{\ifJournalBib\relax{\bf #1}\else#1\fi}
+\newcommand\ISSUE[1]{#1}
+\newcommand\YEAR[1]{#1}
+\newcommand\FPAGE[1]{#1}
+\newcommand\LPAGE[1]{#1}
+\newcommand\BTITLE[1]{{\it #1}}
+\newcommand\SERIES[1]{#1}
+\newcommand\CHAPTER[1]{#1}
+\newcommand\EDITION[1]{#1}
+\newcommand\PUBNAME[1]{#1}
+\newcommand\PUBLOC[1]{#1}
+\newcommand\REFCOMMENT[1]{#1}
+\newcommand\CONF[1]{#1}
+\newcommand\CONFNAME[1]{#1}
+\newcommand\CONFLOC[1]{#1}
+\newcommand\EBED[1]{#1}
+\newcommand\REFDOI[1]{#1}
+\newcommand\PROCTITLE[1]{#1}
