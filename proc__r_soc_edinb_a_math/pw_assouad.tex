@@ -704,11 +704,10 @@ For the lower bound, let $t<s$, and choose $\mathbf{i}\in P(\Sigma)$, such that
 \begin{equation*}
     \frac{\log \overline{p}_{\mathbf{i}}}{\log |\varphi'_{\mathbf{i}|_{n}}(x)|}\geq t,
 \end{equation*}
-where $x=\pi(\mathbf{i})$ and $n$ is the period of $\mathbf{i}$. For every $k\in\N$ let $r_k=|\varphi_{\mathbf{i}_{kn}}'(x)|$. Using the SSC, Proposition \ref{prop:doubling} and Lemma \ref{lemma:power_equality} we get
+where $x=\pi(\mathbf{i})$ and $n$ is the period of $\mathbf{i}$. For every $k\in\N$ let $r_k=|\varphi_{\mathbf{i}_{kn}}'(x)|=|\varphi_{\mathbf{i}_{n}}'(x)|^k$, where the second equality follows from Lemma \ref{lemma:power_equality}. Using the SSC and Proposition \ref{prop:doubling} we get
 \begin{align*}
-    \mu(B(x,r_k))&\lesssim\mu(B(x,\tfrac{\delta}{2C_1}r_k))\leq \mu(\varphi_{\mathbf{i}|_{kn}}(F))\\
-    &=\prod_{j=1}^{kn}p_{i_j}(\sigma^{j-1}\mathbf{i})=\left(\prod_{j=1}^{n}p_{i_j}(\sigma^{j-1}\mathbf{i})\right)^k\\
-    &=\overline{p}_{\mathbf{i}}^k=|\varphi_{\mathbf{i}_{kn}}'(x)|^\frac{\log \overline{p}_{\mathbf{i}}^k}{\log |\varphi_{\mathbf{i}_{kn}}'(x)|}=r_k^\frac{k\log \overline{p}_{\mathbf{i}}}{k\log |\varphi_{\mathbf{i}|_{n}}'(x)|}\leq r_k^t.
+    \mu(B(x,r_k))&\lesssim \mu(\varphi_{\mathbf{i}|_{kn}}(F))=\prod_{j=1}^{kn}p_{i_j}(\sigma^{j-1}\mathbf{i})\\
+    &=\overline{p}_{\mathbf{i}}^k=r_k^\frac{k\log \overline{p}_{\mathbf{i}}}{k\log |\varphi_{\mathbf{i}|_{n}}'(x)|}\leq r_k^t.
 \end{align*}
 Taking logarithms and limits shows us that
 \begin{equation*}
