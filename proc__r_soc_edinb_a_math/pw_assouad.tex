@@ -504,7 +504,9 @@ Recall that a probability measure $\nu$ on $\Sigma$ is said to be \emph{quasi-Be
 \begin{equation*}
     C^{-1}\nu([\mathbf{i}])\nu([\mathbf{j}])\leq \nu([\mathbf{i}\mathbf{j}])\leq C\nu([\mathbf{i}])\nu([\mathbf{j}]),
 \end{equation*}
-where $\mathbf{i}\mathbf{j}$ denotes the concatenation of the finite words $\mathbf{i}$ and $\mathbf{j}$. Note the similarity to Lemma \ref{lemma:chain}. If $C$ can be taken to equal $1$, then the measure is called a \emph{Bernoulli measure}. The following lemma is standard, but for completeness we provide a sketch of the proof.
+where $\mathbf{i}\mathbf{j}$ denotes the concatenation of the finite words $\mathbf{i}$ and $\mathbf{j}$. Note the similarity to Lemma \ref{lemma:chain}. If $C$ can be taken to equal $1$, then the measure is called a \emph{Bernoulli measure}.
+
+Recall that two measures $\mu$ and $\nu$ are said to be \emph{equivalent} if $\mu(A)=0$ if and only if $\nu(A)=0$. In the following $\sigma\colon \Sigma\to\Sigma$ denotes the \emph{left-shift} defined by $\sigma(\iii)=i_2i_2\ldots$. The following lemma is standard, but the proof is difficult to track down from the literature so we provide a sketch here.
 
 \begin{lemma}\label{lemma:quasi-bernoulli-equivalence}
 Every quasi-Bernoulli measure is equivalent to an $\sigma$-invariant and ergodic quasi-Bernoulli measure.
@@ -512,19 +514,19 @@ Every quasi-Bernoulli measure is equivalent to an $\sigma$-invariant and ergodic
 \begin{proof}
 Let $\nu$ be a quasi-Bernoulli measure. For all $n\in\N$ define
 \begin{equation*}
-    \nu'_n=\frac{1}{n}\sum_{j=0}^{n-1}\nu\circ\sigma^{-j},
+    \tilde{\nu}_n=\frac{1}{n}\sum_{j=0}^{n-1}\nu\circ\sigma^{-j},
 \end{equation*}
-and let $\nu'$ be the measure obtained as the weak-$*$ limit of this sequence of measures. Recall that for any $\mathbf{i}\in\Sigma_*$, the set $[\mathbf{i}]$ is open and closed and thus $\nu'([\mathbf{i}])=\lim_{n\to\infty}\nu'_n([\mathbf{i}])$. Using the fact that $\nu$ is quasi-Bernoulli, we have
+and let $\tilde{\nu}$ be the measure obtained as the weak-$*$ limit of this sequence of measures. Recall that for any $\mathbf{i}\in\Sigma_*$, the set $[\mathbf{i}]$ is open and closed and thus $\tilde{\nu}([\mathbf{i}])=\lim_{n\to\infty}\tilde{\nu}_n([\mathbf{i}])$. Using the fact that $\nu$ is quasi-Bernoulli, we have
 \begin{equation*}
-    \nu'_n([\mathbf{i}])=\frac{1}{n}\sum_{j=0}^{n-1}\nu\circ\sigma^{-j}([\mathbf{i}])=\frac{1}{n}\sum_{j=0}^{n-1}\sum_{\mathbf{j}\in\Sigma_j}\nu([\mathbf{j}\mathbf{i}])\approx \frac{1}{n}\sum_{j=0}^{n-1}\underbrace{\sum_{\mathbf{j}\in\Sigma_j}\nu([\mathbf{j}])}_{=1}\nu([\mathbf{i}])=\nu([\mathbf{i}]),
+    \tilde{\nu}_n([\mathbf{i}])=\frac{1}{n}\sum_{j=0}^{n-1}\nu\circ\sigma^{-j}([\mathbf{i}])=\frac{1}{n}\sum_{j=0}^{n-1}\sum_{\mathbf{j}\in\Sigma_j}\nu([\mathbf{j}\mathbf{i}])\approx \frac{1}{n}\sum_{j=0}^{n-1}\underbrace{\sum_{\mathbf{j}\in\Sigma_j}\nu([\mathbf{j}])}_{=1}\nu([\mathbf{i}])=\nu([\mathbf{i}]),
 \end{equation*}
-for all $\mathbf{i}\in\Sigma_*$ and $n\in\N$, which shows that $\nu'$ is quasi-Bernoulli and equivalent to $\nu$. On the other hand,
+for all $\mathbf{i}\in\Sigma_*$ and $n\in\N$, which shows that $\tilde{\nu}$ is quasi-Bernoulli and equivalent to $\nu$. On the other hand,
 \begin{align*}
-    |\nu'([\mathbf{i}])-\nu'(\sigma^{-1}([\mathbf{i}]))|&=\lim_{n\to\infty}|\nu_n'([\mathbf{i}])-\nu_n'(\sigma^{-1}([\mathbf{i}]))|\\
+    |\tilde{\nu}([\mathbf{i}])-\tilde{\nu}(\sigma^{-1}([\mathbf{i}]))|&=\lim_{n\to\infty}|\tilde{\nu}_n([\mathbf{i}])-\tilde{\nu}_n(\sigma^{-1}([\mathbf{i}]))|\\
     &=\lim_{n\to\infty}\frac{1}{n}\left|\sum_{j=0}^{n-1}\nu\circ\sigma^{-j}([\mathbf{i}])-\sum_{j=0}^{n-1}\nu\circ\sigma^{-(j+1)}([\mathbf{i}])\right|\\
     &=\lim_{n\to\infty}\frac{1}{n}\left|\nu([\mathbf{i}])-\nu\circ\sigma^{-n}([\mathbf{i}])\right|=0.
 \end{align*}
-By passing to approximating cylinders, we see that this implies that $\nu'$ is $\sigma$-invariant. 
+By passing to approximating cylinders, we see that this implies that $\tilde{\nu}$ is $\sigma$-invariant. 
 
 
 A simple consequence of the quasi-Bernoulli property of $\nu'$ is that for all Borel sets $A,B\subset \Sigma$, and $\varepsilon>0$, there exists $n\in\N$, such that
@@ -897,7 +899,7 @@ Olsen \cite{O} observed that the measure of an approximate cube is given by
 \begin{equation}\label{eq:appr_cube_msr}
     \mu(\pi(Q_k(\omega)))=\prod_{q=1}^d\prod_{j=0}^{L_q(k)-1}p_q(\sigma^j\omega),
 \end{equation}
-where $\sigma:\Sigma \to \Sigma$ is the left shift and $p_q(\omega)=p(i_{1,q}|i_{1,1},\ldots,i_{1,q-1})$, where the right hand side is as in equation (\ref{eq:cond_prob}). Recall also that a Bernoulli measure on the code space $\Sigma$ is shift invariant.
+where $\sigma:\Sigma \to \Sigma$ is the left-shift and $p_q(\omega)=p(i_{1,q}|i_{1,1},\ldots,i_{1,q-1})$, where the right hand side is as in equation (\ref{eq:cond_prob}). Recall also that a Bernoulli measure on the code space $\Sigma$ is shift invariant.
 
 The following proposition by Olsen shows that we can approximate the balls centered at the Bedford-McMullen sponges by approximate cubes of comparable size.
 
