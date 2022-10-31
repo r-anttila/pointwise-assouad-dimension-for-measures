@@ -26,6 +26,9 @@
 \newcommand{\diam}{\mathrm{diam}}
 \newcommand{\adim}{\dim_{\mathrm{A}}}
 
+\newcommand{\iii}{\mathbf{i}}
+\newcommand{\jjj}{\mathbf{j}}
+
 \DeclareMathOperator*{\esssup}{ess\,sup}
 \DeclareMathOperator*{\essinf}{ess\,inf}
 
@@ -794,7 +797,7 @@ and for $\mu$-almost every $x\in F$, we have
 
 \end{thm}
 \begin{proof}
-Let $s=\max_{i\in\Lambda}\frac{\log p_i}{\log r_i}$. We start by showing that $\adim\mu\leq s$. Let $x\in F$ and $0<r<R<1$. Choose integers $k$ and $l$, such that
+Let $s=\max_{i\in\Lambda}\frac{\log p_i}{\log r_i}$. We start by showing that $\adim\mu\leq s$. Let $x\in F$, $0<r<R<1$ and let $\iii\in\Sigma$, be a (not necessarily unique) word satisfying $\pi(\iii)=x$. Choose integers $k$ and $l$, such that
 \begin{equation*}
     r_{\mathbf{i}|_k}\leq R < r_{\mathbf{i}|_{k-1}}\text{ and }\quad r_{\mathbf{i}|_{l+1}}< r \leq r_{\mathbf{i}|_{l}}.
 \end{equation*}
