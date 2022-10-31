@@ -81,7 +81,7 @@ at some $x_0\in\R^n$, see \cite[Example 3.4]{BBL}. However, the main focus of \c
 Unless stated otherwise, we assume that $(X,d)$ is a metric space, with no additional structure. Since we assume the metric $d$ to be fixed, we omit it from the notation and refer to $(X,d)$ simply as $X$. The rest of this section is devoted to introducing some basic notation and results related to Assouad dimensions. Readers familiar with these concepts can easily skip to Section \ref{sec:pw_assouad}. 
 
 \subsection{Notation}
-A closed ball centered at $x\in X$ and with radius $r>0$ is denoted by $B(x,r)$. The space $X$ is said to be \emph{doubling}, if any ball $B(x,r)$ can be covered by $N$ balls $B(x,\frac{r}{2})$, where the constant $N\in \N$ is independent of $x$ and $r$. Unless stated otherwise, a measure always refers to a finite Borel measure fully supported on $X$. When needed, we denote support of $\mu$ by $\mathrm{supp}(\mu)$. If $f:X\to Y$ is a map from $X$ to another metric space $Y$, we denote the \emph{pushforward of the measure $\mu$} under the map $f$ by $f_*\mu\coloneqq\mu\circ f^{-1}$.  For constants $C$, we sometimes use the convention $C(\cdots)$, if we want to emphasize the dependence of $C$ on the quantities inside the parentheses. To simplify notation in the latter sections, we write $A\lesssim B$ to mean that $A$ is bounded from above by $B$ multiplied by a uniform constant. Similarly, we say that $A\gtrsim B$, if $B\lesssim A$ and $A\approx B$ if $B\lesssim A\lesssim B$.
+A closed ball centered at $x\in X$ and with radius $r>0$ is denoted by $B(x,r)$. The space $X$ is said to be \emph{doubling}, if any ball $B(x,r)$ can be covered by $N$ balls $B(x,\frac{r}{2})$, where the constant $N\in \N$ is independent of $x$ and $r$. Unless stated otherwise, a measure always refers to a finite Borel measure fully supported on $X$. When needed, we denote the support of $\mu$ by $\mathrm{supp}(\mu)$. If $f:X\to Y$ is a map from $X$ to another metric space $Y$, we denote the \emph{pushforward of the measure $\mu$} under the map $f$ by $f_*\mu\coloneqq\mu\circ f^{-1}$.  For constants $C$, we sometimes use the convention $C(\cdots)$, if we want to emphasize the dependence of $C$ on the quantities inside the parentheses. To simplify notation in the latter sections, we write $A\lesssim B$ to mean that $A$ is bounded from above by $B$ multiplied by a uniform constant. Similarly, we say that $A\gtrsim B$, if $B\lesssim A$ and $A\approx B$ if $B\lesssim A\lesssim B$.
 
 
 The \emph{upper and lower local dimensions of a measure $\mu$ at $x\in X$} are defined by
@@ -157,7 +157,7 @@ For the pointwise Assouad dimension, which we introduce shortly, we obtain a cor
 Clearly all doubling measures are pointwise doubling, but the converse is not true in general. In our following original example, we construct a measure, which is pointwise doubling at every point of its support but still fails to be globally doubling.
 
 \begin{example}\label{ex:loc_not_glob_doubling}
-Let $x_n=2^{-n}$, and let $\mu=\sum_{n=0}^{\infty}3^{-n}\delta_{-x_n}+2^{-n}\delta_{x_n}$, where $\delta_x$ denotes the point mass centered at $x$. Clearly the measure is a finite Borel measure fully supported on the set $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{x_n,-x_n\}$. First we observe that $\mu$ is not doubling.
+Let $x_n=2^{-n}$, and let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-x_n}+2^{-n}\delta_{x_n})$, where $\delta_x$ denotes the point mass centered at $x$. Clearly the measure is a finite Borel measure fully supported on the set $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{x_n,-x_n\}$. First we observe that $\mu$ is not doubling.
 For this, let $y_k=-x_k$, and $r_k=2^{-k}$, and note that $r_k\to0$ as $k\to \infty$. Now
 \begin{align*}
     \frac{\mu(B(y_k,2r_k))}{\mu(B(y_k,r_k))}&\geq\frac{\mu([-x_{k-1},x_k])}{\mu([-x_{k-1},0])}=\frac{\sum_{n=k-1}^{\infty}3^{-n}+\sum_{n=k}^{\infty}2^{-n}}{\sum_{n=k-1}^{\infty}3^{-n}}\\
@@ -167,7 +167,7 @@ as $k\to\infty$, which shows that $\mu$ is not doubling.
 
 To see that $\mu$ is pointwise doubling at every point, we first consider the case $x=0$. Let $r>0$ and fix an integer $k$, such that $2^{-k}\leq r < 2^{-k+1}$, and note that $B(x,2r)\subset [-x_{k-2},x_{k-2}]$, and $[-x_k,x_k]\subset B(x,r)$. In particular
 \begin{align*}
-    \frac{\mu(B(x,2r))}{\mu(B(x,r))}&\leq\frac{\mu([-x_{k-2},x_{k-2}])}{\mu([-x_{k},x_{k}])}\leq\frac{\sum_{n=k-2}^{\infty}3^{-n}+2^{-n}}{\sum_{n=k}^{\infty}3^{-n}+2^{-n}}\\
+    \frac{\mu(B(x,2r))}{\mu(B(x,r))}&\leq\frac{\mu([-x_{k-2},x_{k-2}])}{\mu([-x_{k},x_{k}])}\leq\frac{\sum_{n=k-2}^{\infty}(3^{-n}+2^{-n})}{\sum_{n=k}^{\infty}(3^{-n}+2^{-n})}\\
     &\leq \frac{2\sum_{n=k-2}^{\infty}2^{-n}}{\sum_{n=k}^{\infty}2^{-n}}\leq\frac{2^{4-k}}{2^{1-k}}=8,
 \end{align*}
 which shows that $\mu$ is pointwise doubling at $0$.
@@ -192,7 +192,7 @@ Let $\mu$ be a measure fully supported on a metric space $X$. For $x\in X$ we de
 Crucially, the constant $C$ in the Definition \ref{def:loc_assouad} may depend on the point $x$, but not on the scales $0<r<R$. Similarly as the Assouad dimension captures information on the least homogeneous points and scales of the measure, the pointwise Assouad dimension captures information on the least homogeneous scales at each point. Pointwise doubling measures and measures with finite pointwise Assouad dimension are linked by the following proposition. The proof is similar to the analogous result for the global Assouad dimension, see \cite[Lemma 4.1.1]{F}, but we provide it for the convenience of the reader.
 
 \begin{prop}\label{prop:loc_doub_assouad}
-Let $\mu$ be a Borel measure fully supported on a metric space $X$. Then for $x\in X$, $\dim_{\mathrm{A}}(\mu,x)$ is finite if and only if $\mu$ is pointwise doubling.
+Let $\mu$ be a Borel measure fully supported on a metric space $X$. Then for $x\in X$, $\dim_{\mathrm{A}}(\mu,x)$ is finite if and only if $\mu$ is pointwise doubling at $x$.
 \end{prop}
 \begin{proof}
 For the rest of the proof we fix $x\in X$. If $\dim_{\mathrm{A}}(\mu,x)<\infty$, then choose any $\dim_{\mathrm{A}}(\mu,x)<s<\infty$, so by definition, there is a constant $C(x)$, such that for all $r>0$,
@@ -201,7 +201,7 @@ For the rest of the proof we fix $x\in X$. If $\dim_{\mathrm{A}}(\mu,x)<\infty$,
 \end{equation*}
 so $\mu$ is pointwise doubling.
 
-For the other direction, let $0<r<R$, and let $n\in\N$ be the unique integer, for which $2^{n}r\leq R \leq 2^{n+1}r$. Note that in particular, this implies that $n\leq \frac{\log\frac{R}{r}}{\log 2}$. Using this and the doubling property inductively, we get
+For the other direction, let $0<r<R$, and let $n\in\N$ be the unique integer, for which $2^{n}r\leq R < 2^{n+1}r$. Note that in particular, this implies that $n\leq \frac{\log\frac{R}{r}}{\log 2}$. Using this and the doubling property inductively, we get
 \begin{equation*}
     \frac{\mu(B(x,R))}{\mu(B(x,r))}\leq \frac{\mu(B(x,2^{n+1}r))}{\mu(B(x,r))}\leq C(x)^{n+1}\leq C(x) \left(\frac{R}{r}\right)^{\frac{\log C(x)}{\log 2}}.
 \end{equation*}
@@ -268,7 +268,7 @@ Assume that $\mu$ has an atom at $x\in X$. Let $0<r<R$, and note that
 and since the constant $\frac{\mu(X)}{\mu(\{x\})}$ depends only on $x$, we have $\dim_{\mathrm{A}}(\mu,x)\leq 0$, which is enough to prove the claim.
 \end{proof}
 
-Next we begin investigating the relationship between the pointwise Assouad dimension and the global one. As Proposition \ref{prop:loc_less_assouad} shows, the global Assouad dimension provides an upper bound for the pointwise Assouad dimension at every point. The natural question that arrises is if the converse holds at some point, i.e. is it true that $\sup_{x\in X}\adim(\mu,x)=\adim\mu$. It turns out that generally speaking this is not the case, even in compact spaces. Recall that in Example \ref{ex:loc_not_glob_doubling}  we constructed a measure which is pointwise doubling at all points of its compact support, but fails to be globally doubling. By Proposition \ref{prop:loc_doub_assouad} and the analogous fact for the global Assouad dimension, we see that this is an example of a measure with finite pointwise Assouad dimension at all points, but infinite global Assouad dimension.
+Next we begin investigating the relationship between the pointwise Assouad dimension and the global one. As Proposition \ref{prop:loc_less_assouad} shows, the global Assouad dimension provides an upper bound for the pointwise Assouad dimension at every point. The natural question that arises is if the converse holds at some point, i.e. is it true that $\sup_{x\in X}\adim(\mu,x)=\adim\mu$. It turns out that generally speaking this is not the case, even in compact spaces. Recall that in Example \ref{ex:loc_not_glob_doubling}  we constructed a measure which is pointwise doubling at all points of its compact support, but fails to be globally doubling. By Proposition \ref{prop:loc_doub_assouad} and the analogous fact for the global Assouad dimension, we see that this is an example of a measure with finite pointwise Assouad dimension at all points, but infinite global Assouad dimension.
 
 After making this observation, it is natural to ask if the Assouad dimension of the supporting space is a lower bound for the pointwise Assouad dimension, as it is for the global one. Our next example shows that this is also not generally the case, in fact, there are measures supported on sets of full Assouad dimension, which have $0$ pointwise Assouad dimension at all points. The example is original, but builds on a construction by Le Donne and Rajala \cite[Example 2.20]{LR}.
 
@@ -322,7 +322,7 @@ We give an example of a compactly supported measure $\mu$, such that
 \begin{equation*}
     \updim_{\mathrm{M}}\mu>\sup_{x\in\mathrm{supp}(\mu)}\dim_{\mathrm{A}}(\mu,x).
 \end{equation*}
-Let $\mu=\sum_{n=0}^{\infty}3^{-n}\delta_{-2^{-n}}+2^{-n}\delta_{2^{-n}}$ be the measure of Example \ref{ex:loc_not_glob_doubling}, which is a finite measure fully supported on $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{\pm 2^{-n}\}$. Let us first show that $\updim_{\mathrm{M}}\mu\geq \frac{\log 3}{\log 2}$. Let $s<\frac{\log 3}{\log 2}$ and choose $n_0$ large enough, such that
+Let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-2^{-n}}+2^{-n}\delta_{2^{-n}})$ be the measure of Example \ref{ex:loc_not_glob_doubling}, which is a finite measure fully supported on $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{\pm 2^{-n}\}$. Let us first show that $\updim_{\mathrm{M}}\mu\geq \frac{\log 3}{\log 2}$. Let $s<\frac{\log 3}{\log 2}$ and choose $n_0$ large enough, such that
 \begin{equation*}
     \frac{n\log3}{(n+2)\log 2}> s,
 \end{equation*}
@@ -346,11 +346,11 @@ and therefore $\dim_{\mathrm{A}}(\mu,0)\leq1<\frac{\log3}{\log 2}\leq \updim_{\m
 \begin{example}
 Here we give an example of a measure $\mu$, with $\updim_{\mathrm{M}}\mu<\adim(\mu,x)$, for $\mu$-almost every $x$. Let $\mu$ be a self-affine measure on a Bedford-McMullen carpet, see Section \ref{sec:ssm} for the definitions. By \cite[Theorem 8.6.2]{F}, the upper Minkowski dimension of $\mu$ is given, in the notation of Section \ref{sec:ssm}, by the formula
 \begin{equation*}
-    \updim_{\mathrm{M}}\mu=\max_{\bar{\imath}\in\Lambda}\frac{-\log p_{\bar{\imath}}}{\log n_1}+\max_{\bar{\imath}\in\Lambda}\frac{\log p_1(\bar{\imath})}{\log n_1}+\frac{-\log p_1(\bar{\imath})}{\log n_2},
+    \updim_{\mathrm{M}}\mu=\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_{\bar{\imath}}}{\log n_1}\right)+\max_{\bar{\imath}\in\Lambda}\left(\frac{\log p_1(\bar{\imath})}{\log n_1}+\frac{-\log p_1(\bar{\imath})}{\log n_2}\right),
 \end{equation*}
 and by our Theorem \ref{thm:bm_formula}, the pointwise Assouad dimension is given by
 \begin{equation*}
-    \adim(\mu,x)=\max_{\bar{\imath}\in\Lambda}\frac{-\log p_{\bar{\imath}}}{\log n_1}+\frac{\log p_1(\bar{\imath})}{\log n_1}+\max_{\bar{\imath}\in\Lambda}\frac{-\log p_1(\bar{\imath})}{\log n_2},
+    \adim(\mu,x)=\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_{\bar{\imath}}}{\log n_1}+\frac{\log p_1(\bar{\imath})}{\log n_1}\right)+\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_1(\bar{\imath})}{\log n_2}\right),
 \end{equation*}
 at $\mu$-almost every $x$. Recall that by definition,
 \begin{equation*}
@@ -388,7 +388,7 @@ Let $\Lambda$ be a finite index set, and associate to each $i\in\Lambda$ a contr
 \begin{equation*}
     F=\bigcup_{i\in\Lambda}\varphi_i(F),
 \end{equation*}
-called the \emph{limit set of the IFS}. To make the study easier, one often imposes some restrictions on the defining maps. In this section we will concentrate on the class of \emph{quasi-Bernoulli measures} supported on \emph{self-conformal sets}. In addition to the confromality asumption, we require that the IFS satisfies the \emph{strong separation condition (SSC)}, namely, we assume that for any distinct $i,j\in\Lambda$, we have $\varphi_i(F)\cap \varphi_j(F)=\emptyset$. Our goal is to establish an exact dimensionality property for the pointwise Assouad dimension of these measures, that is, we show that the pointwise Assouad dimension agrees with the global Assouad dimension almost everywhere.
+called the \emph{limit set of the IFS}. To make the study easier, one often imposes some restrictions on the defining maps. In this section we will concentrate on the class of \emph{quasi-Bernoulli measures} supported on \emph{self-conformal sets}. In addition to the conformality assumption, we require that the IFS satisfies the \emph{strong separation condition (SSC)}, namely, we assume that for any distinct $i,j\in\Lambda$, we have $\varphi_i(F)\cap \varphi_j(F)=\emptyset$. Our goal is to establish an exact dimensionality property for the pointwise Assouad dimension of these measures, that is, we show that the pointwise Assouad dimension agrees with the global Assouad dimension almost everywhere.
 
 When studying limit sets of iterated function systems, it is often useful to consider a symbolic representation of the IFS. Let $\Sigma=\{(i_1,i_2,\ldots)\colon i_k\in\Lambda\}$ denote the set of infinite sequences of the symbols in $\Lambda$. We call $\Sigma$ the \emph{symbolic space} and members of $\Sigma$ \emph{(infinite) words}. For an integer $n$, let $\Sigma_n=\{(i_1,i_2,\ldots,i_n)\colon i_k\in\Lambda\}$ be the set of \emph{finite words of length $n$} and let $\Sigma_*=\bigcup_{n\in\N}\Sigma_n\cup\{\emptyset\}$ denote the set of all finite words of any length. For any $\mathbf{i}\in\Sigma$, let $\mathbf{i}|_0=\emptyset$ denote the empty word. We use the abbreviation $\mathbf{i}=(i_1,i_2,\ldots)$ for a fixed element of $\Sigma$ and the same notation $\mathbf{i}=(i_1,\ldots,i_n)$ for elements of $\Sigma_n$, but the meaning will be clear from the context. For $\mathbf{i}=(i_1,\ldots,i_n)\in\Sigma_n$, let $\mathbf{i}^-=(i_1,\ldots,i_{n-1})$ denote the finite word obtained by dropping the last element of $\mathbf{i}$. If $\mathbf{i}\in\Sigma$, we write $\mathbf{i}|_n=(i_1,\ldots,i_n)\in\Sigma_n$ for the projection of $\mathbf{i}$ onto the first $n$ coordinates. For $\mathbf{i}\in\Sigma_n$, the cylinder $[\mathbf{i}]\subset \Sigma$ is defined to be the set of all infinite words in $\Sigma$ whose first $n$ letters are the letters of $\mathbf{i}$. In some proofs, we use for $\mathbf{i}\in\Sigma$ and $\mathbf{j}\in\Sigma_*$ the notation $\mathbf{j}\sqsubset\mathbf{i} $, to mean that the word $\mathbf{i}$ contains the word $\mathbf{j}$ as a substring.
 
@@ -418,7 +418,7 @@ Next we define self-conformal sets which act as a support for the measures we st
     \end{equation*}
     where $|\varphi_i'(x)|$ denotes the operator norm of the linear map $\varphi_i'(x)$.
 \end{enumerate}
-The use of the bounded open set $\Omega$ here is essential since contractive confromal maps defined on whole $\R^d$ are in fact similarities. The limit set $F$ of an IFS satisfying (C1) and (C2) is called a \emph{self-conformal set}. In the following we let $||\varphi'_{\mathbf{i}}||=\sup_{x\in \Omega}|\varphi'_{\mathbf{i}}(x)|$. It follows from the fact that each $\varphi_i$ is a contraction, that $||\varphi'_{\mathbf{i}}||<1$, for all $\mathbf{i}\in\Sigma_*$, and that for a fixed $\mathbf{i}\in\Sigma$, $||\varphi'_{\mathbf{i}|_n}||$ is strictly decreasing in $n$. Let us recall some key lemmas for the proof of our main theorem of this section. The first lemma can be found for example in \cite{MU}.
+The use of the bounded open set $\Omega$ here is essential since contractive conformal maps defined on whole $\R^d$ are in fact similarities. The limit set $F$ of an IFS satisfying (C1) and (C2) is called a \emph{self-conformal set}. In the following we let $||\varphi'_{\mathbf{i}}||=\sup_{x\in \Omega}|\varphi'_{\mathbf{i}}(x)|$. It follows from the fact that each $\varphi_i$ is a contraction, that $||\varphi'_{\mathbf{i}}||<1$, for all $\mathbf{i}\in\Sigma_*$, and that for a fixed $\mathbf{i}\in\Sigma$, $||\varphi'_{\mathbf{i}|_n}||$ is strictly decreasing in $n$. Let us recall some key lemmas for the proof of our main theorem of this section. The first lemma can be found for example in \cite{MU}.
 
 \begin{lemma}\label{lemma:BDP}
 A self-conformal set $F$ satisfies the following.
@@ -490,8 +490,8 @@ Let $\mathbf{i}\in \Sigma$ be $n$-periodic, and let $x=\pi(\mathbf{i})$. By the 
 \end{equation}
 Let $k\in\N$. Using the chain rule, (\ref{eq:x_invariance}) and the conformality of the IFS we find that
 \begin{align*}
-    |\varphi_{\mathbf{i}|_{kn}}'(x)|&=|((\varphi_{i_1}\ldots\circ\varphi_{i_n})\circ\underset{k\text{ times}}{\ldots}\circ(\varphi_{i_1}\circ\ldots\circ\varphi_{i_n}))'(x)|\\
-    &=|(\varphi_{i_1}\circ\ldots\circ \varphi_{i_n}'(x))\cdot\underset{k\text{ times}}{\ldots}\cdot(\varphi_{i_1}\circ\ldots\circ \varphi_{i_n}'(x))|\\
+    |\varphi_{\mathbf{i}|_{kn}}'(x)|&=|((\varphi_{i_1}\circ\ldots\circ\varphi_{i_n})\circ\underset{k\text{ times}}{\ldots}\circ(\varphi_{i_1}\circ\ldots\circ\varphi_{i_n}))'(x)|\\
+    &=|(\varphi_{i_1}\circ\ldots\circ \varphi_{i_n})'(x)\cdot\underset{k\text{ times}}{\ldots}\cdot(\varphi_{i_1}\circ\ldots\circ \varphi_{i_n})'(x)|\\
     &=|\varphi_{\mathbf{i}|_n}'(x)^k|=|\varphi_{\mathbf{i}|_n}'(x)|^k.
 \end{align*}
 \end{proof}
@@ -553,7 +553,7 @@ for $\nu$-almost every $\mathbf{i}\in\Sigma$, where $\chi_{[\mathbf{j}]}$ denote
     \nu(\Sigma\setminus\mathcal{N})=\nu\left(\Sigma\setminus\bigcap_{\mathbf{j}\in\Sigma_*}\Sigma_{\mathbf{j}}\right)=\nu\left(\bigcup_{\mathbf{j}\in\Sigma_*}\Sigma\setminus\Sigma_{\mathbf{j}}\right)\leq \sum_{\mathbf{j}\in\Sigma_*}\nu(\Sigma\setminus\Sigma_{\mathbf{j}})=0.
 \end{equation*}
 \end{proof}
-We say that a measure $\mu$ supported on a self-conformal set $F$ is quasi-Bernoulli if it is the projection of a quasi-Beronulli measure $\nu$ supported on $\Sigma$ under the natural projection $\pi\colon\Sigma\to F$ defined as in(\ref{eq:code_map}). Next we show that the quasi-Bernoulli measures supported on self-conformal sets satisfying the SSC are doubling, which in particular implies that the Assouad dimensions of these measures are finite. After that, we prove the main theorem of this section, which shows that the pointwise Assouad dimension of these measures agrees with the Assouad dimension almost everywhere.
+We say that a measure $\mu$ supported on a self-conformal set $F$ is quasi-Bernoulli if it is the projection of a quasi-Beronulli measure $\nu$ supported on $\Sigma$ under the natural projection $\pi\colon\Sigma\to F$ defined as in (\ref{eq:code_map}). Next we show that the quasi-Bernoulli measures supported on self-conformal sets satisfying the SSC are doubling, which in particular implies that the Assouad dimensions of these measures are finite. After that, we prove the main theorem of this section, which shows that the pointwise Assouad dimension of these measures agrees with the Assouad dimension almost everywhere.
 \begin{prop}\label{prop:doubling}
 If $\mu$ is a quasi-Bernoulli measure fully supported on a self-conformal set $F$ satisfying the strong separation condition, then $\mu$ is doubling.
 \end{prop}
@@ -671,7 +671,7 @@ It is easy to see that the map $\phi(\mathbf{i})\coloneqq \log p_{i_0}(\sigma\ma
 \begin{equation}\label{eq:gibbs}
     C^{-1}\leq \frac{\nu([\mathbf{i}|_n])}{\exp\left(-nP+\sum_{k=1}^{n}\phi(\sigma^{k-1}\mathbf{i})\right)}\leq C,
 \end{equation}
-for all $\mathbf{i}\in\Sigma$. This measure is called the Gibbs measures of the potential $\phi$. Define the Ruelle operator $\Tilde{T}\colon C(\Sigma)\to C(\Sigma)$ of the symbolic representation by
+for all $\mathbf{i}\in\Sigma$. This measure is called the Gibbs measure of the potential $\phi$. Define the Ruelle operator $\Tilde{T}\colon C(\Sigma)\to C(\Sigma)$ of the symbolic representation by
 \begin{equation*}
     (\Tilde{T}f)(\mathbf{i})=\sum_{i\in\Lambda}\exp(\phi(i\mathbf{i}))f(i\mathbf{i})=\sum_{i\in\Lambda}p_i(\mathbf{i})f(i\mathbf{i}).
 \end{equation*}
@@ -702,7 +702,7 @@ Let us start with the upper bound. For the rest of the proof let $s=\sup_{\mathb
 \begin{equation*}
     |\varphi'_{\mathbf{i}|_{n+1}}(x)|\leq R < |\varphi'_{\mathbf{i}|_{n}}(x)|,\text{ and} \quad |\varphi'_{\mathbf{i}|_{k}}(x)|< r \leq |\varphi'_{\mathbf{i}|_{k-1}}(x)|.
 \end{equation*}
-This immediately implies that $\varphi_{\mathbf{i}|_k}(F)\subset B(x,C_3r)$, where $C_3$ is the constant of Lemma \ref{lemma:BDP}(3). As before, let $\delta = \min_{i\ne j}d(\varphi_i(F),\varphi_j(F))\colon i\ne j\}$. Then it is also easy to see that $B(x,\frac{\delta}{2C_3}R)\cap F\subset \varphi_{\mathbf{i}|_n}(F)$. Let us set $\mathbf{j}=(i_{k-n+1},i_{k-n+2},\ldots,i_k,i_{k-n+1},i_{k-n+2},\ldots,i_k,\ldots)\in P(\Sigma)$. Note that Lemma \ref{lemma:gibbs} shows that
+This immediately implies that $\varphi_{\mathbf{i}|_k}(F)\subset B(x,C_3r)$, where $C_3$ is the constant of Lemma \ref{lemma:BDP}(3). As before, let $\delta = \min_{i\ne j}\{d(\varphi_i(F),\varphi_j(F))\colon i\ne j\}$. Then it is also easy to see that $B(x,\frac{\delta}{2C_3}R)\cap F\subset \varphi_{\mathbf{i}|_n}(F)$. Let us set $\mathbf{j}=(i_{k-n+1},i_{k-n+2},\ldots,i_k,i_{k-n+1},i_{k-n+2},\ldots,i_k,\ldots)\in P(\Sigma)$. Note that Lemma \ref{lemma:gibbs} shows that
 \begin{equation*}
     \prod_{j=k-n+1}^kp_{i_j}(\sigma^{j-1}\mathbf{i})\gtrsim \prod_{l=1}^np_{j_l}(\sigma^{l-1}\mathbf{j}).
 \end{equation*}
@@ -713,7 +713,7 @@ Using Proposition \ref{prop:doubling} to conclude that $\mu$ is doubling and Lem
     &\lesssim\left(\prod_{l=1}^np_{j_l}(\sigma^{l-1}\mathbf{j})\right)^{-1}= |\varphi'_{\mathbf{j}|_n}(\mathbf{j})|^{-\frac{\log \prod_{l=1}^np_{j_l}(\sigma^{l-1}\mathbf{j})}{\log |\varphi'_{\mathbf{j}|_n}(\mathbf{j})|}}\\
     &\leq|\varphi'_{\mathbf{j}|_n}(\mathbf{j})|^{-s}\lesssim  |\varphi'_{\mathbf{i}|_{k-n-1}}(x)|^{-s}\lesssim\left(\frac{|\varphi'_{\mathbf{i}|_{n}}(x)|}{|\varphi'_{\mathbf{i}|_{k}}(x)|}\right)^s\lesssim\left(\frac{R}{r}\right)^s.
 \end{align*}
-This shows that $\dim_{\mathrm{A}}(\mu,x)\leq s$, for any $x\in F$.
+This shows that $\dim_{\mathrm{A}}\mu\leq s$, for any $x\in F$.
 
 For the lower bound, let $t<s$, and choose $\mathbf{i}\in P(\Sigma)$, such that
 \begin{equation*}
@@ -763,10 +763,10 @@ In this section we will concentrate on two important IFS constructions: self-sim
 \end{equation*}
 When the contractions $\varphi_i$ are similarities or affine maps, $F$ is called a \emph{self-similar} or a \emph{self-affine set}, respectively, and $\mu$ is called a \emph{self-similar} or a \emph{self-affine measure}. If the maps $\varphi_i$ are similarities, we denote their similarity ratios by $r_i\in(0,1)$. In all of the proofs, we assume that $\diam(F)=1$, which does not result in loss of generality, since re-scaling the set does not affect its geometry.
 
-Self-similar and self-affine sets and measures are perhaps the most important prototypical examples of fractal sets and measures. These classes have been well studied in the past decades, and substantial progress has been made in understanding their dimensional properties. See for example \cite{Hoch, HR} for recent developments in the self-similar case and \cite{BHR} for the self-affine case. To make their study easier, it is usual to impose some sort of separation conditions on the defining maps. The most common separation conditions are the SSC (see Section \ref{sec:qb-meas}) as well as the \emph{open set condition (OSC)}, which the set $F$ is said to satisfy if there exists an open set $U\subset \R^d$, such that $\varphi_i(U)\subset U$ for all $i\in\Lambda$ and $\varphi_i(U)\cap \varphi_j(U)=\emptyset$ for $i\ne j$. We say that a self-similar measure fully supported on a self-similar set $F$ satisfies the SSC if $F$ does and similarly for the OSC.
+Self-similar and self-affine sets and measures are perhaps the most important prototypical examples of fractal sets and measures. These classes have been well studied in the past decades, and substantial progress has been made in understanding their dimensional properties. See for example \cite{Hoch} for recent developments in the self-similar case and \cite{BHR, HR} for the self-affine case. To make their study easier, it is usual to impose some sort of separation conditions on the defining maps. The most common separation conditions are the SSC (see Section \ref{sec:qb-meas}) as well as the \emph{open set condition (OSC)}, which the set $F$ is said to satisfy if there exists an open set $U\subset \R^d$, such that $\varphi_i(U)\subset U$ for all $i\in\Lambda$ and $\varphi_i(U)\cap \varphi_j(U)=\emptyset$ for $i\ne j$. We say that a self-similar measure fully supported on a self-similar set $F$ satisfies the SSC if $F$ does and similarly for the OSC.
 
 \subsection{Self-similar measures and the open set condition}
-The doubling properties of self-similar measures are quite well studied. The fact that self-similar measures satisfying the SSC are doubling follows from Proposition \ref{prop:doubling}, and as mentioned in Remark \ref{huom:ssm}, their Assouad dimension was explicitly computed by Fraser and Howroyd \cite{FH}, and it is qiven by formula (\ref{eq:ssc_formula}). Relaxing the SSC to the OSC changes the situation dramatically. Yung \cite{Yung} provides examples of self-similar sets satisfying the OSC for which (1) only the canonical self-similar measure is doubling, (2) all self-similar measures are doubling, (3) the measures are doubling for some but not all choices of the weights $p_i$. In particular this shows that the Assouad dimension of self-similar measures satisfying the OSC can in many cases be infinite. Still, it is an interesting question to study the Assouad dimension of \emph{doubling} self-similar measures which do not satisfy the SSC. In the main theorem of this section, we show that if a self-similar measure satisfying the OSC is doubling, then the Assouad dimension is given by the natural formula (\ref{eq:ssc_formula}). Furthermore, we show that the pointwise Assouad dimension agrees with the global Assouad dimension almost everywhere, obtaining a stronger version of Remark \ref{huom:ssm}.
+The doubling properties of self-similar measures are quite well studied. The fact that self-similar measures satisfying the SSC are doubling follows from Proposition \ref{prop:doubling}, and as mentioned in Remark \ref{huom:ssm}, their Assouad dimension was explicitly computed by Fraser and Howroyd \cite{FH}, and it is given by formula (\ref{eq:ssc_formula}). Relaxing the SSC to the OSC changes the situation dramatically. Yung \cite{Yung} provides examples of self-similar sets satisfying the OSC for which (1) only the canonical self-similar measure is doubling, (2) all self-similar measures are doubling, (3) the measures are doubling for some but not all choices of the weights $p_i$. In particular this shows that the Assouad dimension of self-similar measures satisfying the OSC can in many cases be infinite. Still, it is an interesting question to study the Assouad dimension of \emph{doubling} self-similar measures which do not satisfy the SSC. In the main theorem of this section, we show that if a self-similar measure satisfying the OSC is doubling, then the Assouad dimension is given by the natural formula (\ref{eq:ssc_formula}). Furthermore, we show that the pointwise Assouad dimension agrees with the global Assouad dimension almost everywhere, obtaining a stronger version of Remark \ref{huom:ssm}.
 
 In this section, we use the notation
 \begin{equation*}
@@ -794,7 +794,7 @@ and for $\mu$-almost every $x\in F$, we have
 
 \end{thm}
 \begin{proof}
-Let $s=\max_{i\in\Lambda}\frac{\log p_i}{\log r_i}$. We start by showing that $\dim_A\mu\leq s$. Let $x\in F$ and $0<r<R<1$. Choose integers $k$ and $l$, such that
+Let $s=\max_{i\in\Lambda}\frac{\log p_i}{\log r_i}$. We start by showing that $\adim\mu\leq s$. Let $x\in F$ and $0<r<R<1$. Choose integers $k$ and $l$, such that
 \begin{equation*}
     r_{\mathbf{i}|_k}\leq R < r_{\mathbf{i}|_{k-1}}\text{ and }\quad r_{\mathbf{i}|_{l+1}}< r \leq r_{\mathbf{i}|_{l}}.
 \end{equation*}
@@ -839,7 +839,7 @@ Therefore
 \begin{align*}
     \frac{\mu(B(x,R_n))}{\mu(B(x,r_n))}\geq \frac{1}{MC}p_i^{-n}=\frac{1}{MC}(r_i^{-n})^{s}= \frac{1}{MC}\left(\frac{R_n}{r_n}\right)^{s}.
 \end{align*}
-Since $\frac{R_n}{r_n}\to\infty$ as $n\to \infty$, this shows that $\dim_{\mathrm{A}}(\mu,x)\geq s$. This finishes the proof, since now at $\mu$-almost every $x$, we have $s\leq \dim_A(\mu,x)\leq \dim_A\mu\leq s$.
+Since $\frac{R_n}{r_n}\to\infty$ as $n\to \infty$, this shows that $\dim_{\mathrm{A}}(\mu,x)\geq s$. This finishes the proof, since now at $\mu$-almost every $x$, we have $s\leq \adim(\mu,x)\leq \adim\mu\leq s$.
 \end{proof}
 
 Our result generalizes \cite[Theorem 2.4]{FH} by Fraser and Howroyd, by relaxing the SSC to the OSC, with the added assumption that the measure is doubling, for obvious reasons. It is an interesting question, if the same formula (\ref{eq:ssc_formula}) for the Assouad dimension of self-similar measures works with even less restrictive separation conditions, such as the weak separation condition.
@@ -855,7 +855,7 @@ We also need the following quantity. For $q=1,\ldots,d$ and $\bar{\imath}=(i_1,\
 \begin{equation}\label{eq:cond_prob}
     p_q(\bar{\imath})=p(i_q|i_1,\ldots,i_{q-1})=\dfrac{\sum\limits_{\substack{\bar{\jmath}\in \Lambda\\ j_k=i_k,\,k=1,\ldots,q}}p_{\bar{\jmath}}}{\sum\limits_{\substack{\bar{\jmath}\in \Lambda\\ j_k=i_k,\,k=1,\ldots,q-1}}p_{\bar{\jmath}}},
 \end{equation}
-If $(i_1,\ldots,i_q,i_{q+1},\ldots,i_d)\in\Lambda$ for some $i_{q+1},\ldots,i_d$, and 0 otherwise. These numbers can be interpreted as the conditional probabilities that the $q$th digit of a randomly chosen member of $\Lambda$ equals the $q$th digit of $\bar{\imath}$, given that the first $q-1$ coordinates did. The following theorem was proved by Fraser and Howroyd \cite[Theorem 2.6]{FH}.
+if $(i_1,\ldots,i_q,i_{q+1},\ldots,i_d)\in\Lambda$ for some $i_{q+1},\ldots,i_d$, and 0 otherwise. These numbers can be interpreted as the conditional probabilities that the $q$th digit of a randomly chosen member of $\Lambda$ equals the $q$th digit of $\bar{\imath}$, given that the first $q-1$ coordinates did. The following theorem was proved by Fraser and Howroyd \cite[Theorem 2.6]{FH}.
 
 \begin{thm}\label{thm:bm-formula}
 Let $\mu$ be a self-affine measure on a Bedford-McMullen sponge satisfying the VSSC. Then
@@ -927,13 +927,13 @@ It is also a simple exercise to show that if $\mathbf{i},\mathbf{j}\in\Sigma_*$,
 \end{equation}
 Now we choose $m_1=n_k$ and then inductively $m_i=L_1(m_{i-1}+k)+1$, for every $i>1$, and define $A_i\coloneqq\big(\bigcap_{q=1}^{d}\sigma^{-L_q(m_i)}[\underbrace{\bar{\imath}_q^{\min},\ldots,\bar{\imath}_q^{\min}}_{L_q(m_i+k)-L_q(m_i)\text{ times}}]\big)^c$. Noting that $I_k^c\subset\bigcap_{i\in\N}A_i$ and applying (\ref{eq:independent}) inductively first to the sets $A_i$ and then to the sets $\sigma^{-L_q(m_i)}[\underbrace{\bar{\imath}_q^{\min},\ldots,\bar{\imath}_q^{\min}}_{L_q(m_i+k)-L_q(m_i)\text{ times}}]$, we obtain
 \begin{align*}
-    \nu(I_k^c)&\leq\nu\left(\bigcap_{i\in\N}A_i\right)= \prod_{i\in\N}\nu(A_i)=\prod_{i\in\N}1-\nu\left(\bigcap_{q=1}^{d}\sigma^{-L_q(m_i)}[\underbrace{\bar{\imath}_q^{\min},\ldots,\bar{\imath}_q^{\min}}_{L_q(m_i+k)-L_q(m_i)\text{ times}}]\right)\\
-    &=\prod_{i\in\N}1-\prod_{q=1}^{d}(p_q^{\min})^{L_q(m_i+k)-L_q(m_i)}\leq \prod_{i\in\N}\underbrace{1-(p_q^{\min})^d}_{<1}=0.
+    \nu(I_k^c)&\leq\nu\left(\bigcap_{i\in\N}A_i\right)= \prod_{i\in\N}\nu(A_i)=\prod_{i\in\N}\Bigg(1-\nu\bigg(\bigcap_{q=1}^{d}\sigma^{-L_q(m_i)}[\underbrace{\bar{\imath}_q^{\min},\ldots,\bar{\imath}_q^{\min}}_{L_q(m_i+k)-L_q(m_i)\text{ times}}]\bigg)\Bigg)\\
+    &=\prod_{i\in\N}\left(1-\prod_{q=1}^{d}(p_q^{\min})^{L_q(m_i+k)-L_q(m_i)}\right)\leq \prod_{i\in\N}\Bigg(\underbrace{1-(p_q^{\min})^d}_{<1}\Bigg)=0.
 \end{align*}
 Thus $\nu(I_k)=1$, and moreover
 $\nu(I)=1$, where $I=\bigcap_{k\in\N}I_k$.
 
-Now let $s=\adim\mu$ given by Theorem \ref{thm:bm-formula}, $x=\pi(\omega)$, where $\omega\in I$, and let $R_k=(n_1+\ldots+n_d)n_1^{-n-1}$, and $r_k=2^{-1}n_1^{-(n+k)-1}$, where $k$ and $n$ are chosen, such that $\omega$ is given by equation (\ref{eq:omegaform}). Observe that by proposition \ref{prop:olsenvssc}, we have
+Now let $s=\adim\mu$ given by Theorem \ref{thm:bm-formula}, $x=\pi(\omega)$, where $\omega\in I$, and let $R_k=(n_1+\ldots+n_d)n_1^{-n-1}$, and $r_k=2^{-1}n_1^{-(n+k)-1}$, where $k$ and $n$ are chosen, such that $\omega$ is given by equation (\ref{eq:omegaform}). Observe that by Proposition \ref{prop:olsenvssc}, we have
 \begin{equation*}
     \frac{\mu(B(x,R_k))}{\mu(B(x,r_k))}\geq \frac{\mu(\pi(Q_{n+1}(\omega)))}{\mu(\pi(Q_{n+k+1}(\omega)))}.
 \end{equation*}
