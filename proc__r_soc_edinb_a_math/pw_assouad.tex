@@ -662,7 +662,7 @@ and
 \begin{equation*}
     |\varphi'_{\mathbf{i}}|=|\varphi'_{\mathbf{i}|_{n}}(\mathbf{i})|.
 \end{equation*}
-The following lemma is well known \cite{Bow,Fan}, and it follows from the Ruelle-Perron-Frobenius theorem. Following \cite{Bow}, we present a short outline of the proof for the convenience of the reader.
+The following lemma is well known consequence of the Ruelle-Perron-Frobenius theorem \cite{Bow,Fan}.
 
 \begin{lemma}\label{lemma:gibbs}
 There exists a unique $\sigma$-invariant probability measure $\nu$ on $\Sigma$, and a constant $C>1$ such that for any $x\in F$, $\mathbf{i}\in\Sigma$ and $n\in\N$, we have
@@ -672,27 +672,7 @@ There exists a unique $\sigma$-invariant probability measure $\nu$ on $\Sigma$, 
 Furthermore, $\nu$ is quasi-Bernoulli and we have $\mu=\pi_*\nu$, where $\mu$ is the measure of Proposition \ref{prop:invmeas}. 
 \end{lemma}
 \begin{proof}
-It is easy to see that the map $\phi(\mathbf{i})\coloneqq \log p_{i_0}(\sigma\mathbf{i})$ is Hölder continuous, so by Theorem 1.4 of \cite{Bow}, there exists a unique $\sigma$-invariant probability measure $\nu$, and a constants $P>0$ and $C>1$, such that
-\begin{equation}\label{eq:gibbs}
-    C^{-1}\leq \frac{\nu([\mathbf{i}|_n])}{\exp\left(-nP+\sum_{k=1}^{n}\phi(\sigma^{k-1}\mathbf{i})\right)}\leq C,
-\end{equation}
-for all $\mathbf{i}\in\Sigma$. This measure is called the Gibbs measure of the potential $\phi$. Define the Ruelle operator $\Tilde{T}\colon C(\Sigma)\to C(\Sigma)$ of the symbolic representation by
-\begin{equation*}
-    (\Tilde{T}f)(\mathbf{i})=\sum_{i\in\Lambda}\exp(\phi(i\mathbf{i}))f(i\mathbf{i})=\sum_{i\in\Lambda}p_i(\mathbf{i})f(i\mathbf{i}).
-\end{equation*}
-Since $\sum_{i\in\Lambda}p_i(\mathbf{i})=1$, for all $\mathbf{i}\in\Sigma$, it follows that $\Tilde{T}h=h$, when $h\equiv 1$, that is, $h$ is the eigenfunction of $\Tilde{T}$ corresponding to the maximal eigenvalue $1$. By inspecting the proof of Theorem 1.16 of \cite{Bow}, we see that in this case $P=0$, so equation (\ref{eq:gibbs}) gets simplified to
-\begin{equation*}
-    C^{-1}\leq \frac{\nu([\mathbf{i}|_n])}{\prod_{k=1}^{n}p_{i_k}(\sigma^{k-1}\mathbf{i})}\leq C,
-\end{equation*}
-which was the first claim. The fact that $\nu$ is quasi-Bernoulli is then easy to see.
-
-The fact that $\pi_*\nu=\mu$ was proved in Proposition 1.3(ii) of \cite{Fan}, but for completeness we present a version of their short argument here. Clearly $\pi_*\nu$ is a Borel probability measure. Using Theorem 1.4 of \cite{Bow} again, we see that $\Tilde{T}^*\nu=\nu$, so for any $f\in C(X)$, we have
-\begin{align*}
-    \int_{X}f(x)d\pi_*\nu&=\int_{\Sigma}f\circ\pi(\mathbf{i})d\nu=\int_{\Sigma}(\Tilde{T}(f\circ\pi))(\mathbf{i})d\nu=\int_{\Sigma}\sum_{i\in\Lambda}p_i(\mathbf{i})f(\pi(i\mathbf{i}))d\nu\\
-    &=\int_{\Sigma}\sum_{i\in\Lambda}p_i(\mathbf{i})f\circ\varphi_i(\pi(\mathbf{i}))d\nu=\int_{X}\sum_{i\in\Lambda}p_i(x)f\circ\varphi_i(x)d\pi_*\nu\\
-    &=\int_X(Tf)(x)d\pi_*\nu,
-\end{align*}
-so $T^*\pi_*\nu=\pi_*\nu$. Since by Proposition \ref{prop:invmeas} $\mu$ is the unique measure with this property, this shows that $\mu=\pi_*\nu$.
+This follows from Proposition 1.3 and Theorem 1.6 of \cite{Fan}.
 \end{proof}
 The previous lemma together with Proposition \ref{prop:doubling} immediately imply that the measure $\mu$ is doubling. We are now ready to state the main result of this section. Recall that $P(\Sigma)$ denotes the set of periodic words in $\Sigma$.
 
