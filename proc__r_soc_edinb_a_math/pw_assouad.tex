@@ -158,6 +158,7 @@ For the pointwise Assouad dimension, which we introduce shortly, we obtain a cor
     \mu(B(x,2r))\leq C(x)\mu(B(x,r)).
 \end{equation*}
 Clearly all doubling measures are pointwise doubling, but the converse is not true in general as is shown by the following example.
+
 \begin{example}\label{ex:loc_not_glob_doubling}
     Let $x_n=2^{-n}$, and let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-x_n}+2^{-n}\delta_{x_n})$, where $\delta_x$ denotes the point mass centered at $x$. Clearly the measure is a finite Borel measure fully supported on the set $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{x_n,-x_n\}$. By considering $y_k=-x_k$, and $r_k=2^{-k}$, it follows by a simple calculation that
     \begin{equation*}
@@ -165,7 +166,7 @@ Clearly all doubling measures are pointwise doubling, but the converse is not tr
     \end{equation*}
     as $k\to\infty$, which shows that $\mu$ is not doubling.
     
-    The fact that $\mu$ is pointwise doubling at $X\setminus\{0\}$ follows from Lemma \ref{lemma:atom}, and a standard calculation shows that for any  $2^{-k}\leq r < 2^{-k+1}$, we have
+    The fact that $\mu$ is pointwise doubling at $X\setminus\{0\}$ follows from Proposition \ref{prop:basic_properties}(3), and a standard calculation shows that for any  $2^{-k}\leq r < 2^{-k+1}$, we have
     \begin{equation*}
         \frac{\mu(B(x,2r))}{\mu(B(x,r))}\leq \frac{2\sum_{n=k-2}^{\infty}2^{-n}}{\sum_{n=k}^{\infty}2^{-n}}\leq\frac{2^{4-k}}{2^{1-k}}=8,
     \end{equation*}
@@ -184,54 +185,41 @@ Let $\mu$ be a measure fully supported on a metric space $X$. For $x\in X$ we de
 \end{defn}
 Crucially, the constant $C$ in the Definition \ref{def:loc_assouad} may depend on the point $x$, but not on the scales $0<r<R$. Similarly as the Assouad dimension captures information on the least homogeneous points and scales of the measure, the pointwise Assouad dimension captures information on the least homogeneous scales at each point. Pointwise doubling measures and measures with finite pointwise Assouad dimension are linked by the following proposition. The proof is similar to the analogous result for the global Assouad dimension, see \cite[Lemma 4.1.1]{F}, but we provide it for the convenience of the reader.
 
-\begin{prop}\label{prop:loc_doub_assouad}
-Let $\mu$ be a Borel measure fully supported on a metric space $X$. Then for $x\in X$, $\dim_{\mathrm{A}}(\mu,x)$ is finite if and only if $\mu$ is pointwise doubling at $x$.
+\begin{prop}\label{prop:basic_properties}
+Let $\mu$ be a Borel measure fully supported on a metric space $X$. Then for any $x\in X$,
+\begin{enumerate}
+    \item[(1)] $\dim_{\mathrm{A}}(\mu,x)$ is finite if and only if $\mu$ is pointwise doubling at $x$,
+    \item[(2)] $\lowdim_{\textnormal{loc}}(\mu,x)\leq\updim_{\textnormal{loc}}(\mu,x)\leq \dim_{\mathrm{A}}(\mu,x)\leq \adim\mu$,
+    \item[(3)] if $\mu$ has an atom at $x$, then $\dim_{\mathrm{A}}(\mu,x)=0$.
+\end{enumerate}
 \end{prop}
 \begin{proof}
-For the rest of the proof we fix $x\in X$. If $\dim_{\mathrm{A}}(\mu,x)<\infty$, then choose any $\dim_{\mathrm{A}}(\mu,x)<s<\infty$, so by definition, there is a constant $C(x)$, such that for all $r>0$,
-\begin{equation*}
-    \frac{\mu(B(x,2r))}{\mu(B(x,r))}\leq C(x)2^s,
-\end{equation*}
-so $\mu$ is pointwise doubling.
+    Claim (1). is a trivial modification of \cite[Lemma 4.1.1]{F}. For (2), note that the first and last inequalities follow straight from the definitions, so it suffices to prove the middle inequality. Fix $x\in X$, and let $s> \dim_{\mathrm{A}}(\mu,x)$ be arbitrary. Then by definition, there is a constant $C$ depending only on $x$, such that for all $0<r<R$,
+    \begin{equation*}
+        \frac{\mu(B(x,r))}{\mu(B(x,R))}\geq C\left(\frac{r}{R}\right)^s.
+    \end{equation*}
+    In particular, by fixing $R$ we see that
+    \begin{equation*}
+        \mu(B(x,r))\geq c r^s,
+    \end{equation*}
+    where $c=\frac{C\mu(B(x,R))}{R^s}$. This implies that for $r<R$
+    \begin{equation*}
+        \frac{\log\mu(B(x,r))}{\log r}\leq s + \frac{\log c}{\log r},
+    \end{equation*}
+    and taking $r\to 0$ shows that $\updim_{\textnormal{loc}}(\mu,x)\leq s$. Since $s>\dim_{\mathrm{A}}(\mu,x)$ was arbitrary, this finishes the proof.
 
-For the other direction, let $0<r<R$, and let $n\in\N$ be the unique integer, for which $2^{n}r\leq R < 2^{n+1}r$. Note that in particular, this implies that $n\leq \frac{\log\frac{R}{r}}{\log 2}$. Using this and the doubling property inductively, we get
-\begin{equation*}
-    \frac{\mu(B(x,R))}{\mu(B(x,r))}\leq \frac{\mu(B(x,2^{n+1}r))}{\mu(B(x,r))}\leq C(x)^{n+1}\leq C(x) \left(\frac{R}{r}\right)^{\frac{\log C(x)}{\log 2}}.
-\end{equation*}
-Since this holds for any $0<r<R$, we have $\dim_{\mathrm{A}}(\mu,x)\leq \frac{\log C(x)}{\log 2}<\infty$ proving the claim.
+    For (3), assume that $\mu$ has an atom at $x\in X$. Let $0<r<R$, and note that
+    \begin{equation*}
+        \frac{\mu(B(x,R))}{\mu(B(x,r))}\leq \frac{\mu(X)}{\mu(\{x\})}=\frac{\mu(X)}{\mu(\{x\})}\left(\frac{R}{r}\right)^0.
+    \end{equation*}
+    Since the constant $\frac{\mu(X)}{\mu(\{x\})}$ depends only on $x$, we have $\dim_{\mathrm{A}}(\mu,x)\leq 0$, which is enough to prove the claim.
 \end{proof}
-Let us derive some basic properties of the pointwise Assouad dimension. We start with a relationship between the pointwise Assouad dimension and the classical local dimensions. This can be regarded as an analogue of the fact that
+
+The properties (1) and (2) of Proposition \ref{prop:basic_properties} are the pointwise analogues for the basic properties of the global Assouad dimension. Property (1) corresponds to the fact that a measure $\mu$ is doubling if and only if it has finite global Assouad dimension and property (2) to the fact that $\adim$ is ``the greatest of all dimensions'' \cite{F}, that is
 \begin{equation*}
     \dim_{\mathrm{H}}\mu\leq \dim_{\mathrm{P}}\mu\leq\adim\mu,
 \end{equation*}
-in the global case \cite{F}, where the \emph{Hausdorff dimension of $\mu$} and the \emph{packing dimension of $\mu$} are defined as 
-\begin{equation*}
-dim_{\mathrm{H}}\mu\coloneqq\essinf_{x\in X}\lowdim_{\mathrm{loc}}(\mu,x), \text{ and} \;\dim_{\mathrm{P}}\mu\coloneqq\essinf_{x\in X}\updim_{\mathrm{loc}}(\mu,x),
-\end{equation*}
-respectively.
-
-\begin{prop}\label{prop:loc_less_assouad}
-Let $\mu$ be a finite measure fully supported on a metric space $X$. Then
-\begin{equation*}
-    \lowdim_{\textnormal{loc}}(\mu,x)\leq\updim_{\textnormal{loc}}(\mu,x)\leq \dim_{\mathrm{A}}(\mu,x)\leq \adim\mu,
-\end{equation*}
-for all $x\in X$.
-\end{prop}
-\begin{proof}
-The first and last inequalities follow straight from the definitions, so it suffices to prove the middle inequality. Fix $x\in X$, and let $s> \dim_{\mathrm{A}}(\mu,x)$ be arbitrary. Then by definition, there is a constant $C$ depending only on $x$, such that for all $0<r<R$,
-\begin{equation*}
-    \frac{\mu(B(x,r))}{\mu(B(x,R))}\geq C\left(\frac{r}{R}\right)^s.
-\end{equation*}
-In particular, by fixing $R$ we see that
-\begin{equation*}
-    \mu(B(x,r))\geq c r^s,
-\end{equation*}
-where $c=\frac{C\mu(B(x,R))}{R^s}$. This implies that for $r<R$
-\begin{equation*}
-    \frac{\log\mu(B(x,r))}{\log r}\leq s + \frac{\log c}{\log r},
-\end{equation*}
-and taking $r\to 0$ shows that $\updim_{\textnormal{loc}}(\mu,x)\leq s$. Since $s>\dim_{\mathrm{A}}(\mu,x)$ was arbitrary, this finishes the proof.
-\end{proof}
+where $\dim_{\mathrm{H}}\mu\coloneqq\essinf_{x\in X}\lowdim_{\mathrm{loc}}(\mu,x)$ and $\dim_{\mathrm{P}}\mu\coloneqq\essinf_{x\in X}\updim_{\mathrm{loc}}(\mu,x)$ are the \emph{Hausdorff dimension} and the \emph{packing dimension} of the measure $\mu$ respectively.
 
 % \begin{huom}
 % One can define the \emph{pointwise lower dimension of $\mu$ at $x$} analogously to the lower dimension of a measure as
@@ -248,20 +236,8 @@ and taking $r\to 0$ shows that $\updim_{\textnormal{loc}}(\mu,x)\leq s$. Since $
 % for all $x\in X$, where the proofs of the lower bounds are similar to the proof of the previous Proposition. We will not, however, pursue the study of the pointwise lower dimension any further in this paper.
 % \end{huom}
 
-The next lemma is a simple consequence of the definition and will be used numerous times in the examples we provide.
 
-\begin{lemma}\label{lemma:atom}
-Let $\mu$ be a finite measure. If $\mu$ has an atom at $x\in X$, then $\dim_{\mathrm{A}}(\mu,x)=0$.
-\end{lemma}
-\begin{proof}
-Assume that $\mu$ has an atom at $x\in X$. Let $0<r<R$, and note that
-\begin{equation*}
-    \frac{\mu(B(x,R))}{\mu(B(x,r))}\leq \frac{\mu(X)}{\mu(\{x\})}=\frac{\mu(X)}{\mu(\{x\})}\left(\frac{R}{r}\right)^0,
-\end{equation*}
-and since the constant $\frac{\mu(X)}{\mu(\{x\})}$ depends only on $x$, we have $\dim_{\mathrm{A}}(\mu,x)\leq 0$, which is enough to prove the claim.
-\end{proof}
-
-Next we begin investigating the relationship between the pointwise Assouad dimension and the global one. As Proposition \ref{prop:loc_less_assouad} shows, the global Assouad dimension provides an upper bound for the pointwise Assouad dimension at every point. The natural question that arises is if the converse holds at some point, i.e. is it true that $\sup_{x\in X}\adim(\mu,x)=\adim\mu$. It turns out that generally speaking this is not the case, even in compact spaces. Recall that in Example \ref{ex:loc_not_glob_doubling}  we constructed a measure which is pointwise doubling at all points of its compact support, but fails to be globally doubling. By Proposition \ref{prop:loc_doub_assouad} and the analogous fact for the global Assouad dimension, we see that this is an example of a measure with finite pointwise Assouad dimension at all points, but infinite global Assouad dimension.
+Next we begin investigating the relationship between the pointwise Assouad dimension and the global one. As Proposition \ref{prop:basic_properties} shows, the global Assouad dimension provides an upper bound for the pointwise Assouad dimension at every point. The natural question that arises is if the converse holds at some point, i.e. is it true that $\sup_{x\in X}\adim(\mu,x)=\adim\mu$. It turns out that generally speaking this is not the case, even in compact spaces. Recall that in Example \ref{ex:loc_not_glob_doubling}  we constructed a measure which is pointwise doubling at all points of its compact support, but fails to be globally doubling. By Proposition \ref{prop:basic_properties}(1) and the analogous fact for the global Assouad dimension, we see that this is an example of a measure with finite pointwise Assouad dimension at all points, but infinite global Assouad dimension.
 
 After making this observation, it is natural to ask if the Assouad dimension of the supporting space is a lower bound for the pointwise Assouad dimension, as it is for the global one. Our next example shows that this is also not generally the case, in fact, there are measures supported on sets of full Assouad dimension, which have $0$ pointwise Assouad dimension at all points. The example is original, but builds on a construction by Le Donne and Rajala \cite[Example 2.20]{LR}.
 
@@ -282,7 +258,7 @@ and note that
 \end{equation*}
 in the Hausdorff distance as $n\to\infty$. Thus $[0,1]$ is a weak tangent to $X$ and by Proposition \ref{prop:weaktangent} $\dim_{\mathrm{A}}X\geq 1$.
 
-Next we show that $\dim_{\mathrm{A}}(\mu,x)=0$, for every $x\in X$. Note that every point $x\in X\setminus\{0\}$ is an atom so by Lemma \ref{lemma:atom}, $\dim_{\mathrm{A}}(\mu,x)=0$, so we only need to consider the case $x=0$. Fix $0<r<R<1$, and choose numbers $L,N\in\N$, such that
+Next we show that $\dim_{\mathrm{A}}(\mu,x)=0$, for every $x\in X$. Note that every point $x\in X\setminus\{0\}$ is an atom so by Proposition \ref{prop:basic_properties}(3), $\dim_{\mathrm{A}}(\mu,x)=0$, so we only need to consider the case $x=0$. Fix $0<r<R<1$, and choose numbers $L,N\in\N$, such that
 \begin{equation*}
     2^{-2^L}< r \leq 2^{-2^{L-1}}, \quad2^{-2^{N+1}}\leq R < 2^{-2^{N}},
 \end{equation*}
@@ -309,7 +285,7 @@ and show in their Proposition 4.1 that when $\mu$ is compactly supported, this h
 \begin{equation*}
     \dim_{\mathrm{P}}\mu\leq \updim_{\mathrm{M}}\mu\leq \dim_{\mathrm{A}}\mu.
 \end{equation*}
-By definition of $\dim_{\mathrm{P}}\mu$ and Proposition \ref{prop:loc_less_assouad} we have the general relationship $\dim_{\mathrm{P}}\mu\leq\dim_{\mathrm{A}}(\mu,x)$, for $\mu$-almost every $x$. In general, there is no relationship between the values of $\adim(\mu,x)$ and $\updim_{\mathrm{M}}\mu$ as is evidenced by the following two examples.
+By definition of $\dim_{\mathrm{P}}\mu$ and Proposition \ref{prop:basic_properties}(2) we have the general relationship $\dim_{\mathrm{P}}\mu\leq\dim_{\mathrm{A}}(\mu,x)$, for $\mu$-almost every $x$. In general, there is no relationship between the values of $\adim(\mu,x)$ and $\updim_{\mathrm{M}}\mu$ as is evidenced by the following two examples.
 \begin{example}
 We give an example of a compactly supported measure $\mu$, such that
 \begin{equation*}
@@ -325,7 +301,7 @@ for all $n\geq n_0$. Let $x_n=-2^{-n}$, and $r_n=2^{-(n+2)}$. Note that now
 \end{equation*}
 for all $n\geq n_0$. Since $r_n\to 0$ with $n$, this implies that $\updim_{\mathrm{M}}\mu\geq s$, and taking $s\to\frac{\log 3}{\log 2}$ gives the claim.
 
-Note that $\mu$ has an atom at every $x\in X\setminus\{0\}$, so by Lemma \ref{lemma:atom}, $\dim_{\mathrm{A}}(\mu,x)=0<\updim_{\mathrm{M}}\mu$. To finish off the proof, we show that $\dim_{\mathrm{A}}(\mu,0)\leq1$. Fix $0<r<R$, and choose $L,N\in \N$, such that
+Note that $\mu$ has an atom at every $x\in X\setminus\{0\}$, so by Proposition \ref{prop:basic_properties}(3), $\dim_{\mathrm{A}}(\mu,x)=0<\updim_{\mathrm{M}}\mu$. To finish off the proof, we show that $\dim_{\mathrm{A}}(\mu,0)\leq1$. Fix $0<r<R$, and choose $L,N\in \N$, such that
 \begin{equation}\label{eq:rR}
     2^{-L}< r \leq 2^{-L+1},\quad2^{-N-1}\leq R < 2^{-N}.
 \end{equation}
@@ -703,7 +679,7 @@ Taking logarithms and limits shows us that
 \begin{equation*}
     \updim_{\text{loc}}(\mu,x)\geq t,
 \end{equation*}
-so in particular by Proposition \ref{prop:loc_less_assouad},  $\dim_{\mathrm{A}}\mu\geq t$. Taking $t\to s$ finishes the proof.
+so in particular by Proposition \ref{prop:basic_properties}(2),  $\dim_{\mathrm{A}}\mu\geq t$. Taking $t\to s$ finishes the proof.
 \end{proof}
 Using the fact that the measure $\mu$ is quasi-Bernoulli, Theorem \ref{thm:quasi-bernoulli-exact-assouad} gives the following immediate corollary.
 \begin{cor}\label{cor:invmeas-pw}
