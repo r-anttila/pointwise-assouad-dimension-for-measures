@@ -71,7 +71,7 @@ Originally, the Assouad dimension was defined as a means to investigate embeddin
 
 There are also many notions of pointwise dimension for measures, most important being the upper and lower local dimensions. Unlike the different notions of ``global'' dimension, which are concerned with the average regularity (e.g. in the case of Hausdorff, packing and Minkowski dimensions) or extremal regularity (in the case of Assouad and lower dimensions) of the measure on its entire support, these pointwise dimensions quantify the regularity of the measure around a given point. The upper and lower local dimensions can be thought of as the pointwise analogue of the Hausdorff and packing dimensions of the measure and our aim is to provide a natural pointwise analogue of the Assouad dimension, which captures the size of the least regular \emph{scales} of the measure at a given point. Due to the similarity in flavour to the Assouad dimension of a measure, we call this dimension the \emph{pointwise Assouad dimension} of the measure (see Definition \ref{def:loc_assouad}).
 
-This paper is structured as follows: In Section \ref{sec:prelim} we establish some notation and recall basic results concerning Assouad dimensions of sets and measures. In Section \ref{sec:pw_assouad} we introduce the pointwise Assouad dimension and discuss its properties in relation to the existing notions of dimension. In Section \ref{sec:qb-meas} we work in a general setting of quasi-Bernoulli measures supported on strongly separated self-conformal sets and prove an exact dimensionality property for the pointwise Assouad dimension of these measures. In Section \ref{sec:invmeas} we compute the Assouad dimension of a class of place dependent invariant measures and use the results of the previous section to obtain the almost sure pointwise Assouad dimension. Finally, in Section \ref{sec:ssm} we show that the exact dimensionality property holds for doubling self-similar measures, even when the strong separation condition is relaxed to the open set condition. We also establish the property for self-affine measures on Bedford-McMullen sponges satisfying the very strong separation condition.
+This paper is structured as follows: We begin by establishing some notation and recalling basic results concerning Assouad dimensions of sets and measures in Section \ref{sec:prelim}. In Section \ref{sec:pw_assouad} we introduce the pointwise Assouad dimension and discuss its properties in relation to various existing notions of dimension. In Section \ref{sec:qb-meas} we work in a general setting of quasi-Bernoulli measures supported on strongly separated self-conformal sets and, in Theorem \ref{thm:quasi-bernoulli-exact-assouad}, prove an exact dimensionality property for the pointwise Assouad dimension of these measures. In Section \ref{sec:invmeas} we study the Assouad dimension of a class of place dependent invariant measures. The main results of this section are Theorem \ref{thm:pw_ssc_formula}, where we provide an explicit formula for the Assouad dimension of these measures, and Corollary \ref{cor:invmeas-pw}, where we see that this formula holds for the pointwise Assouad dimension at almost every point. In the final Section \ref{sec:ssm} we are interested in self-similar and self-affine measures. In Theorem \ref{thm:osc_formula}, we show that the exact dimensionality property for the pointwise Assouad dimension holds for doubling self-similar measures, even when the strong separation condition is relaxed to the open set condition. We also establish the property for self-affine measures on Bedford-McMullen sponges satisfying the very strong separation condition in Theorem \ref{thm:bm_exact_dimensionality}.
 
 \section{Preliminaries}\label{sec:prelim}
 Unless stated otherwise, we assume that $(X,d)$ is a metric space, with no additional structure. Since we assume the metric $d$ to be fixed, we omit it from the notation and refer to $(X,d)$ simply as $X$. The rest of this section is devoted to introducing some basic notation and results related to Assouad dimensions. Readers familiar with these concepts can easily skip to Section \ref{sec:pw_assouad}. 
@@ -750,7 +750,7 @@ We also need the following quantity. For $q=1,\ldots,d$ and $\bar{\imath}=(i_1,\
 \end{equation}
 if $(i_1,\ldots,i_q,i_{q+1},\ldots,i_d)\in\Lambda$ for some $i_{q+1},\ldots,i_d$, and 0 otherwise. These numbers can be interpreted as the conditional probabilities that the $q$th digit of a randomly chosen member of $\Lambda$ equals the $q$th digit of $\bar{\imath}$, given that the first $q-1$ coordinates did. The following theorem was proved by Fraser and Howroyd \cite[Theorem 2.6]{FH}.
 
-\begin{thm}\label{thm:bm-formula}
+\begin{thm}\label{thm:bm_formula}
 Let $\mu$ be a self-affine measure on a Bedford-McMullen sponge satisfying the VSSC. Then
 \begin{equation*}
     \dim_{\mathrm{A}}\mu=\sum_{q=1}^d\max_{\bar{\imath}\in \Lambda}\frac{-\log p_q(\bar{\imath})}{\log n_q}.
@@ -758,7 +758,7 @@ Let $\mu$ be a self-affine measure on a Bedford-McMullen sponge satisfying the V
 \end{thm}
 Again, we extend this result and prove that the pointwise Assouad dimension coincides with this value at almost every point.
 
-\begin{thm}\label{thm:bm_formula}
+\begin{thm}\label{thm:bm_exact_dimensionality}
 Let $\mu$ be a self-affine measure on a Bedford-McMullen sponge $F$ satisfying the VSSC. Then
 \begin{equation*}
     \dim_{\mathrm{A}}(\mu,x)=\dim_{\mathrm{A}}\mu,
@@ -798,9 +798,9 @@ Let $\omega\in\Sigma$ and $k\in\N$.
     \item  $\pi(Q_k(\omega))\subset B(\pi(\omega),(n_1+\ldots+n_d)n_1^k)$.
 \end{enumerate}
 \end{prop}
-The proof of the proposition can be found in \cite[Proposition 6.2.1]{O}. Let us now prove Theorem \ref{thm:bm_formula}. The proof follows ideas of Fraser and Howroyd \cite[Theorem 2.6]{FH}, where they essentially construct a single point where the pointwise Assouad dimension is maximal, which is enough to bound the Assouad dimension from below. The difficulty with establishing the lower bound for almost every point in contrast to the self-conformal case is that in addition to finding a long enough sequence of convenient symbols in the symbolic space, we also have to control its location due to the non-conformality of the sponge.
+The proof of the proposition can be found in \cite[Proposition 6.2.1]{O}. Let us now prove Theorem \ref{thm:bm_exact_dimensionality}. The proof follows ideas of Fraser and Howroyd \cite[Theorem 2.6]{FH}, where they essentially construct a single point where the pointwise Assouad dimension is maximal, which is enough to bound the Assouad dimension from below. The difficulty with establishing the lower bound for almost every point in contrast to the self-conformal case is that in addition to finding a long enough sequence of convenient symbols in the symbolic space, we also have to control its location due to the non-conformality of the sponge.
 
-\begin{proof}[Proof of Theorem \ref{thm:bm_formula}]
+\begin{proof}[Proof of Theorem \ref{thm:bm_exact_dimensionality}]
 First we note that $L_q(n)$ increases with $n$ and, since $n_q$ are strictly increasing, decreases with $q$. It is an elementary exercise to show that for every $k\in\N$, there is an integer $n_k$, such that for all $n\geq n_k$, we have
 \begin{equation*}
     L_d(n)< L_d(n+k)<L_{d-1}(n)<L_{d-1}(n+k)<\ldots<L_1(n)<L_1(n+k).
@@ -826,7 +826,7 @@ Now we choose $m_1=n_k$ and then inductively $m_i=L_1(m_{i-1}+k)+1$, for every $
 Thus $\nu(I_k)=1$, and moreover
 $\nu(I)=1$, where $I=\bigcap_{k\in\N}I_k$.
 
-Now let $s=\adim\mu$ given by Theorem \ref{thm:bm-formula}, $x=\pi(\omega)$, where $\omega\in I$, and let $R_k=(n_1+\ldots+n_d)n_1^{-n-1}$, and $r_k=2^{-1}n_1^{-(n+k)-1}$, where $k$ and $n$ are chosen, such that $\omega$ is given by equation (\ref{eq:omegaform}). Observe that by Proposition \ref{prop:olsenvssc}, we have
+Now let $s=\adim\mu$ given by Theorem \ref{thm:bm_formula}, $x=\pi(\omega)$, where $\omega\in I$, and let $R_k=(n_1+\ldots+n_d)n_1^{-n-1}$, and $r_k=2^{-1}n_1^{-(n+k)-1}$, where $k$ and $n$ are chosen, such that $\omega$ is given by equation (\ref{eq:omegaform}). Observe that by Proposition \ref{prop:olsenvssc}, we have
 \begin{equation*}
     \frac{\mu(B(x,R_k))}{\mu(B(x,r_k))}\geq \frac{\mu(\pi(Q_{n+1}(\omega)))}{\mu(\pi(Q_{n+k+1}(\omega)))}.
 \end{equation*}
@@ -845,7 +845,7 @@ where $C=(\min_{q}p_q^{\min})^{-d}\cdot(2(n_1+\ldots+n_d))^s>0$ is a constant. T
     \begin{equation*}
         \updim_{\mathrm{M}}\mu=\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_{\bar{\imath}}}{\log n_2}\right)+\max_{\bar{\imath}\in\Lambda}\left(\frac{\log p_1(\bar{\imath})}{\log n_2}+\frac{-\log p_1(\bar{\imath})}{\log n_1}\right),
     \end{equation*}
-    and from Theorem \ref{thm:bm_formula}, it follows that the pointwise Assouad dimension is given by
+    and from Theorems \ref{thm:bm_formula} and \ref{thm:bm_exact_dimensionality}, it follows that the pointwise Assouad dimension is given by
     \begin{equation*}
         \adim(\mu,x)=\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_{\bar{\imath}}}{\log n_2}+\frac{\log p_1(\bar{\imath})}{\log n_2}\right)+\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_1(\bar{\imath})}{\log n_1}\right),
     \end{equation*}
