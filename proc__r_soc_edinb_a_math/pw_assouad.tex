@@ -213,10 +213,18 @@ Then Proposition \ref{prop:basic_properties}(2) is strengthened to
 for all $x\in X$. We will not, however, pursue the study of the pointwise lower dimension any further in this paper.
 \end{huom}
 
+\subsection{Relationships between other dimensions}
 
-Next we begin investigating the relationship between the pointwise Assouad dimension and the global one. As Proposition \ref{prop:basic_properties} shows, the global Assouad dimension provides an upper bound for the pointwise Assouad dimension at every point. The natural question that arises is if the converse holds at some point, i.e. is it true that $\sup_{x\in X}\adim(\mu,x)=\adim\mu$. It turns out that generally speaking this is not the case, even in compact spaces. Recall that in Example \ref{ex:loc_not_glob_doubling}  we constructed a measure which is pointwise doubling at all points of its compact support, but fails to be globally doubling. By Proposition \ref{prop:basic_properties}(1) and the analogous fact for the global Assouad dimension, we see that this is an example of a measure with finite pointwise Assouad dimension at all points, but infinite global Assouad dimension.
-
-After making this observation, it is natural to ask if the Assouad dimension of the supporting space is a lower bound for the pointwise Assouad dimension, as it is for the global one. Our next example shows that this is also not generally the case, in fact, there are measures supported on sets of full Assouad dimension, which have $0$ pointwise Assouad dimension at all points. The example is original, but builds on a construction by Le Donne and Rajala \cite[Example 2.20]{LR}.
+Next we investigate the relationships between the pointwise Assouad dimension and other common notions of dimension in fractal geometry. We will focus on the global Assouad dimension, the Hausdorff and packing dimensions, and the upper Minkowski dimension of measures and the Assouad dimension of the support of the measure. The upper Minkowski dimension of a measure was introduced in \cite{KFF} and it is defined by
+\begin{align*}
+    \updim_{\mathrm{M}}\mu=\inf\{s>0\colon &\textnormal{there exists a constant }c>0\textnormal{ such that}\\
+    &\mu(B(x,r))\geq cr^s,  \textnormal{ for all }x\in \text{supp}(\mu)\textnormal{ and }0<r<1\}.
+\end{align*}
+In \cite[Proposition 4.1]{KFF} it was shown that
+\begin{equation}\label{eq:general_relationship}
+    \dim_{\mathrm{P}}\mu\leq \updim_{\mathrm{M}}\mu\leq \dim_{\mathrm{A}}\mu.
+\end{equation}
+As Proposition \ref{prop:basic_properties} shows, the global Assouad dimension provides an upper bound for the pointwise Assouad dimension at every point. The natural question that arises is if the converse holds at some point, i.e. is it true that $\sup_{x\in X}\adim(\mu,x)=\adim\mu$. It turns out that generally speaking this is not the case, even in compact spaces. The following is an example of a non-doubling measure, which is pointwise doubling at all points of its support. By Proposition \ref{prop:basic_properties}(1) and the analogous fact for the global Assouad dimension, we see that this measure has finite pointwise Assouad dimension at all points, but infinite global Assouad dimension.
 
 \begin{example}\label{ex:loc_not_glob_doubling}
     Let $x_n=2^{-n}$, and let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-x_n}+2^{-n}\delta_{x_n})$, where $\delta_x$ denotes the point mass centered at $x$. Clearly the measure is a finite Borel measure fully supported on the set $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{x_n,-x_n\}$. By considering $y_k=-x_k$, and $r_k=2^{-k}$, it follows by a simple calculation that
@@ -225,12 +233,35 @@ After making this observation, it is natural to ask if the Assouad dimension of 
     \end{equation*}
     as $k\to\infty$, which shows that $\mu$ is not doubling.
     
-    The fact that $\mu$ is pointwise doubling at $X\setminus\{0\}$ follows from Proposition \ref{prop:basic_properties}(3), and a standard calculation shows that for any  $2^{-k}\leq r < 2^{-k+1}$, we have
+    The fact that $\mu$ is pointwise doubling at $X\setminus\{0\}$ follows from properties (1) and (3) of Proposition \ref{prop:basic_properties}, and a standard calculation shows that for any  $2^{-k}\leq r < 2^{-k+1}$, we have
     \begin{equation*}
-        \frac{\mu(B(x,2r))}{\mu(B(x,r))}\leq \frac{2\sum_{n=k-2}^{\infty}2^{-n}}{\sum_{n=k}^{\infty}2^{-n}}\leq\frac{2^{4-k}}{2^{1-k}}=8,
+        \frac{\mu(B(0,2r))}{\mu(B(0,r))}\leq \frac{2\sum_{n=k-2}^{\infty}2^{-n}}{\sum_{n=k}^{\infty}2^{-n}}\leq\frac{2^{4-k}}{2^{1-k}}=8,
     \end{equation*}
     which shows that $\mu$ is pointwise doubling at $0$.
 \end{example}
+
+By definition of $\dim_{\mathrm{P}}\mu$ and Proposition \ref{prop:basic_properties}(2) we have the general relationship $\dim_{\mathrm{P}}\mu\leq\dim_{\mathrm{A}}(\mu,x)$, for $\mu$-almost every $x$. Recalling (\ref{eq:general_relationship}), it is natural to ask if an inequality holds for the upper Minkowski dimension in some direction, at least for almost all points. The measure of Example \ref{ex:loc_not_glob_doubling} shows that it is possible that $\updim_{\mathrm{M}}\mu >\adim(\mu,x)$, for all $x$.
+
+\begin{example}
+    Let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-2^{-n}}+2^{-n}\delta_{2^{-n}})$ be the measure of Example \ref{ex:loc_not_glob_doubling}. Let us first show that $\updim_{\mathrm{M}}\mu\geq \frac{\log 3}{\log 2}$. Let $s<\frac{\log 3}{\log 2}$, $x_n=-2^{-n}$, and $r_n=2^{-(n+2)}$. Note that now
+    \begin{equation*}
+        \mu(B(x_n,r_n))=3^{-n}=r_n^{\frac{n\log 3}{(n+2)\log 2}}< r_n^{s},
+    \end{equation*}
+    for all large enough $n$. Since $r_n\to 0$ with $n$, this implies that $\updim_{\mathrm{M}}\mu\geq s$, and taking $s\to\frac{\log 3}{\log 2}$ gives the claim.
+    
+   Since $\mu$ has an atom at every $x\in X\setminus\{0\}$, so by Proposition \ref{prop:basic_properties}(3), $\dim_{\mathrm{A}}(\mu,x)=0<\updim_{\mathrm{M}}\mu$. To finish off the proof, we show that $\dim_{\mathrm{A}}(\mu,0)\leq1$. Fix $0<r<R$, and choose $L,N\in \N$, such that
+    \begin{equation}\label{eq:rR}
+        2^{-L}< r \leq 2^{-L+1},\quad2^{-N-1}\leq R < 2^{-N}.
+    \end{equation}
+    Now $B(0,R)\subset [-2^{-N},2^{-N}]$, and $[-2^{L},2^{L}]\subset B(0,r)$, so by equation (\ref{eq:rR})
+    \begin{align*}
+        \frac{\mu(B(x,R))}{\mu(B(x,r))}\leq \frac{\mu([-2^{-N},2^{-N}])}{\mu([-2^{-L},2^{-L}])}\leq\frac{2\sum_{n=N}^{\infty}2^{-n}}{\sum_{n=L}^{\infty}2^{-n}}=\frac{2^{2-N}}{2^{1-L}}\leq 8\left(\frac{R}{r}\right),
+    \end{align*}
+    and therefore $\dim_{\mathrm{A}}(\mu,0)\leq1<\frac{\log3}{\log 2}\leq \updim_{\mathrm{M}}\mu$.
+\end{example}
+For some self-affine measures on Bedford-McMullen carpets, it is also possible to have $\updim_{\mathrm{M}}\mu \leq\adim(\mu,x)$, for $\mu$-almost all $x$. These concepts are defined in Section \ref{sec:ssm} and Example \ref{ex:bm_example} provides an explicit example satisfying this property.
+
+Finally, a natural question to ask is if the Assouad dimension of the support of a measure is a lower bound for the pointwise Assouad dimension of the measure, as it is for the global one. Our next example shows that this is also not generally the case, in fact, there are measures supported on sets of full Assouad dimension, which have $0$ pointwise Assouad dimension at all points. The example is original, but builds on a construction by Le Donne and Rajala \cite[Example 2.20]{LR}.
 
 \begin{example}
 Let $x_{n,k}=2^{-2^n}+k4^{-2^n}$ and let $X=\{0\}\cup\bigcup_{n=1}^{\infty}\bigcup_{k=0}^{n-1}\{x_{n,k}\}$. Define the measure $\mu$ as 
@@ -247,17 +278,13 @@ and note that
 \begin{equation*}
     T_n(X)\cap[0,1]=\bigcup_{k=0}^{n-1}\Big\{\frac{k}{n}\Big\}\to[0,1],
 \end{equation*}
-in the Hausdorff distance as $n\to\infty$. Thus $[0,1]$ is a weak tangent to $X$ and by Proposition \ref{prop:weaktangent} $\dim_{\mathrm{A}}X\geq 1$.
+in the Hausdorff distance as $n\to\infty$, that is $[0,1]$ is a weak tangent to $X$.
 
 Next we show that $\dim_{\mathrm{A}}(\mu,x)=0$, for every $x\in X$. Note that every point $x\in X\setminus\{0\}$ is an atom so by Proposition \ref{prop:basic_properties}(3), $\dim_{\mathrm{A}}(\mu,x)=0$, so we only need to consider the case $x=0$. Fix $0<r<R<1$, and choose numbers $L,N\in\N$, such that
 \begin{equation*}
-    2^{-2^L}< r \leq 2^{-2^{L-1}}, \quad2^{-2^{N+1}}\leq R < 2^{-2^{N}},
+    2^{-2^L}< r \leq 2^{-2^{L-1}}, \quad2^{-2^{N+1}}\leq R < 2^{-2^{N}}.
 \end{equation*}
-so in particular
-\begin{equation*}
-    2^{L-1}\leq\frac{\log r}{\log 2},\quad 2^{N+1}\geq\frac{\log R}{\log 2}
-\end{equation*}
-Clearly $[0,x_{L+1,L}]\subset B(0,r)$ and $B(x,R)\subset [0,x_{N,N-1}]$, so
+Clearly $[0,x_{L+1,L}]\subset B(0,r)$ and $B(x,R)\subset [0,x_{N,N-1}]$, so using the previous equation, we have
 \begin{align*}
     \frac{\mu(B(0,R))}{\mu(B(0,r))}\leq\frac{\mu([0,x_{N,N-1}])}{\mu([0,x_{L+1,L}])}\leq 2^{L-N+1}\leq 2\frac{\log r}{\log R}.
 \end{align*}
@@ -267,81 +294,6 @@ Note that for any $s>0$, the function $\phi(t)=t^s\log t$ is decreasing for  $0<
 \end{equation*}
 Since this holds for arbitrary $s>0$, we have $\dim_{\mathrm{A}}(\mu,0)=0$.
 \end{example}
-In \cite{KFF}, the authors define the \emph{upper Minkowski dimension of the measure $\mu$} as
-\begin{align*}
-    \updim_{\mathrm{M}}\mu=\inf\{s>0\colon &\textnormal{there exists a constant }c>0\textnormal{ such that}\\
-    &\mu(B(x,r))\geq cr^s,  \textnormal{ for all }x\in \text{supp}(\mu)\textnormal{ and }0<r<1\},
-\end{align*}
-and show in their Proposition 4.1 that when $\mu$ is compactly supported, this has the property that
-\begin{equation*}
-    \dim_{\mathrm{P}}\mu\leq \updim_{\mathrm{M}}\mu\leq \dim_{\mathrm{A}}\mu.
-\end{equation*}
-By definition of $\dim_{\mathrm{P}}\mu$ and Proposition \ref{prop:basic_properties}(2) we have the general relationship $\dim_{\mathrm{P}}\mu\leq\dim_{\mathrm{A}}(\mu,x)$, for $\mu$-almost every $x$. In general, there is no relationship between the values of $\adim(\mu,x)$ and $\updim_{\mathrm{M}}\mu$ as is evidenced by the following two examples.
-\begin{example}
-We give an example of a compactly supported measure $\mu$, such that
-\begin{equation*}
-    \updim_{\mathrm{M}}\mu>\sup_{x\in\mathrm{supp}(\mu)}\dim_{\mathrm{A}}(\mu,x).
-\end{equation*}
-Let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-2^{-n}}+2^{-n}\delta_{2^{-n}})$ be the measure of Example \ref{ex:loc_not_glob_doubling}, which is a finite measure fully supported on $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{\pm 2^{-n}\}$. Let us first show that $\updim_{\mathrm{M}}\mu\geq \frac{\log 3}{\log 2}$. Let $s<\frac{\log 3}{\log 2}$ and choose $n_0$ large enough, such that
-\begin{equation*}
-    \frac{n\log3}{(n+2)\log 2}> s,
-\end{equation*}
-for all $n\geq n_0$. Let $x_n=-2^{-n}$, and $r_n=2^{-(n+2)}$. Note that now
-\begin{equation*}
-    \mu(B(x_n,r_n))=3^{-n}=r_n^{\frac{n\log 3}{(n+2)\log 2}}< r_n^{s},
-\end{equation*}
-for all $n\geq n_0$. Since $r_n\to 0$ with $n$, this implies that $\updim_{\mathrm{M}}\mu\geq s$, and taking $s\to\frac{\log 3}{\log 2}$ gives the claim.
-
-Note that $\mu$ has an atom at every $x\in X\setminus\{0\}$, so by Proposition \ref{prop:basic_properties}(3), $\dim_{\mathrm{A}}(\mu,x)=0<\updim_{\mathrm{M}}\mu$. To finish off the proof, we show that $\dim_{\mathrm{A}}(\mu,0)\leq1$. Fix $0<r<R$, and choose $L,N\in \N$, such that
-\begin{equation}\label{eq:rR}
-    2^{-L}< r \leq 2^{-L+1},\quad2^{-N-1}\leq R < 2^{-N}.
-\end{equation}
-Now $B(0,R)\subset [-2^{-N},2^{-N}]$, and $[-2^{L},2^{L}]\subset B(0,r)$, so by equation (\ref{eq:rR})
-\begin{align*}
-    \frac{\mu(B(x,R))}{\mu(B(x,r))}\leq \frac{\mu([-2^{-N},2^{-N}])}{\mu([-2^{-L},2^{-L}])}\leq\frac{2\sum_{n=N}^{\infty}2^{-n}}{\sum_{n=L}^{\infty}2^{-n}}=\frac{2^{2-N}}{2^{1-L}}\leq 8\left(\frac{R}{r}\right),
-\end{align*}
-and therefore $\dim_{\mathrm{A}}(\mu,0)\leq1<\frac{\log3}{\log 2}\leq \updim_{\mathrm{M}}\mu$.
-\end{example}
-
-\begin{example}
-Here we give an example of a measure $\mu$, with $\updim_{\mathrm{M}}\mu<\adim(\mu,x)$, for $\mu$-almost every $x$. Let $\mu$ be a self-affine measure on a Bedford-McMullen carpet, see Section \ref{sec:ssm} for the definitions. By \cite[Theorem 8.6.2]{F}, the upper Minkowski dimension of $\mu$ is given, in the notation of Section \ref{sec:ssm}, by the formula
-\begin{equation*}
-    \updim_{\mathrm{M}}\mu=\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_{\bar{\imath}}}{\log n_2}\right)+\max_{\bar{\imath}\in\Lambda}\left(\frac{\log p_1(\bar{\imath})}{\log n_2}+\frac{-\log p_1(\bar{\imath})}{\log n_1}\right),
-\end{equation*}
-and by our Theorem \ref{thm:bm_formula}, the pointwise Assouad dimension is given by
-\begin{equation*}
-    \adim(\mu,x)=\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_{\bar{\imath}}}{\log n_2}+\frac{\log p_1(\bar{\imath})}{\log n_2}\right)+\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_1(\bar{\imath})}{\log n_1}\right),
-\end{equation*}
-at $\mu$-almost every $x$. Recall that by definition,
-\begin{equation*}
-    p_1(\bar{\imath})=\sum_{\substack{\bar{\jmath}\in\Lambda \\i_1=j_1}}p_{\bar{\jmath}},
-\end{equation*}
-is the sum of the probabilities in the same column as $\bar{\imath}$. Thus by choosing the $p_{\bar{\imath}}$, for example in a way that $p_{\bar{\imath}}$ and $\frac{p_{\bar{\imath}}}{p_1(\bar{\imath})}$ are minimized in the same column, and $p_1(\bar{\imath})$ is minimized in a different column, we have
-\begin{equation*}
-    \adim(\mu,x)>\updim_{\mathrm{M}}\mu,
-\end{equation*}
-for $\mu$-almost every $x$. For example, we may choose $n_1=3$ and $n_2=4$, and $\Lambda=\{(0,0),(0,3),(2,0)\}$, with $p_{(0,0)}=\frac{1}{8},p_{(0,3)}=\frac{5}{8}$ and $p_{(2,0)}=\frac{1}{4}$. Then we have
-\begin{equation*}
-    \adim(\mu,x)=\frac{\log 6}{\log 4}+\frac{\log 4}{\log 3}> \frac{\log2}{\log 4}+\frac{\log 4}{\log 3}=\updim_{\mathrm{M}}\mu.,\end{equation*}
-\end{example}
-for $\mu$-almost every $x$.
-
-
-% \begin{figure}
-%     \centering
-%     \begin{tikzpicture}
-%     \foreach \x in {0,...,2}
-%         \foreach \y in {0,...,3}
-%             \draw (3*\x, 2*\y) rectangle ++(3,2);
-            
-%     \draw[fill=gray!40, text=black, font=\Large] (0,0) rectangle ++(3,2) node[pos=0.5]{$p_{(0,0)}=\frac{1}{8}$};
-%     \draw[fill=gray!40, text=black, font=\Large] (0,6) rectangle ++(3,2) node[pos=0.5]{$p_{(0,3)}=\frac{5}{8}$};
-%     \draw[fill=gray!40, text=black, font=\Large] (6,0) rectangle ++(3,2) node[pos=0.5]{$p_{(2,0)}=\frac{1}{4}$};
-%     \end{tikzpicture}
-%     \caption{Construction of a self-affine measure on a Bedford-McMullen carpet, with $\adim(\mu,x)>\updim_{\mathrm{M}}\mu$ at almost every $x$.}
-%     \label{fig:bm-example}
-% \end{figure}
-
 
 \section{Quasi-Bernoulli measures on self-conformal sets}\label{sec:qb-meas}
 Let $\Lambda$ be a finite index set, and associate to each $i\in\Lambda$ a contraction map $\varphi_i$ from a compact subset of $\R^d$ to itself. The collection $\{\varphi_i\}_{i\in\Lambda}$ is known as an \emph{iterated function system (IFS)}. By a foundational result of Hutchinson \cite{H}, every IFS has a unique compact and non-empty invariant set $F$ satisfying
@@ -887,6 +839,26 @@ Moreover, equation (\ref{eq:appr_cube_msr}) gives
 \end{align*}
 where $C=(\min_{q}p_q^{\min})^{-d}\cdot(2(n_1+\ldots+n_d))^s>0$ is a constant. Taking $k\to\infty$, we see that $\frac{R_k}{r_k}\to \infty$, which is enough to prove that $\dim_{\mathrm{A}}(\mu,x)\geq s$. This holds for all $x=\pi(\omega)$, such that $\omega\in I$, where $I$ has full measure, proving the claim.
 \end{proof}
+
+\begin{example}\label{ex:bm_example}
+    Here we give an example of a measure $\mu$, with $\updim_{\mathrm{M}}\mu<\adim(\mu,x)$, for $\mu$-almost every $x$. Let $\mu$ be a self-affine measure on a Bedford-McMullen carpet. By \cite[Theorem 8.6.2]{F}, the upper Minkowski dimension of $\mu$ is given, in the notation of Section \ref{sec:ssm}, by the formula
+    \begin{equation*}
+        \updim_{\mathrm{M}}\mu=\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_{\bar{\imath}}}{\log n_2}\right)+\max_{\bar{\imath}\in\Lambda}\left(\frac{\log p_1(\bar{\imath})}{\log n_2}+\frac{-\log p_1(\bar{\imath})}{\log n_1}\right),
+    \end{equation*}
+    and from Theorem \ref{thm:bm_formula}, it follows that the pointwise Assouad dimension is given by
+    \begin{equation*}
+        \adim(\mu,x)=\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_{\bar{\imath}}}{\log n_2}+\frac{\log p_1(\bar{\imath})}{\log n_2}\right)+\max_{\bar{\imath}\in\Lambda}\left(\frac{-\log p_1(\bar{\imath})}{\log n_1}\right),
+    \end{equation*}
+    at $\mu$-almost every $x$. By choosing the $p_{\bar{\imath}}$, for example in a way that $p_{\bar{\imath}}$ and $\frac{p_{\bar{\imath}}}{p_1(\bar{\imath})}$ are minimized in the same column, and $p_1(\bar{\imath})$ is minimized in a different column, we have
+    \begin{equation*}
+        \adim(\mu,x)>\updim_{\mathrm{M}}\mu,
+    \end{equation*}
+    for $\mu$-almost every $x$. For example, we may choose $n_1=3$ and $n_2=4$, and $\Lambda=\{(0,0),(0,3),(2,0)\}$, with $p_{(0,0)}=\frac{1}{8},p_{(0,3)}=\frac{5}{8}$ and $p_{(2,0)}=\frac{1}{4}$. Then we have
+    \begin{equation*}
+        \adim(\mu,x)=\frac{\log 6}{\log 4}+\frac{\log 4}{\log 3}> \frac{\log2}{\log 4}+\frac{\log 4}{\log 3}=\updim_{\mathrm{M}}\mu.,
+    \end{equation*}
+    for $\mu$-almost every $x$.
+    \end{example}
 
 \section{Discussion}
 Most of the results of this paper follow a similar pattern by providing exact dimensionality properties for the pointwise Assouad dimension. A natural follow up to the results of this paper would be to conduct finer analysis of the pointwise Assouad dimension and develop tools for \emph{multifractal analysis} of the pointwise Assouad dimension. Classically, the multifractal spectrum $f(\alpha)$ of a measure is given by the Hausdorff dimension of $\alpha$-level sets of the local dimension, that is 
