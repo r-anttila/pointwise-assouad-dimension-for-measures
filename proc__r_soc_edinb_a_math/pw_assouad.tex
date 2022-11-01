@@ -157,30 +157,20 @@ For the pointwise Assouad dimension, which we introduce shortly, we obtain a cor
 \begin{equation*}
     \mu(B(x,2r))\leq C(x)\mu(B(x,r)).
 \end{equation*}
-Clearly all doubling measures are pointwise doubling, but the converse is not true in general. In our following original example, we construct a measure, which is pointwise doubling at every point of its support but still fails to be globally doubling.
-
+Clearly all doubling measures are pointwise doubling, but the converse is not true in general as is shown by the following example.
 \begin{example}\label{ex:loc_not_glob_doubling}
-Let $x_n=2^{-n}$, and let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-x_n}+2^{-n}\delta_{x_n})$, where $\delta_x$ denotes the point mass centered at $x$. Clearly the measure is a finite Borel measure fully supported on the set $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{x_n,-x_n\}$. First we observe that $\mu$ is not doubling.
-For this, let $y_k=-x_k$, and $r_k=2^{-k}$, and note that $r_k\to0$ as $k\to \infty$. Now
-\begin{align*}
-    \frac{\mu(B(y_k,2r_k))}{\mu(B(y_k,r_k))}&\geq\frac{\mu([-x_{k-1},x_k])}{\mu([-x_{k-1},0])}=\frac{\sum_{n=k-1}^{\infty}3^{-n}+\sum_{n=k}^{\infty}2^{-n}}{\sum_{n=k-1}^{\infty}3^{-n}}\\
-    &=\frac{\frac{9}{2}3^{-k}+2^{1-k}}{\frac{9}{2}3^{-k}}=1+\frac{4}{9}\left(\frac{2}{3}\right)^{-k} \to \infty,
-\end{align*}
-as $k\to\infty$, which shows that $\mu$ is not doubling.
-
-To see that $\mu$ is pointwise doubling at every point, we first consider the case $x=0$. Let $r>0$ and fix an integer $k$, such that $2^{-k}\leq r < 2^{-k+1}$, and note that $B(x,2r)\subset [-x_{k-2},x_{k-2}]$, and $[-x_k,x_k]\subset B(x,r)$. In particular
-\begin{align*}
-    \frac{\mu(B(x,2r))}{\mu(B(x,r))}&\leq\frac{\mu([-x_{k-2},x_{k-2}])}{\mu([-x_{k},x_{k}])}\leq\frac{\sum_{n=k-2}^{\infty}(3^{-n}+2^{-n})}{\sum_{n=k}^{\infty}(3^{-n}+2^{-n})}\\
-    &\leq \frac{2\sum_{n=k-2}^{\infty}2^{-n}}{\sum_{n=k}^{\infty}2^{-n}}\leq\frac{2^{4-k}}{2^{1-k}}=8,
-\end{align*}
-which shows that $\mu$ is pointwise doubling at $0$.
-
-If $x\in X\setminus\{0\}$, then  $\mu(\{x\})>0$ and clearly
-\begin{equation*}
-    \frac{\mu(B(x,2r))}{\mu(B(x,r))}\leq \frac{\mu(X)}{\mu(\{x\})}<\infty.
-\end{equation*}
-Since the right hand side depends only on $x$ and not on $r$, this shows that $\mu$ is pointwise doubling at $x$.
-\end{example}
+    Let $x_n=2^{-n}$, and let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-x_n}+2^{-n}\delta_{x_n})$, where $\delta_x$ denotes the point mass centered at $x$. Clearly the measure is a finite Borel measure fully supported on the set $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{x_n,-x_n\}$. By considering $y_k=-x_k$, and $r_k=2^{-k}$, it follows by a simple calculation that
+    \begin{equation*}
+        \frac{\mu(B(y_k,2r_k))}{\mu(B(y_k,r_k))}\to \infty,
+    \end{equation*}
+    as $k\to\infty$, which shows that $\mu$ is not doubling.
+    
+    The fact that $\mu$ is pointwise doubling at $X\setminus\{0\}$ follows from Lemma \ref{lemma:atom}, and a standard calculation shows that for any  $2^{-k}\leq r < 2^{-k+1}$, we have
+    \begin{equation*}
+        \frac{\mu(B(x,2r))}{\mu(B(x,r))}\leq \frac{2\sum_{n=k-2}^{\infty}2^{-n}}{\sum_{n=k}^{\infty}2^{-n}}\leq\frac{2^{4-k}}{2^{1-k}}=8,
+    \end{equation*}
+    which shows that $\mu$ is pointwise doubling at $0$.
+    \end{example}
 
 \section{Pointwise Assouad dimension}\label{sec:pw_assouad}
 Motivated by the definition of the Assouad dimension, we define a pointwise variant of the Assouad dimension of a measure.
