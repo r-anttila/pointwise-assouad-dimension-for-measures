@@ -302,7 +302,7 @@ Let $\Lambda$ be a finite index set, and associate to each $i\in\Lambda$ a contr
 \begin{equation*}
     F=\bigcup_{i\in\Lambda}\varphi_i(F),
 \end{equation*}
-called the \emph{limit set of the IFS}. To make the study easier, one often imposes some restrictions on the defining maps. In this section we will concentrate on the class of \emph{quasi-Bernoulli measures} supported on \emph{self-conformal sets}. In addition to the conformality assumption, we require that the IFS satisfies the \emph{strong separation condition (SSC)}, namely, we assume that for any distinct $i,j\in\Lambda$, we have $\varphi_i(F)\cap \varphi_j(F)=\emptyset$.
+called the \emph{limit set of the IFS}. To make the study easier, one often imposes some restrictions on the defining maps. In this section we will concentrate on the class of \emph{quasi-Bernoulli measures} supported on \emph{self-conformal sets}. In addition to the conformality assumption, which we define later, we require that the IFS satisfies the \emph{strong separation condition (SSC)}, namely we assume that for any distinct $i,j\in\Lambda$, we have $\varphi_i(F)\cap \varphi_j(F)=\emptyset$.
 
 When studying limit sets of iterated function systems, it is often useful to consider a symbolic representation of the IFS. Let $\Sigma=\{(i_1,i_2,\ldots)\colon i_k\in\Lambda\}$ denote the set of infinite sequences of the symbols in $\Lambda$. We call $\Sigma$ the \emph{symbolic space} and members of $\Sigma$ \emph{(infinite) words}. For an integer $n$, let $\Sigma_n=\{(i_1,i_2,\ldots,i_n)\colon i_k\in\Lambda\}$ be the set of \emph{finite words of length $n$} and let $\Sigma_*=\bigcup_{n\in\N}\Sigma_n\cup\{\emptyset\}$ denote the set of all finite words of any length. For any $\mathbf{i}\in\Sigma$, let $\mathbf{i}|_0=\emptyset$ denote the empty word. We use the abbreviation $\mathbf{i}=(i_1,i_2,\ldots)$ for a fixed element of $\Sigma$ and the same notation $\mathbf{i}=(i_1,\ldots,i_n)$ for elements of $\Sigma_n$, but the meaning will be clear from the context. For $\mathbf{i}=(i_1,\ldots,i_n)\in\Sigma_n$, let $\mathbf{i}^-=(i_1,\ldots,i_{n-1})$ denote the finite word obtained by dropping the last element of $\mathbf{i}$. If $\mathbf{i}\in\Sigma$, we write $\mathbf{i}|_n=(i_1,\ldots,i_n)\in\Sigma_n$ for the projection of $\mathbf{i}$ onto the first $n$ coordinates. For $\mathbf{i}\in\Sigma_n$, the cylinder $[\mathbf{i}]\subset \Sigma$ is defined to be the set of all infinite words in $\Sigma$ whose first $n$ letters are the letters of $\mathbf{i}$. In some proofs, we use for $\mathbf{i}\in\Sigma$ and $\mathbf{j}\in\Sigma_*$ the notation $\mathbf{j}\sqsubset\mathbf{i} $, to mean that the word $\mathbf{i}$ contains the word $\mathbf{j}$ as a substring.
 
@@ -411,11 +411,11 @@ Let $k\in\N$. Using the chain rule, (\ref{eq:x_invariance}) and the conformality
 \end{proof}
 
 \subsection{Quasi-Bernoulli measures}
-Recall that a probability measure $\nu$ on $\Sigma$ is said to be \emph{quasi-Bernoulli} if there exists a uniform constant $C\geq 1$, such that for all $\mathbf{i},\mathbf{j}\in\Sigma_*$, we have
+A probability measure $\nu$ on $\Sigma$ is called \emph{quasi-Bernoulli} if there exists a uniform constant $C\geq 1$, such that for all $\mathbf{i},\mathbf{j}\in\Sigma_*$, we have
 \begin{equation*}
     C^{-1}\nu([\mathbf{i}])\nu([\mathbf{j}])\leq \nu([\mathbf{i}\mathbf{j}])\leq C\nu([\mathbf{i}])\nu([\mathbf{j}]),
 \end{equation*}
-where $\mathbf{i}\mathbf{j}$ denotes the concatenation of the finite words $\mathbf{i}$ and $\mathbf{j}$. Note the similarity to Lemma \ref{lemma:chain}. If $C$ can be taken to equal $1$, then the measure is called a \emph{Bernoulli measure}.
+where here and hereafter $\mathbf{i}\mathbf{j}$ denotes the concatenation of the finite words $\mathbf{i}$ and $\mathbf{j}$. Note the similarity to Lemma \ref{lemma:chain}. If $C$ can be taken to equal $1$, then the measure is called a \emph{Bernoulli measure}.
 
 Recall that two measures $\mu$ and $\nu$ are said to be \emph{equivalent} if $\mu(A)=0$ if and only if $\nu(A)=0$. In the following $\sigma\colon \Sigma\to\Sigma$ denotes the \emph{left-shift} defined by $\sigma(\iii)=i_2i_2\ldots$. The following lemma is standard, but the proof is difficult to track down from the literature so we provide a sketch here.
 
@@ -537,7 +537,7 @@ This shows that $\dim_{\mathrm{A}}(\mu,x)\geq s$, and taking $s\to\dim_{\mathrm{
 
 
 \section{Measures with place dependent probabilities}\label{sec:invmeas}
-In this section, we study the class of \emph{invariant measures with place dependent probabilities} supported on strongly separated self-conformal sets. The results of Section \ref{sec:qb-meas} show that these measures are doubling and that their pointwise Assouad dimension coincides with the global Assouad dimension at almost every point. Our main result of this section complements these results by giving an explicit formula for their Assouad dimension. To our knowledge, the value of the dimension is not hitherto not found in the literature. Let us begin by defining our setting.
+In this section, we study the class of \emph{invariant measures with place dependent probabilities} supported on strongly separated self-conformal sets. The results of Section \ref{sec:qb-meas} show that these measures are doubling and that their pointwise Assouad dimension coincides with the global Assouad dimension at almost every point. Our main result of this section, Theorem \ref{thm:pw_ssc_formula}, complements these results by giving an explicit formula for their Assouad dimension. To our knowledge, the value of the dimension is hitherto not found in the literature. Let us begin by defining our setting.
 
 \subsection{Place dependent invariant measures}
 We assume that our IFS is self-conformal, that is it satisfies (C1) and (C2). In contrast to the case of self-conformal measures where we assign a uniform measure $p_i$ on the set $\varphi_i(F)$, now we allow the mass concentration to depend continuously on the point, that is we choose for each $i\in\Lambda$ a Hölder continuous function $p_i\colon X\to (0,1)$, which satisfy $\sum_{i\in\Lambda}p_i(x)\equiv 1$ and consider the probability  measures satisfying the equation
@@ -878,7 +878,7 @@ What is the multifractal Assouad spectrum of a strongly separated self-similar m
 Using the Hausdorff dimension instead of the Assouad dimension in the definition is natural, since it is easy to see that each $\alpha$-level set of the pointwise Assouad dimensions is dense in the support and the Assouad dimension of sets is stable under closures.
 
 \subsection*{Acknowledgements}
-The author would like to thank Antti Käenmäki and Ville Suomala for many fruitful conversations on the contents of the paper. I also wish to express my gratitude to Balázs Bárány who introduced me to the concept of invariant measures with place dependent probabilities during his visit at the University of Oulu.
+I would like to thank Antti Käenmäki and Ville Suomala for many fruitful conversations on the contents of the paper and Balázs Bárány who introduced me to the concept of invariant measures with place dependent probabilities during his visit at the University of Oulu. I would also like to thank the anonymous referee for carefully examining the manuscript and providing many detailed comments.
 
 \bibliography{bibtex-refs}
 \bibliographystyle{amsplain}
