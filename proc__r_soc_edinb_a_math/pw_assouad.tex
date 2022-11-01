@@ -73,13 +73,6 @@ There are also many notions of pointwise dimension for measures, most important 
 
 This paper is structured as follows: In Section \ref{sec:prelim} we establish some notation and recall basic results concerning Assouad dimensions of sets and measures. In Section \ref{sec:pw_assouad} we introduce the pointwise Assouad dimension and discuss its properties in relation to the existing notions of dimension. In Section \ref{sec:qb-meas} we work in a general setting of quasi-Bernoulli measures supported on strongly separated self-conformal sets and prove an exact dimensionality property for the pointwise Assouad dimension of these measures. In Section \ref{sec:invmeas} we compute the Assouad dimension of a class of place dependent invariant measures and use the results of the previous section to obtain the almost sure pointwise Assouad dimension. Finally, in Section \ref{sec:ssm} we show that the exact dimensionality property holds for doubling self-similar measures, even when the strong separation condition is relaxed to the open set condition. We also establish the property for self-affine measures on Bedford-McMullen sponges satisfying the very strong separation condition.
 
-\subsubsection*{Remark}
-After the completion of this article, the author was informed by Anders and Jana Björn that the property we call pointwise Assouad dimension in this article has been used in \cite{BBL} to to give sharp bounds for variational $p$-capacities of annuli in weighted $\R^n$ and metric spaces. Among other things, the authors give an example of a measure $\mu$ on $\R^n$, such that given $1<a<b<c$, one has
-\begin{equation*}
-    \lowdim_{\mathrm{loc}}(\mu,x_0)=a,\quad \updim_{\mathrm{loc}}(\mu,x_0)=b,\quad\adim(\mu,x_0)=c,
-\end{equation*}
-at some $x_0\in\R^n$, see \cite[Example 3.4]{BBL}. However, the main focus of \cite{BBL} is in absolutely continuous measures, which have non-trivial pointwise Assouad dimension only in a null set. The classes of measures we consider are therefore much more interesting in the purely dimension theoretic viewpoint.
-
 \section{Preliminaries}\label{sec:prelim}
 Unless stated otherwise, we assume that $(X,d)$ is a metric space, with no additional structure. Since we assume the metric $d$ to be fixed, we omit it from the notation and refer to $(X,d)$ simply as $X$. The rest of this section is devoted to introducing some basic notation and results related to Assouad dimensions. Readers familiar with these concepts can easily skip to Section \ref{sec:pw_assouad}. 
 
@@ -96,6 +89,7 @@ and
     \lowdim_{\textnormal{loc}}(\mu,x)=\liminf_{r\to 0}\frac{\log \mu(B(x,r))}{\log r},
 \end{equation*}
 respectively. When the upper and lower limits agree, we denote the limit by $\dim_{\textnormal{loc}}(\mu,x)$ and call it the \emph{local dimension of the measure $\mu$ at $x$}. If $\updim_{\textnormal{loc}}(\mu,x)$ or $\lowdim_{\textnormal{loc}}(\mu,x)$ is a constant for $\mu$-almost every $x\in X$, we say that $\mu$ is \emph{upper or lower exact dimensional}, respectively, and similarly, if $\dim_{\textnormal{loc}}(\mu,x)$ is constant $\mu$-almost everywhere, $\mu$ is termed \emph{exact dimensional}.
+
 
 
 \subsection{Assouad dimension of sets and connection to weak tangents}
@@ -153,26 +147,6 @@ Let $C_0,r_0>0$ be as in the statement of the lemma and let $r\geq r_0$. Since $
 so the constant $C=\min\{\frac{\mu(X)}{C'},C_0\}$ works in (\ref{eq:doubling}).
 \end{proof}
 
-For the pointwise Assouad dimension, which we introduce shortly, we obtain a correspondence between measures with the \emph{pointwise doubling property} and those with finite pointwise Assouad dimension. A measure $\mu$ is said to be \emph{pointwise doubling at $x\in X$}, if there is a constant $C(x)\geq 1$, such that
-\begin{equation*}
-    \mu(B(x,2r))\leq C(x)\mu(B(x,r)).
-\end{equation*}
-Clearly all doubling measures are pointwise doubling, but the converse is not true in general as is shown by the following example.
-
-\begin{example}\label{ex:loc_not_glob_doubling}
-    Let $x_n=2^{-n}$, and let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-x_n}+2^{-n}\delta_{x_n})$, where $\delta_x$ denotes the point mass centered at $x$. Clearly the measure is a finite Borel measure fully supported on the set $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{x_n,-x_n\}$. By considering $y_k=-x_k$, and $r_k=2^{-k}$, it follows by a simple calculation that
-    \begin{equation*}
-        \frac{\mu(B(y_k,2r_k))}{\mu(B(y_k,r_k))}\to \infty,
-    \end{equation*}
-    as $k\to\infty$, which shows that $\mu$ is not doubling.
-    
-    The fact that $\mu$ is pointwise doubling at $X\setminus\{0\}$ follows from Proposition \ref{prop:basic_properties}(3), and a standard calculation shows that for any  $2^{-k}\leq r < 2^{-k+1}$, we have
-    \begin{equation*}
-        \frac{\mu(B(x,2r))}{\mu(B(x,r))}\leq \frac{2\sum_{n=k-2}^{\infty}2^{-n}}{\sum_{n=k}^{\infty}2^{-n}}\leq\frac{2^{4-k}}{2^{1-k}}=8,
-    \end{equation*}
-    which shows that $\mu$ is pointwise doubling at $0$.
-\end{example}
-
 \section{Pointwise Assouad dimension}\label{sec:pw_assouad}
 Motivated by the definition of the Assouad dimension, we define a pointwise variant of the Assouad dimension of a measure.
 
@@ -183,8 +157,13 @@ Let $\mu$ be a measure fully supported on a metric space $X$. For $x\in X$ we de
     &\frac{\mu(B(x,R))}{\mu(B(x,r))}\leq C(x)\left(\frac{R}{r}\right)^s\bigg\}.
 \end{align*}
 \end{defn}
-Crucially, the constant $C$ in the Definition \ref{def:loc_assouad} may depend on the point $x$, but not on the scales $0<r<R$. Similarly as the Assouad dimension captures information on the least homogeneous points and scales of the measure, the pointwise Assouad dimension captures information on the least homogeneous scales at each point. Pointwise doubling measures and measures with finite pointwise Assouad dimension are linked by the following proposition. The proof is similar to the analogous result for the global Assouad dimension, see \cite[Lemma 4.1.1]{F}, but we provide it for the convenience of the reader.
+Crucially, the constant $C$ in the Definition \ref{def:loc_assouad} may depend on the point $x$, but not on the scales $0<r<R$. Similarly as the Assouad dimension captures information on the least homogeneous points and scales of the measure, the pointwise Assouad dimension captures information on the least homogeneous scales at each point.
 
+For the pointwise Assouad dimension, we obtain a correspondence between measures with the \emph{pointwise doubling property} and those with finite pointwise Assouad dimension. A measure $\mu$ is said to be \emph{pointwise doubling at $x\in X$}, if there is a constant $C(x)\geq 1$, such that
+\begin{equation*}
+    \mu(B(x,2r))\leq C(x)\mu(B(x,r)).
+\end{equation*}
+The following proposition collects some of the basic properties of the pointwise Assouad dimension.
 \begin{prop}\label{prop:basic_properties}
 Let $\mu$ be a Borel measure fully supported on a metric space $X$. Then for any $x\in X$,
 \begin{enumerate}
@@ -238,6 +217,20 @@ for all $x\in X$. We will not, however, pursue the study of the pointwise lower 
 Next we begin investigating the relationship between the pointwise Assouad dimension and the global one. As Proposition \ref{prop:basic_properties} shows, the global Assouad dimension provides an upper bound for the pointwise Assouad dimension at every point. The natural question that arises is if the converse holds at some point, i.e. is it true that $\sup_{x\in X}\adim(\mu,x)=\adim\mu$. It turns out that generally speaking this is not the case, even in compact spaces. Recall that in Example \ref{ex:loc_not_glob_doubling}  we constructed a measure which is pointwise doubling at all points of its compact support, but fails to be globally doubling. By Proposition \ref{prop:basic_properties}(1) and the analogous fact for the global Assouad dimension, we see that this is an example of a measure with finite pointwise Assouad dimension at all points, but infinite global Assouad dimension.
 
 After making this observation, it is natural to ask if the Assouad dimension of the supporting space is a lower bound for the pointwise Assouad dimension, as it is for the global one. Our next example shows that this is also not generally the case, in fact, there are measures supported on sets of full Assouad dimension, which have $0$ pointwise Assouad dimension at all points. The example is original, but builds on a construction by Le Donne and Rajala \cite[Example 2.20]{LR}.
+
+\begin{example}\label{ex:loc_not_glob_doubling}
+    Let $x_n=2^{-n}$, and let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-x_n}+2^{-n}\delta_{x_n})$, where $\delta_x$ denotes the point mass centered at $x$. Clearly the measure is a finite Borel measure fully supported on the set $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{x_n,-x_n\}$. By considering $y_k=-x_k$, and $r_k=2^{-k}$, it follows by a simple calculation that
+    \begin{equation*}
+        \frac{\mu(B(y_k,2r_k))}{\mu(B(y_k,r_k))}\to \infty,
+    \end{equation*}
+    as $k\to\infty$, which shows that $\mu$ is not doubling.
+    
+    The fact that $\mu$ is pointwise doubling at $X\setminus\{0\}$ follows from Proposition \ref{prop:basic_properties}(3), and a standard calculation shows that for any  $2^{-k}\leq r < 2^{-k+1}$, we have
+    \begin{equation*}
+        \frac{\mu(B(x,2r))}{\mu(B(x,r))}\leq \frac{2\sum_{n=k-2}^{\infty}2^{-n}}{\sum_{n=k}^{\infty}2^{-n}}\leq\frac{2^{4-k}}{2^{1-k}}=8,
+    \end{equation*}
+    which shows that $\mu$ is pointwise doubling at $0$.
+\end{example}
 
 \begin{example}
 Let $x_{n,k}=2^{-2^n}+k4^{-2^n}$ and let $X=\{0\}\cup\bigcup_{n=1}^{\infty}\bigcup_{k=0}^{n-1}\{x_{n,k}\}$. Define the measure $\mu$ as 
