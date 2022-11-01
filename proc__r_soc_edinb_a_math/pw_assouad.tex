@@ -332,7 +332,7 @@ Next we define self-conformal sets which act as a support for the measures we st
     \end{equation*}
     where $|\varphi_i'(x)|$ denotes the operator norm of the linear map $\varphi_i'(x)$.
 \end{enumerate}
-The use of the bounded open set $\Omega$ here is essential since contractive conformal maps defined on whole $\R^d$ are in fact similarities. The limit set $F$ of an IFS satisfying (C1) and (C2) is called a \emph{self-conformal set}. In the following we let $||\varphi'_{\mathbf{i}}||=\sup_{x\in \Omega}|\varphi'_{\mathbf{i}}(x)|$. It follows from the fact that each $\varphi_i$ is a contraction, that $||\varphi'_{\mathbf{i}}||<1$, for all $\mathbf{i}\in\Sigma_*$, and that for a fixed $\mathbf{i}\in\Sigma$, $||\varphi'_{\mathbf{i}|_n}||$ is strictly decreasing in $n$. Let us recall some key lemmas for the proof of our main theorem of this section. The first lemma can be found for example in \cite{MU}.
+The use of the bounded open set $\Omega$ here is essential since contractive conformal maps defined on whole $\R^d$ are in fact similarities. The limit set $F$ of an IFS satisfying (C1) and (C2) is called a \emph{self-conformal set}. In the following we let $||\varphi'_{\mathbf{i}}||=\sup_{x\in \Omega}|\varphi'_{\mathbf{i}}(x)|$. It follows from the fact that each $\varphi_i$ is a contraction, that $||\varphi'_{\mathbf{i}}||<1$, for all $\mathbf{i}\in\Sigma_*$, and that for a fixed $\mathbf{i}\in\Sigma$, $||\varphi'_{\mathbf{i}|_n}||$ is strictly decreasing in $n$. Let us recall some key lemmas for the proof of our main theorem of this section.
 
 \begin{lemma}\label{lemma:BDP}
 A self-conformal set $F$ satisfies the following.
@@ -354,15 +354,9 @@ A self-conformal set $F$ satisfies the following.
     
 \end{enumerate}
 \end{lemma}
+The first property in Lemma \ref{lemma:BDP} is commonly called the \emph{Bounded Distortion Property (BDP)} and it originates in \cite{MU}. Property (ii) is a special case of \cite[Lemma 2.3]{Fan} and property (iii) is proved in \cite{MU}.
 
-% For (3) note that since $F$ is compact, we may cover it by a finite collection $\{B_i\}_{i=1}^M$ of balls of radius $\delta$. Furthermore, we may assume that $B_i\cap B_{i+1}\cap F\ne\emptyset$, for all $i=1,\ldots,M-1$. Now if $x,y\in F$, we have $x\in B_{i}$ and $y\in B_{j}$ for some $i,j=1,\ldots,M$. Assume without loss of generality that $i<j$. Let $z_0=x$, $z_j=y$ and $k=i,\ldots,j-1$ pick a point $z_k\in B_{k}\cap B_{k+1}\cap F$. Then by (2), we have
-
-% \begin{align*}
-%     |\varphi_{\mathbf{i}}(x)-\varphi_{\mathbf{i}}(y)|&\leq \sum_{k=0}^j|\varphi_{\mathbf{i}}(z_k)-\varphi_{\mathbf{i}}(z_{k+1})|\\
-%     &\leq C_2\norm{\varphi'_{\mathbf{i}}}\sum_{k=0}^j|z_k-z_{k+1}|\leq (M+1)\delta C_2\norm{\varphi'_{\mathbf{i}}}.
-% \end{align*}
-% Taking the supremum yields the upper bound with the constant $C_3=(M+1)\delta C_2$. The lower bound follows also by standard arguments, see for example \cite[(BDP.4)]{MU}
-The first property in Lemma \ref{lemma:BDP} is commonly called the \emph{Bounded Distortion Property (BDP)}. The second lemma is a simple consequence of the BDP and the definition.
+The following second lemma is a simple consequence of the BDP and the definition of the self-conformal IFS.
 
 \begin{lemma}\label{lemma:chain}
 For all $\mathbf{i},\mathbf{j}\in\Sigma_*$, we have
