@@ -123,7 +123,7 @@ If $X\subset \R^d$ is compact, then $\dim_{\mathrm{A}} X\geq \dim_{\mathrm{A}}F$
 Let us now turn our attention to the dimensions of measures. Analogously to the definition for sets, one may define the \emph{(global) Assouad dimension of a measure $\mu$} fully supported on $X$ by
 \begin{align*}
     \adim \mu=\inf\bigg\{ s>0\colon& \exists C>0,\textnormal{ s.t. for all }x\in X,\; 0<r<R,\\
-    &\frac{\mu(B(x,R))}{\mu(B(x,r))}\leq \left(\frac{R}{r}\right)^s\bigg\}.
+    &\frac{\mu(B(x,R))}{\mu(B(x,r))}\leq C\left(\frac{R}{r}\right)^s\bigg\}.
 \end{align*}
 We sometimes use the term global Assouad dimension to avoid ambiguity with the pointwise variant we soon define.
 Originally, the Assouad dimension of a measure was called the upper regularity dimension in \cite{KLV}, but due to the intimate connections between this notion of dimension and the Assouad dimension for sets, nowadays the term Assouad dimension of a measure is widely used. A simple volume argument implies that for a measure $\mu$ fully supported on a metric space $X$, we have the inequality $\adim X\leq \adim\mu$. Moreover, in \cite{VK, LS} it was shown that
@@ -171,7 +171,7 @@ Clearly all doubling measures are pointwise doubling, but the converse is not tr
         \frac{\mu(B(x,2r))}{\mu(B(x,r))}\leq \frac{2\sum_{n=k-2}^{\infty}2^{-n}}{\sum_{n=k}^{\infty}2^{-n}}\leq\frac{2^{4-k}}{2^{1-k}}=8,
     \end{equation*}
     which shows that $\mu$ is pointwise doubling at $0$.
-    \end{example}
+\end{example}
 
 \section{Pointwise Assouad dimension}\label{sec:pw_assouad}
 Motivated by the definition of the Assouad dimension, we define a pointwise variant of the Assouad dimension of a measure.
@@ -221,20 +221,18 @@ The properties (1) and (2) of Proposition \ref{prop:basic_properties} are the po
 \end{equation*}
 where $\dim_{\mathrm{H}}\mu\coloneqq\essinf_{x\in X}\lowdim_{\mathrm{loc}}(\mu,x)$ and $\dim_{\mathrm{P}}\mu\coloneqq\essinf_{x\in X}\updim_{\mathrm{loc}}(\mu,x)$ are the \emph{Hausdorff dimension} and the \emph{packing dimension} of the measure $\mu$ respectively.
 
-% \begin{huom}
-% One can define the \emph{pointwise lower dimension of $\mu$ at $x$} analogously to the lower dimension of a measure as
-
-% \begin{align*}
-%     \dim_{\mathrm{L}}(\mu,x)=\sup\bigg\{s>0\colon &\exists C(x)>0,\textnormal{ s.t. }\forall0<r<R,\\
-%     &\frac{\mu(B(x,R))}{\mu(B(x,r))}\geq C(x)\left(\frac{R}{r}\right)^s\bigg\}.
-% \end{align*}
-% Then the previous proposition is strengthened to 
-
-% \begin{equation*}
-%     \dim_{\mathrm{L}}\mu\leq\dim_{\mathrm{L}}(\mu,x)\leq\lowdim_{\textnormal{loc}}(\mu,x)\leq\updim_{\textnormal{loc}}(\mu,x)\leq \dim_{\mathrm{A}}(\mu,x)\leq\adim\mu,
-% \end{equation*}
-% for all $x\in X$, where the proofs of the lower bounds are similar to the proof of the previous Proposition. We will not, however, pursue the study of the pointwise lower dimension any further in this paper.
-% \end{huom}
+\begin{huom}
+One can define the \emph{pointwise lower dimension of $\mu$ at $x$} analogously to the lower dimension of a measure as
+\begin{align*}
+    \dim_{\mathrm{L}}(\mu,x)=\sup\bigg\{s>0\colon &\exists C(x)>0,\textnormal{ s.t. }\forall0<r<R,\\
+    &\frac{\mu(B(x,R))}{\mu(B(x,r))}\geq C(x)\left(\frac{R}{r}\right)^s\bigg\}.
+\end{align*}
+Then Proposition \ref{prop:basic_properties}(2) is strengthened to 
+\begin{equation*}
+    \dim_{\mathrm{L}}\mu\leq\dim_{\mathrm{L}}(\mu,x)\leq\lowdim_{\textnormal{loc}}(\mu,x)\leq\updim_{\textnormal{loc}}(\mu,x)\leq \dim_{\mathrm{A}}(\mu,x)\leq\adim\mu,
+\end{equation*}
+for all $x\in X$. We will not, however, pursue the study of the pointwise lower dimension any further in this paper.
+\end{huom}
 
 
 Next we begin investigating the relationship between the pointwise Assouad dimension and the global one. As Proposition \ref{prop:basic_properties} shows, the global Assouad dimension provides an upper bound for the pointwise Assouad dimension at every point. The natural question that arises is if the converse holds at some point, i.e. is it true that $\sup_{x\in X}\adim(\mu,x)=\adim\mu$. It turns out that generally speaking this is not the case, even in compact spaces. Recall that in Example \ref{ex:loc_not_glob_doubling}  we constructed a measure which is pointwise doubling at all points of its compact support, but fails to be globally doubling. By Proposition \ref{prop:basic_properties}(1) and the analogous fact for the global Assouad dimension, we see that this is an example of a measure with finite pointwise Assouad dimension at all points, but infinite global Assouad dimension.
