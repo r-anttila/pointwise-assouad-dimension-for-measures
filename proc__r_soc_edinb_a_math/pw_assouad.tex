@@ -296,9 +296,20 @@ Since this holds for arbitrary $s>0$, we have $\dim_{\mathrm{A}}(\mu,0)=0$.
 \end{example}
 
 \section{Quasi-Bernoulli measures on self-conformal sets}\label{sec:qb-meas}
-As was observed in Example \ref{ex:loc_not_glob_doubling}, a strict inequality is possible in $\sup\adim(\mu,x)\leq \adim\mu$. However, the theme for the rest of the paper is to show that in many natural examples, equality is satisfied. In fact, we show something stronger: in many natural cases, we have $\adim(\mu,x)=\adim\mu$, for $\mu$-almost every $x$. This is analogous to the classical \emph{exact dimensionality} property, which a measure is said to satisfy if $\dim_{\mathrm{loc}}(\mu,x)=\dim_{\mathrm{H}}\mu$, for $\mu$-almost every $x$. We start with proving the exact dimensionality property for the most general case of this paper, quasi-Bernoulli measures on self-conformal sets, and work our way down to more specific classes of measures in Sections \ref{sec:invmeas} and \ref{sec:ssm}. Let us recall some definitions.
+As was observed in Example \ref{ex:loc_not_glob_doubling}, a strict inequality is possible in $\sup\adim(\mu,x)\leq \adim\mu$. However, the theme for the rest of the paper is to show that in many natural examples, equality is satisfied. In fact, we show something stronger: for many natural measures we have $\adim(\mu,x)=\adim\mu$, for $\mu$-almost every $x$. This is analogous to the classical \emph{exact dimensionality} property, which a measure is said to satisfy if $\dim_{\mathrm{loc}}(\mu,x)=\dim_{\mathrm{H}}\mu$, for $\mu$-almost every $x$. We start with proving the exact dimensionality property for the most general case of this paper, quasi-Bernoulli measures on self-conformal sets, and work our way down to more specific classes of measures in Sections \ref{sec:invmeas} and \ref{sec:ssm}. For the convinience of the readers who are familiar with the definitions, we give the statement of the main result of this section first, and define the necessary concepts after that. The main result we prove in this section is the following.
 
-Let $\Lambda$ be a finite index set, and associate to each $i\in\Lambda$ a contraction map $\varphi_i$ from a compact subset of $\R^d$ to itself. The collection $\{\varphi_i\}_{i\in\Lambda}$ is known as an \emph{iterated function system (IFS)}. By a foundational result of Hutchinson \cite{H}, every IFS has a unique compact and non-empty invariant set $F$ satisfying
+\begin{thm}\label{thm:quasi-bernoulli-exact-assouad}
+    If $\mu$ is a quasi-Bernoulli measure fully supported on a self-conformal set $F$ satisfying the strong separation condition, then
+    \begin{equation*}
+        \dim_{\mathrm{A}}(\mu,x)=\dim_{\mathrm{A}}\mu<\infty,
+    \end{equation*}
+    for $\mu$-almost every $x\in F$.
+\end{thm}
+\begin{huom}
+    In this generality, it is not possible to obtain an explicit formula for the Assouad dimension, however, to complement the previous result, in Section \ref{sec:invmeas} we provide an example class of measures which satisfy the assumptions of Theorem \ref{thm:quasi-bernoulli-exact-assouad}, and calculate their Assouad dimension explicitly.
+\end{huom}
+
+Let us start by recalling some basics about limit sets of iterated function systems. Let $\Lambda$ be a finite index set, and associate to each $i\in\Lambda$ a contraction map $\varphi_i$ from a compact subset of $\R^d$ to itself. The collection $\{\varphi_i\}_{i\in\Lambda}$ is known as an \emph{iterated function system (IFS)}. By a foundational result of Hutchinson \cite{H}, every IFS has a unique compact and non-empty invariant set $F$ satisfying
 \begin{equation*}
     F=\bigcup_{i\in\Lambda}\varphi_i(F),
 \end{equation*}
@@ -495,16 +506,9 @@ in particular, combining this with estimate (\ref{eq:ssc}), we have $B(x,2r)\cap
 \end{align*}
 Since the upper bound is independent of $x$ and $r$, the claim follows.
 \end{proof}
-The following theorem is our main result of the section. In this generality, it is impossible to obtain an explicit value for the Assouad dimension, however, in Section \ref{sec:invmeas} we provide an example class of measures which satisfy the assumptions of the following theorem, and calculate an explicit value for their Assouad dimension.
+Finally, we prove the main result of the section.
 
-\begin{thm}\label{thm:quasi-bernoulli-exact-assouad}
-If $\mu$ is a quasi-Bernoulli measure fully supported on a self-conformal set $F$ satisfying the strong separation condition, then
-\begin{equation*}
-    \dim_{\mathrm{A}}(\mu,x)=\dim_{\mathrm{A}}\mu<\infty,
-\end{equation*}
-for $\mu$-almost every $x\in F$.
-\end{thm}
-\begin{proof}
+\begin{proof}[Proof of Theorem \ref{thm:quasi-bernoulli-exact-assouad}]
 It follows from Proposition \ref{prop:doubling} that $\dim_{\mathrm{A}}\mu$ is finite. Let $s<\dim_{\mathrm{A}}\mu$ and $C>0$.
 Now there is a point $y\in F$ and radii $0<r<R$, satisfying
 \begin{equation*}
@@ -730,8 +734,9 @@ Therefore
 \end{align*}
 Since $\frac{R_n}{r_n}\to\infty$ as $n\to \infty$, this shows that $\dim_{\mathrm{A}}(\mu,x)\geq s$. This finishes the proof, since now at $\mu$-almost every $x$, we have $s\leq \adim(\mu,x)\leq \adim\mu\leq s$.
 \end{proof}
-
-Our result generalizes \cite[Theorem 2.4]{FH} by Fraser and Howroyd, by relaxing the SSC to the OSC, with the added assumption that the measure is doubling, for obvious reasons. It is an interesting question, if the same formula (\ref{eq:ssc_formula}) for the Assouad dimension of self-similar measures works with even less restrictive separation conditions, such as the weak separation condition.
+\begin{huom}
+    Our result generalizes \cite[Theorem 2.4]{FH} by Fraser and Howroyd, by relaxing the SSC to the OSC, with the added assumption that the measure is doubling, for obvious reasons. It is an interesting question, if the same formula (\ref{eq:ssc_formula}) for the Assouad dimension of self-similar measures works with even less restrictive separation conditions, such as the weak separation condition.
+\end{huom}
 
 \subsection{Self-affine measures on Bedford-McMullen sponges}
 
