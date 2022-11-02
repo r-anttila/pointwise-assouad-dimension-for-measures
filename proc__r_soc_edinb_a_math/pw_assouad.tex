@@ -33,7 +33,9 @@
 \DeclareMathOperator*{\essinf}{ess\,inf}
 
 \theoremstyle{plain}
-\newtheorem{thm}{Theorem}[section]     
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{alphthm}{Theorem}
+\renewcommand{\thealphthm}{\Alph{alphthm}}  
 \newtheorem{lemma}[thm]{Lemma}       
 \newtheorem{cor}[thm]{Corollary}      
 \newtheorem{prop}[thm]{Proposition}
@@ -56,8 +58,8 @@
 \address{Research Unit of Mathematical Sciences\\  P.O.Box 8000, FI-90014, University of Oulu, Finland \email{roope.anttila@oulu.fi}}
 
 \begin{abstract}
-    We introduce a pointwise variant of the Assouad dimension for measures on metric spaces, and study its properties in relation to the global Assouad dimension. We show that, in general, the value of the pointwise Assouad dimension differs from the global counterpart, but in many classical cases, it exhibits similar exact dimensionality properties as the classical local dimension, namely it equals the global Assouad dimension almost everywhere. We also compute the Assouad dimension of invariant measures with place dependent probabilities supported on strongly separated self-conformal sets. 
-    \end{abstract}
+    We introduce a pointwise variant of the Assouad dimension for measures on metric spaces, and study its properties in relation to the global Assouad dimension. We show that, in general, the value of the pointwise Assouad dimension may differ from the global counterpart, but in many classical cases, it exhibits similar exact dimensionality properties as the classical local dimension, namely it equals the global Assouad dimension almost everywhere. We also compute the Assouad dimension of invariant measures with place dependent probabilities supported on strongly separated self-conformal sets. 
+\end{abstract}
 
 
 \keywords{pointwise doubling measure, pointwise Assouad dimension, quasi-Bernoulli measure, self-conformal set, place-dependent probabilities}
@@ -120,7 +122,7 @@ Let us now turn our attention to the dimensions of measures. Analogously to the 
     &\frac{\mu(B(x,R))}{\mu(B(x,r))}\leq C\left(\frac{R}{r}\right)^s\bigg\}.
 \end{align*}
 We sometimes use the term global Assouad dimension to avoid ambiguity with the pointwise variant we soon define.
-Originally, the Assouad dimension of a measure was called the upper regularity dimension in \cite{KLV}, but due to the intimate connections between this notion of dimension and the Assouad dimension for sets, nowadays the term Assouad dimension of a measure is widely used. A simple volume argument implies that for a measure $\mu$ fully supported on a metric space $X$, we have the inequality $\adim X\leq \adim\mu$. Moreover, in \cite{VK, LS} it was shown that
+Originally, the Assouad dimension of a measure was called the upper regularity dimension in \cite{KLV}, but due to the intimate connections between this notion of dimension and the Assouad dimension for sets, the term Assouad dimension of a measure is now widely used. A simple volume argument implies that for a measure $\mu$ fully supported on a metric space $X$, we have the inequality $\adim X\leq \adim\mu$. Moreover, in \cite{VK, LS} it was shown that
 \begin{equation*}
     \adim X=\inf\{\adim\mu\colon \mu\textnormal{ is a measure fully supported on }X\},
 \end{equation*}
@@ -181,11 +183,7 @@ Let $\mu$ be a Borel measure fully supported on a metric space $X$. Then for any
     \begin{equation*}
         \mu(B(x,r))\geq c r^s,
     \end{equation*}
-    where $c=\frac{C\mu(B(x,R))}{R^s}$. This implies that for $r<R$
-    \begin{equation*}
-        \frac{\log\mu(B(x,r))}{\log r}\leq s + \frac{\log c}{\log r},
-    \end{equation*}
-    and taking $r\to 0$ shows that $\updim_{\textnormal{loc}}(\mu,x)\leq s$. Since $s>\dim_{\mathrm{A}}(\mu,x)$ was arbitrary, this finishes the proof.
+    where $c=\frac{C\mu(B(x,R))}{R^s}$. Taking logratithms, dividing by $\log r$ and taking $r\to 0$ shows that $\updim_{\textnormal{loc}}(\mu,x)\leq s$. Since $s>\dim_{\mathrm{A}}(\mu,x)$ was arbitrary, this finishes the proof.
 
     For (3), assume that $\mu$ has an atom at $x\in X$. Let $0<r<R$, and note that
     \begin{equation*}
@@ -474,7 +472,7 @@ for $\nu$-almost every $\mathbf{i}\in\Sigma$, where $\chi_{[\mathbf{j}]}$ denote
     \nu(\Sigma\setminus\mathcal{N})=\nu\left(\Sigma\setminus\bigcap_{\mathbf{j}\in\Sigma_*}\Sigma_{\mathbf{j}}\right)=\nu\left(\bigcup_{\mathbf{j}\in\Sigma_*}\Sigma\setminus\Sigma_{\mathbf{j}}\right)\leq \sum_{\mathbf{j}\in\Sigma_*}\nu(\Sigma\setminus\Sigma_{\mathbf{j}})=0.
 \end{equation*}
 \end{proof}
-We say that a measure $\mu$ supported on a self-conformal set $F$ is quasi-Bernoulli if it is the projection of a quasi-Beronulli measure $\nu$ supported on $\Sigma$ under the natural projection $\pi\colon\Sigma\to F$ defined as in (\ref{eq:code_map}). Next we show that the quasi-Bernoulli measures supported on self-conformal sets satisfying the SSC are doubling, which in particular implies that the Assouad dimensions of these measures are finite. After that, we prove the main theorem of this section, which shows that the pointwise Assouad dimension of these measures agrees with the Assouad dimension almost everywhere.
+We say that a measure $\mu$ supported on a self-conformal set $F$ is quasi-Bernoulli if it is the projection of a quasi-Beronulli measure $\nu$ supported on $\Sigma$ under the natural projection $\pi\colon\Sigma\to F$ defined as in (\ref{eq:code_map}). Next we show that the quasi-Bernoulli measures supported on self-conformal sets satisfying the SSC are doubling, which in particular implies that the Assouad dimensions of these measures are finite. After that, we prove the main theorem of this section, Theorem \ref{thm:quasi-bernoulli-exact-assouad}.
 \begin{prop}\label{prop:doubling}
 If $\mu$ is a quasi-Bernoulli measure fully supported on a self-conformal set $F$ satisfying the strong separation condition, then $\mu$ is doubling.
 \end{prop}
@@ -506,7 +504,6 @@ in particular, combining this with estimate (\ref{eq:ssc}), we have $B(x,2r)\cap
 \end{align*}
 Since the upper bound is independent of $x$ and $r$, the claim follows.
 \end{proof}
-Finally, we prove the main result of the section.
 
 \begin{proof}[Proof of Theorem \ref{thm:quasi-bernoulli-exact-assouad}]
 It follows from Proposition \ref{prop:doubling} that $\dim_{\mathrm{A}}\mu$ is finite. Let $s<\dim_{\mathrm{A}}\mu$ and $C>0$.
@@ -687,10 +684,7 @@ and for $\mu$-almost every $x\in F$, we have
 
 \end{thm}
 \begin{proof}
-Let $s=\max_{i\in\Lambda}\frac{\log p_i}{\log r_i}$. We start by showing that $\adim\mu\leq s$. Let $x\in F$, $0<r<R<1$ and let $\iii\in\Sigma$, be a (not necessarily unique) word satisfying $\pi(\iii)=x$. Choose integers $k$ and $l$, such that
-\begin{equation*}
-    r_{\mathbf{i}|_k}\leq R < r_{\mathbf{i}|_{k-1}}\text{ and }\quad r_{\mathbf{i}|_{l+1}}< r \leq r_{\mathbf{i}|_{l}}.
-\end{equation*}
+Let $s=\max_{i\in\Lambda}\frac{\log p_i}{\log r_i}$. We start by showing that $\adim\mu\leq s$. Let $x\in F$, $0<r<R<1$ and let $\iii\in\Sigma$, be a (not necessarily unique) word satisfying $\pi(\iii)=x$. Choose integers $k$ and $l$, such that $r_{\mathbf{i}|_k}\leq R < r_{\mathbf{i}|_{k-1}}$ and $\quad r_{\mathbf{i}|_{l+1}}< r \leq r_{\mathbf{i}|_{l}}$.
 We may assume from this point on that $l>k$, since otherwise $\frac{R}{r}$ would be bounded from above by a uniform constant, which does not bother us. Now $\varphi_{\mathtt{i}_{l+1}}(F)\subset B(x,r)$, so in particular $\mu(B(x,r))\geq p_{\mathbf{i}|_{l+1}}$. Define $\Lambda_{x,R}=\{\mathbf{j}\in\Sigma_*\colon r_{\mathbf{j}}\leq R < r_{\mathbf{j}^{-}}, \,d(x,\varphi_{\mathbf{j}}(F))\leq R\}$. Note that the OSC implies that there is a constant $M\geq 1$ independent of $x$ and $R$, such that
 \begin{equation*}
     \#\Lambda_{x,R}\leq M.
