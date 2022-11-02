@@ -229,7 +229,7 @@ As Proposition \ref{prop:basic_properties} shows, the global Assouad dimension p
 \begin{example}\label{ex:loc_not_glob_doubling}
     Let $x_n=2^{-n}$, and let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-x_n}+2^{-n}\delta_{x_n})$, where $\delta_x$ denotes the point mass centered at $x$. Clearly the measure is a finite Borel measure fully supported on the set $X=\{0\}\cup\bigcup_{n=0}^{\infty}\{x_n,-x_n\}$. By considering $y_k=-x_k$, and $r_k=2^{-k}$, it follows by a simple calculation that
     \begin{equation*}
-        \frac{\mu(B(y_k,2r_k))}{\mu(B(y_k,r_k))}\to \infty,
+        \frac{\mu(B(y_k,2r_k))}{\mu(B(y_k,r_k))}\geq\frac{\sum_{n=k-1}^{\infty}3^{-n}+\sum_{n=k}^{\infty}2^{-n}}{\sum_{n=k-1}^{\infty}3^{-n}}=1+\left(\frac{3}{2}\right)^{k-2} \to \infty,
     \end{equation*}
     as $k\to\infty$, which shows that $\mu$ is not doubling.
     
@@ -296,7 +296,7 @@ Since this holds for arbitrary $s>0$, we have $\dim_{\mathrm{A}}(\mu,0)=0$.
 \end{example}
 
 \section{Quasi-Bernoulli measures on self-conformal sets}\label{sec:qb-meas}
-As was observed in Example \ref{ex:loc_not_glob_doubling}, a strict inequality is possible in $\sup\adim(\mu,x)\leq \adim\mu$. However, the theme for the rest of the paper is to show that in many natural examples, equality is satisfied. In fact, we show something stronger: in many natural cases, we have $\adim(\mu,x)=\adim\mu$, for $\mu$-almost every $x$. This property is analogous to the classical \emph{exact dimensionality} property, which a measure is said to satisfy if $\dim_{\mathrm{loc}}(\mu,x)=\dim_{\mathrm{H}}\mu$, for $\mu$-almost every $x$. We start with proving the exact dimensionality property for the most general case of this paper, quasi-Bernoulli measures on self-conformal sets, and work our way down to more specific examples in Sections \ref{sec:invmeas} and \ref{sec:ssm}. Let us recall some definitions.
+As was observed in Example \ref{ex:loc_not_glob_doubling}, a strict inequality is possible in $\sup\adim(\mu,x)\leq \adim\mu$. However, the theme for the rest of the paper is to show that in many natural examples, equality is satisfied. In fact, we show something stronger: in many natural cases, we have $\adim(\mu,x)=\adim\mu$, for $\mu$-almost every $x$. This is analogous to the classical \emph{exact dimensionality} property, which a measure is said to satisfy if $\dim_{\mathrm{loc}}(\mu,x)=\dim_{\mathrm{H}}\mu$, for $\mu$-almost every $x$. We start with proving the exact dimensionality property for the most general case of this paper, quasi-Bernoulli measures on self-conformal sets, and work our way down to more specific classes of measures in Sections \ref{sec:invmeas} and \ref{sec:ssm}. Let us recall some definitions.
 
 Let $\Lambda$ be a finite index set, and associate to each $i\in\Lambda$ a contraction map $\varphi_i$ from a compact subset of $\R^d$ to itself. The collection $\{\varphi_i\}_{i\in\Lambda}$ is known as an \emph{iterated function system (IFS)}. By a foundational result of Hutchinson \cite{H}, every IFS has a unique compact and non-empty invariant set $F$ satisfying
 \begin{equation*}
