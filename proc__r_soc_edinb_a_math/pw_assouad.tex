@@ -58,7 +58,7 @@
 \address{Research Unit of Mathematical Sciences\\  P.O.Box 8000, FI-90014, University of Oulu, Finland \email{roope.anttila@oulu.fi}}
 
 \begin{abstract}
-    We introduce a pointwise variant of the Assouad dimension for measures on metric spaces, and study its properties in relation to the global Assouad dimension. We show that, in general, the value of the pointwise Assouad dimension may differ from the global counterpart, but in many classical cases, it exhibits similar exact dimensionality properties as the classical local dimension, namely it equals the global Assouad dimension almost everywhere. We also compute the Assouad dimension of invariant measures with place dependent probabilities supported on strongly separated self-conformal sets. 
+    We introduce a pointwise variant of the Assouad dimension for measures on metric spaces, and study its properties in relation to the global Assouad dimension. We show that, in general, the value of the pointwise Assouad dimension may differ from the global counterpart, but in many classical cases, the pointwise Assouad dimension exhibits similar exact dimensionality properties as the classical local dimension, namely it equals the global Assouad dimension almost everywhere. We also prove an explicit formula for the Assouad dimension of certain invariant measures with place dependent probabilities supported on self-conformal sets.
 \end{abstract}
 
 
@@ -69,14 +69,14 @@
 \maketitle
 
 \section{Introduction}
-Originally, the Assouad dimension was defined as a means to investigate embedding problems of metric spaces \cite{A,T}, but in the recent years also its importance in fractal geometry has become evident. The Assouad dimension quantifies the size of the largest local parts of the space across all scales, which provides a heuristic on why it is effective in the study of embedding problems: If the space has large local parts, it can not be embedded into a small space.
+Originally, the Assouad dimension was defined as a means to investigate embedding problems of metric spaces \cite{A}, and it is still used as an important tool in the field \cite{T}. In the past decade, the interest in the Assouad dimension has seen substantial increase also in fractal geometry, and it has been studied in many classical cases. The book by Fraser \cite{F} collects the recent developments in one place and provides an introduction to Assouad dimensions in fractal geometry. The Assouad dimension describes the local structure of the space by quantifying the size of the largest parts of the space across all scales, which provides a heuristic on why it is effective in the study of embedding problems: If the space looks large locally, it can not be embedded into a small space.
 
-As is usual in fractal geometry, the Assouad dimension of a space is closely connected to a dual notion of dimension for measures supported on the space. For a finite Borel measure $\mu$  be a finite Borel measure fully supported on s metric space $X$, this \emph{Assouad dimension of a measure} is defined by
+As is usual in dimension theory, the Assouad dimension of a space is closely connected to a dual notion of dimension for measures supported on the space. For a finite Borel measure $\mu$ fully supported on a metric space $X$, this \emph{Assouad dimension of a measure} is defined by
 \begin{align*}
     \adim \mu=\inf\bigg\{ s>0\colon& \exists C>0,\textnormal{ s.t. for all }x\in X,\; 0<r<R,\\
     &\frac{\mu(B(x,R))}{\mu(B(x,r))}\leq C\left(\frac{R}{r}\right)^s\bigg\},
 \end{align*}
-where $B(x,r)$ is the closed ball with center $x$ and radius $r$. The Assouad dimension of a measure has a similar intuition behind it as the Assouad dimension of a space: it quantifies the size of the least regular parts of the measure across all scales. The book by Fraser \cite{F} collects the recent developments in the theory of Assouad dimensions of sets and measures in one place and provides an introduction to Assouad dimensions in fractal geometry.
+where $B(x,r)$ is the closed ball with center $x$ and radius $r$. The Assouad dimension of a measure has a similar intuition behind it as the Assouad dimension of a space: it quantifies the size of the least regular parts of the measure across all scales. 
 
 For measures, different notions of pointwise dimension are very important. Perhaps the most important concepts in the dimension theory of measures are the \emph{upper and lower local dimensions of a measure} defined at $x\in X$ by
 \begin{equation*}
@@ -89,16 +89,18 @@ and
 respectively. When the upper and lower limits agree, the limit is denoted by $\dim_{\textnormal{loc}}(\mu,x)$ and it is called the \emph{local dimension of the measure $\mu$ at $x$}. Unlike the different notions of ``global'' dimension, which are concerned with the average regularity (e.g. in the case of Hausdorff, packing and Minkowski dimensions) or extremal regularity (in the case of Assouad and lower dimensions) of the measure on its full support, these pointwise dimensions quantify the regularity of the measure around a given point. The upper and lower local dimensions can be thought of as the pointwise analogue of the Hausdorff and packing dimensions of the measure, respectively, and in this paper, we widen the theory by defining a natural pointwise analogue of the Assouad dimension. We call this dimension the \emph{pointwise Assouad dimension} of the measure and define it at $x\in X$ by
 \begin{align*}
     \adim (\mu,x)=\inf\bigg\{ s>0\colon& \exists C>0,\textnormal{ s.t. for all }\; 0<r<R,\\
-    &\frac{\mu(B(x,R))}{\mu(B(x,r))}\leq C\left(\frac{R}{r}\right)^s\bigg\},
+    &\frac{\mu(B(x,R))}{\mu(B(x,r))}\leq C\left(\frac{R}{r}\right)^s\bigg\}.
 \end{align*}
-where the crucial difference to the global Assouad dimension of the measure is that the constant $C$ may now depend on the point $x$. Similarly as the Assouad dimension captures information on the least regular parts of the measure across all, the pointwise Assouad dimension captures information on the least regular scales at a given point. The aim of this paper is to study some basic properties of the pointwise Assouad dimension from a fractal geometric point of view.
+The crucial difference to the global Assouad dimension of the measure is that the constant $C$ in the definition may now depend on the point $x$. Similarly as the Assouad dimension captures information on the least regular parts of the measure across all scales, the pointwise Assouad dimension captures information on the least regular scales at a given point. The aim of this paper is to discuss the basic properties of the pointwise Assouad dimension from a fractal geometric point of view.
 
-We begin by establishing some notation and recalling basic results concerning Assouad dimensions of sets and measures in Section \ref{sec:prelim}. In Section \ref{sec:pw_assouad} we discuss some basic properties of the pointwise Assouad dimension and its relations to various existing notions of dimension. In particular, we observe that the pointwise Assouad dimension is always bounded from above by the global Assouad dimension, and that the inequality can be strict. In contrast to this, we devote the rest of the paper to the study of the cases where the maximal pointwise Assouad dimension equals the global one.
-In fact, we show that in many classical constructions we have an \emph{exact dimensionality property}, that is
-\begin{equation*}
+We note that the ideas in the definition are not entirely new, as was pointed out to us by Anders and Jana Björn as well as the anonymous referee. In \cite{BBL}, the authors consider certain ``exponent sets'', one of which corresponds to our definition of the pointwise Assouad dimension, and use them to give sharp estimates for variational $p$-capacities of annuli in metric spaces. The authors give some examples about the behaviour of these exponent sets, however, most of the examples they consider are absolutely continuous measures, which can have ``non-trivial'' (that is different from the dimension of the Lebesgue measure) pointwise Assouad dimension only in a null set, whereas the measures we study are singular and, as we will see, have ``non-trivial'' pointwise Assouad dimension almost everywhere.
+
+The structure of the paper is as follows. We begin by establishing some notation and recalling basic results concerning Assouad dimensions of sets and measures in Section \ref{sec:prelim}. In Section \ref{sec:pw_assouad} we discuss some basic properties of the pointwise Assouad dimension and its relations to various existing notions of dimension. In particular, we observe that the pointwise Assouad dimension is always bounded from above by the global Assouad dimension, and that the inequality can be strict. To contrast this, we devote the rest of the paper to the study of the cases where the maximal pointwise Assouad dimension coincides with the global one.
+In fact, we show that in many classical fractal geometric constructions we have an \emph{exact dimensionality property}, meaning
+\begin{equation}\label{eq:exact_dimensionality}
     \adim(\mu,x)= \adim\mu,
-\end{equation*}
-for $\mu$-almost every $x$. In Section \ref{sec:qb-meas} we show that this exact dimensionality property is true in a general setting of quasi-Bernoulli measures supported on strongly separated self-conformal sets (Theorem \ref{thm:quasi-bernoulli-exact-assouad}). In Section \ref{sec:invmeas} we study the Assouad dimension of a class of place dependent invariant measures. The main results of this section are Theorem \ref{thm:pw_ssc_formula}, where we provide an explicit formula for the Assouad dimension of these measures, and Corollary \ref{cor:invmeas-pw}, where we see that this formula holds for the pointwise Assouad dimension at almost every point. In the final Section \ref{sec:ssm} we are interested in self-similar and self-affine measures. In Theorem \ref{thm:osc_formula}, we show that the exact dimensionality property for the pointwise Assouad dimension holds for doubling self-similar measures, even when the strong separation condition is relaxed to the open set condition. We also establish the property for self-affine measures on Bedford-McMullen sponges satisfying the very strong separation condition in Theorem \ref{thm:bm_exact_dimensionality}.
+\end{equation}
+for $\mu$-almost every $x$. This is analogous to the classical exact dimensionality property for the local dimension, which the measure is said to satisfy if $\dim_{\mathrm{loc}}(\mu,x)=\dim_{\mathrm{H}}\mu$, for $\mu$-almost every $x$.  We start with the most general setting of quasi-Bernoulli measures supported on strongly separated self-conformal sets in Section \ref{sec:qb-meas},  and in Theorem \ref{thm:quasi-bernoulli-exact-assouad} prove the exact dimensionality property (\ref{eq:exact_dimensionality}) for these measures. The results are complemented in in Section \ref{sec:invmeas}, where we provide an explicit formula for the Assouad dimension of certain invariant measures for place dependent probabilities in Theorem \ref{thm:pw_ssc_formula}. These place dependent invariant measures satisfy the assumptions of Section \ref{sec:qb-meas} so as a corollary we obtain the almost sure formula for the pointwise Assouad dimension as well. In the final Section \ref{sec:ssm} we are interested in self-similar and self-affine measures. In Theorems \ref{thm:osc_formula} and \ref{thm:bm_exact_dimensionality}, we prove the exact dimensionality property (\ref{eq:exact_dimensionality}) for self-similar measures satisfying the open set condition and self-affine measures on certain Bedford-McMullen carpets, respectively.
 
 \section{Preliminaries}\label{sec:prelim}
 Unless stated otherwise, we assume that $(X,d)$ is a metric space, with no additional structure. Since we assume the metric $d$ to be fixed, we omit it from the notation and refer to $(X,d)$ simply as $X$. Unless stated otherwise, a measure always refers to a finite Borel measure fully supported on $X$ and when needed, we denote the support of $\mu$ by $\mathrm{supp}(\mu)$. If $f:X\to Y$ is a map from $X$ to another metric space $Y$, we denote the \emph{pushforward of the measure $\mu$} under the map $f$ by $f_*\mu\coloneqq\mu\circ f^{-1}$.  For constants $C$, we sometimes use the convention $C(\cdots)$, if we want to emphasize the dependence of $C$ on the quantities inside the parentheses.
@@ -157,6 +159,7 @@ In this section, we discuss the basic properties of the pointwise Assouad dimens
 \begin{equation*}
     \mu(B(x,2r))\leq C(x)\mu(B(x,r)).
 \end{equation*}
+We also refer to \cite{BBL} for some discussion on the pointwise doubling property.
 The following proposition collects some of the basic properties of the pointwise Assouad dimension.
 \begin{prop}\label{prop:basic_properties}
 Let $\mu$ be a Borel measure fully supported on a metric space $X$. Then for any $x\in X$,
@@ -205,15 +208,8 @@ for all $x\in X$. We will not, however, pursue the study of the pointwise lower 
 
 \subsection{Relationships to other dimensions}
 
-Next we investigate the relationships between the pointwise Assouad dimension and other common notions of dimension in fractal geometry. We will focus on the global Assouad dimension, the Hausdorff and packing dimensions, and the upper Minkowski dimension of measures and the Assouad dimension of the support of the measure. The upper Minkowski dimension of a measure was introduced in \cite{KFF} and it is defined by
-\begin{align*}
-    \updim_{\mathrm{M}}\mu=\inf\{s>0\colon &\textnormal{there exists a constant }c>0\textnormal{ such that}\\
-    &\mu(B(x,r))\geq cr^s,  \textnormal{ for all }x\in \text{supp}(\mu)\textnormal{ and }0<r<1\}.
-\end{align*}
-In \cite[Proposition 4.1]{KFF} it was shown that
-\begin{equation}\label{eq:general_relationship}
-    \dim_{\mathrm{P}}\mu\leq \updim_{\mathrm{M}}\mu\leq \dim_{\mathrm{A}}\mu.
-\end{equation}
+Next we investigate the relationships between the pointwise Assouad dimension and other common notions of dimension in fractal geometry. We will focus on the global Assouad dimension, the Hausdorff and packing dimensions, and the upper Minkowski dimension of measures and the Assouad dimension of the support of the measure.
+
 As Proposition \ref{prop:basic_properties} shows, the global Assouad dimension provides an upper bound for the pointwise Assouad dimension at every point. The natural question that arises is if the converse holds at some point, i.e. is it true that $\sup_{x\in X}\adim(\mu,x)=\adim\mu$. It turns out that generally speaking this is not the case, even in compact spaces. The following is an example of a non-doubling measure, which is pointwise doubling at all points of its support. By Proposition \ref{prop:basic_properties}(1) and the analogous fact for the global Assouad dimension, we see that this measure has finite pointwise Assouad dimension at all points, but infinite global Assouad dimension.
 
 \begin{example}\label{ex:loc_not_glob_doubling}
@@ -230,22 +226,27 @@ As Proposition \ref{prop:basic_properties} shows, the global Assouad dimension p
     which shows that $\mu$ is pointwise doubling at $0$.
 \end{example}
 
-By definition of $\dim_{\mathrm{P}}\mu$ and Proposition \ref{prop:basic_properties}(2) we have the general relationship $\dim_{\mathrm{P}}\mu\leq\dim_{\mathrm{A}}(\mu,x)$, for $\mu$-almost every $x$. Recalling (\ref{eq:general_relationship}), it is natural to ask if an inequality holds for the upper Minkowski dimension in some direction, at least for almost all points. The measure of Example \ref{ex:loc_not_glob_doubling} shows that it is possible that $\updim_{\mathrm{M}}\mu >\adim(\mu,x)$, for all $x$.
+The upper Minkowski dimension of a measure was introduced in \cite{KFF} and it is defined by
+\begin{align*}
+    \updim_{\mathrm{M}}\mu=\inf\{s>0\colon &\textnormal{there exists a constant }c>0\textnormal{ such that}\\
+    &\mu(B(x,r))\geq cr^s,  \textnormal{ for all }x\in \text{supp}(\mu)\textnormal{ and }0<r<1\}.
+\end{align*}
+In \cite[Proposition 4.1]{KFF} it was shown that
+\begin{equation}\label{eq:general_relationship}
+    \dim_{\mathrm{P}}\mu\leq \updim_{\mathrm{M}}\mu\leq \dim_{\mathrm{A}}\mu.
+\end{equation}
+By definition of $\dim_{\mathrm{P}}\mu$ and Proposition \ref{prop:basic_properties}(2) we have the general relationship $\dim_{\mathrm{P}}\mu\leq\dim_{\mathrm{A}}(\mu,x)$, for $\mu$-almost every $x$. Recalling (\ref{eq:general_relationship}), it is natural to ask if an inequality holds for the upper Minkowski dimension in some direction, at least for almost all points. We observe that the measure of Example \ref{ex:loc_not_glob_doubling} shows that it is possible to have $\updim_{\mathrm{M}}\mu >\adim(\mu,x)$, for all $x$.
 
 \begin{example}
-    Let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-2^{-n}}+2^{-n}\delta_{2^{-n}})$ be the measure of Example \ref{ex:loc_not_glob_doubling}. Let us first show that $\updim_{\mathrm{M}}\mu\geq \frac{\log 3}{\log 2}$. Let $s<\frac{\log 3}{\log 2}$, $x_n=-2^{-n}$, and $r_n=2^{-(n+2)}$. Note that now
+    Let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-2^{-n}}+2^{-n}\delta_{2^{-n}})$ be the measure of Example \ref{ex:loc_not_glob_doubling}. Let us first show that $\updim_{\mathrm{M}}\mu\geq \frac{\log 3}{\log 2}$. Let $s<\frac{\log 3}{\log 2}$, $x_n=-2^{-n}$, and $r_n=2^{-(n+2)}$. Then
     \begin{equation*}
         \mu(B(x_n,r_n))=3^{-n}=r_n^{\frac{n\log 3}{(n+2)\log 2}}< r_n^{s},
     \end{equation*}
     for all large enough $n$. Since $r_n\to 0$ with $n$, this implies that $\updim_{\mathrm{M}}\mu\geq s$, and taking $s\to\frac{\log 3}{\log 2}$ gives the claim.
     
-   Since $\mu$ has an atom at every $x\in X\setminus\{0\}$, so by Proposition \ref{prop:basic_properties}(3), $\dim_{\mathrm{A}}(\mu,x)=0<\updim_{\mathrm{M}}\mu$. To finish off the proof, we show that $\dim_{\mathrm{A}}(\mu,0)\leq1$. Fix $0<r<R$, and choose $L,N\in \N$, such that
-    \begin{equation}\label{eq:rR}
-        2^{-L}< r \leq 2^{-L+1},\quad2^{-N-1}\leq R < 2^{-N}.
-    \end{equation}
-    Now $B(0,R)\subset [-2^{-N},2^{-N}]$, and $[-2^{L},2^{L}]\subset B(0,r)$, so by equation (\ref{eq:rR})
+   Since $\mu$ has an atom at every $x\in X\setminus\{0\}$, so by Proposition \ref{prop:basic_properties}(3), $\dim_{\mathrm{A}}(\mu,x)=0<\updim_{\mathrm{M}}\mu$. At the origin, a simple calculation shows that for any $2^{-L}< r \leq 2^{-L+1}$ and $2^{-N-1}\leq R < 2^{-N}$, we have
     \begin{align*}
-        \frac{\mu(B(x,R))}{\mu(B(x,r))}\leq \frac{\mu([-2^{-N},2^{-N}])}{\mu([-2^{-L},2^{-L}])}\leq\frac{2\sum_{n=N}^{\infty}2^{-n}}{\sum_{n=L}^{\infty}2^{-n}}=\frac{2^{2-N}}{2^{1-L}}\leq 8\left(\frac{R}{r}\right),
+        \frac{\mu(B(0,R))}{\mu(B(0,r))}\leq \frac{2\sum_{n=N}^{\infty}2^{-n}}{\sum_{n=L}^{\infty}2^{-n}}=\frac{2^{2-N}}{2^{1-L}}\leq 8\left(\frac{R}{r}\right),
     \end{align*}
     and therefore $\dim_{\mathrm{A}}(\mu,0)\leq1<\frac{\log3}{\log 2}\leq \updim_{\mathrm{M}}\mu$.
 \end{example}
@@ -270,11 +271,7 @@ and note that
 \end{equation*}
 in the Hausdorff distance as $n\to\infty$, that is $[0,1]$ is a weak tangent to $X$.
 
-Next we show that $\dim_{\mathrm{A}}(\mu,x)=0$, for every $x\in X$. Note that every point $x\in X\setminus\{0\}$ is an atom so by Proposition \ref{prop:basic_properties}(3), $\dim_{\mathrm{A}}(\mu,x)=0$, so we only need to consider the case $x=0$. Fix $0<r<R<1$, and choose numbers $L,N\in\N$, such that
-\begin{equation*}
-    2^{-2^L}< r \leq 2^{-2^{L-1}}, \quad2^{-2^{N+1}}\leq R < 2^{-2^{N}}.
-\end{equation*}
-Clearly $[0,x_{L+1,L}]\subset B(0,r)$ and $B(x,R)\subset [0,x_{N,N-1}]$, so using the previous equation, we have
+Next we show that $\dim_{\mathrm{A}}(\mu,x)=0$, for every $x\in X$. Note that every point $x\in X\setminus\{0\}$ is an atom so by Proposition \ref{prop:basic_properties}(3), $\dim_{\mathrm{A}}(\mu,x)=0$, so we only need to consider the case $x=0$. Fix $0<r<R<1$, and choose numbers $L,N\in\N$, such that $2^{-2^L}< r \leq 2^{-2^{L-1}}$ and $2^{-2^{N+1}}\leq R < 2^{-2^{N}}$. Clearly $[0,x_{L+1,L}]\subset B(0,r)$ and $B(x,R)\subset [0,x_{N,N-1}]$, so we have
 \begin{align*}
     \frac{\mu(B(0,R))}{\mu(B(0,r))}\leq\frac{\mu([0,x_{N,N-1}])}{\mu([0,x_{L+1,L}])}\leq 2^{L-N+1}\leq 2\frac{\log r}{\log R}.
 \end{align*}
@@ -286,7 +283,7 @@ Since this holds for arbitrary $s>0$, we have $\dim_{\mathrm{A}}(\mu,0)=0$.
 \end{example}
 
 \section{Quasi-Bernoulli measures on self-conformal sets}\label{sec:qb-meas}
-As was observed in Example \ref{ex:loc_not_glob_doubling}, a strict inequality is possible in $\sup\adim(\mu,x)\leq \adim\mu$. However, the theme for the rest of the paper is to show that in many natural examples, equality is satisfied. In fact, we show something stronger: for many natural measures we have $\adim(\mu,x)=\adim\mu$, for $\mu$-almost every $x$. This is analogous to the classical \emph{exact dimensionality} property, which a measure is said to satisfy if $\dim_{\mathrm{loc}}(\mu,x)=\dim_{\mathrm{H}}\mu$, for $\mu$-almost every $x$. We start with proving the exact dimensionality property for the most general case of this paper, quasi-Bernoulli measures on self-conformal sets, and work our way down to more specific classes of measures in Sections \ref{sec:invmeas} and \ref{sec:ssm}. For the convenience of the readers who are familiar with the definitions, we give the statement of the main result of this section first, and define the necessary concepts after that. The main result we prove in this section is the following.
+As was observed in Example \ref{ex:loc_not_glob_doubling}, a strict inequality is certainly possible in $\sup\adim(\mu,x)\leq \adim\mu$. As discussed in the introduction, the rest of the paper considers the cases where we have equality. We start by proving the exact dimensionality property (\ref{eq:exact_dimensionality}) for the most general case of this paper in this section, and work our way down to more specific classes of measures in Sections \ref{sec:invmeas} and \ref{sec:ssm}. For the convenience of the readers who are familiar with the definitions, we give the statement of the main result of this section first, and define the necessary concepts after that. The main result we prove in this section is the following.
 
 \begin{thm}\label{thm:quasi-bernoulli-exact-assouad}
     If $\mu$ is a quasi-Bernoulli measure fully supported on a self-conformal set $F$ satisfying the strong separation condition, then
@@ -299,7 +296,7 @@ As was observed in Example \ref{ex:loc_not_glob_doubling}, a strict inequality i
     In this generality, it is not possible to obtain an explicit formula for the Assouad dimension, however, to complement the result, in Section \ref{sec:invmeas} we provide an example class of measures which satisfy the assumptions of Theorem \ref{thm:quasi-bernoulli-exact-assouad}, and calculate their Assouad dimension explicitly.
 \end{huom}
 
-Let us start by recalling some basics about limit sets of iterated function systems. Let $\Lambda$ be a finite index set, and associate to each $i\in\Lambda$ a contraction map $\varphi_i$ from a compact subset of $\R^d$ to itself. The collection $\{\varphi_i\}_{i\in\Lambda}$ is known as an \emph{iterated function system (IFS)}. By a foundational result of Hutchinson \cite{H}, every IFS has a unique compact and non-empty invariant set $F$ satisfying
+Let us start by recalling some basics about of iterated function systems. Let $\Lambda$ be a finite index set, and associate to each $i\in\Lambda$ a contraction map $\varphi_i$ from a compact subset of $\R^d$ to itself. The collection $\{\varphi_i\}_{i\in\Lambda}$ is known as an \emph{iterated function system (IFS)}. By a foundational result of Hutchinson \cite{H}, every IFS has a unique compact and non-empty invariant set $F$ satisfying
 \begin{equation*}
     F=\bigcup_{i\in\Lambda}\varphi_i(F),
 \end{equation*}
