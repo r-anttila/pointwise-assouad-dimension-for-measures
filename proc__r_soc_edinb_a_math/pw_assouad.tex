@@ -69,7 +69,7 @@
 \maketitle
 
 \section{Introduction}
-Originally, the Assouad dimension was defined as a means to investigate embedding problems of metric spaces \cite{A}, and it is still used as an important tool in the field \cite{T}. In the past decade, the interest in the Assouad dimension has seen substantial increase also in fractal geometry, and it has been studied in many classical cases. The book by Fraser \cite{F} collects the recent developments in one place and provides an introduction to Assouad dimensions in fractal geometry. The Assouad dimension describes the local structure of the space by quantifying the size of the largest parts of the space across all scales, which provides a heuristic on why it is effective in the study of embedding problems: If the space looks large locally, it can not be embedded into a small space.
+Originally, the Assouad dimension was defined as a means to investigate embedding problems of metric spaces \cite{A}, and it is still used as an important tool in the field \cite{T}. In the past decade, the interest in the Assouad dimension has seen substantial increase also in fractal geometry, and it has been studied in many classical cases. The book by Fraser \cite{F} collects the recent developments in one place and provides an introduction to Assouad dimensions in fractal geometry. The Assouad dimension describes the local structure of the space by quantifying the size of the largest parts of the space across all scales, which provides a heuristic on why it is effective in the study of embedding problems: If the space has locally large parts, it can not be embedded into a small space.
 
 As is usual in dimension theory, the Assouad dimension of a space is closely connected to a dual notion of dimension for measures supported on the space. For a finite Borel measure $\mu$ fully supported on a metric space $X$, this \emph{Assouad dimension of a measure} is defined by
 \begin{align}\label{eq:global_assouad}
@@ -236,7 +236,7 @@ In \cite[Proposition 4.1]{KFF} it was shown that
 \begin{equation}\label{eq:general_relationship}
     \dim_{\mathrm{P}}\mu\leq \updim_{\mathrm{M}}\mu\leq \dim_{\mathrm{A}}\mu.
 \end{equation}
-By definition of $\dim_{\mathrm{P}}\mu$ and Proposition \ref{prop:basic_properties}(2) we have the general relationship $\dim_{\mathrm{P}}\mu\leq\dim_{\mathrm{A}}(\mu,x)$, for $\mu$-almost every $x$. Recalling (\ref{eq:general_relationship}), it is natural to ask if an inequality holds for the upper Minkowski dimension in some direction, at least for almost all points. We observe that the measure of Example \ref{ex:loc_not_glob_doubling} shows that it is possible to have $\updim_{\mathrm{M}}\mu >\adim(\mu,x)$, for all $x$.
+By definition of $\dim_{\mathrm{P}}\mu$ and Proposition \ref{prop:basic_properties}(2) we have the general relationship $\dim_{\mathrm{P}}\mu\leq\dim_{\mathrm{A}}(\mu,x)$, for $\mu$-almost every $x$. Recalling (\ref{eq:general_relationship}), it is natural to ask if a similar inequality holds for the upper Minkowski dimension in some direction. This turns out not to be the case. For some self-affine measures on Bedford-McMullen carpets (see Section \ref{sec:ssm} for the definitions), we have $\updim_{\mathrm{M}}\mu \leq\adim(\mu,x)$, for $\mu$-almost all $x$. Example \ref{ex:bm_example} provides an explicit example satisfying this property. However, it is also possible to have $\updim_{\mathrm{M}}\mu >\adim(\mu,x)$ for all $x$, as the following example shows.
 
 \begin{example}
     Let $\mu=\sum_{n=0}^{\infty}(3^{-n}\delta_{-2^{-n}}+2^{-n}\delta_{2^{-n}})$ be the measure of Example \ref{ex:loc_not_glob_doubling}. Let us first show that $\updim_{\mathrm{M}}\mu\geq \frac{\log 3}{\log 2}$. Let $s<\frac{\log 3}{\log 2}$, $x_n=-2^{-n}$, and $r_n=2^{-(n+2)}$. Then
@@ -251,7 +251,6 @@ By definition of $\dim_{\mathrm{P}}\mu$ and Proposition \ref{prop:basic_properti
     \end{align*}
     and therefore $\dim_{\mathrm{A}}(\mu,0)\leq1<\frac{\log3}{\log 2}\leq \updim_{\mathrm{M}}\mu$.
 \end{example}
-For some self-affine measures on Bedford-McMullen carpets, it is also possible to have $\updim_{\mathrm{M}}\mu \leq\adim(\mu,x)$, for $\mu$-almost all $x$. These concepts are defined in Section \ref{sec:ssm} and Example \ref{ex:bm_example} provides an explicit example satisfying this property.
 
 Finally, a natural question to ask is if the Assouad dimension of the support of a measure is a lower bound for the pointwise Assouad dimension of the measure, as it is for the global one. Our next example shows that this is also not generally the case, in fact, there are measures supported on sets of full Assouad dimension, which have $0$ pointwise Assouad dimension at all points. The example is original, but builds on a construction by Le Donne and Rajala \cite[Example 2.20]{LR}.
 
