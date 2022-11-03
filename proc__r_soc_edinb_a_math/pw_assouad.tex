@@ -72,10 +72,10 @@
 Originally, the Assouad dimension was defined as a means to investigate embedding problems of metric spaces \cite{A}, and it is still used as an important tool in the field \cite{T}. In the past decade, the interest in the Assouad dimension has seen substantial increase also in fractal geometry, and it has been studied in many classical cases. The book by Fraser \cite{F} collects the recent developments in one place and provides an introduction to Assouad dimensions in fractal geometry. The Assouad dimension describes the local structure of the space by quantifying the size of the largest parts of the space across all scales, which provides a heuristic on why it is effective in the study of embedding problems: If the space looks large locally, it can not be embedded into a small space.
 
 As is usual in dimension theory, the Assouad dimension of a space is closely connected to a dual notion of dimension for measures supported on the space. For a finite Borel measure $\mu$ fully supported on a metric space $X$, this \emph{Assouad dimension of a measure} is defined by
-\begin{align*}
-    \adim \mu=\inf\bigg\{ s>0\colon& \exists C>0,\textnormal{ s.t. for all }x\in X,\; 0<r<R,\\
+\begin{align}\label{eq:global_assouad}
+    \adim \mu=\inf\bigg\{ s>0\colon& \exists C>0,\textnormal{ s.t. for all }x\in X,\; 0<r<R,\nonumber\\
     &\frac{\mu(B(x,R))}{\mu(B(x,r))}\leq C\left(\frac{R}{r}\right)^s\bigg\},
-\end{align*}
+\end{align}
 where $B(x,r)$ is the closed ball with center $x$ and radius $r$. The Assouad dimension of a measure has a similar intuition behind it as the Assouad dimension of a space: it quantifies the size of the least regular parts of the measure across all scales. 
 
 For measures, different notions of pointwise dimension are very important. Perhaps the most important concepts in the dimension theory of measures are the \emph{upper and lower local dimensions of a measure} defined at $x\in X$ by
@@ -126,8 +126,7 @@ If $X\subset \R^d$ is compact, then $\dim_{\mathrm{A}} X\geq \dim_{\mathrm{A}}F$
 \end{prop}
 
 \subsection{Assouad dimension of measures and the doubling property}
-Let us now turn our attention to the dimensions of measures. We sometimes use the term global Assouad dimension to avoid ambiguity with the pointwise variant we soon define.
-Originally, the Assouad dimension of a measure was called the upper regularity dimension in \cite{KLV}, but due to the intimate connections between this notion of dimension and the Assouad dimension for sets, the term Assouad dimension of a measure is now widely used. A simple volume argument implies that for a measure $\mu$ fully supported on a metric space $X$, we have the inequality $\adim X\leq \adim\mu$. Moreover, in \cite{VK, LS} it was shown that
+Let us now turn our attention to the dimensions of measures. When referring to (\ref{eq:global_assouad}) we sometimes use the term global Assouad dimension to avoid ambiguity with the pointwise variant. Originally, the global Assouad dimension of a measure was called the upper regularity dimension in \cite{KLV}, but due to the intimate connections between this notion of dimension and the Assouad dimension for sets, the term Assouad dimension of a measure is now widely used. A simple volume argument implies that for a measure $\mu$ fully supported on a metric space $X$, we have the inequality $\adim X\leq \adim\mu$. Moreover, in \cite{VK, LS} it was shown that
 \begin{equation*}
     \adim X=\inf\{\adim\mu\colon \mu\textnormal{ is a measure fully supported on }X\},
 \end{equation*}
@@ -137,22 +136,24 @@ The notion of the Assouad dimension of a measure is closely linked to the \emph{
 \begin{equation}\label{eq:doubling}
     \mu(B(x,2r))\leq C\mu(B(x,r)).
 \end{equation}
-Measures that satisfy (\ref{eq:doubling}) are called \emph{doubling measures}. In fact, it is a simple exercise to show that a measure has finite Assouad dimension if and only if it is doubling \cite[Lemma 4.1.1]{F}. In practice, the following lemma is sometimes useful when establishing the doubling property for a given measure.
+Measures that satisfy (\ref{eq:doubling}) are called \emph{doubling measures}. In fact, it is a simple exercise to show that a measure has finite Assouad dimension if and only if it is doubling \cite[Lemma 4.1.1]{F}. 
 
-\begin{lemma}\label{lemma:doubling_small_r}
-Let $\mu$ be a finite Borel measure fully supported on a compact space $X$. If there are constants $C_0\geq 1,r_0>0$, such that
-\begin{equation*}
-    \mu(B(x,2r))\leq C_0\mu(B(x,r)),
-\end{equation*}
-for all $x\in X$ and $0<r<r_0$, then $\mu$ is doubling.
-\end{lemma}
-\begin{proof}
-Let $C_0,r_0>0$ be as in the statement of the lemma and let $r\geq r_0$. Since $X$ is compact, we may cover it by a finite collection $\mathcal{B}$ of balls of radius $\frac{r_0}{3}$, and since $\mu$ is fully supported on $X$, for any $x\in X$, there is at least one $B_x\in\mathcal{B}$, such that $B_x\subset B(x,r_0)$. Let $C'=\min\{\mu(B)\colon B\in\mathcal{B}\}$. Then
-\begin{equation*}
-    \frac{\mu(B(x,2r))}{\mu(B(x,r))}\leq\frac{\mu(X)}{\mu(B(x,r_0))}\leq \frac{\mu(X)}{\mu(B_x)}\leq \frac{\mu(X)}{C'},
-\end{equation*}
-so the constant $C=\min\{\frac{\mu(X)}{C'},C_0\}$ works in (\ref{eq:doubling}).
-\end{proof}
+%In practice, the following lemma is sometimes useful when establishing the doubling property for a given measure.
+
+%\begin{lemma}\label{lemma:doubling_small_r}
+%Let $\mu$ be a finite Borel measure fully supported on a compact space $X$. If there are constants $C_0\geq 1,r_0>0$, such that
+%\begin{equation*}
+%    \mu(B(x,2r))\leq C_0\mu(B(x,r)),
+%\end{equation*}
+%for all $x\in X$ and $0<r<r_0$, then $\mu$ is doubling.
+%\end{lemma}
+%\begin{proof}
+%Let $C_0,r_0>0$ be as in the statement of the lemma and let $r\geq r_0$. Since $X$ is compact, we may cover it by a finite collection $\mathcal{B}$ of balls of radius $\frac{r_0}{3}$, and since $\mu$ is fully supported on $X$, for any $x\in X$, there is at least one $B_x\in\mathcal{B}$, such that $B_x\subset B(x,r_0)$. Let $C'=\min\{\mu(B)\colon B\in\mathcal{B}\}$. Then
+%\begin{equation*}
+%    \frac{\mu(B(x,2r))}{\mu(B(x,r))}\leq\frac{\mu(X)}{\mu(B(x,r_0))}\leq \frac{\mu(X)}{\mu(B_x)}\leq \frac{\mu(X)}{C'},
+%\end{equation*}
+%so the constant $C=\min\{\frac{\mu(X)}{C'},C_0\}$ works in (\ref{eq:doubling}).
+%\end{proof}
 
 \section{Pointwise Assouad dimension}\label{sec:pw_assouad}
 In this section, we discuss the basic properties of the pointwise Assouad dimension of measures. It turns out that, we have a correspondence between measures with the \emph{pointwise doubling property} and those with finite pointwise Assouad dimension. A measure $\mu$ is said to be \emph{pointwise doubling at $x\in X$}, if there is a constant $C(x)\geq 1$, such that
@@ -471,7 +472,7 @@ If $\mu$ is a quasi-Bernoulli measure fully supported on a self-conformal set $F
 \begin{proof}
 Let $\delta = \min_{i\ne j}d(\varphi_i(F),\varphi_j(F))$, which is positive since $F$ is strongly separated. Fix an integer $k$ satisfying $\max_{\mathbf{i}\in\Sigma_k}\norm{\varphi_{\mathbf{i}}'}< \frac{\delta}{2C_3^2}$, where $C_3$ is the constant given by Lemma \ref{lemma:BDP}(3). Finally, let $C=\min_{\mathbf{i}\in\Sigma_{k+1}}\nu([\mathbf{i}])$.
 
-Note that since $F$ is compact and $\mu$ is fully supported on $F$ by Lemma \ref{lemma:doubling_small_r} it suffices to consider only uniformly small values of $r>0$.
+Since $F$ is compact and $\mu$ is fully supported on $F$, it is easy to see that it suffices to consider only uniformly small values of $r>0$.
 Therefore let 
 \begin{equation*}
 0<r<\min\{||\varphi_{\mathbf{i}|_k}'||\colon \mathbf{i}\in\Sigma_k\}.
@@ -647,7 +648,7 @@ When the contractions $\varphi_i$ are similarities or affine maps, $F$ is called
 Self-similar and self-affine sets and measures are perhaps the most important prototypical examples of fractal sets and measures. These classes have been well studied in the past decades, and substantial progress has been made in understanding their dimensional properties. See for example \cite{Hoch} for recent developments in the self-similar case and \cite{BHR, HR} for the self-affine case. To make their study easier, it is usual to impose some sort of separation conditions on the defining maps. The most common separation conditions are the SSC (see Section \ref{sec:qb-meas}) as well as the \emph{open set condition (OSC)}, which the set $F$ is said to satisfy if there exists an open set $U\subset \R^d$, such that $\varphi_i(U)\subset U$ for all $i\in\Lambda$ and $\varphi_i(U)\cap \varphi_j(U)=\emptyset$ for $i\ne j$. We say that a self-similar measure fully supported on a self-similar set $F$ satisfies the SSC if $F$ does and similarly for the OSC.
 
 \subsection{Self-similar measures and the open set condition}
-The doubling properties of self-similar measures are quite well studied. The fact that self-similar measures satisfying the SSC are doubling follows from Proposition \ref{prop:doubling}, and as mentioned in Remark \ref{huom:ssm}, their Assouad dimension was explicitly computed by Fraser and Howroyd \cite{FH}, and it is given by formula (\ref{eq:ssc_formula}). Relaxing the SSC to the OSC changes the situation dramatically. Yung \cite{Yung} provides examples of self-similar sets satisfying the OSC for which (1) only the canonical self-similar measure is doubling, (2) all self-similar measures are doubling, (3) the measures are doubling for some but not all choices of the weights $p_i$. In particular this shows that the Assouad dimension of self-similar measures satisfying the OSC can in many cases be infinite. Still, it is an interesting question to study the Assouad dimension of \emph{doubling} self-similar measures which do not satisfy the SSC. In the main theorem of this section, we show that if a self-similar measure satisfying the OSC is doubling, then the Assouad dimension is given by the natural formula (\ref{eq:ssc_formula}). Furthermore, we show that the pointwise Assouad dimension agrees with the global Assouad dimension almost everywhere, obtaining a stronger version of Remark \ref{huom:ssm}.
+The doubling properties of self-similar measures are quite well studied. The fact that self-similar measures satisfying the SSC are doubling follows, for example, from Proposition \ref{prop:doubling}, and as mentioned in Remark \ref{huom:ssm}, their Assouad dimension was explicitly computed by Fraser and Howroyd \cite{FH}, and it is given by the formula (\ref{eq:ssc_formula}). Slightly surprisingly, relaxing the SSC to the OSC changes the situation dramatically. Yung \cite{Yung} provides examples of self-similar sets satisfying the OSC for which (1) only the canonical self-similar measure is doubling, (2) all self-similar measures are doubling, (3) the measures are doubling for some but not all choices of the weights $p_i$. In particular this shows that the Assouad dimension of self-similar measures satisfying the OSC can in many cases be infinite. Still, it is an interesting question to study the Assouad dimension of \emph{doubling} self-similar measures which do not satisfy the SSC. In the main theorem of this section, we show that if a self-similar measure satisfying the OSC is doubling, then the Assouad dimension is given by the natural formula (\ref{eq:ssc_formula}). Furthermore, we show that the pointwise Assouad dimension agrees with the global Assouad dimension almost everywhere, obtaining a stronger version of Remark \ref{huom:ssm}.
 
 In this section, we use the notation
 \begin{equation*}
@@ -661,7 +662,7 @@ and extending this to the whole space $\Sigma$ in the usual way. There is a natu
 \begin{equation}\label{eq:bernoulli}
     \mu=\pi_*\nu,
 \end{equation}
-where $\pi\colon \Sigma\to F$ is the natural coding map given by (\ref{eq:code_map}). The proof of the next theorem, which is our main result of this section, builds on ideas of \cite{Yung} and \cite{FH}.
+where $\pi\colon \Sigma\to F$ is the coding map given by (\ref{eq:code_map}). The proof of the next theorem, which is our main result of this section, builds on ideas of \cite{Yung} and \cite{FH}.
 
 \begin{thm}\label{thm:osc_formula}
 Let $\mu$ be a self-similar measure satisfying the OSC. If $\mu$ is doubling, then
@@ -720,7 +721,7 @@ Therefore
 Since $\frac{R_n}{r_n}\to\infty$ as $n\to \infty$, this shows that $\dim_{\mathrm{A}}(\mu,x)\geq s$. This finishes the proof, since now at $\mu$-almost every $x$, we have $s\leq \adim(\mu,x)\leq \adim\mu\leq s$.
 \end{proof}
 \begin{huom}
-    Our result generalizes \cite[Theorem 2.4]{FH} by Fraser and Howroyd, by relaxing the SSC to the OSC, with the added assumption that the measure is doubling, for obvious reasons. It is an interesting question, if the same formula (\ref{eq:ssc_formula}) for the Assouad dimension of self-similar measures works with even less restrictive separation conditions, such as the weak separation condition.
+It is an interesting question, if the same formula (\ref{eq:ssc_formula}) for the Assouad dimension of self-similar measures works with even less restrictive separation conditions, such as the weak separation condition.
 \end{huom}
 
 \subsection{Self-affine measures on Bedford-McMullen sponges}
@@ -756,13 +757,9 @@ For the proof we need the concept of \emph{approximate cubes} introduced by Olse
     Q_k(\omega)=\{\omega'=(\bar{\jmath}_1,\ldots)\in\Sigma\colon j_{t,q}=i_{t,q},\,\forall q=1,\ldots,d\text{ and }\forall t=1,\ldots L_q(k)\},
 \end{equation*}
 where $L_q(k)$ is the unique number that satisfies
-\begin{equation*}
+\begin{equation}\label{eq:approx_cube}
    n_q^{-L_q(k)-1} <n_1^{-k}\leq n_q^{-L_q(k)}.
-\end{equation*}
-In particular, this implies that
-\begin{equation*}
-    k\frac{\log n_1}{\log n_q}-1< L_q(k)\leq k\frac{\log n_1}{\log n_q}.
-\end{equation*}
+\end{equation}
 The geometric equivalent of the approximate cube $Q_k(\omega)$ is its image under the projection map $\pi:\Sigma\to \R^d$. The image $\pi(Q_k(\omega))$ is contained in
 \begin{equation*}
     \prod_{q=1}^d\left[\frac{i_{1,q}}{n_q}+\ldots+\frac{i_{L_q(k),q}}{n_q^{L_q(k)}},\frac{i_{1,q}}{n_q}+\ldots+\frac{i_{L_q(k),q}}{n_q^{L_q(k)}}+\frac{1}{n_q^{L_q(k)}}\right],
@@ -784,7 +781,7 @@ Let $\omega\in\Sigma$ and $k\in\N$.
     \item  $\pi(Q_k(\omega))\subset B(\pi(\omega),(n_1+\ldots+n_d)n_1^k)$.
 \end{enumerate}
 \end{prop}
-The proof of the proposition can be found in \cite[Proposition 6.2.1]{O}. Let us now prove Theorem \ref{thm:bm_exact_dimensionality}. The proof follows ideas of Fraser and Howroyd \cite[Theorem 2.6]{FH}, where they essentially construct a single point where the pointwise Assouad dimension is maximal, which is enough to bound the Assouad dimension from below. The difficulty with establishing the lower bound for almost every point in contrast to the self-conformal case is that in addition to finding a long enough sequence of convenient symbols in the symbolic space, we also have to control its location due to the non-conformality of the sponge.
+The proof of the proposition can be found in \cite[Proposition 6.2.1]{O}. Let us now prove Theorem \ref{thm:bm_exact_dimensionality}. The proof follows ideas of Fraser and Howroyd \cite[Theorem 2.6]{FH}, where they carefully construct sequences of points and scales, which give the desired exponent for the lower bound. The difficulty we face when compared to the approach in \cite{FH}, is that where they have the freedom to choose the point they consider for each pair of scales independently, we have to find a single point where we see the desired behaviour at arbitrarily small scales. Due to the non-conformality of the sponge, this essentially means that we not only need to find long enough sequences of convenient symbols in the symbolic space, but we also have to control their location within the word.
 
 \begin{proof}[Proof of Theorem \ref{thm:bm_exact_dimensionality}]
 First we note that $L_q(n)$ increases with $n$ and, since $n_q$ are strictly increasing, decreases with $q$. It is an elementary exercise to show that for every $k\in\N$, there is an integer $n_k$, such that for all $n\geq n_k$, we have
@@ -812,13 +809,9 @@ Now we choose $m_1=n_k$ and then inductively $m_i=L_1(m_{i-1}+k)+1$, for every $
 Thus $\nu(I_k)=1$, and moreover
 $\nu(I)=1$, where $I=\bigcap_{k\in\N}I_k$.
 
-Now let $s=\adim\mu$ given by Theorem \ref{thm:bm_formula}, $x=\pi(\omega)$, where $\omega\in I$, and let $R_k=(n_1+\ldots+n_d)n_1^{-n-1}$, and $r_k=2^{-1}n_1^{-(n+k)-1}$, where $k$ and $n$ are chosen, such that $\omega$ is given by equation (\ref{eq:omegaform}). Observe that by Proposition \ref{prop:olsenvssc}, we have
-\begin{equation*}
-    \frac{\mu(B(x,R_k))}{\mu(B(x,r_k))}\geq \frac{\mu(\pi(Q_{n+1}(\omega)))}{\mu(\pi(Q_{n+k+1}(\omega)))}.
-\end{equation*}
-Moreover, equation (\ref{eq:appr_cube_msr}) gives
+Now let $s=\adim\mu$ given by Theorem \ref{thm:bm_formula}, $x=\pi(\omega)$, where $\omega\in I$, and let $R_k=(n_1+\ldots+n_d)n_1^{-n-1}$, and $r_k=2^{-1}n_1^{-(n+k)-1}$, where $k$ and $n$ are chosen, such that $\omega$ is given by equation (\ref{eq:omegaform}). Observe that by Proposition \ref{prop:olsenvssc} and equations (\ref{eq:approx_cube}) and (\ref{eq:appr_cube_msr}), we have
 \begin{align*}
-    \frac{\mu(\pi(Q_{n+1}(\omega)))}{\mu(\pi(Q_{n+k+1}(\omega)))}&=\frac{\prod_{q=1}^d\prod_{j=0}^{L_q(n)}p_q(\sigma^j\omega)}{\prod_{q=1}^d\prod_{j=0}^{L_q(n+k)}p_q(\sigma^j\omega)}=\frac{1}{\prod_{q=1}^d\prod_{j=L_q(n)-1}^{L_q(n+k)}p_q(\sigma^j\omega)}\\
+    \frac{\mu(B(x,R_k))}{\mu(B(x,r_k))}&=\frac{\prod_{q=1}^d\prod_{j=0}^{L_q(n)}p_q(\sigma^j\omega)}{\prod_{q=1}^d\prod_{j=0}^{L_q(n+k)}p_q(\sigma^j\omega)}=\frac{1}{\prod_{q=1}^d\prod_{j=L_q(n)-1}^{L_q(n+k)}p_q(\sigma^j\omega)}\\
     &=\prod_{q=1}^d\left(\frac{1}{p_q^{\min}}\right)^{L_q(n+k)-L_q(n)+2}\geq \prod_{q=1}^d\left(\frac{1}{p_q^{\min}}\right)^{(n+k)\frac{\log n_1}{\log n_q}-n\frac{\log n_1}{\log n_q}+1}\\
     &\geq (p_q^{\min})^{-d}\prod_{q=1}^d\left(\frac{1}{p_q^{\min}}\right)^{k\frac{\log n_1}{\log n_q}}=(p_q^{\min})^{-d}\prod_{q=1}^d\left(n_1^k\right)^{\frac{-\log p_q^{\min}}{\log n_q}}\\
     &\geq (\min_{q}p_q^{\min})^{-d}\left(n_1^k\right)^{s}=C\left(\frac{R_k}{r_k}\right)^{s},
