@@ -334,23 +334,21 @@ Next we define self-conformal sets which act as a support for the measures we st
 The use of the bounded open set $\Omega$ here is essential since contractive conformal maps defined on whole $\R^d$ are in fact similarities. The limit set $F$ of an IFS satisfying (C1) and (C2) is called a \emph{self-conformal set}. In the following we let $||\varphi'_{\mathbf{i}}||=\sup_{x\in \Omega}|\varphi'_{\mathbf{i}}(x)|$. It follows from the fact that each $\varphi_i$ is a contraction, that $||\varphi'_{\mathbf{i}}||<1$, for all $\mathbf{i}\in\Sigma_*$, and that for a fixed $\mathbf{i}\in\Sigma$, $||\varphi'_{\mathbf{i}|_n}||$ is strictly decreasing in $n$. Let us recall some key lemmas for the proof of our main theorem of this section.
 
 \begin{lemma}\label{lemma:BDP}
-A self-conformal set $F$ satisfies the following.
+There are constants $C>1,\delta>0$, such that the self-conformal set $F$ satisfies the following.
 
 \begin{enumerate}
-    \item There exists a constant $C_1\geq 1$ such that $|\varphi_{\mathbf{i}}'(x)|\leq C_1|\varphi_{\mathbf{i}}'(y)|$, for all $\mathbf{i}\in\Sigma_*$ and $x,y\in \Omega$.
+    \item For all $\mathbf{i}\in\Sigma_*$ and $x,y\in \Omega$, we have $|\varphi_{\mathbf{i}}'(x)|\leq C|\varphi_{\mathbf{i}}'(y)|$.
     
-    \item There exists constants $C_2$ and $\delta>0$, such that for any $x,y,z\in F$, with $|x-y|\leq \delta$, we have
+    \item For any $x,y,z\in F$, with $|x-y|\leq \delta$, we have
     \begin{equation*}
-        C_2^{-1}|\varphi_{\mathbf{i}}'(z)|\leq\frac{|\varphi_{\mathbf{i}}(x)-\varphi_{\mathbf{i}}(y)|}{|x-y|}\leq C_2|\varphi_{\mathbf{i}}'(z)|,
+        C^{-1}|\varphi_{\mathbf{i}}'(z)|\leq\frac{|\varphi_{\mathbf{i}}(x)-\varphi_{\mathbf{i}}(y)|}{|x-y|}\leq C|\varphi_{\mathbf{i}}'(z)|,
     \end{equation*}
     for all $\mathbf{i}\in\Sigma_*$.
 
-    \item There is a constant $C_3\geq 1$, such that
+    \item For all $\mathbf{i}\in\Sigma_*$,
     \begin{equation*}
-        C_3^{-1}\norm{\varphi'_{\mathbf{i}}}\leq\diam(\varphi_{\mathbf{i}}(F)) \leq C_3\norm{\varphi'_{\mathbf{i}}},
+        C^{-1}\norm{\varphi'_{\mathbf{i}}}\leq\diam(\varphi_{\mathbf{i}}(F)) \leq C\norm{\varphi'_{\mathbf{i}}}.
     \end{equation*}
-    for all $\mathbf{i}\in\Sigma_*$.
-    
 \end{enumerate}
 \end{lemma}
 The first property in Lemma \ref{lemma:BDP} is commonly called the \emph{Bounded Distortion Property (BDP)} and it originates in \cite{MU}. Property (ii) is a special case of \cite[Lemma 2.3]{Fan} and property (iii) is proved in \cite{MU}.
@@ -360,9 +358,9 @@ The following second lemma is a simple consequence of the BDP and the definition
 \begin{lemma}\label{lemma:chain}
 For all $\mathbf{i},\mathbf{j}\in\Sigma_*$, we have
 \begin{equation*}
-    C_1^{-1}||\varphi'_{\mathbf{i}}||\cdot||\varphi_{\mathbf{j}}'||\leq||\varphi_{\mathbf{i}\mathbf{j}}'||\leq ||\varphi_{\mathbf{i}}'||\cdot||\varphi_{\mathbf{j}}'||,
+    C^{-1}||\varphi'_{\mathbf{i}}||\cdot||\varphi_{\mathbf{j}}'||\leq||\varphi_{\mathbf{i}\mathbf{j}}'||\leq ||\varphi_{\mathbf{i}}'||\cdot||\varphi_{\mathbf{j}}'||,
 \end{equation*}
-where $C_1>1$ is the constant of Lemma \ref{lemma:BDP}.
+where $C>1$ is the constant of Lemma \ref{lemma:BDP}.
 \end{lemma}
 \begin{proof}
 Using the chain rule, and the conformality of the IFS, it is easy to see that for all $x\in F$ we have
@@ -372,14 +370,14 @@ Using the chain rule, and the conformality of the IFS, it is easy to see that fo
 \end{equation*}
 Applying Lemma \ref{lemma:BDP} we get that for all $y\in F$
 \begin{equation*}
-    C_1^{-1}|\varphi_{\mathbf{i}}'(y)|\cdot|\varphi_{\mathbf{j}}'(x)|\leq |\varphi_{\mathbf{i}\mathbf{j}}'(x)| \leq |\varphi_{\mathbf{i}}'(\varphi_{\mathbf{j}}(x))|\cdot|\varphi_{\mathbf{j}}'(x)|\leq ||\varphi_{\mathbf{i}}'||\cdot||\varphi_{\mathbf{j}}'||.
+    C^{-1}|\varphi_{\mathbf{i}}'(y)|\cdot|\varphi_{\mathbf{j}}'(x)|\leq |\varphi_{\mathbf{i}\mathbf{j}}'(x)| \leq |\varphi_{\mathbf{i}}'(\varphi_{\mathbf{j}}(x))|\cdot|\varphi_{\mathbf{j}}'(x)|\leq ||\varphi_{\mathbf{i}}'||\cdot||\varphi_{\mathbf{j}}'||.
 \end{equation*}
 The result follows by taking suprema.
 \end{proof}
 \begin{huom}
 Let $\mathbf{i}\in\Sigma$ be $n$-periodic. Notice that, by applying the previous lemma iteratively, we have
 \begin{equation*}
-    C_1^{-k}||\varphi'_{\mathbf{i}|_n}||^k\leq||\varphi'_{\mathbf{i}|_{kn}}||\leq ||\varphi'_{\mathbf{i}|_n}||^k.
+    C^{-k}||\varphi'_{\mathbf{i}|_n}||^k\leq||\varphi'_{\mathbf{i}|_{kn}}||\leq ||\varphi'_{\mathbf{i}|_n}||^k.
 \end{equation*}
 The exponential growth of the distortion in the lower bound is a problem in Section \ref{sec:invmeas} when we want to establish a lower bound for the Assouad dimension of the measure we investigate. The following lemma provides a precise estimate for this purpose.
 \end{huom}
@@ -470,54 +468,55 @@ If $\mu$ is a quasi-Bernoulli measure fully supported on a self-conformal set $F
 \end{prop}
 
 \begin{proof}
-Let $\delta = \min_{i\ne j}d(\varphi_i(F),\varphi_j(F))$, which is positive since $F$ is strongly separated. Fix an integer $k$ satisfying $\max_{\mathbf{i}\in\Sigma_k}\norm{\varphi_{\mathbf{i}}'}< \frac{\delta}{2C_3^2}$, where $C_3$ is the constant given by Lemma \ref{lemma:BDP}(3). Finally, let $C=\min_{\mathbf{i}\in\Sigma_{k+1}}\nu([\mathbf{i}])$.
+Let $\delta = \min_{i\ne j}d(\varphi_i(F),\varphi_j(F))$, which is positive since $F$ is strongly separated. Fix an integer $k$ satisfying $\max_{\mathbf{i}\in\Sigma_k}\norm{\varphi_{\mathbf{i}}'}< \frac{\delta}{2C^4}$, where $C$ is the maximum of the constant given by Lemma \ref{lemma:BDP}. Finally, let $c=\min_{\mathbf{i}\in\Sigma_{k+1}}\nu([\mathbf{i}])$.
 
 Since $F$ is compact and $\mu$ is fully supported on $F$, it is easy to see that it suffices to consider only uniformly small values of $r>0$.
 Therefore let 
 \begin{equation*}
 0<r<\min\{||\varphi_{\mathbf{i}|_k}'||\colon \mathbf{i}\in\Sigma_k\}.
 \end{equation*}
-Note that the right hand side is positive since $X$ is compact so this is possible. Also fix $x\in F$, let $\mathbf{i}\in\Sigma$ be such that $\pi(\mathbf{i})=x$, and choose $n\in\N$ as the unique integer satisfying $C_3||\varphi_{\mathbf{i}|_n}'||< r \leq C_3||\varphi_{\mathbf{i}|_{n-1}}'||$. This immediately implies that $\varphi_{\mathbf{i}|_n}(F)\subset B(x,r)$. Note that by the assumption on $r$ we have
+Note that the right hand side is positive since $X$ is compact so this is possible. Also fix $x\in F$, let $\mathbf{i}\in\Sigma$ be such that $\pi(\mathbf{i})=x$, and choose $n\in\N$ as the unique integer satisfying $C||\varphi_{\mathbf{i}|_n}'||< r \leq C||\varphi_{\mathbf{i}|_{n-1}}'||$. This immediately implies that $\varphi_{\mathbf{i}|_n}(F)\subset B(x,r)$. Note that by the assumption on $r$ we have
 \begin{equation*}
     ||\varphi_{\mathbf{i}|_n}'|| <||\varphi_{\mathbf{i}|_k}'||.
 \end{equation*}
-so in particular $n>k$. For any $l\in\N$ and $i\in\Lambda$ let $\mathbf{i}|_li$ denote the word $(i_1,i_2,\ldots, i_l,i)$ and notice that by the strong separation condition and Lemma \ref{lemma:BDP}(3), we have for all $l\in\N$ and $i\ne j$ that
+so in particular $n>k$. For any $l\in\N$ and $i\in\Lambda$ let $\mathbf{i}|_li$ denote the word $(i_1,i_2,\ldots, i_l,i)$ and notice that by the strong separation condition and Lemma \ref{lemma:BDP}(1)-(3), we have for all large enough $l\in\N$ and $i\ne j$ that
 \begin{equation}\label{eq:ssc}
-    d(\varphi_{\mathbf{i}_l i}(F)),\varphi_{\mathbf{i}_l j}(F))\coloneqq\inf_{\substack{x\in \varphi_{\mathbf{i}_l i}(F) \\y\in \varphi_{\mathbf{i}_l j}(F)}}|x-y|\geq \delta\cdot \diam(\varphi_{\mathbf{i}|_l}(F))\geq \frac{\delta}{C_3}||\varphi_{\mathbf{i}|_l}'||.
+    d(\varphi_{\mathbf{i}_l i}(F),\varphi_{\mathbf{i}_l j}(F))\coloneqq\inf_{\substack{x\in \varphi_{\mathbf{i}_l i}(F) \\y\in \varphi_{\mathbf{i}_l j}(F)}}|x-y|\geq \frac{\delta}{C^2}\cdot \diam(\varphi_{\mathbf{i}|_l}(F))\geq \frac{\delta}{C^3}||\varphi_{\mathbf{i}|_l}'||.
 \end{equation}
 Now using Lemma \ref{lemma:chain}, we have for every $y\in B(x,2r)$
 \begin{align*}
-    d(y,\varphi_{\mathbf{i}|_{n-k-1}}(F))&\leq 2r< \frac{\delta}{C_3^2\max_{\mathbf{i}\in\Sigma_k}||\varphi_{\mathbf{i}}'||}r\leq \frac{\delta}{C_3\max_{\mathbf{i}\in\Sigma_k}\norm{\varphi_{\mathbf{i}}'}}||\varphi_{\mathbf{i}|_{n-1}}'||\\
-    &\leq\frac{\delta}{C_3}\frac{||\varphi_{\mathbf{i}|_{n-1}}'||}{||\varphi_{\sigma^{n-k-1}\mathbf{i}|_{k}}'||}\leq \frac{\delta}{C_3} ||\varphi_{\mathbf{i}|_{n-k-1}}'||,
+    d(y,\varphi_{\mathbf{i}|_{n-k-1}}(F))&\leq 2r< \frac{\delta}{C^4\max_{\mathbf{i}\in\Sigma_k}||\varphi_{\mathbf{i}}'||}r\leq \frac{\delta}{C^3\max_{\mathbf{i}\in\Sigma_k}\norm{\varphi_{\mathbf{i}}'}}||\varphi_{\mathbf{i}|_{n-1}}'||\\
+    &\leq\frac{\delta}{C^3}\frac{||\varphi_{\mathbf{i}|_{n-1}}'||}{||\varphi_{\sigma^{n-k-1}\mathbf{i}|_{k}}'||}\leq \frac{\delta}{C^3} ||\varphi_{\mathbf{i}|_{n-k-1}}'||,
 \end{align*}
 in particular, combining this with estimate (\ref{eq:ssc}), we have $B(x,2r)\cap F\subset \varphi_{\mathbf{i}|_{n-k-1}}(F)$. Therefore, using the quasi-Bernoulli property, we have
 \begin{align*}
-    \frac{\mu(B(x,2r))}{\mu(B(x,r))}&\leq \frac{\mu(\varphi_{\mathbf{i}|_{n-k-1}}(F))}{\mu(\varphi_{\mathbf{i}|_{n}}(F)))}=\frac{\nu([\mathbf{i}|_{n-k-1}])}{\nu([\mathbf{i}|_{n}])}\leq \frac{1}{C_3\nu([\sigma^{n-k-1}\mathbf{i}|_{k+1}])}\leq \frac{1}{C_3C}.
+    \frac{\mu(B(x,2r))}{\mu(B(x,r))}&\leq \frac{\mu(\varphi_{\mathbf{i}|_{n-k-1}}(F))}{\mu(\varphi_{\mathbf{i}|_{n}}(F)))}=\frac{\nu([\mathbf{i}|_{n-k-1}])}{\nu([\mathbf{i}|_{n}])}\lesssim \frac{1}{\nu([\sigma^{n-k-1}\mathbf{i}|_{k+1}])}\leq \frac{1}{c}.
 \end{align*}
 Since the upper bound is independent of $x$ and $r$, the claim follows.
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{thm:quasi-bernoulli-exact-assouad}]
-It follows from Proposition \ref{prop:doubling} that $\dim_{\mathrm{A}}\mu$ is finite. Let $s<\dim_{\mathrm{A}}\mu$ and $C>0$.
+It follows from Proposition \ref{prop:doubling} that $\dim_{\mathrm{A}}\mu$ is finite. Let $s<\dim_{\mathrm{A}}\mu$ and $c>0$.
 Now there is a point $y\in F$ and radii $0<r<R$, satisfying
 \begin{equation*}
-    \frac{\mu(B(y,R))}{\mu(B(y,r))}> C\left(\frac{R}{r}\right)^s.
+    \frac{\mu(B(y,R))}{\mu(B(y,r))}> c\left(\frac{R}{r}\right)^s.
 \end{equation*}
 Let $\mathbf{i}\in \mathcal{N}$, $x=\pi(\mathbf{i})$ and let $\mathbf{j}\in\Sigma$, such that $\pi(\mathbf{j})=y$.  Now choose $k,n\in\N$ as the unique integers which satisfy
 \begin{equation*}
     ||\varphi'_{\mathbf{j}|_{n+1}}||\leq R < ||\varphi'_{\mathbf{j}|_{n}}|| \text{, and }\quad ||\varphi'_{\mathbf{j}|_{k}}||< r \leq ||\varphi'_{\mathbf{j}|_{k-1}}||.
-\end{equation*} Then $\varphi_{\mathbf{j}|_k}(F)\subset B(y,C_3r)$ and $B(y,\frac{\delta}{2C_3}R)\cap F\subset \varphi_{\mathbf{j}|_n}(F)$, where $C_3$ is the constant of Lemma \ref{lemma:BDP}(3). Using the quasi-Bernoulli property and the fact that $\mu$ is doubling, we get that
+\end{equation*} 
+Then $\varphi_{\mathbf{j}|_k}(F)\subset B(y,Cr)$ and $B(y,\frac{\delta}{2C}R)\cap F\subset \varphi_{\mathbf{j}|_n}(F)$, where $C$ is the constant of Lemma \ref{lemma:BDP}. Using the quasi-Bernoulli property and the fact that $\mu$ is doubling, we get that
 \begin{equation*}
-    C\left(\frac{R}{r}\right)^s<\frac{\mu(B(y,R))}{\mu(B(y,r))}\lesssim \frac{\mu(\varphi_{\mathbf{j}|_n}(F))}{\mu(\varphi_{\mathbf{j}|_k}(F))}=\frac{\nu([\mathbf{j}|_n])}{\nu([\mathbf{j}|_k])}\leq C\nu([\sigma^{n}\mathbf{j}|_{k-n}])^{-1}.
+    c\left(\frac{R}{r}\right)^s<\frac{\mu(B(y,R))}{\mu(B(y,r))}\lesssim \frac{\mu(\varphi_{\mathbf{j}|_n}(F))}{\mu(\varphi_{\mathbf{j}|_k}(F))}=\frac{\nu([\mathbf{j}|_n])}{\nu([\mathbf{j}|_k])}\lesssim \nu([\sigma^{n}\mathbf{j}|_{k-n}])^{-1}.
 \end{equation*}
 Now since $\mathbf{i}\in \mathcal{N}$, there is an index $l\in\N$, such that $\sigma^l\mathbf{i}|_{k-n}=\sigma^{n}\mathbf{j}|_{k-n}$. Let $R'=||\varphi'_{\mathbf{i}|_{l}}||$ and $r'= ||\varphi'_{\mathbf{i}|_{l+n}}||$, and observe that by Lemma \ref{lemma:chain},
 \begin{equation*}
     \frac{R'}{r'}=\frac{||\varphi'_{\mathbf{i}|_{l}}||}{||\varphi'_{\mathbf{i}|_{l+n}}||}\lesssim \frac{1}{||\varphi'_{\sigma^l\mathbf{i}|_{n}}||}=\frac{1}{||\varphi'_{\sigma^{n}\mathbf{j}|_{k-n}}||}\lesssim\frac{ ||\varphi'_{\mathbf{j}|_{n}}||}{||\varphi'_{\mathbf{j}|_{k}}||}=\frac{R}{r}.
 \end{equation*}
-Again, it is easy to see that $\varphi_{\mathbf{i}|_{l}}(F)\subset B(x,C_3R')$ and $B(x,\frac{\delta}{2C_3}r')\cap F\subset \varphi_{\mathbf{i}|_{l+n}}(F)$, so using the doubling and quasi-Bernoulli properties of $\mu$, we see that
+Again, it is easy to see that $\varphi_{\mathbf{i}|_{l}}(F)\subset B(x,CR')$ and $B(x,\frac{\delta}{2C}r')\cap F\subset \varphi_{\mathbf{i}|_{l+n}}(F)$, so using the doubling and quasi-Bernoulli properties of $\mu$, we see that
 \begin{align*}
     \frac{\mu(B(x,R'))}{\mu(B(x,r'))}&\gtrsim\frac{\mu(\varphi_{\mathbf{i}|_{l}}(F))}{\mu(\varphi_{\mathbf{i}|_{l+k-n}}(F))}=\frac{\nu([\mathbf{i}|_{l}])}{\nu([\mathbf{i}|_{l+k-n}])}\gtrsim \nu([\sigma^l\mathbf{i}|_{k-n}])^{-1}\\
-    &=\nu([\sigma^{n}\mathbf{j}|_{k-n}])^{-1} \gtrsim C\left(\frac{R}{r}\right)^s\gtrsim C\left(\frac{R'}{r'}\right)^s.
+    &=\nu([\sigma^{n}\mathbf{j}|_{k-n}])^{-1} \gtrsim c\left(\frac{R}{r}\right)^s\gtrsim c\left(\frac{R'}{r'}\right)^s.
 \end{align*}
 This shows that $\dim_{\mathrm{A}}(\mu,x)\geq s$, and taking $s\to\dim_{\mathrm{A}}\mu$ gives $\dim_{\mathrm{A}}(\mu,x)\geq \dim_{\mathrm{A}}\mu$. Since $\mathbf{i}\in\mathcal{N}$, the claim follows from Lemma \ref{lemma:quasi-normal}.
 \end{proof}
@@ -585,13 +584,13 @@ Let us start with the upper bound. For the rest of the proof let $s=\sup_{\mathb
 \begin{equation*}
     |\varphi'_{\mathbf{i}|_{n+1}}(x)|\leq R < |\varphi'_{\mathbf{i}|_{n}}(x)|,\text{ and} \quad |\varphi'_{\mathbf{i}|_{k}}(x)|< r \leq |\varphi'_{\mathbf{i}|_{k-1}}(x)|.
 \end{equation*}
-This immediately implies that $\varphi_{\mathbf{i}|_k}(F)\subset B(x,C_3r)$, where $C_3$ is the constant of Lemma \ref{lemma:BDP}(3). As before, let $\delta = \min_{i\ne j}\{d(\varphi_i(F),\varphi_j(F))\colon i\ne j\}$. Then it is also easy to see that $B(x,\frac{\delta}{2C_3}R)\cap F\subset \varphi_{\mathbf{i}|_n}(F)$. Let us set $\mathbf{j}=(i_{k-n+1},i_{k-n+2},\ldots,i_k,i_{k-n+1},i_{k-n+2},\ldots,i_k,\ldots)\in P(\Sigma)$. Note that Lemma \ref{lemma:gibbs} shows that
+This immediately implies that $\varphi_{\mathbf{i}|_k}(F)\subset B(x,Cr)$, where $C$ is the constant of Lemma \ref{lemma:BDP}. As before, let $\delta = \min_{i\ne j}\{d(\varphi_i(F),\varphi_j(F))\colon i\ne j\}$. Then it is also easy to see that $B(x,\frac{\delta}{2C}R)\cap F\subset \varphi_{\mathbf{i}|_n}(F)$. Let us set $\mathbf{j}=(i_{k-n+1},i_{k-n+2},\ldots,i_k,i_{k-n+1},i_{k-n+2},\ldots,i_k,\ldots)\in P(\Sigma)$. Note that Lemma \ref{lemma:gibbs} shows that
 \begin{equation*}
     \prod_{j=k-n+1}^kp_{i_j}(\sigma^{j-1}\mathbf{i})\gtrsim \prod_{l=1}^np_{j_l}(\sigma^{l-1}\mathbf{j}).
 \end{equation*}
 Using Proposition \ref{prop:doubling} to conclude that $\mu$ is doubling and Lemmas \ref{lemma:BDP}(1) and \ref{lemma:chain}, we get
 \begin{align*}
-    \frac{\mu(B(x,R))}{\mu(B(x,r))}&\lesssim \frac{\mu(B(x,\frac{\delta}{2C_3}R))}{\mu(B(x,C_3r))}\leq \frac{\mu(\varphi_{\mathbf{i}|_n}(F))}{\mu(\varphi_{\mathbf{i}|_k}(F))}\lesssim \frac{p_{\mathbf{i}|_n}(\mathbf{i})}{p_{\mathbf{i}|_k}(\mathbf{i})}\\
+    \frac{\mu(B(x,R))}{\mu(B(x,r))}&\lesssim \frac{\mu(B(x,\frac{\delta}{2C}R))}{\mu(B(x,Cr))}\leq \frac{\mu(\varphi_{\mathbf{i}|_n}(F))}{\mu(\varphi_{\mathbf{i}|_k}(F))}\lesssim \frac{p_{\mathbf{i}|_n}(\mathbf{i})}{p_{\mathbf{i}|_k}(\mathbf{i})}\\
     &=\frac{\prod_{j=1}^np_{i_j}(\sigma^{j-1}\mathbf{i})}{\prod_{j=1}^kp_{i_j}(\sigma^{j-1}\mathbf{i})} =\left(\prod_{j=k-n+1}^kp_{i_j}(\sigma^{j-1}\mathbf{i})\right)^{-1}\\
     &\lesssim\left(\prod_{l=1}^np_{j_l}(\sigma^{l-1}\mathbf{j})\right)^{-1}= |\varphi'_{\mathbf{j}|_n}(\mathbf{j})|^{-\frac{\log \prod_{l=1}^np_{j_l}(\sigma^{l-1}\mathbf{j})}{\log |\varphi'_{\mathbf{j}|_n}(\mathbf{j})|}}\\
     &\leq|\varphi'_{\mathbf{j}|_n}(\mathbf{j})|^{-s}\lesssim  |\varphi'_{\mathbf{i}|_{k-n-1}}(x)|^{-s}\lesssim\left(\frac{|\varphi'_{\mathbf{i}|_{n}}(x)|}{|\varphi'_{\mathbf{i}|_{k}}(x)|}\right)^s\lesssim\left(\frac{R}{r}\right)^s.
