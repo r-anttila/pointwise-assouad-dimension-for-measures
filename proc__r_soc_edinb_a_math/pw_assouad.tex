@@ -125,18 +125,24 @@ in the Hausdorff distance. The collection of weak tangents of $X$ is denoted by 
 If $X\subset \R^d$ is compact, then $\dim_{\mathrm{A}} X\geq \dim_{\mathrm{A}}F$, for all $F\in\mathrm{Tan}(X)$.
 \end{prop}
 
-\subsection{Assouad dimension of measures and the doubling property}
+\subsection{Assouad dimension of measures and the doubling property}\label{subsec:assouad}
 Let us now turn our attention to the dimensions of measures. When referring to (\ref{eq:global_assouad}) we sometimes use the term global Assouad dimension to avoid ambiguity with the pointwise variant. Originally, the global Assouad dimension of a measure was called the upper regularity dimension in \cite{KLV}, but due to the intimate connections between this notion of dimension and the Assouad dimension for sets, the term Assouad dimension of a measure is now widely used. A simple volume argument implies that for a measure $\mu$ fully supported on a metric space $X$, we have the inequality $\adim X\leq \adim\mu$. Moreover, in \cite{VK, LS} it was shown that
 \begin{equation*}
     \adim X=\inf\{\adim\mu\colon \mu\textnormal{ is a measure fully supported on }X\},
 \end{equation*}
 which further supports the current terminology.
 
-The notion of the Assouad dimension of a measure is closely linked to the \emph{doubling property}, which the measure $\mu$ is said to satisfy if there is a constant $C\geq 1$, such that for any $x\in X$, $r>0$, we have
+The Assouad dimension of a measure has two important properties. First of all, it characterises the \emph{doubling property}, which the measure $\mu$ is said to satisfy if there is a constant $C\geq 1$, such that for any $x\in X$, $r>0$, we have
 \begin{equation}\label{eq:doubling}
     \mu(B(x,2r))\leq C\mu(B(x,r)).
 \end{equation}
-Measures that satisfy (\ref{eq:doubling}) are called \emph{doubling measures}. In fact, it is a simple exercise to show that a measure has finite Assouad dimension if and only if it is doubling \cite[Lemma 4.1.1]{F}. 
+Measures that satisfy (\ref{eq:doubling}) are called \emph{doubling measures} and it is a simple exercise to show that a measure has finite Assouad dimension if and only if it is doubling \cite[Lemma 4.1.1]{F}.
+
+Secondly, the Assouad dimension is ``the greatest of all dimensions'' \cite{F}, that is
+\begin{equation*}
+    \dim_{\mathrm{H}}\mu\leq \dim_{\mathrm{P}}\mu\leq\adim\mu,
+\end{equation*}
+where $\dim_{\mathrm{H}}\mu\coloneqq\essinf_{x\in X}\lowdim_{\mathrm{loc}}(\mu,x)$ and $\dim_{\mathrm{P}}\mu\coloneqq\essinf_{x\in X}\updim_{\mathrm{loc}}(\mu,x)$ are the \emph{Hausdorff dimension} and the \emph{packing dimension} of the measure $\mu$ respectively. As we will see in the next section, the pointwise Assouad dimension enjoys properties which are analogous to the two properties mentioned.
 
 %In practice, the following lemma is sometimes useful when establishing the doubling property for a given measure.
 
@@ -161,7 +167,7 @@ In this section, we discuss the basic properties of the pointwise Assouad dimens
     \mu(B(x,2r))\leq C(x)\mu(B(x,r)).
 \end{equation*}
 We also refer to \cite{BBL} for some discussion on the pointwise doubling property.
-The following proposition collects some of the basic properties of the pointwise Assouad dimension.
+The following proposition collects some of the basic properties of the pointwise Assouad dimension. Note that the properties (1) and (2) are the pointwise analogues for the basic properties of the global Assouad dimension discussed in Subsection \ref{subsec:assouad}.
 \begin{prop}\label{prop:basic_properties}
 Let $\mu$ be a Borel measure fully supported on a metric space $X$. Then for any $x\in X$,
 \begin{enumerate}
@@ -187,12 +193,6 @@ Let $\mu$ be a Borel measure fully supported on a metric space $X$. Then for any
     \end{equation*}
     Since the constant $\frac{\mu(X)}{\mu(\{x\})}$ depends only on $x$, we have $\dim_{\mathrm{A}}(\mu,x)\leq 0$, which is enough to prove the claim.
 \end{proof}
-
-The properties (1) and (2) of Proposition \ref{prop:basic_properties} are the pointwise analogues for the basic properties of the global Assouad dimension. Property (1) corresponds to the fact that a measure $\mu$ is doubling if and only if it has finite global Assouad dimension and property (2) to the fact that $\adim$ is ``the greatest of all dimensions'' \cite{F}, that is
-\begin{equation*}
-    \dim_{\mathrm{H}}\mu\leq \dim_{\mathrm{P}}\mu\leq\adim\mu,
-\end{equation*}
-where $\dim_{\mathrm{H}}\mu\coloneqq\essinf_{x\in X}\lowdim_{\mathrm{loc}}(\mu,x)$ and $\dim_{\mathrm{P}}\mu\coloneqq\essinf_{x\in X}\updim_{\mathrm{loc}}(\mu,x)$ are the \emph{Hausdorff dimension} and the \emph{packing dimension} of the measure $\mu$ respectively.
 
 \begin{huom}
 One can define the \emph{pointwise lower dimension of $\mu$ at $x$} analogously to the lower dimension of a measure as
