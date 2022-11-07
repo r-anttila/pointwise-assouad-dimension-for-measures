@@ -1,0 +1,91 @@
+\documentclass[12pt]{amsart}
+\setcounter{secnumdepth}{3}
+\numberwithin{equation}{section}
+
+\sloppy
+
+% PAKETIT
+\usepackage{mathtools}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{amsmath}             
+\usepackage{amssymb}           
+\usepackage{amsfonts}           
+\usepackage{latexsym}           
+\usepackage{amsthm}              
+\usepackage{bbm}
+\usepackage{tikz}
+
+% Makroja lukujoukoille
+\newcommand{\field}[1]{\mathbb{#1}}
+\newcommand{\N}{\field{N}}
+\newcommand{\Z}{\field{Z}}
+\newcommand{\Q}{\field{Q}}
+\newcommand{\R}{\field{R}}
+\newcommand{\C}{\field{C}}
+
+\newcommand{\updim}{\overline{\dim}}
+\newcommand{\lowdim}{\underline{\dim}}
+\newcommand{\bari}{\bar{\imath}}
+\newcommand{\smalli}{\mathtt{i}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\diam}{\mathrm{diam}}
+\newcommand{\adim}{\dim_{\mathrm{A}}}
+
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]   
+\newtheorem{lemma}[thm]{Lemma}      
+\newtheorem{cor}[thm]{Corollary}     
+\newtheorem{prop}[thm]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}   
+\newtheorem{quest}{Question}
+\newtheorem*{quest*}{Question}
+
+\theoremstyle{remark}
+\newtheorem{huom}[thm]{Remark}   
+\newtheorem{example}[thm]{Example}
+
+\begin{document}
+\title{Summary of changes to ``Pointwise Assouad dimension for measures''}
+\author{Roope Anttila}
+
+\date{\today}
+
+\maketitle
+
+I have implemented most of the changes suggested by the referee. The first three sections of the document received the most changes and especially the introduction got a big overhaul. The goal behind the changes to the introduction was to make it more concrete, make the main results stand out more and introduce the main definition earlier.
+
+The referee made a comment about the shortening the paper, and the changes I have made, shortened the length of the document by four pages.
+
+\begin{itemize}
+    \item Fixed the typos and slight mistakes indicated by the referee.
+    \item Moved the definitions of the Assouad dimension of the measure, the local dimensions of the measure and the pointwise Assouad dimension of the measure from the ``Preliminaries'' section to the introduction, to make the introduction more concrete.
+    \item Added some discussion to the introduction about similar concepts considered in \cite{BBL}.
+    \item Added Subsection 1.1 for the discussion of the main results in an attempt to make them stand out.
+    \item Removed Lemma 2.3 due to its simplicity.
+    \item Moved Example 2.2 to the same place as the other examples.
+    \item Combined the simple results in Section 3 to a single proposition (Proposition 3.1).
+    \item Moved Example 3.7 to the end of Section 6 as suggested by the referee. Also fixed the slight mistakes in the formulae for the Minkowski dimension and the Assouad dimension.
+    \item Moved the examples illustrating the relationships of the pointwise Assouad dimension to their own subsection (Subsection 3.1) Also removed unnecessary steps in the calculations of the examples.
+    \item Added Remark 3.2 about the definition of a pointwise lower dimension.
+    \item Moved statement of the main result of Section 4 to the beginning of the section to make it stand out.
+    \item Moved some definitions from Section 2 to a more natural spot in Subsection 4.2. Also added the definitions for equivalence of measures and ergodicity.
+    \item Fixed the constants in the proof of Proposition 4.7.
+    \item Replaced the proof of Lemma 5.2 with a reference.
+    \item Clarified discussion before the proof of Theorem 6.4.
+    \item Made many small changes to wording and sentence structure.
+    \item Added thanks to the referee in the Acknowledgements.
+\end{itemize}
+\section*{Departures from suggested changes}
+The referee suggested removing the proof of Lemma 4.5 and referring to existing literature. Even though the proof is quite simple, I decided against this, since it seems to be difficult to track down in the literature.
+
+\bibliography{references}
+\bibliographystyle{amsalpha}
+\end{document}
