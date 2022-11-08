@@ -69,7 +69,7 @@
 \maketitle
 
 \section{Introduction}
-Originally, the Assouad dimension was defined as a means to investigate embedding problems of metric spaces \cite{A}, and it is still used as an important tool in the field \cite{T}. In the past decade, the interest in the Assouad dimension has seen substantial increase also in fractal geometry, and it has been studied in many classical cases. The book by Fraser \cite{F} collects the recent developments in one place and provides an introduction to Assouad dimensions in fractal geometry. The Assouad dimension describes the local structure of the space by quantifying the size of the thickest parts of the space across all scales, which provides a heuristic on why it is effective in the study of embedding problems: if the space has locally thick parts, it can not be embedded into a small space.
+Originally, the Assouad dimension was defined as a means to investigate embedding problems of metric spaces \cite{A}, and it is still used as an important tool in the field \cite{T}. In the past decade, the interest in the Assouad dimension has seen a substantial increase also in fractal geometry, and various Assouad-type dimensions have been developed and studied in many classical cases. The book by Fraser \cite{F} collects the recent developments in one place and provides an introduction to Assouad dimensions in fractal geometry. The Assouad dimension describes the local structure of the space by quantifying the size of the thickest parts of the space across all scales, which provides a heuristic on why it is effective in the study of embedding problems: if the space has locally thick parts, it can not be embedded into a small space.
 
 As is usual in dimension theory, the Assouad dimension of a space is closely connected to a dual notion of dimension for measures supported on the space. For a finite Borel measure $\mu$ fully supported on a metric space $X$, this \emph{Assouad dimension of the measure} is defined by
 \begin{align}\label{eq:global_assouad}
@@ -78,7 +78,7 @@ As is usual in dimension theory, the Assouad dimension of a space is closely con
 \end{align}
 where $B(x,r)$ is the closed ball with center $x$ and radius $r$. The Assouad dimension of a measure has a similar intuition behind it as the Assouad dimension of a space: it quantifies the size of the least regular parts of the measure across all scales. 
 
-For measures, different notions of pointwise dimension are very important. Perhaps the most important concepts in the dimension theory of measures are the \emph{upper and lower local dimensions of a measure} defined at $x\in X$ by
+Perhaps the most important concepts in the dimension theory of measures are the \emph{upper and lower local dimensions of a measure} defined at $x\in X$ by
 \begin{equation*}
     \updim_{\textnormal{loc}}(\mu,x)=\limsup_{r\to 0}\frac{\log \mu(B(x,r))}{\log r},
 \end{equation*}
@@ -91,18 +91,17 @@ respectively. When the upper and lower limits agree, the limit is denoted by $\d
     \adim (\mu,x)=\inf\bigg\{ s>0\colon& \exists C>0,\textnormal{ s.t. for all }\; 0<r<R,\\
     &\frac{\mu(B(x,R))}{\mu(B(x,r))}\leq C\left(\frac{R}{r}\right)^s\bigg\}.
 \end{align*}
-The crucial difference to the global Assouad dimension of the measure is that the constant $C$ in the definition may now depend on the point $x$. Similarly as the Assouad dimension captures information on the least regular parts of the measure across all scales, the pointwise Assouad dimension captures information on the least regular scales at a given point. The aim of this paper is to discuss the basic properties of the pointwise Assouad dimension from a fractal geometric point of view.
+The crucial difference to the global Assouad dimension of the measure is that the constant $C$ in the definition may depend on the point $x$. Similarly as the Assouad dimension captures information on the least regular parts of the measure across all scales, the pointwise Assouad dimension quantifies the least regular scales at a given point. The aim of this paper is to discuss the basic properties of the pointwise Assouad dimension from a fractal geometric point of view.
 
-We note that the ideas in the definition are not entirely new, as was pointed out to us by Anders and Jana Björn as well as the anonymous referee. In \cite{BBL}, the authors consider certain ``exponent sets'', one of which corresponds to our definition of the pointwise Assouad dimension, and use them to give sharp estimates for variational $p$-capacities of annuli in metric spaces. The authors give some examples about the behaviour of these exponent sets, however, most of the examples they consider are absolutely continuous measures, which can have ``non-trivial'' (that is different from the dimension of the Lebesgue measure) pointwise Assouad dimension only in a null set, whereas the measures we study are singular and, as we will see, have ``non-trivial'' pointwise Assouad dimension almost everywhere.
+We note that the ideas in the definition are not entirely new, as was pointed out to us by Anders and Jana Björn as well as the anonymous referee. In \cite{BBL}, the authors consider certain ``exponent sets'', one of which corresponds to our definition of the pointwise Assouad dimension, and use them to give sharp estimates for variational $p$-capacities of annuli in metric spaces. The authors give some examples about the behaviour of these exponent sets, however, most of the measures they consider are absolutely continuous, which by Lebesgue differentiation theorem can have ``non-trivial'' (that is different from the dimension of the Lebesgue measure) pointwise Assouad dimension only in a set of measure zero. In contrast, the measures we study are singular and, as we will see, their pointwise Assouad dimensions have ``non-trivial'' behaviour almost everywhere. Therefore, we believe that the present article is a welcome contribution to the theory from a fractal geometric point of view, and that the results in this paper and \cite{BBL} complement each other quite well.
 
 \subsection{Main results and the structure of the paper}
-
 The structure of the paper is as follows. We begin by establishing some notation and recalling basic results concerning Assouad dimensions of sets and measures in Section \ref{sec:prelim}. In Section \ref{sec:pw_assouad} we discuss some basic properties of the pointwise Assouad dimension and its relations to various existing notions of dimension. In particular, we observe that the pointwise Assouad dimension is always bounded from above by the global Assouad dimension, and that the inequality can be strict. To contrast this, we devote the rest of the paper to the study of the cases where the maximal pointwise Assouad dimension coincides with the global one.
 In fact, we show that in many classical constructions we have an \emph{exact dimensionality property}, meaning
 \begin{equation}\label{eq:exact_dimensionality}
     \adim(\mu,x)= \adim\mu,
 \end{equation}
-for $\mu$-almost every $x$. This is analogous to the classical exact dimensionality property for the local dimension, which the measure is said to satisfy if $\dim_{\mathrm{loc}}(\mu,x)=\dim_{\mathrm{H}}\mu$, for $\mu$-almost every $x$.  We start with the most general setting of quasi-Bernoulli measures supported on strongly separated self-conformal sets in Section \ref{sec:qb-meas},  and in Theorem \ref{thm:quasi-bernoulli-exact-assouad} prove the exact dimensionality property (\ref{eq:exact_dimensionality}) for these measures. The results are complemented in in Section \ref{sec:invmeas}, where we provide an explicit formula for the Assouad dimension of certain invariant measures for place dependent probabilities in Theorem \ref{thm:pw_ssc_formula}. These place dependent invariant measures satisfy the assumptions of Section \ref{sec:qb-meas} so as a corollary we obtain the almost sure formula for the pointwise Assouad dimension as well. In the final Section \ref{sec:ssm} we are interested in self-similar and self-affine measures. In Theorems \ref{thm:osc_formula} and \ref{thm:bm_exact_dimensionality}, we prove the exact dimensionality property (\ref{eq:exact_dimensionality}) for self-similar measures satisfying the open set condition and self-affine measures on certain Bedford-McMullen carpets, respectively.
+for $\mu$-almost every $x$. This is analogous to the classical exact dimensionality property for the local dimension, which the measure is said to satisfy if $\dim_{\mathrm{loc}}(\mu,x)=\dim_{\mathrm{H}}\mu$, for $\mu$-almost every $x$.  We start with the general setting of quasi-Bernoulli measures supported on strongly separated self-conformal sets in Section \ref{sec:qb-meas},  and in Theorem \ref{thm:quasi-bernoulli-exact-assouad} prove the exact dimensionality property (\ref{eq:exact_dimensionality}) for these measures. The results are complemented in in Section \ref{sec:invmeas}, where we provide an explicit formula for the Assouad dimension of certain invariant measures for place dependent probabilities in Theorem \ref{thm:pw_ssc_formula}. These place dependent invariant measures satisfy the assumptions of Section \ref{sec:qb-meas} so as a corollary we obtain the almost sure formula for the pointwise Assouad dimension as well. In the final Section \ref{sec:ssm} we are interested in self-similar and self-affine measures. In Theorems \ref{thm:osc_formula} and \ref{thm:bm_exact_dimensionality}, we prove the exact dimensionality property (\ref{eq:exact_dimensionality}) for self-similar measures satisfying the open set condition and self-affine measures on certain Bedford-McMullen carpets, respectively.
 
 \section{Preliminaries}\label{sec:prelim}
 Unless stated otherwise, we assume that $(X,d)$ is a metric space, with no additional structure. Since we assume the metric $d$ to be fixed, we omit it from the notation and refer to $(X,d)$ simply as $X$. Unless stated otherwise, a measure always refers to a finite Borel measure fully supported on $X$ and when needed, we denote the support of $\mu$ by $\mathrm{supp}(\mu)$. If $f:X\to Y$ is a map from $X$ to another metric space $Y$, we denote the \emph{pushforward of the measure $\mu$} under the map $f$ by $f_*\mu\coloneqq\mu\circ f^{-1}$.  For constants $C$, we sometimes use the convention $C(\cdots)$, if we want to emphasize the dependence of $C$ on the quantities inside the parentheses.
@@ -113,11 +112,9 @@ We are mainly focused on dimensions of measures in this paper, but to place the 
     \adim F=\inf\bigg\{ s>0\colon& \exists C>0,\textnormal{ s.t. for all }x\in F,\; 0<r<R,\\
     &N_r(B(x,R)\cap F)\leq \left(\frac{R}{r}\right)^s\bigg\},
 \end{align*}
-where $N_r(E)$ denotes the smallest number of open balls of diameter $r$ needed to cover the set $E\subset X$.  A convenient way to bound the Assouad dimension of a set from below is given by the weak tangent approach. Recall that a map $T\colon X\to X$ is a \emph{similarity} if there exists $c>0$, such that
-\begin{equation*}
-    d(T(x),T(y))=c d(x,y),
-\end{equation*}
-for all $x,y\in X$. The constant $c$ is called the \emph{similarity ratio (of $T$)}.  For simplicity we give the definition of weak tangents when $X\subset \R^d$ and make a brief remark that they can be defined in complete metric spaces using pointed convergence in the Gromov-Hausdorff distance \cite{KL,MT}.  A closed set $F\subset B(0,1)$ is said to be a \emph{weak tangent} of a compact set $X\subset \R^d$ if there is a sequence of similarities $T_n\colon \R^d\to\R^d$, such that
+where $N_r(E)$ denotes the smallest number of open balls of diameter $r$ needed to cover the set $E\subset X$.  A convenient way to bound the Assouad dimension of a set from below is given by the weak tangent approach. Recall that a map $T\colon X\to X$ is a \emph{similarity} if there exists $c>0$, such that $d(T(x),T(y))=c d(x,y)$, for all $x,y\in X$. The constant $c$ is called the \emph{similarity ratio (of $T$)}. 
+
+For simplicity we give the definition of weak tangents when $X\subset \R^d$ and make a brief remark that they can be defined in complete metric spaces using pointed convergence in the Gromov-Hausdorff distance \cite{KL,MT}.  A closed set $F\subset B(0,1)$ is said to be a \emph{weak tangent} of a compact set $X\subset \R^d$ if there is a sequence of similarities $T_n\colon \R^d\to\R^d$, such that
 \begin{equation*}
     T_n(X)\cap B(0,1)\to F,
 \end{equation*}
@@ -179,14 +176,13 @@ Let $\mu$ be a Borel measure fully supported on a metric space $X$. Then for any
 \end{enumerate}
 \end{prop}
 \begin{proof}
-    Claim (1). is a trivial modification of \cite[Lemma 4.1.1]{F}. For (2), note that the first and last inequalities follow straight from the definitions, so it suffices to prove the middle inequality. Fix $x\in X$, and let $s> \dim_{\mathrm{A}}(\mu,x)$ be arbitrary. Then by definition, there is a constant $C$ depending only on $x$, such that for all $0<r<R$,
+    Claim (1). is a trivial modification of \cite[Lemma 4.1.1]{F}. 
+    
+    For (2), note that the first and last inequalities follow straight from the definitions, so it suffices to prove the middle inequality. Fix $x\in X$, and let $s> \dim_{\mathrm{A}}(\mu,x)$ be arbitrary. Then by definition, there is a constant $C$ depending only on $x$, such that for all $0<r<R$,
     \begin{equation*}
         \frac{\mu(B(x,r))}{\mu(B(x,R))}\geq C\left(\frac{r}{R}\right)^s.
     \end{equation*}
-    In particular, by fixing $R$ we see that
-    \begin{equation*}
-        \mu(B(x,r))\geq c r^s,
-    \end{equation*}
+    In particular, by fixing $R$ we see that $\mu(B(x,r))\geq c r^s$,
     where $c=\frac{C\mu(B(x,R))}{R^s}$. Taking logarithms, dividing by $\log r$ and taking $r\to 0$ shows that $\updim_{\textnormal{loc}}(\mu,x)\leq s$. Since $s>\dim_{\mathrm{A}}(\mu,x)$ was arbitrary, this finishes the proof.
 
     For (3), assume that $\mu$ has an atom at $x\in X$. Let $0<r<R$, and note that
@@ -247,7 +243,7 @@ By definition of $\dim_{\mathrm{P}}\mu$ and Proposition \ref{prop:basic_properti
     \end{equation*}
     for all large enough $n$. Since $r_n\to 0$ with $n$, this implies that $\updim_{\mathrm{M}}\mu\geq s$, and taking $s\to\frac{\log 3}{\log 2}$ gives the claim.
     
-   Since $\mu$ has an atom at every $x\in X\setminus\{0\}$, so by Proposition \ref{prop:basic_properties}(3), $\dim_{\mathrm{A}}(\mu,x)=0<\updim_{\mathrm{M}}\mu$. At the origin, a simple calculation shows that for any $2^{-L}< r \leq 2^{-L+1}$ and $2^{-N-1}\leq R < 2^{-N}$, we have
+   Since $\mu$ has an atom at every $x\in X\setminus\{0\}$, by Proposition \ref{prop:basic_properties}(3), $\dim_{\mathrm{A}}(\mu,x)=0<\updim_{\mathrm{M}}\mu$. At the origin, a simple calculation shows that for any $2^{-L}< r \leq 2^{-L+1}$ and $2^{-N-1}\leq R < 2^{-N}$, we have
     \begin{align*}
         \frac{\mu(B(0,R))}{\mu(B(0,r))}\leq \frac{2\sum_{n=N}^{\infty}2^{-n}}{\sum_{n=L}^{\infty}2^{-n}}=\frac{2^{2-N}}{2^{1-L}}\leq 8\left(\frac{R}{r}\right),
     \end{align*}
@@ -285,7 +281,7 @@ Since this holds for arbitrary $s>0$, we have $\dim_{\mathrm{A}}(\mu,0)=0$.
 \end{example}
 
 \section{Quasi-Bernoulli measures on self-conformal sets}\label{sec:qb-meas}
-As was observed in Example \ref{ex:loc_not_glob_doubling}, a strict inequality is certainly possible in $\sup\adim(\mu,x)\leq \adim\mu$, but as discussed in the introduction, the rest of the paper considers the cases where we have equality. We start by proving the exact dimensionality property (\ref{eq:exact_dimensionality}) for the most general case of this paper in this section, and work our way down to more specific classes of measures in Sections \ref{sec:invmeas} and \ref{sec:ssm}. For the convenience of the readers who are familiar with the definitions, we give the statement of the main result of this section first, and define the necessary concepts after that. The main result we prove in this section is the following.
+As was observed in Example \ref{ex:loc_not_glob_doubling}, a strict inequality is certainly possible in $\sup_{x}\adim(\mu,x)\leq \adim\mu$, but as discussed in the introduction, in the rest of the paper we consider cases where we have equality. We start by proving the exact dimensionality property (\ref{eq:exact_dimensionality}) for the most general case of this paper in this section, and work our way down to more specific classes of measures in Sections \ref{sec:invmeas} and \ref{sec:ssm}. For the convenience of the readers who are familiar with the definitions, we give the statement of the main result of this section first, and define the necessary concepts after that. The main result we prove at the end of this section is the following.
 
 \begin{thm}\label{thm:quasi-bernoulli-exact-assouad}
     If $\mu$ is a quasi-Bernoulli measure fully supported on a self-conformal set $F$ satisfying the strong separation condition, then
@@ -353,8 +349,6 @@ There are constants $C>1,\delta>0$, such that the self-conformal set $F$ satisfi
 \end{enumerate}
 \end{lemma}
 The first property in Lemma \ref{lemma:BDP} is commonly called the \emph{Bounded Distortion Property (BDP)} and it originates in \cite{MU}. Property (ii) is a special case of \cite[Lemma 2.3]{Fan} and property (iii) is proved in \cite{MU}.
-
-The following second lemma is a simple consequence of the BDP and the definition of the self-conformal IFS.
 
 \begin{lemma}\label{lemma:chain}
 For all $\mathbf{i},\mathbf{j}\in\Sigma_*$, we have
@@ -524,10 +518,10 @@ This shows that $\dim_{\mathrm{A}}(\mu,x)\geq s$, and taking $s\to\dim_{\mathrm{
 
 
 \section{Measures with place dependent probabilities}\label{sec:invmeas}
-In this section, we study the class of \emph{invariant measures with place dependent probabilities} supported on strongly separated self-conformal sets. The results of Section \ref{sec:qb-meas} show that these measures are doubling and that their pointwise Assouad dimension coincides with the global Assouad dimension at almost every point. Our main result of this section, Theorem \ref{thm:pw_ssc_formula}, complements these results by giving an explicit formula for their Assouad dimension. To our knowledge, the value of the dimension is hitherto not found in the literature. Let us begin by defining our setting.
+In this section, we study the class of \emph{invariant measures with place dependent probabilities} supported on strongly separated self-conformal sets. The results of Section \ref{sec:qb-meas} show that these measures are doubling and that their pointwise Assouad dimension coincides with the global Assouad dimension at almost every point. Our main result of this section, Theorem \ref{thm:pw_ssc_formula}, complements these results by giving an explicit formula for their Assouad dimension. To our knowledge, the formula has not been previously established in the literature. Let us begin by defining our setting.
 
 \subsection{Place dependent invariant measures}
-We assume that our IFS is self-conformal, that is it satisfies (C1) and (C2). In contrast to the case of self-conformal measures where we assign a uniform measure $p_i$ on the set $\varphi_i(F)$, now we allow the mass concentration to depend continuously on the point, that is we choose for each $i\in\Lambda$ a Hölder continuous function $p_i\colon X\to (0,1)$, which satisfy $\sum_{i\in\Lambda}p_i(x)\equiv 1$ and consider the probability  measures satisfying the equation
+We assume that our IFS $\{\varphi_i\}_{i\in\Lambda}$ is self-conformal, that is it satisfies (C1) and (C2). In contrast to the case of self-conformal measures where we assign a uniform measure $p_i$ on the set $\varphi_i(F)$, now we allow the mass concentration to depend continuously on the point, that is we choose for each $i\in\Lambda$ a Hölder continuous function $p_i\colon X\to (0,1)$, which satisfy $\sum_{i\in\Lambda}p_i(x)\equiv 1$ and consider the probability  measures satisfying the equation
 \begin{equation}\label{eq:pdssm}
     \int f(x)d\mu(x)=\sum_{i\in\Lambda}\int p_i(x)f\circ \varphi_i(x)d\mu(x),
 \end{equation}
@@ -639,7 +633,9 @@ for $\mu$-almost every $x\in F$.
 \end{huom}
 
 \section{Self-similar and self-affine measures}\label{sec:ssm}
-In this section we will concentrate on two important IFS constructions: self-similar and self-affine measures. Let $F$ be a limit set of an IFS, as defined in the beginning of Section \ref{sec:qb-meas}, and attach to each $i\in\Lambda$ a probability $p_i\in(0,1)$, such that $\sum_{i\in\Lambda}p_i=1$. Recall that by \cite{H}, there exists a unique Borel probability measure $\mu$ fully supported on $F$ satisfying
+In this section we will concentrate on two important IFS constructions: self-similar and self-affine measures. In the main results of this section, Theorems \ref{thm:osc_formula} and \ref{thm:bm_exact_dimensionality}, we establish the exact dimensionality property (\ref{eq:exact_dimensionality}), for doubling self-similar measures satisfying the open set condition, and for some self-affine measures supported on Bedford-McMullen sponges.
+
+Let $F$ be a limit set of an IFS, as defined in the beginning of Section \ref{sec:qb-meas}, and attach to each $i\in\Lambda$ a probability $p_i\in(0,1)$, such that $\sum_{i\in\Lambda}p_i=1$. Recall that by \cite{H}, there exists a unique Borel probability measure $\mu$ fully supported on $F$ satisfying
 \begin{equation*}
     \mu=\sum_{i\in\Lambda}p_i\mu\circ \varphi_i^{-1}.
 \end{equation*}
@@ -840,11 +836,8 @@ where $C=(\min_{q}p_q^{\min})^{-d}\cdot(2(n_1+\ldots+n_d))^s>0$ is a constant. T
     \end{example}
 
 \section{Discussion}
-Most of the results of this paper follow a similar pattern by providing exact dimensionality properties for the pointwise Assouad dimension. A natural follow up to the results of this paper would be to conduct finer analysis of the pointwise Assouad dimension and develop tools for \emph{multifractal analysis} of the pointwise Assouad dimension. Classically, the multifractal spectrum $f(\alpha)$ of a measure is given by the Hausdorff dimension of $\alpha$-level sets of the local dimension, that is 
-\begin{equation*}
-    f(\alpha)\coloneqq \dim_{\mathrm{H}}\{x\in X\colon \dim_{\mathrm{loc}}(\mu,x)=\alpha\}.
-\end{equation*}
-The celebrated multifractal formalism states that, in many cases, this spectrum is given by the Legendre transform of the $L^q$-spectrum of the measure, see e.g. Chapter 11 of \cite{Falc1} for details. Of course, a natural question to ask is if something similar is true for the Hausdorff dimension spectrum of the level sets of the pointwise Assouad dimension.
+Most of the results of this paper follow a similar pattern by providing exact dimensionality properties for the pointwise Assouad dimension. A natural follow up to the results of this paper would be to conduct finer analysis of the pointwise Assouad dimension and develop tools for \emph{multifractal analysis} of the pointwise Assouad dimension. Classically, the multifractal spectrum of a measure is given by the Hausdorff dimension of $\alpha$-level sets of the local dimension.
+The celebrated multifractal formalism states that, in many cases, this spectrum is given by the Legendre transform of the $L^q$-spectrum of the measure, see e.g. Chapter 11 of \cite{Falc1} for details. Of course, a natural question to ask is if something similar is true for the dimension spectrum of the level sets of the pointwise Assouad dimension.
 
 \begin{quest}
 What is the multifractal Assouad spectrum of a strongly separated self-similar measure $\mu$? By this we mean quantity
