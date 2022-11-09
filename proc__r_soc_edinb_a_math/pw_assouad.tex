@@ -405,50 +405,18 @@ where here and hereafter $\mathbf{i}\mathbf{j}$ denotes the concatenation of the
 
 To simplify notation, from hereafter we write $A\lesssim B$ to mean that $A$ is bounded from above by $B$ multiplied by a uniform constant. Similarly, we say that $A\gtrsim B$, if $B\lesssim A$ and $A\approx B$ if $B\lesssim A\lesssim B$.
 
-Recall that two measures $\mu$ and $\nu$ are said to be \emph{equivalent} if $\mu(A)=0$ if and only if $\nu(A)=0$. In the following $\sigma\colon \Sigma\to\Sigma$ denotes the \emph{left-shift} defined by $\sigma(\iii)=i_2i_2\ldots$. Also recall that a measure $\nu$ on $\Sigma$ is \emph{ergodic} if either $\nu(A)=0$ or $\nu(A)=1$, for all $\sigma$-invariant sets $A\subset \Sigma$. The following lemma is standard, but the proof is difficult to track down from the literature so we provide a sketch here.
+Recall that two measures $\mu$ and $\nu$ are said to be \emph{equivalent} if $\mu(A)=0$ if and only if $\nu(A)=0$. In the following $\sigma\colon \Sigma\to\Sigma$ denotes the \emph{left-shift} defined by $\sigma(\iii)=i_2i_2\ldots$. Also recall that a measure $\nu$ on $\Sigma$ is \emph{ergodic} if either $\nu(A)=0$ or $\nu(A)=1$, for all $\sigma$-invariant sets $A\subset \Sigma$.
 
-\begin{lemma}\label{lemma:quasi-bernoulli-equivalence}
-Every quasi-Bernoulli measure is equivalent to an $\sigma$-invariant and ergodic quasi-Bernoulli measure.
-\end{lemma}
-\begin{proof}
-Let $\nu$ be a quasi-Bernoulli measure. For all $n\in\N$ define
-\begin{equation*}
-    \tilde{\nu}_n=\frac{1}{n}\sum_{j=0}^{n-1}\nu\circ\sigma^{-j},
-\end{equation*}
-and let $\tilde{\nu}$ be the measure obtained as the weak-$*$ limit of this sequence of measures. Recall that for any $\mathbf{i}\in\Sigma_*$, the set $[\mathbf{i}]$ is open and closed and thus $\tilde{\nu}([\mathbf{i}])=\lim_{n\to\infty}\tilde{\nu}_n([\mathbf{i}])$. Using the fact that $\nu$ is quasi-Bernoulli, we have
-\begin{equation*}
-    \tilde{\nu}_n([\mathbf{i}])=\frac{1}{n}\sum_{j=0}^{n-1}\nu\circ\sigma^{-j}([\mathbf{i}])=\frac{1}{n}\sum_{j=0}^{n-1}\sum_{\mathbf{j}\in\Sigma_j}\nu([\mathbf{j}\mathbf{i}])\approx \frac{1}{n}\sum_{j=0}^{n-1}\underbrace{\sum_{\mathbf{j}\in\Sigma_j}\nu([\mathbf{j}])}_{=1}\nu([\mathbf{i}])=\nu([\mathbf{i}]),
-\end{equation*}
-for all $\mathbf{i}\in\Sigma_*$ and $n\in\N$, which shows that $\tilde{\nu}$ is quasi-Bernoulli and equivalent to $\nu$. On the other hand,
-\begin{align*}
-    |\tilde{\nu}([\mathbf{i}])-\tilde{\nu}(\sigma^{-1}([\mathbf{i}]))|&=\lim_{n\to\infty}|\tilde{\nu}_n([\mathbf{i}])-\tilde{\nu}_n(\sigma^{-1}([\mathbf{i}]))|\\
-    &=\lim_{n\to\infty}\frac{1}{n}\left|\sum_{j=0}^{n-1}\nu\circ\sigma^{-j}([\mathbf{i}])-\sum_{j=0}^{n-1}\nu\circ\sigma^{-(j+1)}([\mathbf{i}])\right|\\
-    &=\lim_{n\to\infty}\frac{1}{n}\left|\nu([\mathbf{i}])-\nu\circ\sigma^{-n}([\mathbf{i}])\right|=0.
-\end{align*}
-By passing to approximating cylinders, we see that this implies that $\tilde{\nu}$ is $\sigma$-invariant. 
-
-
-A simple consequence of the quasi-Bernoulli property of $\nu'$ is that for all Borel sets $A,B\subset \Sigma$, and $\varepsilon>0$, there exists $n\in\N$, such that
-\begin{equation*}
-    \nu'(A\cap\sigma^{-n}(B))\gtrsim \nu'(A)\nu'(B)-\varepsilon.
-\end{equation*}
-The ergodicity of $\nu'$ follows easily from this: Let $A\subset \Sigma$ be $\sigma$-invariant and assume towards contradiction that $0<\nu'(A)<1$. Then for some $n\in\N$,
-\begin{equation*}
-    0=\nu'((\Sigma\setminus A) \cap A)=\nu'((\Sigma\setminus A) \cap \sigma^{-n}(A))\gtrsim\nu'(\Sigma\setminus A)\nu'(A)-\varepsilon>0,
-\end{equation*}
-for some small enough $\varepsilon>0$, which gives a contradiction.
-\end{proof}
-For the rest of this section, let $\mathcal{N}\subset \Sigma$ denote the set of infinite words, which contain all finite words as a substring, that is 
-\begin{equation*}
-    \mathcal{N}\coloneqq \{\mathbf{i}\in\Sigma\colon \mathbf{j}\sqsubset \mathbf{i},\textnormal{ for all }\mathbf{j\in\Sigma_*}\}.
-\end{equation*}
 The following lemma is simple, but crucial to the proof of Theorem \ref{thm:quasi-bernoulli-exact-assouad}.
-
 \begin{lemma}\label{lemma:quasi-normal}
 If $\nu$ is a quasi-Bernoulli measure, then $\nu(\Sigma\setminus\mathcal{N})=0$.
 \end{lemma}
 \begin{proof}
-By Lemma \ref{lemma:quasi-bernoulli-equivalence}, we may assume without loss of generality that $\nu$ is $\sigma$-invariant and ergodic. Now for every $\mathbf{j}\in\Sigma_*$, we see by applying Birkhoff's ergodic theorem, that
+It is well known that if $\nu$ is a quasi-Bernoulli measure, then the measure $\tilde{\nu}$ obtained as a weak-$*$ accumulation point of the sequence
+\begin{equation*}
+    \tilde{\nu}_n\coloneqq\frac{1}{n}\sum_{j=0}^{n-1}\nu\circ\sigma^{-j},
+\end{equation*}
+is a $\sigma$-invariant and ergodic quasi-Bernoulli measure, which is equivalent with $\nu$ \cite{Heur}. Therefore, we may assume without loss of generality that $\nu$ is $\sigma$-invariant and ergodic. Now for every $\mathbf{j}\in\Sigma_*$, we see by applying Birkhoff's ergodic theorem, that
 \begin{align*}
     \lim_{n\to\infty}\frac{1}{n}\sum_{i=0}^{n}\chi_{[\mathbf{j}]}(\sigma^n\mathbf{i})=\int_{\Sigma}\chi_{[\mathbf{j}]}d\nu = \nu([\mathbf{j}])>0,
 \end{align*}
