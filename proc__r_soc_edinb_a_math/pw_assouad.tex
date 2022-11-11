@@ -28,6 +28,7 @@
 
 \newcommand{\iii}{\mathbf{i}}
 \newcommand{\jjj}{\mathbf{j}}
+\newcommand{\NN}{\mathcal{N}}
 
 \DeclareMathOperator*{\esssup}{ess\,sup}
 \DeclareMathOperator*{\essinf}{ess\,inf}
@@ -390,9 +391,13 @@ To simplify notation, from hereafter we write $A\lesssim B$ to mean that $A$ is 
 
 Recall that two measures $\mu$ and $\nu$ are said to be \emph{equivalent} if $\mu(A)=0$ if and only if $\nu(A)=0$. In the following $\sigma\colon \Sigma\to\Sigma$ denotes the \emph{left-shift} defined by $\sigma(\iii)=i_2i_2\ldots$. Also recall that a measure $\nu$ on $\Sigma$ is \emph{ergodic} if either $\nu(A)=0$ or $\nu(A)=1$, for all $\sigma$-invariant sets $A\subset \Sigma$.
 
+For the rest of this section, let $\NN\subset \Sigma$ denote the set of infinite words, which contain all finite words as a substring, that is
+\begin{equation*}
+    \NN = \{\iii\in\Sigma\colon \jjj\sqsubset\iii,\text{ for all }\jjj\in\Sigma_*\}.
+\end{equation*}
 The following lemma is simple, but crucial to the proof of Theorem \ref{thm:quasi-bernoulli-exact-assouad}.
 \begin{lemma}\label{lemma:quasi-normal}
-If $\nu$ is a quasi-Bernoulli measure, then $\nu(\Sigma\setminus\mathcal{N})=0$.
+If $\nu$ is a quasi-Bernoulli measure, then $\nu(\Sigma\setminus\NN)=0$.
 \end{lemma}
 \begin{proof}
 It is well known that if $\nu$ is a quasi-Bernoulli measure, then the measure $\tilde{\nu}$ obtained as a weak-$*$ accumulation point of the sequence
